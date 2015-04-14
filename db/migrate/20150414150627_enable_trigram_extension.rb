@@ -1,5 +1,5 @@
 class EnableTrigramExtension < ActiveRecord::Migration
   def change
-    execute "create extension pg_trgm;"
+    execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
   end
 end
