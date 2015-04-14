@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :collaborated_tools, through: :collaborators, source: :resourceable, source_type: 'Tool'
   has_many :email_preferences
   has_many :system_emails, through: :email_preferences
-  has_one :chef_account, -> { self.for('chef_oauth2') }, class_name: 'Account'
+  has_one :github_account, -> { self.for('github') }, class_name: 'Account'
 
   # Validations
   # --------------------
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # Scope
   # --------------------
   scope :with_email, ->(email) { where(email: email) }
-  scope :with_username, ->(username) { joins(:chef_account).where('accounts.username' => username) }
+  scope :with_username, ->(username) { joins(:github_account).where('accounts.username' => username) }
 
   # Search
   # --------------------
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
       email: 'C'
     },
     associated_against: {
-      chef_account: :username
+      github_account: :username
     },
     using: {
       tsearch: { prefix: true, dictionary: 'english' },
@@ -232,7 +232,7 @@ class User < ActiveRecord::Base
   # @return [String] the username for that Chef ID
   #
   def username
-    chef_account.try(:username).to_s
+    github_account.try(:username).to_s
   end
 
   #
@@ -270,7 +270,7 @@ class User < ActiveRecord::Base
   #
   # Returns a unique +ActiveRecord::Relation+ of all users who have signed
   # either the ICLA or CCLA or are a contributor on behalf of one or
-  # more +Organization+s. Sorts the users by their Chef account username.
+  # more +Organization+s. Sorts the users by their Github account username.
   #
   # NOTE: this does not eager load the accounts for users. Do not make any calls
   # that use the user's accounts, like
@@ -322,7 +322,8 @@ class User < ActiveRecord::Base
   #                information
   #
   def self.find_or_create_from_chef_oauth(auth)
-    extractor = ChefOauth2Extractor.new(auth)
+
+    extractor = GithubExtractor.new(auth)
 
     account = Account.where(extractor.signature).first_or_initialize
 
@@ -334,8 +335,7 @@ class User < ActiveRecord::Base
       username: extractor.username,
       oauth_token: extractor.oauth_token,
       oauth_secret: extractor.oauth_secret,
-      oauth_expires: extractor.oauth_expires,
-      oauth_refresh_token: extractor.oauth_refresh_token
+      oauth_expires: extractor.oauth_expires
     )
 
     account.user.assign_attributes(

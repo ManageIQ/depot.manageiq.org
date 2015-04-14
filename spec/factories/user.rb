@@ -12,7 +12,7 @@ FactoryGirl.define do
 
     after(:create) do |user, evaluator|
       if evaluator.create_chef_account
-        create(:account, provider: 'chef_oauth2', user: user)
+        create(:account, provider: 'github', user: user)
       end
     end
 

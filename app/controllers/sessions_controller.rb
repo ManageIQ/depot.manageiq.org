@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   # Redirects the user to the OmniAuth path for authentication
   #
   def new
-    redirect_to '/auth/chef_oauth2'
+    redirect_to '/auth/github'
   end
 
   #

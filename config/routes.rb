@@ -156,7 +156,9 @@ Supermarket::Application.routes.draw do
   get 'chat/:channel/:date' => 'irc_logs#show'
 
   # when signing in or up with chef account
-  match 'auth/chef_oauth2/callback' => 'sessions#create', as: :auth_session_callback, via: [:get, :post]
+  # match 'auth/chef_oauth2/callback' => 'sessions#create', as: :auth_session_callback, via: [:get, :post]
+  match 'auth/github/callback' => 'sessions#create', as: :auth_session_callback, via: [:get, :post]
+
   get 'auth/failure' => 'sessions#failure', as: :auth_failure
   get 'login'   => redirect('/sign-in'), as: nil
   get 'signin'  => redirect('/sign-in'), as: nil

@@ -149,8 +149,8 @@ describe User do
     end
 
     before do
-      jimmy.accounts << create(:account, provider: 'chef_oauth2', username: 'jimmyjammy')
-      jim.accounts << create(:account, provider: 'chef_oauth2', username: 'jimmcjimmerton')
+      jimmy.accounts << create(:account, provider: 'github', username: 'jimmyjammy')
+      jim.accounts << create(:account, provider: 'github', username: 'jimmcjimmerton')
     end
 
     it 'returns users with a similar first name' do
@@ -309,7 +309,7 @@ describe User do
   describe '#username' do
     it 'returns the chef username for the user' do
       user = create(:user)
-      account = user.accounts.for('chef_oauth2').first
+      account = user.accounts.for('github').first
       account.update_attributes(username: 'fanny')
 
       expect(user.username).to eql('fanny')
@@ -389,7 +389,7 @@ describe User do
 
   describe '.find_or_create_from_chef_oauth' do
     let(:auth) do
-      OmniAuth.config.mock_auth[:chef_oauth2]
+      OmniAuth.config.mock_auth[:github]
     end
 
     context 'when the user does not already exist' do
@@ -517,7 +517,7 @@ describe User do
 
     it 'displays the username if there are no names at all' do
       user = create(:user, first_name: nil, last_name: nil, create_chef_account: false)
-      account = create(:account, username: 'superman', user: user, provider: 'chef_oauth2')
+      account = create(:account, username: 'superman', user: user, provider: 'github')
       expect(user.name).to eql('superman')
     end
   end
