@@ -1,0 +1,76 @@
+@import "common";
+@import "foundation/components/grid";
+@import "foundation/components/block-grid";
+
+// Styles for the cookbooks directory
+
+.cookbooks_columns {
+  @include block-grid(3);
+  margin: rem-calc(55 0);
+
+  &.four_up {
+    @include block-grid(4);
+    margin: rem-calc(55 0);
+  }
+}
+
+@media #{$small-down} {
+  .cookbooks_columns, {
+    @include block-grid(1);
+
+    &.four_up {
+      @include block-grid(1);
+    }
+  }
+}
+
+@media #{$medium-only} {
+  .cookbooks_columns.four_up {
+    @include block-grid(2);
+    margin: rem-calc(55 0);
+  }
+}
+
+.cookbooks_column_content {
+  background-color: white;
+  border: 1px solid $cookbook_border;
+  text-align: center;
+  padding: rem-calc(10);
+
+  .button.expand {
+    margin: rem-calc(16 0);
+    width: 90%;
+  }
+
+  .title {
+    border-bottom: 1px solid $cookbook_border;
+    margin: 0;
+    padding: rem-calc(16 0);
+  }
+}
+
+.learn_about_cookbooks {
+  @include grid-row();
+  background: white;
+  border: 1px solid $cookbook_border;
+  padding: rem-calc(20);
+  width: auto;
+}
+
+.learn_about_cookbooks_content {
+  @include grid-column($columns: 7);
+}
+
+.learn_about_cookbooks_sidebar {
+  @include grid-column($columns: 5);
+}
+
+@media #{$mobile-only} {
+  .learn_about_cookbooks_content {
+    @include grid-column($columns: 12);
+  }
+
+  .learn_about_cookbooks_sidebar {
+    @include grid-column($columns: 12);
+  }
+}

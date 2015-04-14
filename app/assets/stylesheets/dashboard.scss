@@ -1,0 +1,87 @@
+@import "common";
+@import "foundation/components/grid";
+@import "compass/css3/border-radius";
+
+.dashboard {
+  .gravatar {
+    @include border-radius(rem-calc(40));
+    display: inline-block;
+    height: rem-calc(40);
+    margin-right: rem-calc(10);
+    width: rem-calc(40);
+  }
+
+  .sidebar {
+    .button {
+      margin-bottom: rem-calc(40);
+    }
+
+    h3, h4, h5 {
+      margin-bottom: 0;
+    }
+  }
+
+  .buttons a {
+    text-decoration: underline;
+  }
+
+  @media #{$small-down} {
+    a {
+      display: none;
+    }
+  }
+
+  @media #{$large-down} {
+    .heading-with-buttons .title small {
+      display: inline-block;
+      margin-left: 0;
+    }
+  }
+}
+
+.activity_list {
+  border-collapse: collapse;
+  display: table;
+  list-style-type: none;
+  margin: 0;
+  width: 100%;
+
+  a {
+    text-decoration: underline;
+  }
+
+  li {
+    border-bottom: rem-calc(2) solid lighten($secondary_gray, 36%);
+    display: table-row;
+    padding: rem-calc(10 0 10 0);
+    vertical-align: bottom;
+
+    > * {
+      display: table-cell;
+      padding: rem-calc(10 0 10 0);
+    }
+
+    .date {
+      text-align: right;
+    }
+  }
+
+  @media #{$mobile-only} {
+    .gravatar {
+      display: none;
+    }
+  }
+}
+
+.explore_cookbooks {
+  margin-top: rem-calc(50);
+  text-align: center;
+
+  .button {
+    width: rem-calc(350);
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+}

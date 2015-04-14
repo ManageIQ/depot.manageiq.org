@@ -1,0 +1,91 @@
+<%= provide :title, 'Dashboard' %>
+
+<div class="page dashboard" data-equalizer>
+  <div class="main" data-equalizer-watch>
+    <div class="heading-with-buttons">
+      <h3 class="title">
+        Followed Cookbooks Activity
+        <small><%= link_to '<i class="fa fa-rss"></i> rss'.html_safe, followed_cookbook_activity_user_path(current_user, format: 'atom'), class: 'rss_feed_link show-for-medium-up' %></small>
+      </h3>
+      <div class="buttons">
+        <% if @followed_cookbook_activity.any? %>
+          <%= link_to "You're Following #{pluralize(current_user.followed_cookbooks.count, 'Cookbook')}", user_path(current_user, tab: 'follows') %>
+        <% end %>
+      </div>
+    </div>
+    <% if @followed_cookbook_activity.any? %>
+      <ul class="activity_list">
+        <% @followed_cookbook_activity.each do |cookbook_version| %>
+          <li>
+            <div>
+              <%= link_to gravatar_for(cookbook_version.owner), cookbook_version.owner %>
+              <%= t('cookbook.activity',
+                    maintainer: link_to(cookbook_version.cookbook.maintainer, cookbook_version.owner),
+                    version: cookbook_version.version,
+                    cookbook: link_to(cookbook_version.name, cookbook_version.cookbook)
+                   ).html_safe %>
+            </div>
+            <small class="date"><%= cookbook_version.created_at.to_s(:longish) %></small>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="explore_cookbooks">
+        <h2>Looks like you're not following any cookbooks yet!</h2>
+        <p>Search for cookbooks and follow them to get notified when new versions are released.</p>
+        <%= link_to 'Explore Cookbooks', cookbooks_path, class: 'button radius' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="sidebar" data-equalizer-watch>
+    <h3>Your Cookbooks</h3>
+    <% if @cookbooks.any? %>
+      <ul class="simple_listing hide_owner">
+        <%= render partial: 'cookbooks/simple_cookbook', collection: @cookbooks, as: 'cookbook' %>
+      </ul>
+      <%= link_to 'View All of Your Cookbooks', current_user, class: 'button radius small expand' %>
+    <% else %>
+      <p><strong>Looking to upload your cookbooks?</strong></p>
+      <ol>
+        <li>Ensure you have a Chef repo configured with your private key</li>
+        <li>Share your cookbook with <code>knife cookbook site share COOKBOOK_NAME CATEGORY (options)</code></li>
+      </ol>
+
+      <p><%= link_to 'Read the full share docs.', chef_docs_url('knife_cookbook_site.html#share'), target: '_blank' %></p>
+    <% end %>
+
+    <h3>Cookbooks You Collaborate On</h3>
+    <% if @collaborated_cookbooks.any? %>
+      <ul class="simple_listing">
+        <%= render partial: 'cookbooks/simple_cookbook', collection: @collaborated_cookbooks, as: 'cookbook' %>
+      </ul>
+      <%= link_to 'View All Collaborated Cookbooks', user_path(current_user, tab: 'collaborates'), class: 'button radius small expand' %>
+    <% else %>
+      <p>
+        Cookbook owners can specify other users as collaborators, allowing them to manage and upload new versions of a cookbook.
+      </p>
+    <% end %>
+
+    <% if ROLLOUT.active?(:tools) %>
+      <h3>Tools You Maintain</h3>
+      <% if @tools.any? %>
+        <ul class="simple_listing">
+          <%= render partial: 'tools/simple_tool', collection: @tools, as: 'tool' %>
+        </ul>
+        <%= link_to 'View All Tools You Maintain', tools_user_path(current_user), class: 'button radius small expand' %>
+      <% else %>
+        <p>It looks like you have not added any Tools to Supermarket. <%= link_to "Add your Tools", new_tool_path %> if you maintain any knife plugins, ohai plugins or chef tools.</p>
+      <% end %>
+    <% end %>
+
+    <h4>Resources</h4>
+    <ul class="pretty">
+      <li><%= link_to 'Learn Chef', learn_chef_url, target: 'blank' %></li>
+      <li><%= link_to 'Join IRC', 'irc://irc.freenode.net/chef' %></li>
+      <li><%= link_to 'View botbot IRC Logs', 'https://botbot.me/freenode/chef', target: 'blank' %></li>
+      <li><%= link_to 'Join the Mailing List', 'https://groups.google.com/forum/#!forum/chef-supermarket', target: 'blank' %></li>
+      <li><%= link_to 'Read the Docs', chef_docs_url, target: 'blank' %></li>
+      <li><%= link_to 'Contribute to Supermarket', 'https://github.com/chef/supermarket', target: 'blank' %></li>
+    </ul>
+  </div>
+</div>

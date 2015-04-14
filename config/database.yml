@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  database: supermarket_development
+  host: localhost
+  pool: 30
+
+test:
+  adapter: postgresql
+  database: supermarket_test
+  host: localhost
+
+production:
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  adapter: postgresql
+  database: supermarket_production

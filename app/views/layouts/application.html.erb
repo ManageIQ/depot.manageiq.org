@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <title><%= [content_for(:title), 'Chef Supermarket'].compact.join(' - ').html_safe %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Supermarket" %>">
+    <% if ROLLOUT.active?(:no_crawl) %>
+      <meta name="robots" content="noindex, nofollow">
+    <% end %>
+    <link rel="shortcut icon" href="<%= image_url('favicon.ico') %>" type="image/x-icon">
+    <link rel="icon" href="<%= image_url('favicon.ico') %>" type="image/x-icon">
+    <link rel="apple-touch-icon" href="<%= image_url('apple-touch-icon.png') %>"/>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <%= csrf_meta_tags %>
+    <%= render 'google_analytics' %>
+  </head>
+  <body class="<%= controller.controller_name %>">
+    <div class="off-canvas-wrap">
+      <div class="inner-wrap">
+        <!-- Chef Property Menu -->
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list hide-for-medium-up">
+            <li><%= link_to 'Cookbooks', cookbooks_directory_path %></li>
+            <li><%= link_to 'Contribute', icla_signatures_path %></li>
+            <% if ROLLOUT.active?(:tools) %>
+              <li><%= link_to 'Tools & Plugins', tools_path %></li>
+            <% end %>
+            <% if !signed_in? %>
+              <li><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
+            <% end %>
+          </ul>
+          <ul class="off-canvas-list">
+            <li><%= link_to 'Get Chef', chef_www_url, target: '_blank' %></li>
+            <li><%= link_to 'Learn Chef', learn_chef_url, target: '_blank' %></li>
+            <li><%= link_to 'Docs', chef_docs_url, target: '_blank' %></li>
+            <li><%= link_to 'Training', chef_training_url, target: '_blank' %></li>
+            <li><%= link_to 'Botbot IRC Logs', 'https://botbot.me/freenode/chef', target: '_blank' %></li>
+          </ul>
+        </aside>
+
+        <header class="globalheader">
+          <a class="left-off-canvas-toggle fa fa-bars"><span class="hide">Menu</span></a>
+          <div class="inner_wrap">
+            <div class="logo_and_nav_toggle">
+              <h2 class="logochef"><%= link_to root_path do %><span>Chef Supermarket</span><% end %></h2>
+            </div>
+            <%= render partial: 'appheader' %>
+          </div>
+        </header>
+
+        <% if ROLLOUT.active?(:announcement) %>
+          <%= render partial: 'announcement_banner' %>
+        <% end %>
+
+        <%= render partial: 'flash' %>
+        <%= render partial: 'search' %>
+
+        <div class="container">
+          <%= yield %>
+        </div>
+        <footer class="footer">
+          &copy; 2008&thinsp;&ndash;&thinsp;<%= Time.new.year %> Chef Software, Inc. All Rights Reserved.
+          <br><br><%= link_to 'Code of Conduct', chef_docs_url('community_guidelines.html') %>
+        </footer>
+
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
+
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

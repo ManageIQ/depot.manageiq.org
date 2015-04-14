@@ -1,0 +1,10 @@
+<% if record.errors.present? %>
+  <div class="panel callout radius alert">
+    <p>There were some problems submitting the form:</p>
+    <ul>
+      <% record.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

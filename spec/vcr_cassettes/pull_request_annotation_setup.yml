@@ -1,0 +1,2765 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65283648
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:30:45 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4835'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:6D69:76B754E:547E1364
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:30:45 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65283650
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:30:45 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4834'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:6D6A:969528A:547E1365
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:30:45 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289271
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:30:49 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4828'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:6D67:377E018:547E1369
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:30:49 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289285
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:30:53 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4820'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFD:3AE7E71:547E136D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:30:53 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289298
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:30:57 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4814'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFB:8295325:547E1370
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 8dd185e423974a7e13abbbe6e060031e
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:30:57 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289310
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:00 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4808'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF8:3022F37:547E1373
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:00 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289316
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:03 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4801'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFA:69B2ED4:547E1377
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 2811da37fbdda4367181b328b22b2499
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:04 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289332
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:06 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4795'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF8:302385F:547E137A
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:07 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289340
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:11 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4786'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFC:96DDDA1:547E137F
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 065b43cd9674091fec48a221b420fbb3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:11 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289343
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:11 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4785'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFC:96DDE84:547E137F
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 2811da37fbdda4367181b328b22b2499
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:11 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289360
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:18 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4771'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:4C7864C:547E1386
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:18 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289364
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:19 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4770'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:4C786D8:547E1386
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:19 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/1/labels
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:22 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4764'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F92:1CF3920:547E1389
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 01d096e6cfe28f8aea352e988c332cd3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:22 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/1/comments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4763'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"6e2a36a0724a750f60748e2dfb089d81"'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F96:851CCE5:547E138A
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a241e1a8264a6ace03db946c85b92db3
+    body:
+      encoding: UTF-8
+      string: '[{"url":"https://api.github.com/repos/gofullstack/paprika/issues/comments/65289371","html_url":"https://github.com/gofullstack/paprika/pull/1#issuecomment-65289371","issue_url":"https://api.github.com/repos/gofullstack/paprika/issues/1","id":65289371,"user":{"login":"curryandr","id":6596341,"avatar_url":"https://avatars.githubusercontent.com/u/6596341?v=3","gravatar_id":"","url":"https://api.github.com/users/curryandr","html_url":"https://github.com/curryandr","followers_url":"https://api.github.com/users/curryandr/followers","following_url":"https://api.github.com/users/curryandr/following{/other_user}","gists_url":"https://api.github.com/users/curryandr/gists{/gist_id}","starred_url":"https://api.github.com/users/curryandr/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/curryandr/subscriptions","organizations_url":"https://api.github.com/users/curryandr/orgs","repos_url":"https://api.github.com/users/curryandr/repos","events_url":"https://api.github.com/users/curryandr/events{/privacy}","received_events_url":"https://api.github.com/users/curryandr/received_events","type":"User","site_admin":false},"created_at":"2014-12-02T19:31:19Z","updated_at":"2014-12-02T19:31:19Z","body":"Hi.
+        I am an automated pull request bot named Curry. There are commits in this
+        pull request whose authors are not yet authorized to contribute to Chef Software,
+        Inc. projects or are using a non-GitHub verified email address. To become
+        authorized to contribute, you will need to sign the Contributor License Agreement
+        (CLA) as an individual or on behalf of your company. [You can read more on
+        Chef''s blog.](https://www.chef.io/blog/2014/06/23/changes-to-the-contributor-license-agreement-process)\n\n##
+        GitHub Users Who Are Not Authorized To Contribute\n\nThe following GitHub
+        users do not appear to have signed a CLA:\n\n* @brettchalupa\n\n[Please sign
+        the CLA here.](https://community.chef.io)"},{"url":"https://api.github.com/repos/gofullstack/paprika/issues/comments/65289372","html_url":"https://github.com/gofullstack/paprika/pull/1#issuecomment-65289372","issue_url":"https://api.github.com/repos/gofullstack/paprika/issues/1","id":65289372,"user":{"login":"curryandr","id":6596341,"avatar_url":"https://avatars.githubusercontent.com/u/6596341?v=3","gravatar_id":"","url":"https://api.github.com/users/curryandr","html_url":"https://github.com/curryandr","followers_url":"https://api.github.com/users/curryandr/followers","following_url":"https://api.github.com/users/curryandr/following{/other_user}","gists_url":"https://api.github.com/users/curryandr/gists{/gist_id}","starred_url":"https://api.github.com/users/curryandr/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/curryandr/subscriptions","organizations_url":"https://api.github.com/users/curryandr/orgs","repos_url":"https://api.github.com/users/curryandr/repos","events_url":"https://api.github.com/users/curryandr/events{/privacy}","received_events_url":"https://api.github.com/users/curryandr/received_events","type":"User","site_admin":false},"created_at":"2014-12-02T19:31:20Z","updated_at":"2014-12-02T19:31:20Z","body":"Hi.
+        Your friendly Curry bot here. Just letting you know that all commit authors
+        have become authorized to contribute. I have added the \"Signed CLA\" label
+        to this issue so it can easily be found in the future."}]'
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:22 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289371
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:22 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4762'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F93:33F79ED:547E138A
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:23 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/gofullstack/paprika/issues/comments/65289372
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 02 Dec 2014 19:31:23 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4761'
+      X-Ratelimit-Reset:
+      - '1417549862'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F93:33F7A6A:547E138B
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 065b43cd9674091fec48a221b420fbb3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 02 Dec 2014 19:31:23 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65289389
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:44 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F95:89841A5:547F8FC7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 76d9828c7e4f1d910f7ba069e90ce976
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:44 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65289395
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:44 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4996'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F98:53F6D21:547F8FC8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 474556b853193c38f1b14328ce2d1b7d
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:45 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65289400
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:45 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4995'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F98:53F6D9C:547F8FC9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - a241e1a8264a6ace03db946c85b92db3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:45 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65289405
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:46 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4994'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:655E9C0:547F8FC9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:46 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65292150
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:46 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F96:AABEDAE:547F8FCA
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 2811da37fbdda4367181b328b22b2499
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:46 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65292152
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:47 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4992'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F97:BEB33EA:547F8FCA
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - a241e1a8264a6ace03db946c85b92db3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:47 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65292161
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:47 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4991'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F93:458E8C1:547F8FCB
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 4c8b2d4732c413f4b9aefe394bd65569
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:47 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65292166
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:48 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4990'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F97:BEB35AD:547F8FCC
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:48 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65503994
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:51 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4984'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F97:BEB3ABC:547F8FCF
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:51 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504006
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:33:58 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4976'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F95:89851EA:547F8FD5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 2811da37fbdda4367181b328b22b2499
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:33:58 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504051
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:12 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4970'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFB:A84FBB8:547F8FE4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 8dd185e423974a7e13abbbe6e060031e
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:12 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504059
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:16 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4963'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF7:25AEF9F:547F8FE7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 01d096e6cfe28f8aea352e988c332cd3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:16 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504068
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:26 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4957'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF7:25AF327:547F8FEE
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:27 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504097
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:35 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4951'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:65622EC:547F8FFB
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 4c8b2d4732c413f4b9aefe394bd65569
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:35 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504112
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:53 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4942'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F98:53FA40A:547F900D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 01d096e6cfe28f8aea352e988c332cd3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:53 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504125
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:34:54 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4941'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F91:12F5508:547F900D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:34:54 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504142
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:00 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4928'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:6563D9E:547F9014
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 065b43cd9674091fec48a221b420fbb3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:00 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504146
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:01 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4927'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F93:4592D88:547F9015
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:01 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504153
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:02 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4926'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F93:4592E25:547F9015
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:02 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504159
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:02 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4925'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:0F94:656402C:547F9016
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - d594a23ec74671eba905bf91ef329026
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:03 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/1/labels
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:09 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4914'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF5:9B6F98:547F901D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - b0ef53392caa42315c6206737946d931
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:09 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/chef/paprika/issues/1/comments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4913'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"0cfa28717aad5a8e9e502a4be5f1afd2"'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AF7:25B0CB2:547F901D
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: '[{"url":"https://api.github.com/repos/chef/paprika/issues/comments/65504173","html_url":"https://github.com/chef/paprika/pull/1#issuecomment-65504173","issue_url":"https://api.github.com/repos/chef/paprika/issues/1","id":65504173,"user":{"login":"curryandr","id":6596341,"avatar_url":"https://avatars.githubusercontent.com/u/6596341?v=3","gravatar_id":"","url":"https://api.github.com/users/curryandr","html_url":"https://github.com/curryandr","followers_url":"https://api.github.com/users/curryandr/followers","following_url":"https://api.github.com/users/curryandr/following{/other_user}","gists_url":"https://api.github.com/users/curryandr/gists{/gist_id}","starred_url":"https://api.github.com/users/curryandr/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/curryandr/subscriptions","organizations_url":"https://api.github.com/users/curryandr/orgs","repos_url":"https://api.github.com/users/curryandr/repos","events_url":"https://api.github.com/users/curryandr/events{/privacy}","received_events_url":"https://api.github.com/users/curryandr/received_events","type":"User","site_admin":false},"created_at":"2014-12-03T22:35:07Z","updated_at":"2014-12-03T22:35:07Z","body":"Hi.
+        I am an automated pull request bot named Curry. There are commits in this
+        pull request whose authors are not yet authorized to contribute to Chef Software,
+        Inc. projects or are using a non-GitHub verified email address. To become
+        authorized to contribute, you will need to sign the Contributor License Agreement
+        (CLA) as an individual or on behalf of your company. [You can read more on
+        Chef''s blog.](https://www.chef.io/blog/2014/06/23/changes-to-the-contributor-license-agreement-process)\n\n##
+        GitHub Users Who Are Not Authorized To Contribute\n\nThe following GitHub
+        users do not appear to have signed a CLA:\n\n* @brettchalupa\n\n[Please sign
+        the CLA here.](https://community.chef.io)"},{"url":"https://api.github.com/repos/chef/paprika/issues/comments/65504175","html_url":"https://github.com/chef/paprika/pull/1#issuecomment-65504175","issue_url":"https://api.github.com/repos/chef/paprika/issues/1","id":65504175,"user":{"login":"curryandr","id":6596341,"avatar_url":"https://avatars.githubusercontent.com/u/6596341?v=3","gravatar_id":"","url":"https://api.github.com/users/curryandr","html_url":"https://github.com/curryandr","followers_url":"https://api.github.com/users/curryandr/followers","following_url":"https://api.github.com/users/curryandr/following{/other_user}","gists_url":"https://api.github.com/users/curryandr/gists{/gist_id}","starred_url":"https://api.github.com/users/curryandr/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/curryandr/subscriptions","organizations_url":"https://api.github.com/users/curryandr/orgs","repos_url":"https://api.github.com/users/curryandr/repos","events_url":"https://api.github.com/users/curryandr/events{/privacy}","received_events_url":"https://api.github.com/users/curryandr/received_events","type":"User","site_admin":false},"created_at":"2014-12-03T22:35:08Z","updated_at":"2014-12-03T22:35:08Z","body":"Hi.
+        Your friendly Curry bot here. Just letting you know that all commit authors
+        have become authorized to contribute. I have added the \"Signed CLA\" label
+        to this issue so it can easily be found in the future."}]'
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:10 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504173
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:10 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4912'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFA:89DFECC:547F901E
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - a241e1a8264a6ace03db946c85b92db3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:10 GMT
+- request:
+    method: delete
+    uri: https://api.github.com/repos/chef/paprika/issues/comments/65504175
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.3.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token <TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 03 Dec 2014 22:35:11 GMT
+      Status:
+      - 204 No Content
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4911'
+      X-Ratelimit-Reset:
+      - '1417649622'
+      X-Oauth-Scopes:
+      - public_repo, write:repo_hook
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 180A5027:1AFB:A8559D8:547F901E
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Served-By:
+      - 01d096e6cfe28f8aea352e988c332cd3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 03 Dec 2014 22:35:11 GMT
+recorded_with: VCR 2.9.2

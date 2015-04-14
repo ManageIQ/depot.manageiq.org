@@ -1,0 +1,7 @@
+<div class="owner_avatar">
+  <%= link_to resource.owner do %>
+    <%= gravatar_for resource.owner, size: 144 %>
+    <span itemprop="author"><%= resource.maintainer %></span>
+    <small><%= resource.owner.name %></small>
+  <% end %>
+</div>
