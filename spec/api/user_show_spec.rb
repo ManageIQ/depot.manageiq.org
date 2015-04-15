@@ -11,11 +11,6 @@ describe 'GET /api/v1/users/:user' do
         twitter_username: 'fanny',
         irc_nickname: 'fanny',
         jira_username: 'fanny',
-        # github_account: create(
-        #   :account,
-        #   provider: 'github',
-        #   username: 'fanny'
-        # ),
         create_chef_account: false
       )
     end

@@ -93,46 +93,7 @@ describe Api::V1::UsersController do
 
         expect(assigns[:github_usernames]).to include('clive',  'xanadu')
       end
-
-      # it 'sends the owned cookbooks to the view' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:owned_cookbooks]).to include(macand)
-      #   expect(assigns[:owned_cookbooks]).to include(redis_test)
-      # end
-
-      # it 'sorts the owned cookbooks by name' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:owned_cookbooks].to_a).to eql([macand, redis_test])
-      # end
-
-      # it 'sends the collaborated cookbooks to the view' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:collaborated_cookbooks]).to include(apples)
-      #   expect(assigns[:collaborated_cookbooks]).to include(zeromq)
-      # end
-
-      # it 'sorts the collaborated cookbooks by name' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:collaborated_cookbooks].to_a).to eql([apples, zeromq])
-      # end
-
-      # it 'sends the followed cookbooks to the view' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:followed_cookbooks]).to include(ruby)
-      #   expect(assigns[:followed_cookbooks]).to include(postgres)
-      # end
-
-      # it 'sorts the followed cookbooks by name' do
-      #   get :show, user: 'clive', format: :json
-
-      #   expect(assigns[:followed_cookbooks].to_a).to eql([postgres, ruby])
-      # end
-
+      
       it 'sends the owned tools to the view' do
         get :show, user: 'clive', format: :json
 

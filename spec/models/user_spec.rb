@@ -43,24 +43,6 @@ describe User do
     end
   end
 
-  describe '#authorized_to_contribute?' do
-    # it 'is true when the user has signed an ICLA or is a contributor to one or more organizations' do
-    #   contributor_user = create(:user)
-    #   create(:contributor, user: contributor_user)
-
-    #   icla_signing_user = build(:user, icla_signatures: [build(:icla_signature)])
-
-    #   expect(contributor_user.authorized_to_contribute?).to be true
-    #   expect(icla_signing_user.authorized_to_contribute?).to be true
-    # end
-
-    # it 'is false when the user has not signed the ICLA and is not a contributor to one or more organizations' do
-    #   user = create(:user)
-
-    #   expect(user.authorized_to_contribute?).to be false
-    # end
-  end
-
   describe '.authorized_contributors' do
     let!(:jimmy) do
       create(
