@@ -150,7 +150,7 @@ class User < ActiveRecord::Base
   # contributor on behalf of one or more organizations.
   #
   def authorized_to_contribute?
-    signed_icla? || contributor?
+    contributor?
   end
 
   #
@@ -283,7 +283,7 @@ class User < ActiveRecord::Base
       joins('LEFT JOIN icla_signatures ON icla_signatures.user_id = users.id').
       joins('LEFT JOIN ccla_signatures ON ccla_signatures.user_id = users.id').
       joins('LEFT JOIN contributors ON contributors.user_id = users.id').
-      where('accounts.provider = ?', 'chef_oauth2').
+      where('accounts.provider = ?', 'github').
       where('icla_signatures.id IS NOT NULL OR ccla_signatures.id
             IS NOT NULL OR contributors.id IS NOT NULL').
       order('accounts.username').
@@ -311,7 +311,7 @@ class User < ActiveRecord::Base
   # reflect the extracted values.
   #
   # @example
-  #   user = User.find_or_create_from_chef_oauth(
+  #   user = User.find_or_create_from_github_oauth(
   #     uid: '123',
   #     provider: 'chef_oauth2'
   #   )
@@ -321,11 +321,14 @@ class User < ActiveRecord::Base
   # @return [User] the user that exists or was created with the +auth+
   #                information
   #
-  def self.find_or_create_from_chef_oauth(auth)
+  def self.find_or_create_from_github_oauth(auth)
 
     extractor = GithubExtractor.new(auth)
 
-    account = Account.where(extractor.signature).first_or_initialize
+    account = Account.where(
+        username: extractor.username,
+        provider: extractor.provider
+      ).first_or_initialize
 
     if account.new_record?
       account.user = User.new

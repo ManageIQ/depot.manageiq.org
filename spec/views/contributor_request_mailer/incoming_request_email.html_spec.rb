@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'contributor_request_mailer/incoming_request_email.html.erb' do
   before do
     user = create(:user, create_chef_account: false)
-    account = create(:account, username: 'jimmeh', provider: 'chef_oauth2', user: user)
+    account = create(:account, username: 'jimmeh', provider: 'github', user: user)
     assign(:username, 'jimmy')
     assign(:user, user)
     assign(:organization_name, 'Acme, Inc')

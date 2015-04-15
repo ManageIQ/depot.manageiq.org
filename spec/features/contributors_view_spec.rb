@@ -53,20 +53,20 @@ describe 'viewing contributors' do
       expect(all('.repository').size > 0).to be true
     end
 
-    it "lists user's agreements when signed in" do
-      icla_signature = create(:icla_signature)
-      user = icla_signature.user
-      create(:contributor, user: user)
+    # it "lists user's agreements when signed in" do
+    #   icla_signature = create(:icla_signature)
+    #   user = icla_signature.user
+    #   create(:contributor, user: user)
 
-      sign_in(user)
+    #   sign_in(user)
 
-      visit '/'
-      follow_relation 'contributors'
+    #   visit '/'
+    #   follow_relation 'contributors'
 
-      within '.sidebar' do
-        expect(relations('icla-signature').size > 0).to be true
-        expect(relations('ccla-membership').size > 0).to be true
-      end
-    end
+    #   within '.sidebar' do
+    #     expect(relations('icla-signature').size > 0).to be true
+    #     expect(relations('ccla-membership').size > 0).to be true
+    #   end
+    # end
   end
 end

@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
   # Validations
   # --------------------
   validates :user, presence: true
-  validates :uid, presence: true
+  # validates :uid, presence: true
   validates :provider, presence: true
   validates :oauth_token, presence: true
   validate :unique_username_and_provider, on: :create

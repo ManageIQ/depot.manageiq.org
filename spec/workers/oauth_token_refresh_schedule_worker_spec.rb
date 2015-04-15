@@ -8,7 +8,7 @@ describe OauthTokenRefreshScheduleWorker do
 
       [-0.1, 0, 12.5, 25, 26.1].each do |expiry|
         create(:user).tap do |user|
-          user.chef_account.update_attributes!(
+          user.github_account.update_attributes!(
             oauth_expires: now + expiry.minutes
           )
         end
@@ -29,7 +29,7 @@ describe OauthTokenRefreshScheduleWorker do
 
       [-0.1, 0, 12.5, 25, 26.1].each do |expiry|
         create(:user).tap do |user|
-          user.chef_account.update_attributes!(
+          user.github_account.update_attributes!(
             oauth_expires: now + expiry.minutes
           )
         end

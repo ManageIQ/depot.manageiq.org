@@ -9,7 +9,7 @@ describe 'user routes' do
       user = create(:user)
 
       typical_user_route = user_path(user)
-      optimized_user_route = user_path(id: user.chef_account.username)
+      optimized_user_route = user_path(id: user.github_account.username)
 
       expect(typical_user_route).to eql(optimized_user_route)
     end

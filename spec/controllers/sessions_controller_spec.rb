@@ -2,30 +2,30 @@ require 'spec_helper'
 
 describe SessionsController do
   describe 'POST #create' do
-    let(:auth_hash) { OmniAuth.config.mock_auth[:chef_oauth2] }
+    let(:auth_hash) { OmniAuth.config.mock_auth[:github] }
 
     before do
-      allow(User).to receive(:find_or_create_from_chef_oauth).and_return(double(id: 1, name: 'John Doe'))
+      allow(User).to receive(:find_or_create_from_github_oauth).and_return(double(id: 1, name: 'John Doe'))
       request.env['omniauth.auth'] = auth_hash
     end
 
     it 'loads or creates the user from the OAuth hash' do
-      expect(User).to receive(:find_or_create_from_chef_oauth).with(auth_hash)
-      post :create, provider: 'chef_oauth2'
+      expect(User).to receive(:find_or_create_from_github_oauth).with(auth_hash)
+      post :create, provider: 'github'
     end
 
     it 'sets the session' do
-      post :create, provider: 'chef_oauth2'
+      post :create, provider: 'github'
       expect(session[:user_id]).to eq(1)
     end
 
     it 'redirects to the root path' do
-      post :create, provider: 'chef_oauth2'
+      post :create, provider: 'github'
       expect(response).to redirect_to(root_path)
     end
 
     it 'notifies the user they have signed in' do
-      post :create, provider: 'chef_oauth2'
+      post :create, provider: 'github'
       expect(flash[:notice]).
         to eql(I18n.t('user.signed_in', name: 'John Doe'))
     end

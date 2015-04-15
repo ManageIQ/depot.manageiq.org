@@ -8,7 +8,7 @@ class Tool < ActiveRecord::Base
   # Associations
   # --------------------
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
-  has_one :chef_account, through: :owner
+  has_one :github_account, through: :owner
   has_many :collaborators, as: :resourceable
   has_many :collaborator_users, through: :collaborators, source: :user
 
@@ -31,7 +31,7 @@ class Tool < ActiveRecord::Base
       description: 'C'
     },
     associated_against: {
-      chef_account: { username: 'B' }
+      github_account: { username: 'B' }
     },
     using: {
       tsearch: { dictionary: 'english', only: [:username, :description], prefix: true },
@@ -75,7 +75,7 @@ class Tool < ActiveRecord::Base
   }
 
   scope :index, lambda { |opts = {}|
-    includes(owner: :chef_account)
+    includes(owner: :github_account)
     .ordered_by(opts.fetch(:order, 'name ASC'))
     .limit(opts.fetch(:limit, 10))
     .offset(opts.fetch(:start, 0))

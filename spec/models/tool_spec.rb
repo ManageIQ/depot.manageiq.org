@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Tool do
   context 'associations' do
     it { should belong_to(:owner) }
-    it { should have_one(:chef_account) }
+    it { should have_one(:github_account) }
     it { should have_many(:collaborators) }
     it { should have_many(:collaborator_users) }
   end
@@ -80,7 +80,7 @@ describe Tool do
         description: 'Berkshelf is an okay Chef cookbook dependency manager.',
         owner: create(
           :user,
-          chef_account: create(:account, provider: 'chef_oauth2', username: 'johndoe'),
+          github_account: create(:account, provider: 'github', username: 'johndoe'),
           create_chef_account: false
         )
       )
@@ -93,7 +93,7 @@ describe Tool do
         description: 'Berkshelf is a Chef cookbook dependency manager.',
         owner: create(
           :user,
-          chef_account: create(:account, provider: 'chef_oauth2', username: 'fanny'),
+          github_account: create(:account, provider: 'github', username: 'fanny'),
           create_chef_account: false
         )
       )

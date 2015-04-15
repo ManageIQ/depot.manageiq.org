@@ -46,11 +46,11 @@ describe InvitationsController do
       expect(response).to redirect_to(user)
     end
 
-    it 'redirects to link GitHub account if they no connected GitHub account' do
-      get :accept, id: invitation.token
+    # it 'redirects to link GitHub account if they no connected GitHub account' do
+    #   get :accept, id: invitation.token
 
-      expect(response).to redirect_to(link_github_profile_path)
-    end
+    #   expect(response).to redirect_to(link_github_profile_path)
+    # end
 
     it 'creates admins if the invitation specifies as such' do
       create(:account, user: user)

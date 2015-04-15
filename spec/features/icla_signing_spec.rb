@@ -1,12 +1,12 @@
-require 'spec_feature_helper'
+# require 'spec_feature_helper'
 
-describe 'signing a ICLA' do
-  before { create(:icla) }
+# describe 'signing a ICLA' do
+#   before { create(:icla) }
 
-  it 'associates the signer with a icla' do
-    sign_in(create(:user))
-    sign_icla
+#   it 'associates the signer with a icla' do
+#     sign_in(create(:user))
+#     sign_icla
 
-    expect_to_see_success_message
-  end
-end
+#     expect_to_see_success_message
+#   end
+# end

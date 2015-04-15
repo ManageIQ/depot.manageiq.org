@@ -31,11 +31,11 @@ class Cookbook < ActiveRecord::Base
   }
 
   scope :owned_by, lambda { |username|
-    joins(owner: :chef_account).where('accounts.username = ?', username)
+    joins(owner: :github_account).where('accounts.username = ?', username)
   }
 
   scope :index, lambda { |opts = {}|
-    includes(:cookbook_versions, owner: :chef_account)
+    includes(:cookbook_versions, owner: :github_account)
     .ordered_by(opts.fetch(:order, 'name ASC'))
     .limit(opts.fetch(:limit, 10))
     .offset(opts.fetch(:start, 0))
@@ -51,7 +51,7 @@ class Cookbook < ActiveRecord::Base
       name: 'A'
     },
     associated_against: {
-      chef_account: { username: 'B' },
+      github_account: { username: 'B' },
       cookbook_versions: { description: 'C' }
     },
     using: {
@@ -73,7 +73,7 @@ class Cookbook < ActiveRecord::Base
   has_many :followers, through: :cookbook_followers, source: :user
   belongs_to :category
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
-  has_one :chef_account, through: :owner
+  has_one :github_account, through: :owner
   belongs_to :replacement, class_name: 'Cookbook', foreign_key: :replacement_id
   has_many :collaborators, as: :resourceable
   has_many :collaborator_users, through: :collaborators, source: :user

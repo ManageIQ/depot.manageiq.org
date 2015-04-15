@@ -16,35 +16,10 @@ describe 'api/v1/users/show' do
   before do
     create(
       :account,
-      provider: 'chef_oauth2',
-      username: 'fanny',
-      user: user
-    )
-    create(
-      :account,
       provider: 'github',
       username: 'fanny',
       user: user
     )
-    create(:cookbook, name: 'redis-test', owner: user)
-    create(:cookbook, name: 'macand', owner: user)
-    create(
-      :cookbook_collaborator,
-      resourceable: create(:cookbook, name: 'zeromq'),
-      user: user
-    )
-    create(
-      :cookbook_follower,
-      cookbook: create(:cookbook, name: 'postgres'),
-      user: user
-    )
-    create(
-      :cookbook_follower,
-      cookbook: create(:cookbook, name: 'ruby'),
-      user: user
-    )
-    create(:icla_signature, user: user)
-
     create(:tool, name: 'berkshelf', owner: user, slug: 'berkshelf')
     create(
       :tool, name: 'knife_supermarket', owner: user, slug: 'knife_supermarket'
@@ -57,10 +32,7 @@ describe 'api/v1/users/show' do
     )
 
     assign(:user, user)
-    assign(:owned_cookbooks, user.owned_cookbooks)
-    assign(:collaborated_cookbooks, user.collaborated_cookbooks)
-    assign(:followed_cookbooks, user.followed_cookbooks)
-    assign(:github_usernames, user.accounts.for('github').map(&:username))
+    assign(:github_usernames, user.username)
     assign(:owned_tools, user.tools)
     assign(:collaborated_tools, user.collaborated_tools)
 
@@ -100,34 +72,6 @@ describe 'api/v1/users/show' do
   it "displays the user's jira username" do
     jira = json_body['jira']
     expect(jira).to eql(user.jira_username)
-  end
-
-  it "displays the user's authorized_to_contribute status" do
-    authorized = json_body['authorized_to_contribute']
-    expect(authorized).to eql(true)
-  end
-
-  it 'displays the cookbooks the user owns' do
-    owned_cookbooks = json_body['cookbooks']['owns']
-    expect(owned_cookbooks).to eql(
-      'macand' => 'http://test.host/api/v1/cookbooks/macand',
-      'redis-test' => 'http://test.host/api/v1/cookbooks/redis-test'
-    )
-  end
-
-  it 'displays the cookbooks the user collaborates on' do
-    collaborates_cookbooks = json_body['cookbooks']['collaborates']
-    expect(collaborates_cookbooks).to eql(
-      'zeromq' => 'http://test.host/api/v1/cookbooks/zeromq'
-    )
-  end
-
-  it 'displays the cookbooks the user follows' do
-    follows_cookbooks = json_body['cookbooks']['follows']
-    expect(follows_cookbooks).to eql(
-      'postgres' => 'http://test.host/api/v1/cookbooks/postgres',
-      'ruby' => 'http://test.host/api/v1/cookbooks/ruby'
-    )
   end
 
   it 'displays the tools the user owns' do

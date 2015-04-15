@@ -11,7 +11,7 @@ describe 'organizations/requests_to_join.html.erb' do
     )
     allow(view).to receive(:policy).and_return(policy)
     user = create(:user, create_chef_account: false, first_name: nil, last_name: nil)
-    account = create(:account, username: 'jimmeh', provider: 'chef_oauth2', user: user)
+    account = create(:account, username: 'jimmeh', provider: 'github', user: user)
     org = create(:organization)
     pending_request = create(:contributor_request, user: user, organization: org)
     assign(:organization, org)

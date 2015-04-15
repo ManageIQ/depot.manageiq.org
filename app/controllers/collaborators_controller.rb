@@ -10,7 +10,7 @@ class CollaboratorsController < ApplicationController
   # for a given resource.
   #
   def index
-    @collaborators = User.includes(:chef_account).
+    @collaborators = User.includes(:github_account).
       where.not(id: params[:ineligible_user_ids]).
       limit(20)
 

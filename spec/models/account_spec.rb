@@ -7,7 +7,6 @@ describe Account do
 
   context 'validations' do
     it { should validate_presence_of(:user) }
-    it { should validate_presence_of(:uid) }
     it { should validate_presence_of(:provider) }
     it { should validate_presence_of(:oauth_token) }
 
@@ -25,7 +24,6 @@ describe Account do
       it 'returns the first account with that username' do
         github_account = create(:account, provider: 'github')
         chef_account = create(:account, provider: 'chef_oauth2')
-
         expect(Account.for('github')).to_not include(chef_account)
       end
     end
