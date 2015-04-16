@@ -3,10 +3,10 @@ ruby '2.1.3'
 
 # Override the Bundler :github shortcut to use HTTPS instead of the git protocol
 # Note: Version 2.x of Bundler should do this by default
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+#   "https://github.com/#{repo_name}.git"
+# end
 
 gem 'rails', '~> 4.1.5'
 
