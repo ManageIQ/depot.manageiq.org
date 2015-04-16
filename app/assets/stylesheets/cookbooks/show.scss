@@ -1,0 +1,242 @@
+@import "common";
+@import "foundation/components/grid";
+@import "compass/css3/border-radius";
+@import "compass/css3/inline-block";
+
+.cookbook_show {
+  .deprecation-notice {
+    @include single-transition($speed: 100ms);
+    @include border-radius(rem-calc(2));
+
+    border: 4px solid $secondary_yellow;
+    display: block;
+    margin: rem-calc(0 0 18 0);
+    text-align: center;
+
+    .deprecation-copy {
+      color: $secondary-yellow;
+      padding: rem-calc(18 9 18 9);
+      margin: 0;
+    }
+  }
+
+  .accordion.contingents {
+    a {
+      margin-top: rem-calc(10);
+    }
+
+    .content {
+      padding: 0;
+    }
+
+    .fa {
+      margin-left: rem-calc(10);
+    }
+
+    .fa-plus {
+      display: inline;
+    }
+
+    .fa-minus {
+      display: none;
+    }
+
+    .active .fa-plus {
+      display: none;
+    }
+
+    .active .fa-minus {
+      display: inline;
+    }
+  }
+
+  .tabs {
+    .fa {
+      margin-left: rem-calc(5);
+    }
+
+    .fa-times {
+      color: $primary_red;
+    }
+
+    .fa-check {
+      color: $secondary_green;
+    }
+  }
+
+  .installs {
+    margin-bottom: rem-calc(50);
+
+    dl {
+      margin: 0;
+    }
+
+    dd {
+      display: inline-block;
+      margin: 0;
+    }
+
+    .tabs-content {
+      border: solid 1px lighten($secondary_gray, 30%);
+      margin: 0;
+      padding: rem-calc(10);
+    }
+
+    .content {
+      padding: 0;
+    }
+
+    .install {
+      margin: 0;
+
+      &:nth-child(2) {
+        margin-top: rem-calc(10);
+      }
+    }
+
+    .button {
+      @include border-top-radius(rem-calc(2));
+      background: white;
+      border: none;
+      color: $concrete;
+      padding: rem-calc(8);
+      margin-right: rem-calc(-2);
+    }
+
+    .active .button {
+      border: 1px lighten($secondary_gray, 30%);
+      border-style: solid solid none solid;
+      border-bottom: solid 1px white;
+      color: $primary_blue;
+      margin-bottom: rem-calc(-1);
+    }
+  }
+
+  .sidebar {
+    .button_download_cookbook {
+      margin-top: rem-calc(20);
+    }
+  }
+
+  #readme {
+    padding-top: rem-calc(20);
+
+    p, ul, ol, li, h1, h2, h3, h4, h5, h6, h7, h8 {
+      color: $body-font-color;
+    }
+
+    ul {
+      list-style-type: square;
+    }
+
+    h1 {
+      border-bottom: solid 1px lighten($secondary_gray, 30%);
+      font-size: rem-calc(36);
+      padding-bottom: rem-calc(10);
+    }
+
+    h2 {
+      font-size: rem-calc(30);
+      margin-bottom: rem-calc(14);
+    }
+
+    h3 {
+      font-size: rem-calc(24);
+      margin-bottom: rem-calc(12);
+    }
+
+    h4 {
+      font-size: rem-calc(18);
+      margin-bottom: rem-calc(10);
+    }
+
+    pre {
+      margin-bottom: rem-calc(20);
+    }
+
+    code {
+      font-weight: $normal;
+    }
+
+    table {
+      width: 100%;
+
+      th {
+        text-align: left;
+      }
+    }
+  }
+
+  .version_dropdown {
+    @include inline-block;
+    margin: rem-calc(-10 10 0 10);
+  }
+
+  #versions li:hover {
+    background: white;
+  }
+
+  #versions ul {
+    max-height: 200px;
+    margin: 0;
+    overflow-y: scroll;
+
+    li:hover {
+      background: #eee;
+    }
+  }
+
+  .followbutton {
+    color: $concrete;
+    float: right;
+    font: {
+      size: rem-calc(10);
+      weight: $bold;
+    }
+
+    .button {
+      padding: rem-calc(12 20 10);
+
+      i:before {
+        margin-right: rem-calc(5);
+      }
+
+      .cookbook_follow_count {
+        @include inline-block;
+        @include single-transition($speed: 100ms);
+        @include border-radius(rem-calc(2));
+        background-color: darken($primary-color, 5%);
+        color: $clouds;
+        font: {
+          size: rem-calc(10);
+          weight: $bold;
+        }
+        line-height: rem-calc(10);
+        margin: rem-calc(-2 -10 0 10);
+        padding: rem-calc(5 5 3);
+      }
+
+      &:hover {
+        .cookbook_follow_count {
+          background-color: darken($primary-color, 20%);
+        }
+      }
+    }
+  }
+
+  .show-cookbook-urls-manage {
+    cursor: pointer;
+
+    .fa {
+      font-size: rem-calc(18);
+    }
+
+    &.active, &.active .fa {
+      color: $secondary_blue;
+    }
+  }
+
+  .dependent-header {
+    margin-bottom: rem-calc(8);
+  }
+}

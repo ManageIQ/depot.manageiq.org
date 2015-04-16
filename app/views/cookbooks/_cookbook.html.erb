@@ -1,0 +1,68 @@
+<li itemscope itemtype="http://schema.org/Code">
+  <div class="header">
+    <div class="header-content">
+      <h2 class="title">
+        <%= link_to cookbook, rel: 'cookbook', itemprop: 'name' do %><%= cookbook.name %><% end %>
+        <i class="fa fa-file"></i>
+        <small><%= cookbook.latest_cookbook_version.version %></small>
+      </h2>
+      <span class="meta">
+        <i class="fa fa-clock-o"></i> Updated <span itemprop="dateModified"><%= cookbook.updated_at.to_s(:longish) %></span><br />
+      </span>
+
+      <% if cookbook.deprecated? %>
+        <span class="meta">
+          <% if cookbook.replacement.present? %>
+            <i class="fa fa-exclamation-triangle"></i> Deprecated in favor of <%= link_to cookbook.replacement.name, cookbook.replacement %>
+          <% else %>
+            <i class="fa fa-exclamation-triangle"></i> Deprecated
+          <% end %>
+        </span>
+      <% end %>
+
+      <div class="owner">
+        <%= link_to cookbook.owner do %>
+          <%= gravatar_for cookbook.owner, size: 128 %>
+          <h5 itemprop="author"><%= cookbook.maintainer %></h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="body-content">
+      <p itemprop="description">
+        <%= cookbook.description %>
+      </p>
+      <code class="install">cookbook '<%= cookbook.name %>', '~&gt; <%= cookbook.latest_cookbook_version.version %>'</code>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-content">
+      <div class="cookbook_platforms_content show-for-medium-up">
+        <h5>Supported Platforms</h5>
+        <ul class="cookbook_platforms">
+          <% if cookbook.supported_platforms.present? %>
+            <% cookbook.supported_platforms.each do |platform| %>
+              <li class="cookbook_platform_icon has-tip" title="<%= platform.name %> <%= platform.version_constraint %>" data-tooltip data-icon="<%= supported_platform_icon(platform) %>">
+                <span><%= platform.name %></span>
+              </li>
+            <% end %>
+          <% else %>
+            <li data-tooltip class="has-tip cookbook_no_platform_icon" title="Not specified">
+              <span class="fa fa-question-circle"></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <ul class="cookbook_stats">
+        <li>
+          <i class="fa fa-inbox"></i>
+          <span itemprop="interactionCount"><%= number_with_delimiter(cookbook.download_count) %></span>
+          <h5>Total Downloads</h5>
+        </li>
+        <%= render 'cookbooks/follow_button_list', cookbook: cookbook %>
+      </ul>
+    </div>
+  </div>
+</li>

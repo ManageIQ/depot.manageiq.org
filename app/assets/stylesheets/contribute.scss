@@ -1,0 +1,52 @@
+@import "common";
+@import "foundation/components/grid";
+
+.contribute {
+  .sidebar {
+    .button {
+      margin-bottom: rem-calc(40);
+    }
+  }
+
+  .tabs span {
+    background: lighten($secondary_gray, 20%);
+    border-radius: rem-calc(4);
+    color: white;
+    font-size: rem-calc(12);
+    margin-left: rem-calc(5);
+    padding: rem-calc(1 5 1 5);
+  }
+
+  .signature {
+    @include grid-column(5, $collapse: true);
+  }
+
+  @media #{$small-down} {
+    .signature {
+      @include grid-column(12, $collapse: true);
+    }
+  }
+
+  .agreement {
+    @include grid-column(7);
+
+    .panel {
+      max-height: rem-calc(1020);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+
+      h1 { border: none; font-size: rem-calc(18); line-height: rem-calc(24); }
+      h2 { font-size: rem-calc(14); line-height: rem-calc(24); }
+      p, li, footer {
+        font-size: rem-calc(12);
+        margin-bottom: rem-calc(18);
+      }
+    }
+  }
+
+  @media #{$small-down} {
+    .agreement {
+      @include grid-column(12, $collapse: true);
+    }
+  }
+}

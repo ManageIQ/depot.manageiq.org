@@ -1,0 +1,478 @@
+@import "common";
+@import "foundation/components/grid";
+@import "compass/css3/transition";
+@import "compass/css3/border-radius";
+@import "compass/css3/inline-block";
+
+// Basic structural elements
+html, body { height: 100%; min-height: 100%; }
+
+@media #{$mobile-only} {
+  html, body, h1, h2, h3, h4, h5, h6, p, li, span, blockquote, a, pre, code { font-size: 88%; }
+}
+
+@media #{$small-only} {
+   html, body, h1, h2, h3, h4, h5, h6, p, li, span, blockquote, a, pre, code { font-size: 95%; }
+}
+
+@media #{$medium-only} {
+  html, body, h1, h2, h3, h4, h5, h6, p, li, span, blockquote, a, pre, code { font-size: 95%; }
+}
+
+body {
+  background: $clouds;
+  margin: 0;
+}
+
+hr {
+  border: 2px solid #ecedef;
+  margin-bottom: rem-calc(20);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: rem-calc(0 0 20);
+
+  legend {
+    background: white;
+    font-weight: 600;
+    padding-bottom: rem-calc(10);
+  }
+}
+
+textarea {
+  line-height: rem-calc(20);
+}
+
+code, pre {
+  @include border-radius(rem-calc(3));
+  background-color: $trinary_gray;
+  color: $body-font-color;
+  cursor: text;
+  padding: rem-calc(2 5);
+}
+
+pre {
+  font: {
+    size: rem-calc(16);
+    weight: $normal;
+  }
+
+  code {
+    padding: rem-calc(0 0);
+  }
+
+  line-height: rem-calc(24);
+  padding: rem-calc(8 20);
+}
+
+.container {
+  @include grid-row();
+  min-height: 100%;
+  max-width: $max-width;
+}
+
+.page {
+  @include grid-row();
+  background: white;
+  color: $secondary_gray;
+  position: relative;
+  z-index: 1;
+
+  &.nobg {
+    background-color: transparent;
+
+    .heading-with-buttons .title {
+      color: $silver;
+    }
+  }
+
+  &.withspace {
+    padding: rem-calc(55);
+  }
+
+  table {
+    width: 100%;
+  }
+}
+
+@media #{$mobile-only} {
+  .page {
+    padding: 0;
+  }
+}
+
+@media #{$small-only} {
+  .page {
+    padding: 0;
+  }
+}
+
+@media #{$small-down} {
+  .page.nobg, .page.withspace {
+    padding: rem-calc(20);
+  }
+}
+
+@media #{$medium-only} {
+  .page.nobg, .page.withspace {
+    padding: rem-calc(55);
+  }
+}
+
+@media #{$large-only} {
+  .page.nobg, .page.withspace {
+    padding: rem-calc(55);
+  }
+}
+
+@media #{$xlarge-up} {
+  .page.withspace {
+    padding: rem-calc(55);
+  }
+}
+
+@media #{$xlarge-up} {
+  .page.nobg {
+    padding: rem-calc(55 0);
+  }
+}
+
+.main {
+  @include grid-column(8);
+  padding: rem-calc(55);
+}
+
+@media #{$mobile-only} {
+  .main {
+    @include grid-column($columns: 12);
+    padding: rem-calc(30);
+  }
+}
+
+@media #{$small-only} {
+  .main {
+    @include grid-column($columns: 12);
+    padding: rem-calc(30);
+  }
+}
+
+@media #{$xlarge-up} {
+  .main {
+    @include grid-column($columns: 8);
+    padding: rem-calc(55);
+  }
+}
+
+@media #{$redonkulous-up} {
+  .main {
+    @include grid-column($columns: 8);
+    padding: rem-calc(55);
+  }
+}
+
+.sidebar {
+  @include grid-column(4);
+  background: $sidebar_blue;
+  padding: rem-calc(55 25 55 25);
+
+  h3, h4, h5 {
+    border-bottom: rem-calc(2) solid lighten($secondary_gray, 30%);
+    padding-bottom: rem-calc(8);
+  }
+
+  ol, ul {
+    font-size: rem-calc(12);
+    line-height: rem-calc(20);
+    list-style-type: square;
+    margin: rem-calc(10 0 30 20);
+
+    li {
+      margin-bottom: rem-calc(10);
+    }
+  }
+
+  .f-dropdown {
+    list-style-type: none;
+    margin: rem-calc(10 0 0 0);
+
+    li {
+      margin: 0;
+    }
+  }
+
+  p {
+    font-size: rem-calc(14);
+    margin: rem-calc(20 0 20 0);
+  }
+
+  p a, p a:visited, .pretty a, .pretty a:visited {
+    color: $secondary_gray;
+    text-decoration: underline;
+  }
+
+  form {
+    margin-bottom: rem-calc(40);
+  }
+}
+
+@media #{$mobile-only} {
+  .sidebar {
+    @include grid-column($columns: 12);
+    padding: rem-calc(55 15 55 15);
+  }
+}
+
+@media #{$small-only} {
+  .sidebar {
+    @include grid-column($columns: 12);
+    padding: rem-calc(55 15 55 15);
+  }
+}
+
+@media #{$xlarge-up} {
+  .sidebar {
+    @include grid-column($columns: 4);
+    padding: rem-calc(55 25 55 25);
+  }
+}
+
+@media #{$redonkulous-up} {
+  .sidebar {
+    @include grid-column($columns: 4);
+    padding: rem-calc(55 25 55 25);
+  }
+}
+
+.heading-with-buttons {
+  @include grid-row();
+
+  .title {
+    @include grid-column($columns: 5, $collapse: true);
+    border: 0;
+    padding: 0;
+
+    small {
+      margin-left: rem-calc(10);
+    }
+
+    .label {
+      color: lighten($primary_gray, 20%);
+      font: $bold rem-calc(12) $accent_font;
+      margin-left: rem-calc(10);
+      padding: rem-calc(4 10);
+
+      &.secondary { background-color: lighten($secondary_gray, 35%); }
+    }
+  }
+
+  @media #{$small-down} {
+    .title {
+      @include grid-column($columns: 12);
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+
+  .buttons {
+    @include grid-column($columns: 7, $collapse: true);
+    text-align: right;
+    color: $primary_gray;
+    font: {
+      family: $accent_font;
+      size: rem-calc(14);
+    }
+    line-height: rem-calc(36);
+
+    @media #{$small-down} {
+      span {
+        display: none
+      }
+    }
+
+    a.button {
+      background-color: darken($clouds, 5%);
+      color: $concrete;
+      font: {
+        size: rem-calc(14);
+        weight: $normal;
+      }
+      margin-left: rem-calc(6);
+      padding: rem-calc(9 20);
+      text-transform: none;
+
+      &:hover {
+        background-color: darken($clouds, 10%);
+        color: darken($concrete, 5%);
+      }
+
+      &.dropdown {
+        padding-right: rem-calc(57);
+
+        &:before {
+          border-color: $concrete rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+        }
+      }
+
+      &.active {
+        background-color: $primary-color;
+        @include border-radius(rem-calc(3));
+        color: white;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+    }
+
+    @media #{$small-down} {
+      a.button {
+        @include inline-block;
+        width: 100%;
+        margin: rem-calc(0 0 5 0);
+      }
+    }
+
+    .f-dropdown li a {
+      text-align: left;
+    }
+  }
+
+  @media #{$small-down} {
+    .buttons {
+      @include grid-column($columns: 12);
+      text-align: center;
+      margin: rem-calc(20 0 20 0);
+      padding: 0;
+    }
+  }
+}
+
+.rss_feed_link {
+  display: inline-block;
+  padding: 3px 15px 3px 0;
+  color: darken($primary_gray, 10%);
+  font: {
+    size: rem-calc(12);
+    weight: $bold;
+  }
+
+  .fa-rss { color: $primary_orange; }
+}
+
+.footer {
+  color: #999;
+  font-size: rem-calc(11);
+  padding: rem-calc(40);
+  text-align: center;
+}
+
+input.error, textarea.error {
+  margin-bottom: rem-calc(20);
+}
+
+.panel.alert {
+  background: lighten($primary_red, 8%);
+  border: solid 1px darken($primary_red, 5%);
+  color: white;
+  padding: rem-calc(15 20);
+  margin-bottom: rem-calc(24);
+
+  p {
+    color: white;
+    margin-bottom: rem-calc(10);
+    font-size: rem-calc(14);
+  }
+
+  ul {
+    list-style-type: square;
+    font-size: rem-calc(14);
+  }
+}
+
+@media #{$small-down} {
+  .panel.alert {
+    padding: rem-calc(5 10);
+  }
+}
+
+.hardcoded {
+  border: 2px solid #E00404;
+}
+
+button, .button {
+  @include single-transition(background-color, $duration: 100ms);
+  background: $secondary_blue;
+  margin-bottom: rem-calc(0);
+  font-family: $accent_font;
+
+  &.small {
+    font-size: rem-calc(14);
+  }
+}
+
+.tooltip {
+  background: $primary_blue;
+  padding: rem-calc(5 10);
+  font-size: rem-calc(10);
+}
+
+.gravatar {
+  border-radius: rem-calc(200);
+}
+
+// User Elements
+.user {
+  table { width: 100%; }
+  .content { float: none; }
+
+  .tabls-content {
+    height: 100%;
+  }
+
+  .gravatar {
+    font-size: .8rem;
+    margin: 0;
+
+    img {
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+  }
+
+  .profile {
+    @include grid-row($behavior: nest);
+
+    .avatar {
+      @include grid-column(3);
+
+      img {
+        margin-top: 1rem;
+        border-radius: 4px;
+      }
+    }
+
+    .info {
+      @include grid-column(9);
+
+      ul {
+        list-style-type: none;
+        margin: 0 0 1rem 0;
+
+        li {
+          display: inline-block;
+          margin: 0 1rem .5rem 0;
+        }
+      }
+    }
+  }
+}
+
+.left-off-canvas-menu {
+  background: #1a3241;
+}
+
+ul.off-canvas-list li a {
+  border-bottom: 1px solid #132631;
+}

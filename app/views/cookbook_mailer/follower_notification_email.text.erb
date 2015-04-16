@@ -1,0 +1,20 @@
+Chef Supermarket - New Cookbook Version
+_________________________________________________________
+
+
+New version of <%= @cookbook_version.name %> released.
+
+A new version of <%= @cookbook_version.name %> has been released [<%= @cookbook_version.version %>].
+
+<%= cookbook_version_url(@cookbook_version.cookbook, @cookbook_version) %>
+
+<% if @cookbook_version.changelog.present? %>
+Changelog
+_________________________________________________________
+
+<%= truncate @cookbook_version.changelog, length: 100 %>
+
+<%= cookbook_version_url(@cookbook_version.cookbook, @cookbook_version, anchor: 'changelog') %>
+<% end %>
+
+Unsubscribe from this email: <%= unsubscribe_url(@email_preference) %>
