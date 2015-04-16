@@ -75,6 +75,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'faker'
+  gem 'rhc' #openshift CLI
 end
 
 group :test do

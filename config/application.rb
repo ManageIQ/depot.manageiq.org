@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 require 'dotenv'
 require 'rails'
 
+# Do not use dotenv on openshift
 if (!ENV['OPENSHIFT_HOMEDIR'].blank?)
   Dotenv.overload('.env', ".env.#{Rails.env}").tap do |env|
     if env.empty?
