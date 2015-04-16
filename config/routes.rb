@@ -1,4 +1,4 @@
-Supermarket::Application.routes.draw do
+ManageIQ::Application.routes.draw do
   VERSION_PATTERN = /latest|([0-9_\-\.]+)/ unless defined?(VERSION_PATTERN)
 
   if Rails.env.development?
