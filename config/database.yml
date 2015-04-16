@@ -10,7 +10,8 @@ test:
   host: localhost
 
 production:
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: <%= ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] %>
+  host: <%= ENV['OPENSHIFT_POSTGRESQL_DB_HOST'] %>
   adapter: postgresql
-  database: supermarket_production
+  database: manageiq
