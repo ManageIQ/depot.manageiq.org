@@ -8,6 +8,8 @@ ruby '2.0.0'
 #   "https://github.com/#{repo_name}.git"
 # end
 
+gem 'rake', '~> 0.9.6'
+
 gem 'rails', '~> 4.1.5'
 
 gem 'omniauth'
