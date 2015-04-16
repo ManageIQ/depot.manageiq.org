@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Supermarket::Application.load_tasks
+ManageIQ::Application.load_tasks
