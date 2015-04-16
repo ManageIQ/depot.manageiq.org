@@ -18,8 +18,8 @@ gem 'omniauth-github'
 
 gem 'pg'
 gem 'redcarpet' # markdown parsing
-gem 'unicorn'
-gem 'unicorn-rails'
+# gem 'unicorn'
+# gem 'unicorn-rails'
 gem 'foreman'
 gem 'pundit'
 gem 'dotenv'
