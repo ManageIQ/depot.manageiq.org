@@ -10,7 +10,7 @@ ruby '2.0.0'
 
 gem 'rake', '~> 0.9.6'
 
-gem 'rails', '~> 4.1.5'
+gem 'rails', '~> 4.1.4'
 
 gem 'omniauth'
 gem 'omniauth-chef-oauth2'
