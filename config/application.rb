@@ -2,9 +2,11 @@ require File.expand_path('../boot', __FILE__)
 require 'dotenv'
 require 'rails'
 
-Dotenv.overload('.env', ".env.#{Rails.env}").tap do |env|
-  if env.empty?
-    fail 'Cannot run Supermarket without a .env file.'
+if (!ENV['OPENSHIFT_HOMEDIR'].blank?)
+  Dotenv.overload('.env', ".env.#{Rails.env}").tap do |env|
+    if env.empty?
+      fail 'Cannot run Supermarket without a .env file.'
+    end
   end
 end
 
