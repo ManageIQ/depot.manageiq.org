@@ -5,6 +5,8 @@ environment variables. These are the different configurations needed to get
 Supermarket running. The default parameters provided in `.env` should be
 sufficient to run the test suite.
 
+Note: While running on openshift, env variables are set with the [RHC CLI](https://developers.openshift.com/en/getting-started-overview.html).
+
 ## Minimum Viable Configuration
 
 It is recommended to set these parameters to valid values to be able to use the
