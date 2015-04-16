@@ -11,6 +11,39 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require rails
+//= require jquery.cookie
+//= require placeholder
+//= require fastclick
+//= require modernizr
+//= require foundation.min
+//= require jquery.slugit
+//= require checkbox
+//= require cookbookShow
+//= require cookbookFollowing
+//= require joinOrganization
+//= require organizationRoles
+//= require announcementBanner
+//= require flash
+//= require select2.min
+//= require collaborators
+//= require cookbookDeprecate
+//= require cookbookInstallTabs
+//= require organizations
+//= require tools
+//= require searchToggle
+
+// Hack to resolve bug with Foundation. Resolved in master
+// here: https://github.com/zurb/foundation/issues/4684 so
+// this can go away when Foundation 5.2.3 is released.
+Foundation.global.namespace = '';
+
+$(function(){
+  $(document).foundation();
+
+  // Ensure client side validation isn't stronger
+  // than serverside validation.
+  jQuery.extend(window.Foundation.libs.abide.settings.patterns, {
+    'password': /[a-zA-Z]+/,
+  });
+});

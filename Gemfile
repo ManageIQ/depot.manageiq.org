@@ -1,68 +1,107 @@
 source 'https://rubygems.org'
+ruby '2.1.3'
 
-gem 'rails', '4.1.4'
+# Override the Bundler :github shortcut to use HTTPS instead of the git protocol
+# Note: Version 2.x of Bundler should do this by default
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
 
-### OpenShift Online changes:
+gem 'rails', '~> 4.1.5'
 
-# Fix the conflict with the system 'rake':
-gem 'rake', '~> 0.9.6'
+gem 'omniauth'
+gem 'omniauth-chef-oauth2'
+gem 'omniauth-github'
 
-# Support for databases and environment.
-# Use 'sqlite3' for testing and development and mysql and postgresql
-# for production.
-#
-# To speed up the 'git push' process you can exclude gems from bundle install:
-# For example, if you use rails + mysql, you can:
-#
-# $ rhc env set BUNDLE_WITHOUT="development test postgresql"
-#
+gem 'pg'
+gem 'redcarpet' # markdown parsing
+gem 'unicorn'
+gem 'unicorn-rails'
+gem 'foreman'
+gem 'pundit'
+gem 'dotenv'
+gem 'coveralls', require: false
+gem 'octokit', github: 'octokit/octokit.rb', require: false
+gem 'sidekiq'
+
+# Pin sprockets to ensure we get the latest security patches. Not pinning this
+# meant that the gem that depended on sprockets was pulling in an old
+# (vulnerable) version.
+gem 'sprockets', '~> 2.11.3'
+
+# Use the version on GitHub because the version published on RubyGems has
+# compatibility problems with Sidekiq 3.0.
+gem 'sidetiq', github: 'tobiassvn/sidetiq', ref: '4f7d7da'
+
+gem 'premailer-rails', group: [:development, :production]
+gem 'nokogiri'
+gem 'jbuilder'
+gem 'pg_search'
+gem 'paperclip'
+
+# Pin virtus to a version before the handling of nil in collection coercion was
+# fixed.
+gem 'virtus', '1.0.2', require: false
+
+gem 'kaminari'
+gem 'validate_url'
+gem 'chef', require: false
+gem 'mixlib-authentication'
+gem 'aws-sdk'
+gem 'newrelic_rpm'
+gem 'semverse'
+gem 'sitemap_generator'
+gem 'redis-rails'
+gem 'yajl-ruby'
+gem 'utf8-cleaner'
+gem 'rinku', require: 'rails_rinku'
+gem 'html_truncator'
+gem 'rollout'
+gem 'statsd-ruby'
+gem 'sentry-raven', '~> 0.8.0', require: false
+gem 'sass-rails',   '~> 4.0.4'
+gem 'compass-rails'
+gem 'uglifier',     '~> 2.2'
+
+group :doc do
+  gem 'yard', require: false
+end
+
+group :development do
+  gem 'license_finder'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'faker'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'poltergeist'
+
+  # To prevent the validates_uniqueness matcher from raising a chef version
+  # constraint error this pins shoulda-matchers at a commit where setting
+  # default values for scopes was reverted
+  gem 'shoulda-matchers',
+      github: 'thoughtbot/shoulda-matchers',
+      ref: '380d18f0621c66a79445ebc6dcc0048fcc969911'
+
+  gem 'database_cleaner'
+  gem 'vcr', require: false
+  gem 'webmock', require: false
+end
+
 group :development, :test do
-  gem 'sqlite3'
-  gem 'minitest'
-  gem 'thor'
+  gem 'rubocop', '>= 0.23.0'
+  gem 'mail_view'
+  gem 'quiet_assets'
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'byebug'
+  gem 'launchy'
+
+  # Pinned to be greater than or equal to 1.0.0.pre because the gems were prior
+  # to 1.0.0 release when added
+  gem 'and_feathers', '>= 1.0.0.pre', require: false
+  gem 'and_feathers-gzipped_tarball', '>= 1.0.0.pre', require: false
 end
-
-# Add support for the MySQL
-group :production, :mysql do
-  gem 'mysql2'
-end
-
-group :production, :postgresql do
-  gem 'pg'
-end
-
-### / OpenShift changes
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
