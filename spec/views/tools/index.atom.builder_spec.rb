@@ -10,7 +10,7 @@ describe 'tools/index.atom.builder' do
 
   let(:test_tool2) do
     create(
-      :cookbook,
+      :tool,
       name: 'test-2'
     )
   end
