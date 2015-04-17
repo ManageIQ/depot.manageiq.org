@@ -86,7 +86,7 @@ module ManageIQ
       protocol: ENV['PROTOCOL']
     }
 
-    config.action_mailer.asset_host = Supermarket::Host.full_url
+    config.action_mailer.asset_host = ManageIQ::Host.full_url
 
     # Set default from email for ActionMailer
     ActionMailer::Base.default from: ENV['FROM_EMAIL']
