@@ -3,7 +3,10 @@ require 'dotenv'
 require 'rails'
 
 # Do not use dotenv on openshift
-if File.exists? ("#{Rails.root}/.env")
+puts Rails.root.to_s
+puts "#{Rails.root.to_s}/.env"
+
+if File.exists? (File.expand_path('../../.env', __FILE__))
   Dotenv.overload('.env', ".env.#{Rails.env}").tap do |env|
     if env.empty?
       fail 'Cannot run Supermarket without a .env file.'
