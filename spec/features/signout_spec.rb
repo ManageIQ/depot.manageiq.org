@@ -5,6 +5,6 @@ describe 'signing out' do
     sign_in(create(:user))
     sign_out
 
-    expect(page).to have_content(chef_identity_url)
+    expect(page).to have_content('You have been signed out of the Extensions Depot')
   end
 end
