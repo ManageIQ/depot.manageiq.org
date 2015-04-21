@@ -37,22 +37,6 @@ ManageIQ::Application.routes.draw do
   get 'ownership_transfer/:token/accept' => 'transfer_ownership#accept', as: :accept_transfer
   get 'ownership_transfer/:token/decline' => 'transfer_ownership#decline', as: :decline_transfer
 
-  # resources :cookbooks, only: [:index, :show, :update] do
-  #   member do
-  #     get :download
-  #     put :follow
-  #     delete :unfollow
-  #     put :deprecate
-  #     delete :deprecate, action: 'undeprecate'
-  #     put :toggle_featured
-  #     get :deprecate_search
-  #     post :adoption
-  #   end
-
-  #   get 'versions/:version/download' => 'cookbook_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
-  #   get 'versions/:version' => 'cookbook_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
-  # end
-
   resources :collaborators, only: [:index, :new, :create, :destroy] do
     member do
       put :transfer
@@ -130,8 +114,6 @@ ManageIQ::Application.routes.draw do
   get 'chat/:channel' => 'irc_logs#show'
   get 'chat/:channel/:date' => 'irc_logs#show'
 
-  # when signing in or up with chef account
-  # match 'auth/chef_oauth2/callback' => 'sessions#create', as: :auth_session_callback, via: [:get, :post]
   match 'auth/github/callback' => 'sessions#create', as: :auth_session_callback, via: [:get, :post]
 
   get 'auth/failure' => 'sessions#failure', as: :auth_failure

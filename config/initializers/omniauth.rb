@@ -25,10 +25,6 @@ Rails.application.config.middleware.use(OmniAuth::Builder) do
     }
   }
   
-  if ENV['CHEF_OAUTH2_URL'].present?
-    client_options[:site] = ENV['CHEF_OAUTH2_URL']
-  end
-
   provider(
     :github,
     ENV['GITHUB_KEY'],
@@ -36,12 +32,6 @@ Rails.application.config.middleware.use(OmniAuth::Builder) do
     client_options: client_options
   )
 
-  provider(
-    :chef_oauth2,
-    ENV['CHEF_OAUTH2_APP_ID'],
-    ENV['CHEF_OAUTH2_SECRET'],
-    client_options: client_options
-  )
 end
 
 # Use the Rails logger
