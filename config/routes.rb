@@ -16,7 +16,6 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  # get 'cookbooks-directory' => 'cookbooks#directory'
   get 'universe' => 'api/v1/universe#index', defaults: { format: :json }
   get 'status' => 'api/v1/health#show', defaults: { format: :json }
   get 'unsubscribe/:token' => 'email_preferences#unsubscribe', as: :unsubscribe
