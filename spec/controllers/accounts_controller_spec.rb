@@ -21,6 +21,13 @@ describe AccountsController do
       expect(response).to redirect_to(edit_profile_path)
     end
 
+    it 'redirects to the stored location for the user on success if set' do
+      controller.store_location!(new_icla_signature_path)
+
+      post :create, provider: 'github'
+
+      expect(response).to redirect_to(new_icla_signature_path)
+    end
   end
 
   describe 'DELETE #destroy' do

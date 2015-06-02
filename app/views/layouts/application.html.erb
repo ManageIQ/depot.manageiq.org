@@ -25,12 +25,21 @@
         <!-- Chef Property Menu -->
         <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list hide-for-medium-up">
+            <li><%= link_to 'Cookbooks', cookbooks_directory_path %></li>
+            <li><%= link_to 'Contribute', icla_signatures_path %></li>
             <% if ROLLOUT.active?(:tools) %>
               <li><%= link_to 'Tools & Plugins', tools_path %></li>
             <% end %>
             <% if !signed_in? %>
               <li><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
             <% end %>
+          </ul>
+          <ul class="off-canvas-list">
+            <li><%= link_to 'Get Chef', chef_www_url, target: '_blank' %></li>
+            <li><%= link_to 'Learn Chef', learn_chef_url, target: '_blank' %></li>
+            <li><%= link_to 'Docs', chef_docs_url, target: '_blank' %></li>
+            <li><%= link_to 'Training', chef_training_url, target: '_blank' %></li>
+            <li><%= link_to 'Botbot IRC Logs', 'https://botbot.me/freenode/chef', target: '_blank' %></li>
           </ul>
         </aside>
 

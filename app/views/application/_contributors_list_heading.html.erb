@@ -13,4 +13,14 @@
       All <span><%= User.authorized_contributors.count %></span>
     <% end %>
   </dd>
+  <dd class="<%= "active" if current_page?(icla_signatures_path) %>">
+    <%= link_to icla_signatures_path, rel: 'individual-contributors' do %>
+      Individuals <span><%= IclaSignature.by_user.count %></span>
+    <% end %>
+  </dd>
+  <dd class="<%= "active" if current_page?(ccla_signatures_path) %>">
+    <%= link_to ccla_signatures_path, rel: 'companies' do %>
+      Companies <span><%= CclaSignature.by_organization.count %></span>
+    <% end %>
+  </dd>
 </dl>

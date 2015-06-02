@@ -28,7 +28,7 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  # get 'cookbooks-directory' => 'cookbooks#directory'
+  get 'cookbooks-directory' => 'cookbooks#directory'
   get 'universe' => 'api/v1/universe#index', defaults: { format: :json }
   get 'status' => 'api/v1/health#show', defaults: { format: :json }
   get 'unsubscribe/:token' => 'email_preferences#unsubscribe', as: :unsubscribe
@@ -37,28 +37,28 @@ ManageIQ::Application.routes.draw do
   get 'ownership_transfer/:token/accept' => 'transfer_ownership#accept', as: :accept_transfer
   get 'ownership_transfer/:token/decline' => 'transfer_ownership#decline', as: :decline_transfer
 
-  # resources :cookbooks, only: [:index, :show, :update] do
-  #   member do
-  #     get :download
-  #     put :follow
-  #     delete :unfollow
-  #     put :deprecate
-  #     delete :deprecate, action: 'undeprecate'
-  #     put :toggle_featured
-  #     get :deprecate_search
-  #     post :adoption
-  #   end
+  resources :cookbooks, only: [:index, :show, :update] do
+    member do
+      get :download
+      put :follow
+      delete :unfollow
+      put :deprecate
+      delete :deprecate, action: 'undeprecate'
+      put :toggle_featured
+      get :deprecate_search
+      post :adoption
+    end
 
-  #   get 'versions/:version/download' => 'cookbook_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
-  #   get 'versions/:version' => 'cookbook_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
-  # end
+    get 'versions/:version/download' => 'cookbook_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
+    get 'versions/:version' => 'cookbook_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
+  end
 
-  # resources :icla_signatures, path: 'icla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
-  #   collection do
-  #     post :re_sign, path: 're-sign'
-  #     get :agreement
-  #   end
-  # end
+  resources :icla_signatures, path: 'icla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
+    collection do
+      post :re_sign, path: 're-sign'
+      get :agreement
+    end
+  end
 
   resources :collaborators, only: [:index, :new, :create, :destroy] do
     member do
@@ -66,23 +66,23 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  # resources :ccla_signatures, path: 'ccla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
-  #   collection do
-  #     post :re_sign, path: 're-sign'
-  #     get :agreement
-  #   end
+  resources :ccla_signatures, path: 'ccla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
+    collection do
+      post :re_sign, path: 're-sign'
+      get :agreement
+    end
 
-  #   member do
-  #     get :contributors
-  #   end
+    member do
+      get :contributors
+    end
 
-  #   resources :contributor_requests, only: [:create], constraints: proc { ROLLOUT.active?(:join_ccla) && ROLLOUT.active?(:github) } do
-  #     member do
-  #       get :accept
-  #       get :decline
-  #     end
-  #   end
-  # end
+    resources :contributor_requests, only: [:create], constraints: proc { ROLLOUT.active?(:join_ccla) && ROLLOUT.active?(:github) } do
+      member do
+        get :accept
+        get :decline
+      end
+    end
+  end
 
   namespace :curry, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
     resources :repositories, only: [:index, :create, :destroy] do
@@ -100,7 +100,7 @@ ManageIQ::Application.routes.draw do
 
       put :make_admin
       delete :revoke_admin
-      # get :followed_cookbook_activity, format: :atom
+      get :followed_cookbook_activity, format: :atom
     end
 
     resources :accounts, only: [:destroy]
@@ -122,34 +122,34 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  # resources :invitations, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }, only: [:show] do
-  #   member do
-  #     get :accept
-  #     get :decline
-  #   end
-  # end
+  resources :invitations, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }, only: [:show] do
+    member do
+      get :accept
+      get :decline
+    end
+  end
 
-  # resources :organizations, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }, only: [:show, :destroy] do
-  #   member do
-  #     put :combine
+  resources :organizations, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }, only: [:show, :destroy] do
+    member do
+      put :combine
 
-  #     get :requests_to_join, constraints: proc { ROLLOUT.active?(:join_ccla) && ROLLOUT.active?(:github) }
-  #   end
+      get :requests_to_join, constraints: proc { ROLLOUT.active?(:join_ccla) && ROLLOUT.active?(:github) }
+    end
 
-  #   resources :contributors, only: [:update, :destroy], controller: :contributors, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }
+    resources :contributors, only: [:update, :destroy], controller: :contributors, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }
 
-  #   resources :invitations, only: [:index, :create, :update], constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) },
-  #                           controller: :organization_invitations do
+    resources :invitations, only: [:index, :create, :update], constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) },
+                            controller: :organization_invitations do
 
-  #     member do
-  #       patch :resend
-  #       delete :revoke
-  #     end
-  #   end
-  # end
+      member do
+        patch :resend
+        delete :revoke
+      end
+    end
+  end
 
-  # get 'become-a-contributor' => 'contributors#become_a_contributor', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }
-  # get 'contributors' => 'contributors#index', constraints: proc { ROLLOUT.active?(:cla) }
+  get 'become-a-contributor' => 'contributors#become_a_contributor', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) }
+  get 'contributors' => 'contributors#index', constraints: proc { ROLLOUT.active?(:cla) }
 
   get 'chat' => 'irc_logs#index'
   get 'chat/:channel' => 'irc_logs#show'

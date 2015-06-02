@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def define_search
-    @search = { path: tools_path, name: 'Tools' }
+    @search = { path: cookbooks_path, name: 'Cookbooks' }
   end
 
   protected
