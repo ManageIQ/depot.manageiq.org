@@ -226,10 +226,10 @@ class User < ActiveRecord::Base
   end
 
   #
-  # The user's Chef ID username. Will be blank in the event the user has
-  # unlinked their Chef ID.
+  # The user's GitHub username. Will be blank in the event the user has
+  # unlinked their GitHub account.
   #
-  # @return [String] the username for that Chef ID
+  # @return [String] the username for that GitHub username
   #
   def username
     github_account.try(:username).to_s
