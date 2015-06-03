@@ -1,8 +1,8 @@
 module AdoptionHelper
   #
-  # Return a link to either a Cookbook or a Tool to enable/disable adoption.
+  # Return a link to a Cookbook to enable/disable adoption.
   #
-  # @param obj [Cookbook,Tool]
+  # @param obj [Cookbook]
   #
   # @return [String] the link, wrapped in an <li>
   #
@@ -21,10 +21,9 @@ module AdoptionHelper
   private
 
   #
-  # The actual URL to use in link_to_adoption. This will work for both
-  # Cookbooks and Tools.
+  # The actual URL to use in link_to_adoption.
   #
-  # @param obj [Cookbook,Tool] The Cookbook or Tool to link to
+  # @param obj [Cookbook] The Cookbook to link to
   # @param txt [String] The text of the URL
   # @param up [Boolean] This will be True or False, depending on if adoption is
   # being enabled or disabled.

@@ -4,9 +4,6 @@
     <% if ROLLOUT.active?(:cla) %>
       <li><%= link_to 'Contributors', contributors_path, 'data-hover' => 'Contributors', :rel => 'contributors' %></li>
     <% end %>
-    <% if ROLLOUT.active?(:tools) %>
-      <li><%= link_to 'Tools & Plugins', tools_directory_path %></li>
-    <% end %>
     <% if !signed_in? %>
       <li class="sign_in_create_account"><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
       <li class="sign_in_create_account"><%= link_to 'Create Account', chef_sign_up_url %></li>

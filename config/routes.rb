@@ -60,13 +60,6 @@ ManageIQ::Application.routes.draw do
     resources :accounts, only: [:destroy]
   end
 
-  resources :tools, constraints: proc { ROLLOUT.active?(:tools) } do
-    member do
-      post :adoption
-    end
-  end
-  get 'tools-directory' => 'tools#directory', constraints: proc { ROLLOUT.active?(:tools) }
-
   resource :profile, controller: 'profile', only: [:update, :edit] do
     post :update_install_preference, format: :json
 
