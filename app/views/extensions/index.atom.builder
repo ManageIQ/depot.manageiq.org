@@ -1,15 +1,15 @@
 atom_feed language: 'en-US' do |feed|
-  feed.title 'Cookbooks'
-  feed.updated safe_updated_at(@cookbooks)
+  feed.title 'Extensions'
+  feed.updated safe_updated_at(@extensions)
 
-  @cookbooks.each do |cookbook|
-    feed.entry cookbook, url: cookbook_url(cookbook) do |entry|
-      entry.title cookbook.name
-      entry.content cookbook_atom_content(cookbook.latest_cookbook_version), type: 'html'
+  @extensions.each do |extension|
+    feed.entry extension, url: extension_url(extension) do |entry|
+      entry.title extension.name
+      entry.content extension_atom_content(extension.latest_extension_version), type: 'html'
 
       entry.author do |author|
-        author.name cookbook.maintainer
-        author.uri user_url(cookbook.owner)
+        author.name extension.maintainer
+        author.uri user_url(extension.owner)
       end
     end
   end

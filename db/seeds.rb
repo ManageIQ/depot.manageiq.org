@@ -124,9 +124,9 @@ end
 category = Category.where(name: 'Other').first_or_create!
 
 [
-  'New cookbook version',
-  'Cookbook deleted',
-  'Cookbook deprecated'
+  'New extension version',
+  'Extension deleted',
+  'Extension deprecated'
 ].each { |name| SystemEmail.where(name: name).first_or_create! }
 
 if Rails.env.development?
@@ -212,10 +212,10 @@ if Rails.env.development?
   ).first_or_create!
 
   #
-  # Default cookbooks for use in development.
+  # Default extensions for use in development.
   #
   %w(redis postgres node ruby haskell clojure java mysql apache2 nginx yum apt).each do |name|
-    cookbook = Cookbook.where(
+    extension = Extension.where(
       name: name
     ).first_or_initialize(
       source_url: 'http://example.com',
@@ -224,20 +224,20 @@ if Rails.env.development?
       owner: user
     )
 
-    # TODO: figure out a nice way to use CookbookUpload here, which will ensure
+    # TODO: figure out a nice way to use ExtensionUpload here, which will ensure
     # that our seed data is realistically seeded.
-    cookbook_version = cookbook.cookbook_versions.where(
+    extension_version = extension.extension_versions.where(
       version: '0.1.0'
     ).first_or_create(
       description: Faker::Lorem.sentences(1).first,
       license: 'MIT',
-      tarball: File.open('spec/support/cookbook_fixtures/redis-test-v1.tgz'),
+      tarball: File.open('spec/support/extension_fixtures/redis-test-v1.tgz'),
       readme: File.read('README.md'),
       readme_extension: 'md'
     )
 
-    cookbook.cookbook_versions << cookbook_version
-    cookbook.save!
+    extension.extension_versions << extension_version
+    extension.save!
   end
 
   #
@@ -271,11 +271,11 @@ if Rails.env.development?
   end
 
   #
-  # Default cookbook folower for use in development.
+  # Default extension folower for use in development.
   #
-  CookbookFollower.where(
+  ExtensionFollower.where(
     user: user,
-    cookbook: Cookbook.find_by(name: 'redis')
+    extension: Extension.find_by(name: 'redis')
   ).first_or_create!
 
 end

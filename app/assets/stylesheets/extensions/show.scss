@@ -3,7 +3,7 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/inline-block";
 
-.cookbook_show {
+.extension_show {
   .deprecation-notice {
     @include single-transition($speed: 100ms);
     @include border-radius(rem-calc(2));
@@ -113,7 +113,7 @@
   }
 
   .sidebar {
-    .button_download_cookbook {
+    .button_download_extension {
       margin-top: rem-calc(20);
     }
   }
@@ -201,7 +201,7 @@
         margin-right: rem-calc(5);
       }
 
-      .cookbook_follow_count {
+      .extension_follow_count {
         @include inline-block;
         @include single-transition($speed: 100ms);
         @include border-radius(rem-calc(2));
@@ -217,14 +217,14 @@
       }
 
       &:hover {
-        .cookbook_follow_count {
+        .extension_follow_count {
           background-color: darken($primary-color, 20%);
         }
       }
     }
   }
 
-  .show-cookbook-urls-manage {
+  .show-extension-urls-manage {
     cursor: pointer;
 
     .fa {

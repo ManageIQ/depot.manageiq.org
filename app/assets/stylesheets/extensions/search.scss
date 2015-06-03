@@ -4,7 +4,7 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/inline-block";
 
-// Styles for the Cookbooks search interface
+// Styles for the Extensions search interface
 
 .search_bar {
   background-color: $primary_blue;
@@ -110,7 +110,7 @@
   }
 }
 
-input[type="search"].cookbook_search_textfield {
+input[type="search"].extension_search_textfield {
   background-color: darken($primary_blue, 7%);
   border: none;
   @include border-left-radius(rem-calc(3));
@@ -147,7 +147,7 @@ input[type="search"].cookbook_search_textfield {
 .no-results {
   @include grid-column($columns: 12, $collapse: true);
   background-color: white;
-  border: 1px solid $cookbook_border;
+  border: 1px solid $extension_border;
   padding: rem-calc(30 30);
 
   p {
@@ -164,13 +164,13 @@ input[type="search"].cookbook_search_textfield {
 }
 
 @media #{$mobile-only} {
-  input[type="search"].cookbook_search_textfield {
+  input[type="search"].extension_search_textfield {
     font-size: rem-calc(24);
     margin: 0;
   }
 }
 
-.cookbook_search_button {
+.extension_search_button {
   background-color: lighten($primary_blue, 10%);
   @include border-right-radius(rem-calc(3));
   color: white;

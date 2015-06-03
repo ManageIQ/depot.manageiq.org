@@ -27,8 +27,8 @@ class ToolAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a cookbook, collaborators of a cookbook and Supermarket admins can
-  # manage a cookbook.
+  # Owners of a extension, collaborators of a extension and Supermarket admins can
+  # manage a extension.
   #
   def manage?
     owner_or_collaborator? || admin?
@@ -42,7 +42,7 @@ class ToolAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a tool and Supermarket admins can put a cookbook up for
+  # Owners of a tool and Supermarket admins can put a extension up for
   # adoption.
   #
   # @return [Boolean]

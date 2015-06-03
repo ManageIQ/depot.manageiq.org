@@ -12,9 +12,9 @@
     .header {
       @include grid-row();
       background-color: white;
-      border-top: 1px solid $cookbook_border;
-      border-right: 1px solid $cookbook_border;
-      border-left: 1px solid $cookbook_border;
+      border-top: 1px solid $extension_border;
+      border-right: 1px solid $extension_border;
+      border-left: 1px solid $extension_border;
     }
 
     .header-content {
@@ -113,16 +113,16 @@
 
     .body {
       @include grid-row();
-      background-color: $cookbook_partial_sidebar;
-      border-top: 1px solid $cookbook_border;
-      border-right: 1px solid $cookbook_border;
-      border-left: 1px solid $cookbook_border;
+      background-color: $extension_partial_sidebar;
+      border-top: 1px solid $extension_border;
+      border-right: 1px solid $extension_border;
+      border-left: 1px solid $extension_border;
     }
 
     .body-content {
       @include grid-column($columns: 12, $collapse: true);
       background-color: white;
-      border-bottom: 1px solid $cookbook_border;
+      border-bottom: 1px solid $extension_border;
       padding: rem-calc(20 30 30);
 
       p {
@@ -141,14 +141,14 @@
 
     .bottom {
       @include grid-row();
-      background-color: $cookbook_partial_sidebar_footer;
-      border-right: 1px solid $cookbook_border;
-      border-bottom: 1px solid $cookbook_border;
-      border-left: 1px solid $cookbook_border;
+      background-color: $extension_partial_sidebar_footer;
+      border-right: 1px solid $extension_border;
+      border-bottom: 1px solid $extension_border;
+      border-left: 1px solid $extension_border;
     }
 
     .bottom-content {
-      background-color: $cookbook_footer;
+      background-color: $extension_footer;
       @include grid-column($columns: 12, $collapse: true);
       min-height: rem-calc(62);
       padding: rem-calc(15 30);
@@ -163,7 +163,7 @@
         margin: rem-calc(0 0 4);
       }
 
-      .cookbook_platforms_content {
+      .extension_platforms_content {
         float: left;
       }
     }

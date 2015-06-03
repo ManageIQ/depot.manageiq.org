@@ -1,9 +1,9 @@
 @import "common";
 @import "compass/css3/box-sizing";
 
-// Styles for the various cookbook platform icons
+// Styles for the various extension platform icons
 
-.cookbook_platforms {
+.extension_platforms {
   @include box-sizing(border-box);
   @include clearfix;
   list-style: none !important;
@@ -11,7 +11,7 @@
   padding: 0;
 }
 
-li.cookbook_platform_icon {
+li.extension_platform_icon {
   float: left;
   font: {
     family: "platform_icons";
@@ -36,7 +36,7 @@ li.cookbook_platform_icon {
 
   span { display: none; }
 
-  .cookbook_show_sidebar & {
+  .extension_show_sidebar & {
     font-size: rem-calc(20);
 
     &[data-icon]:before {
@@ -45,7 +45,7 @@ li.cookbook_platform_icon {
   }
 }
 
-li.cookbook_no_platform_icon {
+li.extension_no_platform_icon {
   float: left;
   font: {
     size: rem-calc(18);
@@ -67,7 +67,7 @@ li.cookbook_no_platform_icon {
 
   &.has-tip { border: none; }
 
-  .cookbook_show_sidebar & {
+  .extension_show_sidebar & {
     font-size: rem-calc(20);
 
     &[data-icon]:before {

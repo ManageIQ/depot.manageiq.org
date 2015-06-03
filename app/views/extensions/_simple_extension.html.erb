@@ -1,0 +1,8 @@
+<li>
+  <div class="owner"><%= link_to gravatar_for(extension.owner), extension.owner %></div>
+  <div class="name">
+    <%= link_to extension.name, extension, rel: 'extension' %>
+    <small><%= extension.latest_extension_version.version %></small>
+  </div>
+  <small class="followers"><%= pluralize(extension.extension_followers_count, "Follower") %></small>
+</li>

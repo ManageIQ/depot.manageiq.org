@@ -1,6 +1,6 @@
 $(document).on('opened', '[data-reveal]', function () {
   var settings =  {
-    placeholder: 'Search for a cookbook',
+    placeholder: 'Search for a extension',
     minimumInputLength: 3,
     width: '100%',
     ajax: {
@@ -17,19 +17,19 @@ $(document).on('opened', '[data-reveal]', function () {
       },
     },
     id: function(object) {
-      return object.cookbook_name;
+      return object.extension_name;
     },
     formatSelection: function(object, container) {
-      return object.cookbook_name;
+      return object.extension_name;
     },
     formatResult: function(object, container) {
-      return object.cookbook_name;
+      return object.extension_name;
     }
   }
 
-  $('.cookbook-deprecate').select2(settings);
+  $('.extension-deprecate').select2(settings);
 
-  $('.cookbook-deprecate').on("select2-selecting", function(e) {
+  $('.extension-deprecate').on("select2-selecting", function(e) {
     $('.submit-deprecation').prop('disabled', false);
   });
 });

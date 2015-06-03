@@ -5,28 +5,28 @@ require 'mixlib/authentication/signedheaderauth'
 
 module ApiSpecHelpers
   #
-  # Shares a cookbook with a given name and options using the /api/v1/cookbooks API.
+  # Shares a extension with a given name and options using the /api/v1/extensions API.
   #
-  # @param cookbook_name [String] the name of the cookbook to be shared
-  # @param user [User] the user that's sharing the cookbook
+  # @param extension_name [String] the name of the extension to be shared
+  # @param user [User] the user that's sharing the extension
   # @param opts [Hash] options that determine the contents of the tarball, signed header and request payload
   #
-  # @option opts [Hash] :custom_metadata Custom values/attributes for the cookbook metadata
+  # @option opts [Hash] :custom_metadata Custom values/attributes for the extension metadata
   # @option opts [Boolean] :with_invalid_public_key Make request with an invalid public key
   # @option opts [Array] :omitted_headers Any headers to omit from the signed request
-  # @option opts [String] :category The category to share the cookbook to
+  # @option opts [String] :category The category to share the extension to
   # @option opts [String] :payload a JSON representation of the request body
   #
-  def share_cookbook(cookbook_name, user, opts = {})
-    cookbooks_path = '/api/v1/cookbooks'
-    cookbook_params = {}
+  def share_extension(extension_name, user, opts = {})
+    extensions_path = '/api/v1/extensions'
+    extension_params = {}
 
-    tarball = cookbook_upload(cookbook_name, opts)
+    tarball = extension_upload(extension_name, opts)
     private_key = private_key(opts.fetch(:with_invalid_private_key, false))
 
     header = Mixlib::Authentication::SignedHeaderAuth.signing_object(
       http_method: 'post',
-      path: cookbooks_path,
+      path: extensions_path,
       user_id: user.username,
       timestamp: Time.now.utc.iso8601,
       body: tarball.read
@@ -38,53 +38,53 @@ module ApiSpecHelpers
 
     unless category.nil?
       new_category = create(:category, name: category.titleize)
-      cookbook_params[:category] = new_category.name
+      extension_params[:category] = new_category.name
     end
 
-    payload = opts.fetch(:payload, cookbook: JSON.generate(cookbook_params), tarball: tarball)
+    payload = opts.fetch(:payload, extension: JSON.generate(extension_params), tarball: tarball)
 
-    post cookbooks_path, payload, header
+    post extensions_path, payload, header
   end
 
   #
-  # Unshares a cookbook with a given name using the /api/v1/cookbooks/:cookbook API.
+  # Unshares a extension with a given name using the /api/v1/extensions/:extension API.
   #
-  # @param cookbook_name [String] the name of the cookbook to be unshared
-  # @param user [User] the user that's unsharing the cookbook
+  # @param extension_name [String] the name of the extension to be unshared
+  # @param user [User] the user that's unsharing the extension
   #
-  def unshare_cookbook(cookbook_name, user)
-    cookbook_path = "/api/v1/cookbooks/#{cookbook_name}"
+  def unshare_extension(extension_name, user)
+    extension_path = "/api/v1/extensions/#{extension_name}"
 
     header = Mixlib::Authentication::SignedHeaderAuth.signing_object(
       http_method: 'delete',
-      path: cookbook_path,
+      path: extension_path,
       user_id: user.username,
       timestamp: Time.now.utc.iso8601,
       body: ''
     ).sign(private_key)
 
-    delete cookbook_path, {}, header
+    delete extension_path, {}, header
   end
 
   #
-  # Unshares a cookbook version with a given name using the /api/v1/cookbooks/:cookbook/versions/:version API.
+  # Unshares a extension version with a given name using the /api/v1/extensions/:extension/versions/:version API.
   #
-  # @param cookbook_name [String] the name of the cookbook version to be unshared
-  # @param cookbook_version [String] the version of the cookbook to be unshared
-  # @param user [User] the user that's unsharing the cookbook version
+  # @param extension_name [String] the name of the extension version to be unshared
+  # @param extension_version [String] the version of the extension to be unshared
+  # @param user [User] the user that's unsharing the extension version
   #
-  def unshare_cookbook_version(cookbook_name, version, user)
-    cookbook_version_path = "/api/v1/cookbooks/#{cookbook_name}/versions/#{version}"
+  def unshare_extension_version(extension_name, version, user)
+    extension_version_path = "/api/v1/extensions/#{extension_name}/versions/#{version}"
 
     header = Mixlib::Authentication::SignedHeaderAuth.signing_object(
       http_method: 'delete',
-      path: cookbook_version_path,
+      path: extension_version_path,
       user_id: user.username,
       timestamp: Time.now.utc.iso8601,
       body: ''
     ).sign(private_key)
 
-    delete cookbook_version_path, {}, header
+    delete extension_version_path, {}, header
   end
 
   def json_body
@@ -102,10 +102,10 @@ module ApiSpecHelpers
     }
   end
 
-  def publish_version(cookbook, version)
+  def publish_version(extension, version)
     create(
-      :cookbook_version,
-      cookbook: cookbook,
+      :extension_version,
+      extension: extension,
       version: version
     )
   end
@@ -120,17 +120,17 @@ module ApiSpecHelpers
     )
   end
 
-  def cookbook_upload(cookbook_name, opts = {})
+  def extension_upload(extension_name, opts = {})
     begin
-      if cookbook_name.ends_with?('.tgz')
-        tarball = File.new("#{Rails.root}/spec/support/cookbook_fixtures/#{cookbook_name}")
+      if extension_name.ends_with?('.tgz')
+        tarball = File.new("#{Rails.root}/spec/support/extension_fixtures/#{extension_name}")
       else
         custom_metadata = opts.fetch(:custom_metadata, {})
 
         metadata = {
-          name: cookbook_name,
+          name: extension_name,
           version: '1.0.0',
-          description: "Installs/Configures #{cookbook_name}",
+          description: "Installs/Configures #{extension_name}",
           license: 'MIT',
           platforms: {
             'ubuntu' => '>= 12.0.0'
@@ -140,8 +140,8 @@ module ApiSpecHelpers
           }
         }.merge(custom_metadata)
 
-        tarball = Tempfile.new([cookbook_name, '.tgz'], 'tmp').tap do |file|
-          io = AndFeathers.build(cookbook_name) do |base_dir|
+        tarball = Tempfile.new([extension_name, '.tgz'], 'tmp').tap do |file|
+          io = AndFeathers.build(extension_name) do |base_dir|
             base_dir.file('README.md') { '# README' }
             base_dir.file('metadata.json') do
               JSON.dump(metadata)

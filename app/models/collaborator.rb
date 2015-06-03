@@ -15,7 +15,7 @@ class Collaborator < ActiveRecord::Base # Associations
   attr_accessor :user_ids
 
   #
-  # Transfers ownership of this cookbook to this user. The existing owner is
+  # Transfers ownership of this extension to this user. The existing owner is
   # automatically demoted to a collaborator.
   #
   def transfer_ownership

@@ -1,14 +1,14 @@
 atom_feed language: 'en-US' do |feed|
-  feed.title "#{@cookbook.name} versions"
-  feed.updated @cookbook_versions.max_by(&:updated_at).updated_at
+  feed.title "#{@extension.name} versions"
+  feed.updated @extension_versions.max_by(&:updated_at).updated_at
 
-  @cookbook_versions.each do |v|
-    feed.entry(v, url: cookbook_version_url(@cookbook, v)) do |entry|
-      entry.title "#{v.cookbook.name} - v#{v.version}"
-      entry.content cookbook_atom_content(v), type: 'html'
+  @extension_versions.each do |v|
+    feed.entry(v, url: extension_version_url(@extension, v)) do |entry|
+      entry.title "#{v.extension.name} - v#{v.version}"
+      entry.content extension_atom_content(v), type: 'html'
       entry.author do |author|
-        author.name v.cookbook.maintainer
-        author.uri user_url(v.cookbook.owner)
+        author.name v.extension.maintainer
+        author.uri user_url(v.extension.owner)
       end
     end
   end

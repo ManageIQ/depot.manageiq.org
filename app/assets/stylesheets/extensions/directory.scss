@@ -2,9 +2,9 @@
 @import "foundation/components/grid";
 @import "foundation/components/block-grid";
 
-// Styles for the cookbooks directory
+// Styles for the extensions directory
 
-.cookbooks_columns {
+.extensions_columns {
   @include block-grid(3);
   margin: rem-calc(55 0);
 
@@ -15,7 +15,7 @@
 }
 
 @media #{$small-down} {
-  .cookbooks_columns, {
+  .extensions_columns, {
     @include block-grid(1);
 
     &.four_up {
@@ -25,15 +25,15 @@
 }
 
 @media #{$medium-only} {
-  .cookbooks_columns.four_up {
+  .extensions_columns.four_up {
     @include block-grid(2);
     margin: rem-calc(55 0);
   }
 }
 
-.cookbooks_column_content {
+.extensions_column_content {
   background-color: white;
-  border: 1px solid $cookbook_border;
+  border: 1px solid $extension_border;
   text-align: center;
   padding: rem-calc(10);
 
@@ -43,34 +43,34 @@
   }
 
   .title {
-    border-bottom: 1px solid $cookbook_border;
+    border-bottom: 1px solid $extension_border;
     margin: 0;
     padding: rem-calc(16 0);
   }
 }
 
-.learn_about_cookbooks {
+.learn_about_extensions {
   @include grid-row();
   background: white;
-  border: 1px solid $cookbook_border;
+  border: 1px solid $extension_border;
   padding: rem-calc(20);
   width: auto;
 }
 
-.learn_about_cookbooks_content {
+.learn_about_extensions_content {
   @include grid-column($columns: 7);
 }
 
-.learn_about_cookbooks_sidebar {
+.learn_about_extensions_sidebar {
   @include grid-column($columns: 5);
 }
 
 @media #{$mobile-only} {
-  .learn_about_cookbooks_content {
+  .learn_about_extensions_content {
     @include grid-column($columns: 12);
   }
 
-  .learn_about_cookbooks_sidebar {
+  .learn_about_extensions_sidebar {
     @include grid-column($columns: 12);
   }
 }

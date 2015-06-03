@@ -12,19 +12,19 @@ if Rails.env.development?
       ClaSignatureMailer.icla_signature_notification_email(icla_signature)
     end
 
-    def cookbook_follower_notification_email
-      CookbookMailer.follower_notification_email(
-        cookbook.latest_cookbook_version,
+    def extension_follower_notification_email
+      ExtensionMailer.follower_notification_email(
+        extension.latest_extension_version,
         user
       )
     end
 
-    def cookbook_deleted_notification_email
-      CookbookMailer.cookbook_deleted_email(cookbook.name, user.email)
+    def extension_deleted_notification_email
+      ExtensionMailer.extension_deleted_email(extension.name, user.email)
     end
 
-    def cookbook_deprecated_notification_email
-      CookbookMailer.cookbook_deprecated_email(cookbook, cookbook_other, user.email)
+    def extension_deprecated_notification_email
+      ExtensionMailer.extension_deprecated_email(extension, extension_other, user.email)
     end
 
     def contributor_request_email
@@ -89,16 +89,16 @@ if Rails.env.development?
       User.where(email: 'john@example.com').first!
     end
 
-    def cookbook
-      Cookbook.first!
+    def extension
+      Extension.first!
     end
 
-    def cookbook_other
-      Cookbook.last!
+    def extension_other
+      Extension.last!
     end
 
     def collaborator
-      Collaborator.where(user: user, resourceable: cookbook).first_or_create!
+      Collaborator.where(user: user, resourceable: extension).first_or_create!
     end
 
     def cla_report

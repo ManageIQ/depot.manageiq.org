@@ -1,8 +1,8 @@
 @import "common";
 
-// Styles for the cookbook stats bar
+// Styles for the extension stats bar
 
-.cookbooks_stats {
+.extensions_stats {
   text-align: center;
 
   .stat {
@@ -46,7 +46,7 @@
 }
 
 @media #{$small-down} {
-  .cookbooks_stats {
+  .extensions_stats {
     margin-bottom: rem-calc(20);
   }
 }

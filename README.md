@@ -2,9 +2,9 @@
 
 [![Code Climate](https://codeclimate.com/github/chef/supermarket.png)](https://codeclimate.com/github/chef/supermarket) [![Build Status](https://travis-ci.org/chef/supermarket.png?branch=master)](https://travis-ci.org/chef/supermarket) [![Dependency Status](https://gemnasium.com/chef/supermarket.png)](https://gemnasium.com/chef/supermarket) [![Coverage Status](https://coveralls.io/repos/chef/supermarket/badge.png?branch=master)](https://coveralls.io/r/chef/supermarket?branch=master) [![Inline docs](http://inch-ci.org/github/chef/supermarket.png)](http://inch-ci.org/github/chef/supermarket) [![Gitter chat](https://badges.gitter.im/chef/supermarket.png)](https://gitter.im/chef/supermarket) [![Stories in Ready](https://badge.waffle.io/chef/supermarket.png?label=ready&title=Ready)](https://waffle.io/chef/supermarket)
 
-Supermarket is Chef's community repository for cookbooks, currently hosted
-at [supermarket.chef.io](supermarket.chef.io). Supermarket can also be run
-internally, behind-the-firewall.
+Extension Depot is ManageIQ's community repository for extensions, currently
+hosted at [supermarket.chef.io](supermarket.chef.io). Supermarket can also be
+run internally, behind-the-firewall.
 
 The code is designed to be easy for others to contribute to. To that end,
 the goal of this README is to introduce you to the project and get you up and
