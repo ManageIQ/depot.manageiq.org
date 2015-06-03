@@ -16,25 +16,14 @@ describe 'GET /api/v1/users/:user' do
     end
 
     let!(:user_signature) do
-      {  
-         "username"   =>"fanny",
-         "name"   =>"Fanny McNanny",
-         "company"   =>"Fanny Pack",
-         "github"   =>   [  
-            "fanny"
-         ],
-         "twitter"   =>"fanny",
-         "irc"   =>"fanny",
-         "jira"   =>"fanny",
-         "tools"   =>   {  
-            "owns"      =>      {  
-               "berkshelf"         =>"http://www.example.com/api/v1/tools/berkshelf",
-               "knife_supermarket"         =>"http://www.example.com/api/v1/tools/knife_supermarket"
-            },
-            "collaborates"      =>      {  
-               "dull_knife"         =>"http://www.example.com/api/v1/tools/dull_knife"
-            }
-         }
+      {
+        "username" => "fanny",
+        "name" => "Fanny McNanny",
+        "company" => "Fanny Pack",
+        "github" => ["fanny"],
+        "twitter" => "fanny",
+        "irc" => "fanny",
+        "jira" => "fanny"
       }
     end
 
@@ -43,16 +32,6 @@ describe 'GET /api/v1/users/:user' do
         :account,
         provider: 'github',
         username: 'fanny',
-        user: user
-      )
-      create(:tool, name: 'berkshelf', owner: user, slug: 'berkshelf')
-      create(
-        :tool, name: 'knife_supermarket', owner: user, slug: 'knife_supermarket'
-      )
-
-      create(
-        :tool_collaborator,
-        resourceable: create(:tool, name: 'dull_knife', slug: 'dull_knife'),
         user: user
       )
     end

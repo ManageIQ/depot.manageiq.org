@@ -16,9 +16,6 @@ ManageIQ::Application.routes.draw do
       get 'cookbooks/:cookbook/versions/:version/download' => 'cookbook_versions#download', as: :cookbook_version_download, constraints: { version: VERSION_PATTERN }
       delete 'cookbooks/:cookbook/versions/:version' => 'cookbook_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
       get 'users/:user' => 'users#show', as: :user
-      get 'tools/:tool' => 'tools#show', as: :tool
-      get 'tools' => 'tools#index', as: :tools
-      get 'tools-search' => 'tools#search', as: :tools_search
     end
   end
 
