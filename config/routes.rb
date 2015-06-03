@@ -50,16 +50,6 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  namespace :curry, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
-    resources :repositories, only: [:index, :create, :destroy] do
-      member do
-        post :evaluate
-      end
-    end
-
-    resources :pull_request_updates, only: [:create]
-  end
-
   resources :users, only: [:show] do
     member do
       get :tools, constraints: proc { ROLLOUT.active?(:tools) }
