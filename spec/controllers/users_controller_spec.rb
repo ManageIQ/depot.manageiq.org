@@ -35,32 +35,9 @@ describe UsersController do
     end
   end
 
-  describe 'GET #tools' do
-    it 'assigns a user' do
-      get :tools, id: user.username
-
-      expect(assigns[:user]).to eql(user)
-    end
-
-    it "assigns a user's tools" do
-      create(:tool, owner: user)
-
-      get :tools, id: user.username
-
-      expect(assigns[:tools].to_a).to eql(user.tools.to_a)
-    end
-
-    it 'sets the default search context as tools' do
-      get :tools, id: user.username
-
-      expect(assigns[:search][:name]).to eql('Tools')
-      expect(assigns[:search][:path]).to eql(tools_path)
-    end
-  end
-
   describe 'GET #followed_cookbook_activity' do
     it 'assigns a user' do
-      get :tools, id: user.username
+      get :followed_cookbook_activity, id: user.username
 
       expect(assigns[:user]).to eql(user)
     end

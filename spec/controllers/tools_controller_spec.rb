@@ -140,22 +140,6 @@ describe ToolsController do
         )
       end.to change { Tool.count }.by(1)
     end
-
-    it "redirects the user to the tool owner's profile tools tab" do
-      post(
-        :create,
-        tool: {
-          name: 'butter',
-          slug: 'butter',
-          type: 'ohai_plugin',
-          description: 'Great plugin.',
-          source_url: 'http://example.com',
-          instructions: 'Use with care'
-        }
-      )
-
-      expect(response).to redirect_to(tools_user_path(user))
-    end
   end
 
   describe 'GET #edit' do
@@ -272,11 +256,6 @@ describe ToolsController do
       expect do
         delete :destroy, id: tool
       end.to change { Tool.count }.by(-1)
-    end
-
-    it "redirects the user to the tool owner's profile tools tab" do
-      delete :destroy, id: tool
-      expect(response).to redirect_to(tools_user_path(user))
     end
 
     it '404s if the user is not authorized to delete the tool' do

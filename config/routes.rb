@@ -52,8 +52,6 @@ ManageIQ::Application.routes.draw do
 
   resources :users, only: [:show] do
     member do
-      get :tools, constraints: proc { ROLLOUT.active?(:tools) }
-
       put :make_admin
       delete :revoke_admin
       get :followed_cookbook_activity, format: :atom

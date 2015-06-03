@@ -62,10 +62,7 @@ class ToolsController < ApplicationController
     @user = current_user
 
     if @tool.save
-      redirect_to(
-        tools_user_path(@tool.owner),
-        notice: t('tool.created', name: @tool.name)
-      )
+      render text: t("tool.created", name: @tool.name)
     else
       render :new
     end
@@ -119,12 +116,8 @@ class ToolsController < ApplicationController
   #
   def destroy
     authorize! @tool
-
     @tool.destroy
-    redirect_to(
-      tools_user_path(@tool.owner),
-      notice: t('tool.deleted', name: @tool.name)
-    )
+    render text: t("tool.deleted", name: @tool.name)
   end
 
   #

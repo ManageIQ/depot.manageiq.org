@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :assign_user
-  before_filter :override_search, only: [:tools]
 
   #
   # GET /users/:id
@@ -21,15 +20,6 @@ class UsersController < ApplicationController
     end
 
     @cookbooks = @cookbooks.order(:name).page(params[:page]).per(20)
-  end
-
-  #
-  # GET /users/:id/tools
-  #
-  # Display a user and their tools.
-  #
-  def tools
-    @tools = @user.tools.order(:name).page(params[:page]).per(20)
   end
 
   #
@@ -72,9 +62,5 @@ class UsersController < ApplicationController
 
   def assign_user
     @user = Account.for('github').joins(:user).with_username(params[:id]).first!.user
-  end
-
-  def override_search
-    @search = { path: tools_path, name: 'Tools' }
   end
 end
