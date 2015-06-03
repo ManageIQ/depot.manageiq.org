@@ -45,17 +45,6 @@ class Api::V1::CookbooksController < Api::V1Controller
   end
 
   #
-  # GET /api/v1/cookbooks/:foodcritic
-  #
-  # Return the failure status and feedback from the cookbook's Foodcritic run.
-  #
-  # @example
-  #   GET /api/v1/cookbooks/redis/foodcritic
-  #
-  def foodcritic
-  end
-
-  #
   # GET /api/v1/search?q=QUERY
   #
   # Return cookbooks with a name that contains the specified query. Takes the
@@ -73,20 +62,6 @@ class Api::V1::CookbooksController < Api::V1Controller
     ).offset(@start).limit(@items)
 
     @total = @results.count(:all)
-  end
-
-  #
-  # GET /api/v1/cookbooks/:cookbook/contingent
-  #
-  # Returns cookbooks that are contingent upon the specified cookbook. If there
-  # are none, returns an empty array. If the specified cookbook can't be found,
-  # returns a 404.
-  #
-  # @example
-  #   GET /api/v1/cookbooks/apt/contingent
-  #
-  def contingent
-    @contingents = @cookbook.contingents
   end
 
   private

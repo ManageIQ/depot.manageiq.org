@@ -9,16 +9,12 @@ ManageIQ::Application.routes.draw do
     namespace :v1 do
       get 'metrics' => 'metrics#show'
       get 'health' => 'health#show'
-      # get 'cookbooks' => 'cookbooks#index'
-      # get 'search' => 'cookbooks#search'
-      # get 'cookbooks/:cookbook' => 'cookbooks#show', as: :cookbook
-      # get 'cookbooks/:cookbook/foodcritic' => 'cookbooks#foodcritic', constraints: proc { ROLLOUT.active?(:fieri) }
-      # get 'cookbooks/:cookbook/contingent' => 'cookbooks#contingent'
-      # get 'cookbooks/:cookbook/versions/:version' => 'cookbook_versions#show', as: :cookbook_version, constraints: { version: VERSION_PATTERN }
-      # get 'cookbooks/:cookbook/versions/:version/download' => 'cookbook_versions#download', as: :cookbook_version_download, constraints: { version: VERSION_PATTERN }
-      # post 'cookbooks' => 'cookbook_uploads#create'
-      # delete 'cookbooks/:cookbook' => 'cookbook_uploads#destroy'
-      # delete 'cookbooks/:cookbook/versions/:version' => 'cookbook_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
+      get 'cookbooks' => 'cookbooks#index'
+      get 'search' => 'cookbooks#search'
+      get 'cookbooks/:cookbook' => 'cookbooks#show', as: :cookbook
+      get 'cookbooks/:cookbook/versions/:version' => 'cookbook_versions#show', as: :cookbook_version, constraints: { version: VERSION_PATTERN }
+      get 'cookbooks/:cookbook/versions/:version/download' => 'cookbook_versions#download', as: :cookbook_version_download, constraints: { version: VERSION_PATTERN }
+      delete 'cookbooks/:cookbook/versions/:version' => 'cookbook_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
       get 'users/:user' => 'users#show', as: :user
       # post '/cookbook-verisons/evaluation' => 'cookbook_versions#evaluation', as: :cookbook_versions_evaluation, constraints: proc { ROLLOUT.active?(:fieri) }
 
