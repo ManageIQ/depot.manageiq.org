@@ -77,7 +77,7 @@ class ExtensionsController < ApplicationController
   #
   # GET /extensions/:id
   #
-  # Displays a extension.
+  # Displays an extension.
   #
   def show
     @latest_version = @extension.latest_extension_version
@@ -223,7 +223,7 @@ class ExtensionsController < ApplicationController
   #
   # PUT /extensions/:extension/toggle_featured
   #
-  # Allows a Supermarket admin to set a extension as featured or
+  # Allows a Supermarket admin to set an extension as featured or
   # unfeatured (if it is already featured).
   #
   def toggle_featured

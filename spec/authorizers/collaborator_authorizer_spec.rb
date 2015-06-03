@@ -14,7 +14,7 @@ describe CollaboratorAuthorizer do
     it { should permit_authorization(:destroy) }
   end
 
-  context 'as a extension collaborator' do
+  context 'as an extension collaborator' do
     subject { described_class.new(hank, extension_collaborator) }
 
     it { should_not permit_authorization(:transfer) }

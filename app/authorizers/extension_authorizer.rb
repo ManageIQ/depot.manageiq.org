@@ -1,27 +1,27 @@
 class ExtensionAuthorizer < Authorizer::Base
   #
-  # Owners and collaborators of a extension can publish new versions of a extension.
+  # Owners and collaborators of an extension can publish new versions of an extension.
   #
   def create?
     owner_or_collaborator?
   end
 
   #
-  # Owners of a extension can destroy a extension.
+  # Owners of an extension can destroy an extension.
   #
   def destroy?
     owner?
   end
 
   #
-  # Owners of a extension and Supermarket admins can manage a extension.
+  # Owners of an extension and Supermarket admins can manage an extension.
   #
   def manage?
     owner_or_admin?
   end
 
   #
-  # Owners of a extension are the only ones that can add collaborators.
+  # Owners of an extension are the only ones that can add collaborators.
   #
   # @return [Boolean]
   #
@@ -30,7 +30,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners and collaborators of a extension and Supermarket admins can manage
+  # Owners and collaborators of an extension and Supermarket admins can manage
   # the extension's urls.
   #
   # @return [Boolean]
@@ -40,7 +40,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Admins can transfer ownership of a extension to another user.
+  # Admins can transfer ownership of an extension to another user.
   #
   # @return [Boolean]
   #
@@ -49,7 +49,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a extension and Supermarket admins can deprecate a extension if
+  # Owners of an extension and Supermarket admins can deprecate an extension if
   # that extension is not already deprecated.
   #
   # @return [Boolean]
@@ -59,7 +59,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a extension and Supermarket admins can undeprecate a extension if
+  # Owners of an extension and Supermarket admins can undeprecate an extension if
   # that extension is deprecated.
   #
   # @return [Boolean]
@@ -69,7 +69,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a extension and Supermarket admins can put a extension up for
+  # Owners of an extension and Supermarket admins can put an extension up for
   # adoption.
   #
   # @return [Boolean]
@@ -79,7 +79,7 @@ class ExtensionAuthorizer < Authorizer::Base
   end
 
   #
-  # Admins can toggle a extension as featured.
+  # Admins can toggle an extension as featured.
   #
   # @return [Boolean]
   #

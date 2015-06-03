@@ -2,7 +2,7 @@ require 'virtus'
 
 class ExtensionUpload
   #
-  # Acts as a schema for a extension's metadata.json. It only provides fields
+  # Acts as a schema for an extension's metadata.json. It only provides fields
   # for the metadata attributes we use, while remaining flexible enough to
   # handle any metadata hash.
   #

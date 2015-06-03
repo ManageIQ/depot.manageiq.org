@@ -47,7 +47,7 @@ module ExtensionsHelper
   end
 
   #
-  # Return the correct state for a extension follow/unfollow button. If given a
+  # Return the correct state for an extension follow/unfollow button. If given a
   # block, the result of the block will become the button's text.
   #
   # @example
@@ -80,7 +80,7 @@ module ExtensionsHelper
         method: 'put',
         rel: 'sign-in-to-follow',
         class: 'button radius tiny follow',
-        title: 'You must be signed in to follow a extension.',
+        title: 'You must be signed in to follow an extension.',
         'data-tooltip' => true
       ) do
         if block

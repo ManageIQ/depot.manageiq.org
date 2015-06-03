@@ -65,7 +65,7 @@ the test suite.
 * `CDN_URL` Used to configure a CDN URL for use with Paperclip. Downloads
 will be aliased with this URL, something like `static.chef.io`.
 * `FIERI_URL` is the URL Supermarket will `POST` to for Extension evaluation when
-  a extension is shared
+  an extension is shared
 
 ## Configuring Curry
 

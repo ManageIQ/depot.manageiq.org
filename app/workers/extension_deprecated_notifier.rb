@@ -1,5 +1,5 @@
 #
-# Lets those who follow and/or collaborate on a extension know when the extension
+# Lets those who follow and/or collaborate on an extension know when the extension
 # has been deprecated.
 #
 class ExtensionDeprecatedNotifier

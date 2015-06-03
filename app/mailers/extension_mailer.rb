@@ -3,7 +3,7 @@ class ExtensionMailer < ActionMailer::Base
   add_template_helper(ExtensionVersionsHelper)
 
   #
-  # Creates an email to a user that is a extension follower
+  # Creates an email to a user that is an extension follower
   # that notifies them a new extension version has been published
   #
   # @param extension_version [ExtensionVersion] the extension version that was
@@ -19,7 +19,7 @@ class ExtensionMailer < ActionMailer::Base
   end
 
   #
-  # Create notification email to a extension's collaborators and followers
+  # Create notification email to an extension's collaborators and followers
   # explaining that the extension has been deleted
   #
   # @param name [String] the name of the extension
@@ -34,7 +34,7 @@ class ExtensionMailer < ActionMailer::Base
   end
 
   #
-  # Sends notification email to a extension's collaborators and followers
+  # Sends notification email to an extension's collaborators and followers
   # explaining that the extension has been deprecated in favor of another
   # extension
   #
@@ -58,8 +58,8 @@ class ExtensionMailer < ActionMailer::Base
 
   #
   # Sends email to the recipient of an OwnershipTransferRequest, asking if they
-  # want to become the new owner of a Extension. This is generated when
-  # a Extension owner initiates a transfer of ownership to someone that's not
+  # want to become the new owner of an Extension. This is generated when
+  # an Extension owner initiates a transfer of ownership to someone that's not
   # currently a Collaborator on the Extension.
   #
   # @param transfer_request [OwnershipTransferRequest]

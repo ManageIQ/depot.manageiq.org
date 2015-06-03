@@ -100,7 +100,7 @@ class Extension < ActiveRecord::Base
   validates :replacement, presence: true, if: :deprecated?
 
   #
-  # The total number of times a extension has been downloaded from Supermarket
+  # The total number of times an extension has been downloaded from Supermarket
   #
   # @return [Fixnum]
   #
@@ -355,7 +355,7 @@ class Extension < ActiveRecord::Base
   # Sets the extension's deprecated attribute to true, assigns the replacement
   # extension if specified and saves the extension.
   #
-  # A extension can only be replaced with a extension that is not deprecated.
+  # An extension can only be replaced with an extension that is not deprecated.
   #
   # @param replacement_extension [Extension] the extension to succeed this extension
   #   once deprecated

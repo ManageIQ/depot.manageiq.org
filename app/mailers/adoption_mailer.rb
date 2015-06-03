@@ -2,7 +2,7 @@ class AdoptionMailer < ActionMailer::Base
   layout 'mailer'
 
   #
-  # Sends an email to the owner of a extension, letting them know that
+  # Sends an email to the owner of an extension, letting them know that
   # someone is interested in taking over ownership.
   #
   # @param extension_or_tool [Extension]

@@ -5,7 +5,7 @@ require 'mixlib/authentication/signedheaderauth'
 
 module ApiSpecHelpers
   #
-  # Shares a extension with a given name and options using the /api/v1/extensions API.
+  # Shares an extension with a given name and options using the /api/v1/extensions API.
   #
   # @param extension_name [String] the name of the extension to be shared
   # @param user [User] the user that's sharing the extension
@@ -47,7 +47,7 @@ module ApiSpecHelpers
   end
 
   #
-  # Unshares a extension with a given name using the /api/v1/extensions/:extension API.
+  # Unshares an extension with a given name using the /api/v1/extensions/:extension API.
   #
   # @param extension_name [String] the name of the extension to be unshared
   # @param user [User] the user that's unsharing the extension
@@ -67,7 +67,7 @@ module ApiSpecHelpers
   end
 
   #
-  # Unshares a extension version with a given name using the /api/v1/extensions/:extension/versions/:version API.
+  # Unshares an extension version with a given name using the /api/v1/extensions/:extension/versions/:version API.
   #
   # @param extension_name [String] the name of the extension version to be unshared
   # @param extension_version [String] the version of the extension to be unshared
