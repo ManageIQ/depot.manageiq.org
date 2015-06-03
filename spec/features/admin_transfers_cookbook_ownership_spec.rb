@@ -1,16 +1,16 @@
 require 'spec_feature_helper'
 
-feature 'admin transfers cookbook ownership' do
-  let(:cookbook) { create(:cookbook) }
+feature 'admin transfers extension ownership' do
+  let(:extension) { create(:extension) }
   let(:new_owner) { create(:user) }
 
   before do
     sign_in(create(:admin))
-    visit cookbook_path(cookbook)
+    visit extension_path(extension)
     follow_relation 'transfer_ownership'
 
     within '#transfer' do
-      find('#cookbook_user_id').set(new_owner.id)
+      find('#extension_user_id').set(new_owner.id)
       submit_form
     end
   end

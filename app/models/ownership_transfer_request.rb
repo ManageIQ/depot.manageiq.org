@@ -3,14 +3,14 @@ class OwnershipTransferRequest < ActiveRecord::Base
 
   # Associations
   # --------------------
-  belongs_to :cookbook
+  belongs_to :extension
   belongs_to :recipient, class_name: 'User'
   belongs_to :sender, class_name: 'User'
 
   # Validations
   # --------------------
   validates :token, presence: true, uniqueness: true
-  validates :cookbook, presence: true
+  validates :extension, presence: true
   validates :recipient, presence: true
   validates :sender, presence: true
 
@@ -20,7 +20,7 @@ class OwnershipTransferRequest < ActiveRecord::Base
 
   #
   # Accept this transfer request. This will mark this request as accepted, and
-  # update the cookbook in question to have the new owner.
+  # update the extension in question to have the new owner.
   #
   # Note that this method will not do anything if this request has already been
   # responded to.
@@ -28,7 +28,7 @@ class OwnershipTransferRequest < ActiveRecord::Base
   def accept!
     return unless accepted.nil?
     update_attribute(:accepted, true)
-    cookbook.update_attribute(:user_id, recipient.id)
+    extension.update_attribute(:user_id, recipient.id)
   end
 
   #

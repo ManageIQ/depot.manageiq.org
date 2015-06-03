@@ -9,26 +9,26 @@ ManageIQ::Application.routes.draw do
     namespace :v1 do
       get 'metrics' => 'metrics#show'
       get 'health' => 'health#show'
-      get 'cookbooks' => 'cookbooks#index'
-      get 'search' => 'cookbooks#search'
-      get 'cookbooks/:cookbook' => 'cookbooks#show', as: :cookbook
-      get 'cookbooks/:cookbook/versions/:version' => 'cookbook_versions#show', as: :cookbook_version, constraints: { version: VERSION_PATTERN }
-      get 'cookbooks/:cookbook/versions/:version/download' => 'cookbook_versions#download', as: :cookbook_version_download, constraints: { version: VERSION_PATTERN }
-      delete 'cookbooks/:cookbook/versions/:version' => 'cookbook_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
+      get 'extensions' => 'extensions#index'
+      get 'search' => 'extensions#search'
+      get 'extensions/:extension' => 'extensions#show', as: :extension
+      get 'extensions/:extension/versions/:version' => 'extension_versions#show', as: :extension_version, constraints: { version: VERSION_PATTERN }
+      get 'extensions/:extension/versions/:version/download' => 'extension_versions#download', as: :extension_version_download, constraints: { version: VERSION_PATTERN }
+      delete 'extensions/:extension/versions/:version' => 'extension_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
       get 'users/:user' => 'users#show', as: :user
     end
   end
 
-  get 'cookbooks-directory' => 'cookbooks#directory'
+  get 'extensions-directory' => 'extensions#directory'
   get 'universe' => 'api/v1/universe#index', defaults: { format: :json }
   get 'status' => 'api/v1/health#show', defaults: { format: :json }
   get 'unsubscribe/:token' => 'email_preferences#unsubscribe', as: :unsubscribe
 
-  put 'cookbooks/:id/transfer_ownership' => 'transfer_ownership#transfer', as: :transfer_ownership
+  put 'extensions/:id/transfer_ownership' => 'transfer_ownership#transfer', as: :transfer_ownership
   get 'ownership_transfer/:token/accept' => 'transfer_ownership#accept', as: :accept_transfer
   get 'ownership_transfer/:token/decline' => 'transfer_ownership#decline', as: :decline_transfer
 
-  resources :cookbooks, only: [:index, :show, :update] do
+  resources :extensions, only: [:index, :show, :update] do
     member do
       get :download
       put :follow
@@ -40,8 +40,8 @@ ManageIQ::Application.routes.draw do
       post :adoption
     end
 
-    get 'versions/:version/download' => 'cookbook_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
-    get 'versions/:version' => 'cookbook_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
+    get 'versions/:version/download' => 'extension_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
+    get 'versions/:version' => 'extension_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
   end
 
   resources :collaborators, only: [:index, :new, :create, :destroy] do
@@ -54,7 +54,7 @@ ManageIQ::Application.routes.draw do
     member do
       put :make_admin
       delete :revoke_admin
-      get :followed_cookbook_activity, format: :atom
+      get :followed_extension_activity, format: :atom
     end
 
     resources :accounts, only: [:destroy]

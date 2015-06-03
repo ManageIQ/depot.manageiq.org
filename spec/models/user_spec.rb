@@ -4,11 +4,11 @@ describe User do
   context 'associations' do
     it { should have_many(:accounts) }
     it { should have_many(:icla_signatures) }
-    it { should have_many(:owned_cookbooks) }
+    it { should have_many(:owned_extensions) }
     it { should have_many(:collaborators) }
-    it { should have_many(:collaborated_cookbooks) }
-    it { should have_many(:cookbook_followers) }
-    it { should have_many(:followed_cookbooks) }
+    it { should have_many(:collaborated_extensions) }
+    it { should have_many(:extension_followers) }
+    it { should have_many(:followed_extensions) }
     it { should have_many(:tools) }
   end
 
@@ -166,16 +166,16 @@ describe User do
     end
   end
 
-  describe '#followed_cookbook_versions' do
-    it 'returns all cookbook versions of a followed cookbook' do
+  describe '#followed_extension_versions' do
+    it 'returns all extension versions of a followed extension' do
       user = create(:user)
-      redis = create(:cookbook)
-      yum = create(:cookbook)
-      create(:cookbook_follower, user: user, cookbook: redis)
-      create(:cookbook_follower, user: user, cookbook: yum)
+      redis = create(:extension)
+      yum = create(:extension)
+      create(:extension_follower, user: user, extension: redis)
+      create(:extension_follower, user: user, extension: yum)
 
-      expect(user.followed_cookbook_versions).to include(*redis.cookbook_versions)
-      expect(user.followed_cookbook_versions).to include(*yum.cookbook_versions)
+      expect(user.followed_extension_versions).to include(*redis.extension_versions)
+      expect(user.followed_extension_versions).to include(*yum.extension_versions)
     end
   end
 

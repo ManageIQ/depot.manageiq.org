@@ -1,0 +1,68 @@
+<li itemscope itemtype="http://schema.org/Code">
+  <div class="header">
+    <div class="header-content">
+      <h2 class="title">
+        <%= link_to extension, rel: 'extension', itemprop: 'name' do %><%= extension.name %><% end %>
+        <i class="fa fa-file"></i>
+        <small><%= extension.latest_extension_version.version %></small>
+      </h2>
+      <span class="meta">
+        <i class="fa fa-clock-o"></i> Updated <span itemprop="dateModified"><%= extension.updated_at.to_s(:longish) %></span><br />
+      </span>
+
+      <% if extension.deprecated? %>
+        <span class="meta">
+          <% if extension.replacement.present? %>
+            <i class="fa fa-exclamation-triangle"></i> Deprecated in favor of <%= link_to extension.replacement.name, extension.replacement %>
+          <% else %>
+            <i class="fa fa-exclamation-triangle"></i> Deprecated
+          <% end %>
+        </span>
+      <% end %>
+
+      <div class="owner">
+        <%= link_to extension.owner do %>
+          <%= gravatar_for extension.owner, size: 128 %>
+          <h5 itemprop="author"><%= extension.maintainer %></h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="body-content">
+      <p itemprop="description">
+        <%= extension.description %>
+      </p>
+      <code class="install">extension '<%= extension.name %>', '~&gt; <%= extension.latest_extension_version.version %>'</code>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-content">
+      <div class="extension_platforms_content show-for-medium-up">
+        <h5>Supported Platforms</h5>
+        <ul class="extension_platforms">
+          <% if extension.supported_platforms.present? %>
+            <% extension.supported_platforms.each do |platform| %>
+              <li class="extension_platform_icon has-tip" title="<%= platform.name %> <%= platform.version_constraint %>" data-tooltip data-icon="<%= supported_platform_icon(platform) %>">
+                <span><%= platform.name %></span>
+              </li>
+            <% end %>
+          <% else %>
+            <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
+              <span class="fa fa-question-circle"></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <ul class="extension_stats">
+        <li>
+          <i class="fa fa-inbox"></i>
+          <span itemprop="interactionCount"><%= number_with_delimiter(extension.download_count) %></span>
+          <h5>Total Downloads</h5>
+        </li>
+        <%= render 'extensions/follow_button_list', extension: extension %>
+      </ul>
+    </div>
+  </div>
+</li>

@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :cookbook_collaborator, class: 'Collaborator' do
-    association :resourceable, factory: :cookbook
+  factory :extension_collaborator, class: 'Collaborator' do
+    association :resourceable, factory: :extension
     association :user
   end
 

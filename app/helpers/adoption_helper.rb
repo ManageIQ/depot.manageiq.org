@@ -1,8 +1,8 @@
 module AdoptionHelper
   #
-  # Return a link to a Cookbook to enable/disable adoption.
+  # Return a link to a Extension to enable/disable adoption.
   #
-  # @param obj [Cookbook]
+  # @param obj [Extension]
   #
   # @return [String] the link, wrapped in an <li>
   #
@@ -23,7 +23,7 @@ module AdoptionHelper
   #
   # The actual URL to use in link_to_adoption.
   #
-  # @param obj [Cookbook] The Cookbook to link to
+  # @param obj [Extension] The Extension to link to
   # @param txt [String] The text of the URL
   # @param up [Boolean] This will be True or False, depending on if adoption is
   # being enabled or disabled.

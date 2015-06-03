@@ -3,7 +3,7 @@ class Api::V1::UniverseController < Api::V1Controller
   # GET /universe
   #
   # Returns a JSON response that should be compatible with the current
-  # Berkshelf API response. It will have cookbooks, all their versions, and
+  # Berkshelf API response. It will have extensions, all their versions, and
   # dependency/platform information.
   #
   def index

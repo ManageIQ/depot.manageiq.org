@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414150627) do
+ActiveRecord::Schema.define(version: 20150603181821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,87 +131,6 @@ ActiveRecord::Schema.define(version: 20150414150627) do
   add_index "contributors", ["user_id", "organization_id"], name: "index_contributors_on_user_id_and_organization_id", unique: true, using: :btree
   add_index "contributors", ["user_id"], name: "index_contributors_on_user_id", using: :btree
 
-  create_table "cookbook_dependencies", force: true do |t|
-    t.string   "name",                                     null: false
-    t.string   "version_constraint",  default: ">= 0.0.0", null: false
-    t.integer  "cookbook_version_id",                      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "cookbook_id"
-  end
-
-  add_index "cookbook_dependencies", ["cookbook_id"], name: "index_cookbook_dependencies_on_cookbook_id", using: :btree
-  add_index "cookbook_dependencies", ["cookbook_version_id", "name", "version_constraint"], name: "cookbook_dependencies_unique_by_name_and_constraint", unique: true, using: :btree
-  add_index "cookbook_dependencies", ["cookbook_version_id"], name: "index_cookbook_dependencies_on_cookbook_version_id", using: :btree
-
-  create_table "cookbook_followers", force: true do |t|
-    t.integer  "cookbook_id", null: false
-    t.integer  "user_id",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "cookbook_followers", ["cookbook_id", "user_id"], name: "index_cookbook_followers_on_cookbook_id_and_user_id", unique: true, using: :btree
-
-  create_table "cookbook_version_platforms", force: true do |t|
-    t.integer  "cookbook_version_id"
-    t.integer  "supported_platform_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "cookbook_version_platforms", ["cookbook_version_id", "supported_platform_id"], name: "index_cvp_on_cvi_and_spi", unique: true, using: :btree
-
-  create_table "cookbook_versions", force: true do |t|
-    t.integer  "cookbook_id"
-    t.string   "license"
-    t.string   "version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "tarball_file_name"
-    t.string   "tarball_content_type"
-    t.integer  "tarball_file_size"
-    t.datetime "tarball_updated_at"
-    t.text     "readme",                default: "",    null: false
-    t.string   "readme_extension",      default: "",    null: false
-    t.boolean  "dependencies_imported", default: false
-    t.text     "description"
-    t.integer  "legacy_id"
-    t.integer  "web_download_count",    default: 0
-    t.integer  "api_download_count",    default: 0
-    t.text     "changelog"
-    t.string   "changelog_extension",   default: "",    null: false
-    t.boolean  "foodcritic_failure"
-    t.text     "foodcritic_feedback"
-  end
-
-  add_index "cookbook_versions", ["legacy_id"], name: "index_cookbook_versions_on_legacy_id", unique: true, using: :btree
-  add_index "cookbook_versions", ["version", "cookbook_id"], name: "index_cookbook_versions_on_version_and_cookbook_id", unique: true, using: :btree
-  add_index "cookbook_versions", ["version"], name: "index_cookbook_versions_on_version", using: :btree
-
-  create_table "cookbooks", force: true do |t|
-    t.string   "name",                                     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "source_url"
-    t.boolean  "deprecated",               default: false
-    t.integer  "category_id"
-    t.string   "lowercase_name"
-    t.string   "issues_url"
-    t.integer  "cookbook_followers_count", default: 0
-    t.integer  "user_id"
-    t.integer  "replacement_id"
-    t.integer  "web_download_count",       default: 0
-    t.integer  "api_download_count",       default: 0
-    t.boolean  "featured",                 default: false
-    t.boolean  "up_for_adoption"
-    t.boolean  "privacy"
-  end
-
-  add_index "cookbooks", ["lowercase_name"], name: "index_cookbooks_on_lowercase_name", unique: true, using: :btree
-  add_index "cookbooks", ["name"], name: "index_cookbooks_on_name", using: :btree
-  add_index "cookbooks", ["user_id"], name: "index_cookbooks_on_user_id", using: :btree
-
   create_table "curry_commit_authors", force: true do |t|
     t.string   "login"
     t.string   "email"
@@ -276,6 +195,87 @@ ActiveRecord::Schema.define(version: 20150414150627) do
   add_index "email_preferences", ["token"], name: "index_email_preferences_on_token", unique: true, using: :btree
   add_index "email_preferences", ["user_id", "system_email_id"], name: "index_email_preferences_on_user_id_and_system_email_id", unique: true, using: :btree
 
+  create_table "extension_dependencies", force: true do |t|
+    t.string   "name",                                      null: false
+    t.string   "version_constraint",   default: ">= 0.0.0", null: false
+    t.integer  "extension_version_id",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "extension_id"
+  end
+
+  add_index "extension_dependencies", ["extension_id"], name: "index_extension_dependencies_on_extension_id", using: :btree
+  add_index "extension_dependencies", ["extension_version_id", "name", "version_constraint"], name: "cookbook_dependencies_unique_by_name_and_constraint", unique: true, using: :btree
+  add_index "extension_dependencies", ["extension_version_id"], name: "index_extension_dependencies_on_extension_version_id", using: :btree
+
+  create_table "extension_followers", force: true do |t|
+    t.integer  "extension_id", null: false
+    t.integer  "user_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "extension_followers", ["extension_id", "user_id"], name: "index_extension_followers_on_extension_id_and_user_id", unique: true, using: :btree
+
+  create_table "extension_version_platforms", force: true do |t|
+    t.integer  "extension_version_id"
+    t.integer  "supported_platform_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "extension_version_platforms", ["extension_version_id", "supported_platform_id"], name: "index_cvp_on_cvi_and_spi", unique: true, using: :btree
+
+  create_table "extension_versions", force: true do |t|
+    t.integer  "extension_id"
+    t.string   "license"
+    t.string   "version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tarball_file_name"
+    t.string   "tarball_content_type"
+    t.integer  "tarball_file_size"
+    t.datetime "tarball_updated_at"
+    t.text     "readme",                default: "",    null: false
+    t.string   "readme_extension",      default: "",    null: false
+    t.boolean  "dependencies_imported", default: false
+    t.text     "description"
+    t.integer  "legacy_id"
+    t.integer  "web_download_count",    default: 0
+    t.integer  "api_download_count",    default: 0
+    t.text     "changelog"
+    t.string   "changelog_extension",   default: "",    null: false
+    t.boolean  "foodcritic_failure"
+    t.text     "foodcritic_feedback"
+  end
+
+  add_index "extension_versions", ["legacy_id"], name: "index_extension_versions_on_legacy_id", unique: true, using: :btree
+  add_index "extension_versions", ["version", "extension_id"], name: "index_extension_versions_on_version_and_extension_id", unique: true, using: :btree
+  add_index "extension_versions", ["version"], name: "index_extension_versions_on_version", using: :btree
+
+  create_table "extensions", force: true do |t|
+    t.string   "name",                                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source_url"
+    t.boolean  "deprecated",                default: false
+    t.integer  "category_id"
+    t.string   "lowercase_name"
+    t.string   "issues_url"
+    t.integer  "extension_followers_count", default: 0
+    t.integer  "user_id"
+    t.integer  "replacement_id"
+    t.integer  "web_download_count",        default: 0
+    t.integer  "api_download_count",        default: 0
+    t.boolean  "featured",                  default: false
+    t.boolean  "up_for_adoption"
+    t.boolean  "privacy"
+  end
+
+  add_index "extensions", ["lowercase_name"], name: "index_extensions_on_lowercase_name", unique: true, using: :btree
+  add_index "extensions", ["name"], name: "index_extensions_on_name", using: :btree
+  add_index "extensions", ["user_id"], name: "index_extensions_on_user_id", using: :btree
+
   create_table "hits", force: true do |t|
     t.string  "label",             null: false
     t.integer "total", default: 0, null: false
@@ -331,7 +331,7 @@ ActiveRecord::Schema.define(version: 20150414150627) do
   end
 
   create_table "ownership_transfer_requests", force: true do |t|
-    t.integer  "cookbook_id",  null: false
+    t.integer  "extension_id", null: false
     t.integer  "recipient_id", null: false
     t.integer  "sender_id",    null: false
     t.string   "token",        null: false
@@ -340,7 +340,7 @@ ActiveRecord::Schema.define(version: 20150414150627) do
     t.datetime "updated_at"
   end
 
-  add_index "ownership_transfer_requests", ["cookbook_id"], name: "index_ownership_transfer_requests_on_cookbook_id", using: :btree
+  add_index "ownership_transfer_requests", ["extension_id"], name: "index_ownership_transfer_requests_on_extension_id", using: :btree
   add_index "ownership_transfer_requests", ["recipient_id"], name: "index_ownership_transfer_requests_on_recipient_id", using: :btree
   add_index "ownership_transfer_requests", ["token"], name: "index_ownership_transfer_requests_on_token", unique: true, using: :btree
 

@@ -12,14 +12,14 @@ SitemapGenerator::Sitemap.create do
   # The root path '/' and sitemap index file are added automatically for you.
   # Links are added to the Sitemap in the order they are specified.
 
-  add(cookbooks_directory_path)
+  add(extensions_directory_path)
 
-  Cookbook.find_each do |cookbook|
-    add(cookbook_path(cookbook), lastmod: cookbook.updated_at, priority: 0.8)
+  Extension.find_each do |extension|
+    add(extension_path(extension), lastmod: extension.updated_at, priority: 0.8)
   end
 
-  CookbookVersion.includes(:cookbook).find_each do |cookbook_version|
-    add(cookbook_version_path(cookbook_version.cookbook, cookbook_version), lastmod: cookbook_version.updated_at)
+  ExtensionVersion.includes(:extension).find_each do |extension_version|
+    add(extension_version_path(extension_version.extension, extension_version), lastmod: extension_version.updated_at)
   end
 
   User.includes(:chef_account).find_each do |user|

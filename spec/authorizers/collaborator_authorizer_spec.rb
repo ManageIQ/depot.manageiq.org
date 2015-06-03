@@ -3,19 +3,19 @@ require 'spec_helper'
 describe CollaboratorAuthorizer do
   let(:sally) { create(:user) }
   let(:hank) { create(:user) }
-  let(:cookbook) { create(:cookbook, owner: sally) }
-  let(:cookbook_collaborator) { create(:cookbook_collaborator, resourceable: cookbook, user: hank) }
+  let(:extension) { create(:extension, owner: sally) }
+  let(:extension_collaborator) { create(:extension_collaborator, resourceable: extension, user: hank) }
 
-  context 'as the cookbook owner' do
-    subject { described_class.new(sally, cookbook_collaborator) }
+  context 'as the extension owner' do
+    subject { described_class.new(sally, extension_collaborator) }
 
     it { should permit_authorization(:transfer) }
     it { should permit_authorization(:create) }
     it { should permit_authorization(:destroy) }
   end
 
-  context 'as a cookbook collaborator' do
-    subject { described_class.new(hank, cookbook_collaborator) }
+  context 'as a extension collaborator' do
+    subject { described_class.new(hank, extension_collaborator) }
 
     it { should_not permit_authorization(:transfer) }
     it { should_not permit_authorization(:create) }
@@ -25,7 +25,7 @@ describe CollaboratorAuthorizer do
   context 'as neither the owner nor a collaborator' do
     let(:pete) { create(:user) }
 
-    subject { described_class.new(pete, cookbook_collaborator) }
+    subject { described_class.new(pete, extension_collaborator) }
 
     it { should_not permit_authorization(:transfer) }
     it { should_not permit_authorization(:create) }

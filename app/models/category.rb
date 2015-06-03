@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
 
   # Associations
   # --------------------
-  has_many :cookbooks
+  has_many :extensions
 
   #
   # Returns the name of the +Category+ parameterized.

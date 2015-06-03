@@ -8,7 +8,7 @@ module TarballHelpers
   #
   # @example
   #
-  #   tarball = build_cookbook_tarball do |base|
+  #   tarball = build_extension_tarball do |base|
   #     base.file('README.md') { 'A readme!' }
   #     base.file('recipes/default.rb') { '# A recipe!' }
   #   end
@@ -17,7 +17,7 @@ module TarballHelpers
   #
   # @return [Tempfile]
   #
-  def build_cookbook_tarball(name = 'mycookbook', &block)
+  def build_extension_tarball(name = 'myextension', &block)
     Tempfile.new('tarball-fixture', 'tmp').tap do |file|
       io = AndFeathers.build(name) do |base|
         base.file('metadata.json') do

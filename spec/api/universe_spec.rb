@@ -1,45 +1,45 @@
 require 'spec_helper'
 
 describe 'GET /universe' do
-  let(:redis) { create(:cookbook, name: 'redis') }
-  let(:apt) { create(:cookbook, name: 'apt') }
-  let(:narf) { create(:cookbook, name: 'narf') }
+  let(:redis) { create(:extension, name: 'redis') }
+  let(:apt) { create(:extension, name: 'apt') }
+  let(:narf) { create(:extension, name: 'narf') }
   let(:tarball) do
-    File.open('spec/support/cookbook_fixtures/redis-test-v1.tgz')
+    File.open('spec/support/extension_fixtures/redis-test-v1.tgz')
   end
 
   before do
     redis_version1 = create(
-      :cookbook_version,
-      cookbook: redis,
+      :extension_version,
+      extension: redis,
       license: 'MIT',
       version: '1.2.0',
       tarball: tarball
     )
     redis_version2 = create(
-      :cookbook_version,
-      cookbook: redis,
+      :extension_version,
+      extension: redis,
       license: 'MIT',
       version: '1.3.0',
       tarball: tarball
     )
     apt_version = create(
-      :cookbook_version,
-      cookbook: apt,
+      :extension_version,
+      extension: apt,
       license: 'BSD',
       version: '1.1.0',
       tarball: tarball
     )
     narf_version = create(
-      :cookbook_version,
-      cookbook: narf,
+      :extension_version,
+      extension: narf,
       license: 'GPL',
       version: '1.4.0',
       tarball: tarball
     )
-    create(:cookbook_dependency, cookbook_version: redis_version1, cookbook: apt, name: 'apt', version_constraint: '>= 1.0.0')
-    create(:cookbook_dependency, cookbook_version: redis_version1, cookbook: narf, name: 'narf', version_constraint: '>= 1.1.0')
-    create(:cookbook_dependency, cookbook_version: redis_version2, cookbook: apt, name: 'apt', version_constraint: '>= 1.0.0')
+    create(:extension_dependency, extension_version: redis_version1, extension: apt, name: 'apt', version_constraint: '>= 1.0.0')
+    create(:extension_dependency, extension_version: redis_version1, extension: narf, name: 'narf', version_constraint: '>= 1.1.0')
+    create(:extension_dependency, extension_version: redis_version2, extension: apt, name: 'apt', version_constraint: '>= 1.0.0')
   end
 
   it 'returns a 200' do
@@ -52,7 +52,7 @@ describe 'GET /universe' do
 
     expect(response).to be_success
     expect(json_body['redis']['1.2.0']['location_path']).to match(%r{http://.*/api/v1})
-    expect(json_body['redis']['1.2.0']['download_url']).to match(%r{http://.*/api/v1/cookbooks/redis/versions/1.2.0/download})
+    expect(json_body['redis']['1.2.0']['download_url']).to match(%r{http://.*/api/v1/extensions/redis/versions/1.2.0/download})
   end
 
   it 'has an http specific cache key' do
@@ -72,10 +72,10 @@ describe 'GET /universe' do
 
     expect(response).to be_success
     expect(json_body['redis']['1.2.0']['location_path']).to match(%r{https://.*/api/v1})
-    expect(json_body['redis']['1.2.0']['download_url']).to match(%r{https://.*/api/v1/cookbooks/redis/versions/1.2.0/download})
+    expect(json_body['redis']['1.2.0']['download_url']).to match(%r{https://.*/api/v1/extensions/redis/versions/1.2.0/download})
   end
 
-  it 'lists out cookbooks, their versions, and dependencies' do
+  it 'lists out extensions, their versions, and dependencies' do
     get '/universe', format: :json
     body = json_body
     expect(body.keys).to include('redis', 'apt', 'narf')
@@ -84,12 +84,12 @@ describe 'GET /universe' do
     expect(body['redis']['1.2.0']['dependencies']).to eql('apt' => '>= 1.0.0', 'narf' => '>= 1.1.0')
     expect(body['redis']['1.2.0']['location_type']).to eql('opscode')
     expect(body['redis']['1.2.0']['location_path']).to match(%r{/api/v1})
-    expect(body['redis']['1.2.0']['download_url']).to match(%r{/api/v1/cookbooks/redis/versions/1.2.0/download})
+    expect(body['redis']['1.2.0']['download_url']).to match(%r{/api/v1/extensions/redis/versions/1.2.0/download})
     expect(body['redis']['1.3.0'].keys).to include('dependencies', 'location_type', 'location_path')
     expect(body['redis']['1.3.0']['dependencies']).to eql('apt' => '>= 1.0.0')
     expect(body['redis']['1.3.0']['location_type']).to eql('opscode')
     expect(body['redis']['1.3.0']['location_path']).to match(%r{/api/v1})
-    expect(body['redis']['1.3.0']['download_url']).to match(%r{/api/v1/cookbooks/redis/versions/1.3.0/download})
+    expect(body['redis']['1.3.0']['download_url']).to match(%r{/api/v1/extensions/redis/versions/1.3.0/download})
     expect(body['apt']['1.1.0']['dependencies']).to eql({})
   end
 end

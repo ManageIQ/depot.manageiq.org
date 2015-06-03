@@ -11,21 +11,21 @@ class PagesController < ApplicationController
   def welcome
     redirect_to dashboard_path if current_user.present?
 
-    @cookbook_count = Cookbook.count
+    @extension_count = Extension.count
     @user_count = User.count
   end
 
   #
   # GET /dashboard
   #
-  # The dashboard for authenticated users. This displays the user's cookbooks,
-  # collaborated cookbooks and new versions of cookbooks that the user follows.
+  # The dashboard for authenticated users. This displays the user's extensions,
+  # collaborated extensions and new versions of extensions that the user follows.
   #
   def dashboard
-    @cookbooks = current_user.owned_cookbooks.limit(5)
-    @collaborated_cookbooks = current_user.collaborated_cookbooks.limit(5)
+    @extensions = current_user.owned_extensions.limit(5)
+    @collaborated_extensions = current_user.collaborated_extensions.limit(5)
     @tools = current_user.tools.limit(5)
-    @followed_cookbook_activity = current_user.followed_cookbook_versions.limit(50)
+    @followed_extension_activity = current_user.followed_extension_versions.limit(50)
   end
 
   #

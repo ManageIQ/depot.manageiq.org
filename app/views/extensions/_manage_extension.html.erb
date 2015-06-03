@@ -1,0 +1,88 @@
+<a href="#" data-dropdown="manage" class="button radius secondary small dropdown">Manage Extension</a>
+
+<ul class="manage_extension f-dropdown" id="manage" data-dropdown-content>
+  <% if policy(extension).create_collaborator? %>
+    <li>
+      <%= link_to '#', class: 'addcontributor', rel: 'add-collaborator', 'data-reveal-id' => 'collaborators' do %>
+        <i class="fa fa-plus-square"></i>
+        Add Collaborator
+      <% end %>
+    </li>
+    <div id="collaborators" class="reveal-modal small" data-reveal>
+      <%= render 'collaborators/add', resource: @extension %>
+    </div>
+  <% end %>
+
+  <%= link_to_adoption(extension) %>
+
+  <% if policy(extension).transfer_ownership? %>
+    <li>
+      <%= link_to '#', rel: 'transfer_ownership', 'data-reveal-id' => 'transfer' do %>
+        <i class="fa fa-random"></i>
+        Transfer Ownership
+      <% end %>
+    </li>
+
+    <div id="transfer" class="reveal-modal small" data-reveal>
+      <h1>Transfer Ownership</h1>
+      <a class="close-reveal-modal">&#215;</a>
+
+      <%= form_for extension, url: transfer_ownership_path(extension), method: :put do |f| %>
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <%= f.hidden_field :user_id, class: 'collaborators', 'data-url' => collaborators_path(ineligible_user_ids: Collaborator.ineligible_owners_for(extension).map(&:id)) %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.submit 'Transfer', class: 'button radius postfix' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if policy(extension).deprecate? %>
+    <li>
+      <%= link_to '#', class: 'deprecate', rel: 'deprecate', 'data-reveal-id' => 'deprecate' do %>
+        <i class="fa fa-archive"></i>
+        Deprecate
+      <% end %>
+    </li>
+
+    <div id="deprecate" class="reveal-modal small" data-reveal>
+      <h1>Deprecate Extension</h1>
+
+      <p>You can deprecate your extension if you are no longer maintaining it. You must select a replacement extension in order to deprecate your extension.</p>
+
+      <a class="close-reveal-modal">&#215;</a>
+
+      <%= form_for extension, url: deprecate_extension_path(extension), method: :put do |f| %>
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <%= f.hidden_field :replacement, class: 'extension-deprecate', 'data-url' => deprecate_search_extension_path(extension) %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.submit 'Deprecate', class: 'button radius postfix submit-deprecation', disabled: true %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if policy(extension).undeprecate? %>
+    <li>
+      <%= link_to deprecate_extension_path(extension), method: 'delete', rel: 'undeprecate' do %>
+          <i class="fa fa-archive"></i>
+          Undo Deprecation
+      <% end %>
+    </li>
+  <% end %>
+
+  <% if policy(extension).toggle_featured? %>
+    <li>
+      <%= link_to toggle_featured_extension_path(extension), method: 'put', rel: 'toggle_featured' do %>
+        <i class="fa fa-star"></i>
+        <%= extension.featured? ? 'Unfeature' : 'Feature' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -5,7 +5,7 @@
   <%= render 'sidebar' %>
 
   <div class="main" data-equalizer-watch>
-      <%= render 'heading', user: @user, title: "#{posessivize(@user.name)} Cookbooks", active: 'cookbooks' %>
+      <%= render 'heading', user: @user, title: "#{posessivize(@user.name)} Extensions", active: 'extensions' %>
 
       <dl class="tabs radius">
         <dd class="<%= 'active' unless params[:tab] %>"><%= link_to 'Owns', @user %></dd>
@@ -15,16 +15,16 @@
 
     <div class="tabs-content">
       <div class="content active">
-        <% if @cookbooks.any? %>
+        <% if @extensions.any? %>
           <ul class="listing">
-            <%= render partial: 'cookbooks/cookbook', collection: @cookbooks %>
-            <%= paginate @cookbooks %>
+            <%= render partial: 'extensions/extension', collection: @extensions %>
+            <%= paginate @extensions %>
           </ul>
         <% else %>
           <% if @user == current_user %>
-            <p><%= t("profile.current_user_no_cookbooks.#{params[:tab] || 'owns'}") %></p>
+            <p><%= t("profile.current_user_no_extensions.#{params[:tab] || 'owns'}") %></p>
           <% else %>
-            <p><%= t("profile.no_cookbooks.#{params[:tab] || 'owns'}", username: @user.username) %></p>
+            <p><%= t("profile.no_extensions.#{params[:tab] || 'owns'}", username: @user.username) %></p>
           <% end %>
         <% end %>
       </div>

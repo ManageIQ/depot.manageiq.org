@@ -2,28 +2,28 @@ require 'spec_helper'
 
 describe TransferOwnershipController do
   describe 'PUT #transfer' do
-    let(:cookbook) { create(:cookbook) }
+    let(:extension) { create(:extension) }
     let(:new_owner) { create(:user) }
 
     before do
-      cookbook_collection = double('cookbook_collection', :first! => cookbook)
-      allow(Cookbook).to receive(:with_name) { cookbook_collection }
+      extension_collection = double('extension_collection', :first! => extension)
+      allow(Extension).to receive(:with_name) { extension_collection }
     end
 
     shared_examples 'admin_or_owner' do
       before { sign_in(user) }
 
-      it 'attempts to change the cookbooks owner' do
-        expect(cookbook).to receive(:transfer_ownership).with(
+      it 'attempts to change the extensions owner' do
+        expect(extension).to receive(:transfer_ownership).with(
           user,
           new_owner
-        ) { 'cookbook.ownership_transfer.done' }
-        put :transfer, id: cookbook, cookbook: { user_id: new_owner.id }
+        ) { 'extension.ownership_transfer.done' }
+        put :transfer, id: extension, extension: { user_id: new_owner.id }
       end
 
-      it 'redirects back to the cookbook' do
-        put :transfer, id: cookbook, cookbook: { user_id: new_owner.id }
-        expect(response).to redirect_to(assigns[:cookbook])
+      it 'redirects back to the extension' do
+        put :transfer, id: extension, extension: { user_id: new_owner.id }
+        expect(response).to redirect_to(assigns[:extension])
       end
     end
 
@@ -32,16 +32,16 @@ describe TransferOwnershipController do
       it_behaves_like 'admin_or_owner'
     end
 
-    context 'the current user is the cookbook owner' do
-      let(:user) { cookbook.owner }
+    context 'the current user is the extension owner' do
+      let(:user) { extension.owner }
       it_behaves_like 'admin_or_owner'
     end
 
-    context 'the current user is not an admin nor an owner of the cookbook' do
+    context 'the current user is not an admin nor an owner of the extension' do
       before { sign_in(create(:user)) }
 
       it 'returns a 404' do
-        put :transfer, id: cookbook, cookbook: { user_id: new_owner.id }
+        put :transfer, id: extension, extension: { user_id: new_owner.id }
         expect(response.status.to_i).to eql(404)
       end
     end
@@ -51,9 +51,9 @@ describe TransferOwnershipController do
     let(:transfer_request) { create(:ownership_transfer_request) }
 
     shared_examples 'a transfer request' do
-      it 'redirects back to the cookbook' do
+      it 'redirects back to the extension' do
         post :accept, token: transfer_request
-        expect(response).to redirect_to(assigns[:transfer_request].cookbook)
+        expect(response).to redirect_to(assigns[:transfer_request].extension)
       end
 
       it 'finds transfer requests based on token' do

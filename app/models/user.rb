@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
   has_many :ccla_signatures
   has_many :contributors
   has_many :organizations, through: :contributors
-  has_many :owned_cookbooks, class_name: 'Cookbook', foreign_key: 'user_id'
+  has_many :owned_extensions, class_name: 'Extension', foreign_key: 'user_id'
   has_many :collaborators
-  has_many :cookbook_followers
-  has_many :followed_cookbooks, through: :cookbook_followers, source: :cookbook
-  has_many :collaborated_cookbooks, through: :collaborators, source: :resourceable, source_type: 'Cookbook'
+  has_many :extension_followers
+  has_many :followed_extensions, through: :extension_followers, source: :extension
+  has_many :collaborated_extensions, through: :collaborators, source: :resourceable, source_type: 'Extension'
   has_many :tools
   has_many :collaborated_tools, through: :collaborators, source: :resourceable, source_type: 'Tool'
   has_many :email_preferences
@@ -70,13 +70,13 @@ class User < ActiveRecord::Base
   end
 
   #
-  # Returns all +CookbookVersion+ instances that +User+ follows.
+  # Returns all +ExtensionVersion+ instances that +User+ follows.
   #
-  # @return [CookbookVersion]
+  # @return [ExtensionVersion]
   #
-  def followed_cookbook_versions
-    CookbookVersion.joins(:cookbook).
-      merge(followed_cookbooks).
+  def followed_extension_versions
+    ExtensionVersion.joins(:extension).
+      merge(followed_extensions).
       order('created_at DESC')
   end
 
@@ -361,7 +361,7 @@ class User < ActiveRecord::Base
   end
 
   #
-  # Updates the user's cookbook install preference to that specified in the
+  # Updates the user's extension install preference to that specified in the
   # parameter if that parameter is part of the
   # +User::ALLOWED_INSTALL_PREFERENCES+.
   #

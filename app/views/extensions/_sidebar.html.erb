@@ -1,0 +1,83 @@
+<div class="sidebar" data-equalizer-watch>
+  <%= render 'resources/owner', resource: extension %>
+  <%= render 'resources/collaborators', collaborators: collaborators, resource: extension %>
+
+  <% if policy(extension).manage? %>
+    <%= render "extensions/manage_extension", extension: extension %>
+  <% end %>
+
+  <% if extension.up_for_adoption? %>
+    <div>
+      <%= link_to 'Adopt me!', adoption_extension_path(extension), method: :post, class: 'button radius tiny' %>
+    </div>
+  <% end %>
+
+  <h3 class="<%= 'show-extension-urls-manage' if policy(extension).manage_extension_urls? %>" rel="edit-extension-urls">
+    <% if policy(extension).manage_extension_urls? %>
+      <%= link_to '#' do %>
+         <i class="fa fa-gear"></i>
+      <% end %>
+    <% end %>
+    Details
+  </h3>
+
+  <div class="extension-details">
+    <% if policy(extension).manage_extension_urls? %>
+      <div class="manage-extension-urls hide">
+        <%= form_for extension, data: { abide: true } do |f| %>
+          <div class="source-url-field">
+            <%= f.text_field :source_url, placeholder: 'Source URL: http://example.com', pattern: 'url' %>
+            <small class="error">Must be formatted as a URL.</small>
+          </div>
+
+          <div class="issues-url-field">
+            <%= f.text_field :issues_url, placeholder: 'Issues URL: http://example.com', pattern: 'url' %>
+            <small class="error">Must be formatted as a URL.</small>
+          </div>
+
+          <%= f.submit 'Save', class: 'button radius tiny submit-urls', data: { disable_with: 'Saving...' } %>
+          <a href="#" class="button radius tiny secondary cancel-submit-urls">Cancel</a>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="extension-urls">
+      <% if extension.source_url.present? %>
+        <%= link_to 'View Source', extension.source_url, class: 'button radius tiny source-url', itemprop: 'codeRepository' %>
+      <% end %>
+
+      <% if extension.issues_url.present? %>
+        <%= link_to 'View Issues', extension.issues_url, class: 'button secondary radius tiny issues-url', itemprop: 'discussionUrl' %>
+      <% end %>
+    </div>
+
+    <h4>
+      <i class="fa fa-clock-o"></i> Updated <span itemprop="datePublished"><%= version.updated_at.to_s(:longish) %></span>
+      <small>Created on <span itemprop="dateModified"><%= extension.created_at.to_s(:longish) %></span></small>
+    </h4>
+
+    <h4><i class="fa fa-desktop"></i> Platforms</h4>
+    <ul class="extension_platforms">
+      <% if extension.supported_platforms.present? %>
+        <% supported_platforms.each do |platform| %>
+          <li class="extension_platform_icon has-tip" title="<%= platform.name %> <%= platform.version_constraint %>" data-tooltip data-icon="<%= supported_platform_icon(platform) %>">
+            <span><%= platform.name %></span>
+          </li>
+        <% end %>
+      <% else %>
+        <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
+          <span class="fa fa-question-circle"></span>
+        </li>
+      <% end %>
+    </ul>
+
+    <h4><i class="fa fa-key"></i> License</h4>
+    <p><%= version.license %></p>
+
+    <h4 class="extension_show_sidebar_downloads">
+      <i class="fa fa-download"></i> <span itemprop="interactionCount"><%= number_with_delimiter(version.download_count) %></span> Downloads of Version <%= version.version %>
+      <small><%= number_with_delimiter(extension.download_count) %> Total Downloads</small>
+    </h4>
+    <%= link_to "Download Extension", { action: 'download' }, class: 'button secondary radius expand button_download_extension' %>
+  </div>
+</div>

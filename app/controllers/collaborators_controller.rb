@@ -29,7 +29,7 @@ class CollaboratorsController < ApplicationController
   # Add a collaborator to a resource.
   #
   def create
-    if %w(Cookbook Tool).include?(collaborator_params[:resourceable_type])
+    if %w(Extension Tool).include?(collaborator_params[:resourceable_type])
       resource = collaborator_params[:resourceable_type].constantize.find(
         collaborator_params[:resourceable_id]
       )
@@ -92,9 +92,9 @@ class CollaboratorsController < ApplicationController
   private
 
   #
-  # Find the CookbookCollaborator from an existing Cookbook and User
+  # Find the ExtensionCollaborator from an existing Extension and User
   #
-  # @return [CookbookCollaborator]
+  # @return [ExtensionCollaborator]
   #
   def find_collaborator
     @collaborator = Collaborator.find(params[:id])

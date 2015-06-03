@@ -6,18 +6,18 @@ describe AdoptionHelper do
     allow(helper).to receive(:policy) { fake_policy }
   end
 
-  context 'Cookbooks' do
-    it 'generates a link to enable adoption for a Cookbook' do
-      cookbook = create(:cookbook, name: 'haha', up_for_adoption: false)
-      link = helper.link_to_adoption(cookbook)
-      expected_link = '<li><a data-method="patch" href="/cookbooks/haha?cookbook%5Bup_for_adoption%5D=true" rel="nofollow"><i class="fa fa-heart"></i> Put up for adoption</a></li>'
+  context 'Extensions' do
+    it 'generates a link to enable adoption for a Extension' do
+      extension = create(:extension, name: 'haha', up_for_adoption: false)
+      link = helper.link_to_adoption(extension)
+      expected_link = '<li><a data-method="patch" href="/extensions/haha?extension%5Bup_for_adoption%5D=true" rel="nofollow"><i class="fa fa-heart"></i> Put up for adoption</a></li>'
       expect(link).to eql(expected_link)
     end
 
-    it 'generates a link to disable adoption for a Cookbook' do
-      cookbook = create(:cookbook, name: 'haha', up_for_adoption: true)
-      link = helper.link_to_adoption(cookbook)
-      expected_link = '<li><a data-method="patch" href="/cookbooks/haha?cookbook%5Bup_for_adoption%5D=false" rel="nofollow"><i class="fa fa-heart"></i> Disable adoption</a></li>'
+    it 'generates a link to disable adoption for a Extension' do
+      extension = create(:extension, name: 'haha', up_for_adoption: true)
+      link = helper.link_to_adoption(extension)
+      expected_link = '<li><a data-method="patch" href="/extensions/haha?extension%5Bup_for_adoption%5D=false" rel="nofollow"><i class="fa fa-heart"></i> Disable adoption</a></li>'
       expect(link).to eql(expected_link)
     end
   end

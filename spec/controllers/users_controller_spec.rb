@@ -10,18 +10,18 @@ describe UsersController do
       expect(assigns[:user]).to eql(user)
     end
 
-    it 'assigns cookbooks' do
+    it 'assigns extensions' do
       get :show, id: user.username
 
-      expect(assigns[:cookbooks]).to_not be_nil
+      expect(assigns[:extensions]).to_not be_nil
     end
 
-    it 'assigns a specific context of cookbooks given the tab parameter' do
-      followed_cookbook = create(:cookbook_follower, user: user).cookbook
+    it 'assigns a specific context of extensions given the tab parameter' do
+      followed_extension = create(:extension_follower, user: user).extension
 
       get :show, id: user.username, tab: 'follows'
 
-      expect(assigns[:cookbooks]).to include(followed_cookbook)
+      expect(assigns[:extensions]).to include(followed_extension)
     end
 
     it '404s when when a user somehow has a Chef account but does not exist' do
@@ -35,17 +35,17 @@ describe UsersController do
     end
   end
 
-  describe 'GET #followed_cookbook_activity' do
+  describe 'GET #followed_extension_activity' do
     it 'assigns a user' do
-      get :followed_cookbook_activity, id: user.username
+      get :followed_extension_activity, id: user.username
 
       expect(assigns[:user]).to eql(user)
     end
 
-    it "assigns a user's followed cookbook activity" do
-      get :followed_cookbook_activity, id: user.username
+    it "assigns a user's followed extension activity" do
+      get :followed_extension_activity, id: user.username
 
-      expect(assigns[:followed_cookbook_activity]).to_not be_nil
+      expect(assigns[:followed_extension_activity]).to_not be_nil
     end
   end
 

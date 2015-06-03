@@ -2,44 +2,44 @@ class TransferOwnershipController < ApplicationController
   before_filter :find_transfer_request, only: [:accept, :decline]
 
   #
-  # PUT /cookbooks/:id/transfer_ownership
+  # PUT /extensions/:id/transfer_ownership
   #
-  # Attempts to transfer ownership of cookbook to another user and redirects
-  # back to the cookbook.
+  # Attempts to transfer ownership of extension to another user and redirects
+  # back to the extension.
   #
   def transfer
-    @cookbook = Cookbook.with_name(params[:id]).first!
-    authorize! @cookbook, :transfer_ownership?
+    @extension = Extension.with_name(params[:id]).first!
+    authorize! @extension, :transfer_ownership?
     recipient = User.find(transfer_ownership_params[:user_id])
-    msg = @cookbook.transfer_ownership(current_user, recipient)
-    redirect_to @cookbook, notice: t(msg, cookbook: @cookbook.name, user: recipient.username)
+    msg = @extension.transfer_ownership(current_user, recipient)
+    redirect_to @extension, notice: t(msg, extension: @extension.name, user: recipient.username)
   end
 
   #
   # GET /ownership_transfer/:token/accept
   #
-  # Accepts an OwnershipTransferRequest and redirects back to the cookbook.
+  # Accepts an OwnershipTransferRequest and redirects back to the extension.
   #
   def accept
     @transfer_request.accept!
-    redirect_to @transfer_request.cookbook,
+    redirect_to @transfer_request.extension,
                 notice: t(
-                  'cookbook.ownership_transfer.invite_accepted',
-                  cookbook: @transfer_request.cookbook.name
+                  'extension.ownership_transfer.invite_accepted',
+                  extension: @transfer_request.extension.name
                 )
   end
 
   #
   # GET /ownership_transfer/:token/decline
   #
-  # Declines an OwnershipTransferRequest and redirects back to the cookbook.
+  # Declines an OwnershipTransferRequest and redirects back to the extension.
   #
   def decline
     @transfer_request.decline!
-    redirect_to @transfer_request.cookbook,
+    redirect_to @transfer_request.extension,
                 notice: t(
-                  'cookbook.ownership_transfer.invite_declined',
-                  cookbook: @transfer_request.cookbook.name
+                  'extension.ownership_transfer.invite_declined',
+                  extension: @transfer_request.extension.name
                 )
   end
 
@@ -61,6 +61,6 @@ class TransferOwnershipController < ApplicationController
   end
 
   def transfer_ownership_params
-    params.require(:cookbook).permit(:user_id)
+    params.require(:extension).permit(:user_id)
   end
 end

@@ -4,8 +4,8 @@ describe CollaboratorsController do
   let!(:fanny) { create(:user, first_name: 'Fanny') }
   let!(:hank) { create(:user, first_name: 'Hank') }
   let!(:hanky) { create(:user, first_name: 'Hanky') }
-  let!(:cookbook) { create(:cookbook, owner: fanny) }
-  let!(:existing_collaborator) { create(:user, collaborated_cookbooks: [cookbook]) }
+  let!(:extension) { create(:extension, owner: fanny) }
+  let!(:existing_collaborator) { create(:user, collaborated_extensions: [extension]) }
 
   describe 'GET #index' do
     before do
@@ -13,7 +13,7 @@ describe CollaboratorsController do
     end
 
     it 'returns only collaborators matching the query string' do
-      get :index, cookbook_id: cookbook, q: 'hank', format: :json
+      get :index, extension_id: extension, q: 'hank', format: :json
       collaborators = assigns[:collaborators]
       expect(collaborators.count(:all)).to eql(2)
       expect(collaborators.first).to eql(hank)
@@ -21,7 +21,7 @@ describe CollaboratorsController do
     end
 
     it "doesn't return users that are ineligible" do
-      get :index, cookbook_id: cookbook, format: :json, ineligible_user_ids: [fanny.id, existing_collaborator.id]
+      get :index, extension_id: extension, format: :json, ineligible_user_ids: [fanny.id, existing_collaborator.id]
       collaborators = assigns[:collaborators]
       expect(collaborators.size).to eql(2)
       expect(collaborators).to include(hank)
@@ -38,9 +38,9 @@ describe CollaboratorsController do
         sign_in fanny
 
         expect do
-          post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Cookbook', resourceable_id: cookbook.id }
+          post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Extension', resourceable_id: extension.id }
         end.to change { Collaborator.count }.by(1)
-        expect(response).to redirect_to(cookbook)
+        expect(response).to redirect_to(extension)
       end
 
       it 'sends the collaborator an email' do
@@ -48,7 +48,7 @@ describe CollaboratorsController do
 
         Sidekiq::Testing.inline! do
           expect do
-            post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Cookbook', resourceable_id: cookbook.id }
+            post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Extension', resourceable_id: extension.id }
           end.to change { ActionMailer::Base.deliveries.size }.by(1)
         end
       end
@@ -57,7 +57,7 @@ describe CollaboratorsController do
         sign_in hanky
 
         expect do
-          post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Cookbook', resourceable_id: cookbook.id }
+          post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Extension', resourceable_id: extension.id }
         end.to_not change { Collaborator.count }
 
         expect(response.status).to eql(404)
@@ -67,21 +67,21 @@ describe CollaboratorsController do
         sign_in fanny
 
         expect do
-          post :create, collaborator: { user_ids: fanny.id, resourceable_type: 'Cookbook', resourceable_id: cookbook.id }
+          post :create, collaborator: { user_ids: fanny.id, resourceable_type: 'Extension', resourceable_id: extension.id }
         end.to change { Collaborator.count }.by(0)
       end
 
       it 'returns a 404 if an unknown resource type is in the params' do
         sign_in fanny
 
-        post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Butter', resourceable_id: cookbook.id }
+        post :create, collaborator: { user_ids: hank.id, resourceable_type: 'Butter', resourceable_id: extension.id }
 
         expect(response.status).to eql(404)
       end
     end
 
     describe 'DELETE #destroy' do
-      let!(:collaborator) { create(:cookbook_collaborator, resourceable: cookbook, user: hank) }
+      let!(:collaborator) { create(:extension_collaborator, resourceable: extension, user: hank) }
 
       it 'deletes a collaborator if the signed in user is the resource owner' do
         sign_in fanny
@@ -103,11 +103,11 @@ describe CollaboratorsController do
         expect(response).to be_success
       end
 
-      it 'fails if the signed in user is not the cookbook owner and also not a collaborator' do
+      it 'fails if the signed in user is not the extension owner and also not a collaborator' do
         sign_in hanky
 
         expect do
-          delete :destroy, cookbook_id: cookbook, id: hank, format: :js
+          delete :destroy, extension_id: extension, id: hank, format: :js
         end.to_not change { Collaborator.count }
 
         expect(response).to_not be_success
@@ -115,14 +115,14 @@ describe CollaboratorsController do
     end
 
     describe 'PUT #transfer' do
-      let!(:collaborator) { create(:cookbook_collaborator, resourceable: cookbook, user: hank) }
+      let!(:collaborator) { create(:extension_collaborator, resourceable: extension, user: hank) }
 
       it 'transfers ownership to a collaborator if the signed in user is the resource owner' do
         sign_in fanny
 
         put :transfer, id: collaborator
-        expect(cookbook.reload.owner).to eql(collaborator.user)
-        expect(response).to redirect_to(cookbook_path(cookbook))
+        expect(extension.reload.owner).to eql(collaborator.user)
+        expect(response).to redirect_to(extension_path(extension))
       end
 
       it 'fails if the signed in user is not the resource owner' do

@@ -13,7 +13,7 @@ class Api::V1::UsersController < Api::V1Controller
       'github'
     ).joins(:user).with_username(params[:user]).first!.user
     @github_usernames = @user.accounts.for('github').map(&:username).sort
-    @followed_cookbooks = @user.followed_cookbooks.order('name ASC')
+    @followed_extensions = @user.followed_extensions.order('name ASC')
     @owned_tools = @user.tools.order('name ASC')
     @collaborated_tools = @user.collaborated_tools.order('name ASC')
   end

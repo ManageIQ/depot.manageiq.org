@@ -6,10 +6,10 @@ class Api::V1::MetricsController < Api::V1Controller
   #
   def show
     @metrics = {
-      total_cookbook_downloads: Cookbook.total_download_count,
-      total_cookbook_versions: CookbookVersion.count,
-      total_cookbooks: Cookbook.count,
-      total_follows: CookbookFollower.count,
+      total_extension_downloads: Extension.total_download_count,
+      total_extension_versions: ExtensionVersion.count,
+      total_extensions: Extension.count,
+      total_follows: ExtensionFollower.count,
       total_users: User.count,
       total_hits: { '/universe' => Universe.show_hits }
     }

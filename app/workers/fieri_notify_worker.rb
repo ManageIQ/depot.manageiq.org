@@ -6,22 +6,22 @@ class FieriNotifyWorker
   include Rails.application.routes.url_helpers
 
   #
-  # Send a POST request to the configured +FIERI_URL+ when a Cookbook Version
+  # Send a POST request to the configured +FIERI_URL+ when a Extension Version
   # is shared.
   #
-  # @param [Integer] cookbook_version_id the id for the Cookbook
+  # @param [Integer] extension_version_id the id for the Extension
   #
   # @return [Boolean] whether or not the POST was successful
   #
-  def perform(cookbook_version_id)
-    cookbook_version = CookbookVersion.find(cookbook_version_id)
+  def perform(extension_version_id)
+    extension_version = ExtensionVersion.find(extension_version_id)
 
     uri = URI.parse(ENV['FIERI_URL'])
 
     data = {
-      'cookbook_name' => cookbook_version.name,
-      'cookbook_version' => cookbook_version.version,
-      'cookbook_artifact_url' => cookbook_version.tarball.url
+      'extension_name' => extension_version.name,
+      'extension_version' => extension_version.version,
+      'extension_artifact_url' => extension_version.tarball.url
     }
 
     response = Net::HTTP.post_form(uri, data)

@@ -1,5 +1,5 @@
 module Universe
-  COOKBOOK = 'cookbook'.freeze
+  EXTENSION = 'extension'.freeze
   VERSION = 'version'.freeze
   DEPENDENCY = 'dependency'.freeze
   DEPENDENCY_CONSTRAINT = 'dependency_constraint'.freeze
@@ -7,7 +7,7 @@ module Universe
   LOCATION_TYPE = 'location_type'.freeze
   DOWNLOAD_URL = 'download_url'.freeze
   DEPENDENCIES = 'dependencies'.freeze
-  # TODO: change this value to 'chef' once the `remote_cookbook.location_type` in Berkshelf
+  # TODO: change this value to 'chef' once the `remote_extension.location_type` in Berkshelf
   # https://github.com/berkshelf/berkshelf/blob/master/lib/berkshelf/downloader.rb#L60-151
   # has been updated from 'opscode' to 'chef'
   CHEF = 'opscode'.freeze
@@ -32,19 +32,19 @@ module Universe
     #
 
     sql = %(
-      SELECT cookbook_versions.version,
-        cookbooks.name AS cookbook,
-        cookbook_dependencies.name AS dependency,
-        cookbook_dependencies.version_constraint AS dependency_constraint
-      FROM cookbook_versions
-        INNER JOIN cookbooks ON cookbooks.id = cookbook_versions.cookbook_id
-        LEFT JOIN cookbook_dependencies ON cookbook_dependencies.cookbook_version_id = cookbook_versions.id
+      SELECT extension_versions.version,
+        extensions.name AS extension,
+        extension_dependencies.name AS dependency,
+        extension_dependencies.version_constraint AS dependency_constraint
+      FROM extension_versions
+        INNER JOIN extensions ON extensions.id = extension_versions.extension_id
+        LEFT JOIN extension_dependencies ON extension_dependencies.extension_version_id = extension_versions.id
     )
 
-    cookbooks = ActiveRecord::Base.connection.execute(sql).to_a
+    extensions = ActiveRecord::Base.connection.execute(sql).to_a
 
-    cookbooks.reduce({}) do |result, row|
-      name = row[COOKBOOK]
+    extensions.reduce({}) do |result, row|
+      name = row[EXTENSION]
       version = row[VERSION]
       dependency = row[DEPENDENCY]
       dependency_constraint = row[DEPENDENCY_CONSTRAINT]
@@ -101,22 +101,22 @@ module Universe
   #
   # Construct a full download URL
   #
-  # @param cookbook [String] name of the cookbook
-  # @param version [String] cookbook version
+  # @param extension [String] name of the extension
+  # @param version [String] extension version
   # @param opts [Hash] an options hash containing optional overrides for host, port and
   # protocol
   #
-  # @return [String] Cookbook's full download URL
-  def download_url(cookbook, version, url_base)
-    "#{url_base}/api/v1/cookbooks/#{cookbook}/versions/#{version}/download"
+  # @return [String] Extension's full download URL
+  def download_url(extension, version, url_base)
+    "#{url_base}/api/v1/extensions/#{extension}/versions/#{version}/download"
   end
 
   #
   # Construct the protocol, host, and port portion of the URLs used
   # for location_path and download_url
   #
-  # @param cookbook [String] name of the cookbook
-  # @param version [String] cookbook version
+  # @param extension [String] name of the extension
+  # @param version [String] extension version
   # @param opts [Hash] an options hash containing optional overrides for host, port and
   # protocol
   #

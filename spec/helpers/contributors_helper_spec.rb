@@ -22,20 +22,20 @@ describe ContributorsHelper do
   describe '#contributor_removal_text' do
     let(:sally) { create(:user) }
     let(:hank) { create(:user) }
-    let(:cookbook) { create(:cookbook, owner: sally) }
+    let(:extension) { create(:extension, owner: sally) }
 
     before do
-      create(:cookbook_collaborator, resourceable: cookbook, user: hank)
+      create(:extension_collaborator, resourceable: extension, user: hank)
     end
 
     it 'returns "Remove Contributor" if you are the owner' do
       allow(helper).to receive(:current_user) { sally }
-      expect(helper.contributor_removal_text(cookbook.owner)).to eql('Remove Collaborator')
+      expect(helper.contributor_removal_text(extension.owner)).to eql('Remove Collaborator')
     end
 
     it 'returns "Remove Myself" if you are a contributor' do
       allow(helper).to receive(:current_user) { hank }
-      expect(helper.contributor_removal_text(cookbook.owner)).to eql('Remove Myself')
+      expect(helper.contributor_removal_text(extension.owner)).to eql('Remove Myself')
     end
   end
 end

@@ -1,0 +1,123 @@
+<div class="main" data-equalizer-watch>
+  <% if extension.deprecated? %>
+    <div class="deprecation-notice">
+      <h2 class="deprecation-copy">
+        <% if extension.replacement.present? %>
+          <i class="fa fa-exclamation-triangle"></i> <%= extension.name %> has been deprecated in favor of <%= link_to extension.replacement.name, extension.replacement %>
+        <% else %>
+          <i class="fa fa-exclamation-triangle"></i> <%= extension.name %> has been deprecated
+        <% end %>
+      </h2>
+    </div>
+  <% end %>
+
+  <small class="rss">
+    <%= link_to extension_path(extension, format: 'atom'), class: 'rss_feed_link' do %>
+      <i class="fa fa-rss"></i> RSS
+    <% end %>
+  </small>
+  <h1 class="heading">
+    <span itemprop="name"><%= extension.name %></span>
+    <small class="version_dropdown">
+      <%= link_to '#', 'data-dropdown' => 'versions', class: 'button radius tiny dropdown secondary', rel: 'extension_versions' do %>
+        <span class="versions_count">
+          <%= pluralize "(#{extension_versions.count})", 'Version' %>
+        </span>
+        <%= version.version %>
+      <% end %>
+      <ul id="versions" data-dropdown-content class="f-dropdown">
+        <li>
+          <ul>
+            <% extension_versions.each do |extension_version| %>
+              <li>
+                <%= link_to extension_version_path(extension, extension_version), rel: 'extension_version' do %>
+                  <%= extension_version.version %>
+                  <% if extension_version == version %><i class="fa fa-check right"></i><% end %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </small>
+
+    <%= render 'extensions/follow_button_show', extension: @extension %>
+  </h1>
+
+  <p itemprop="description"><%= extension.description %></p>
+
+  <%= render 'extensions/installs', extension: extension, version: version %>
+
+  <dl class="tabs" data-tab data-options="deep_linking:true">
+    <dd class="active"><a href="#readme">README</a></dd>
+    <dd><a href="#dependencies" rel="extension_dependencies">Dependencies</a></dd>
+    <% if version.changelog %>
+      <dd><a href="#changelog" rel="changelog">Changelog</a></dd>
+    <% end %>
+    <% if ROLLOUT.active?(:fieri) %>
+      <% unless version.foodcritic_failure.nil? %>
+        <dd>
+          <a href="#foodcritic" rel="foodcritic">Foodcritic
+            <i class="fa <%= version.foodcritic_failure ? 'fa-times' : 'fa-check' %>" title="Foodcritic is <%= version.foodcritic_failure ? 'failing' : 'passing' %>" data-tooltip></i>
+          </a>
+        </dd>
+      <% end %>
+    <% end %>
+  </dl>
+  <div class="tabs-content">
+    <div class="content active" id="readme">
+      <%= render_document(version.readme, version.readme_extension) %>
+    </div>
+    <div class="content" id="dependencies">
+      <h3 class="dependent-header">Dependent extensions</h3>
+      <% if extension.extension_dependencies.present? %>
+        <table>
+          <tbody>
+            <%= render partial: 'extensions/dependency', collection: extension.extension_dependencies %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>This extension has no specified dependencies.</p>
+      <% end %>
+
+      <h3 class="dependent-header">Contingent extensions</h3>
+      <% if extension.contingents.present? %>
+        <dl class="accordion contingents" data-accordion>
+          <% extension.contingents.group_by { |c| c.extension_version.extension.name }.each do |extension, contingents| %>
+            <dd class="accordion-navigation">
+              <a href="#panel-<%= extension %>">
+                <%= extension %>
+                <span class="right">Applicable Versions <i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
+              </a>
+              <div id="panel-<%= extension %>" class="content">
+                <table>
+                  <tbody>
+                    <%= render partial: 'extensions/contingent', collection: contingents %>
+                  </tbody>
+                </table>
+              </div>
+            </dd>
+          <% end %>
+        </dl>
+      <% else %>
+        <p>There are no extensions that are contingent upon this one.</p>
+      <% end %>
+    </div>
+    <% if version.changelog %>
+      <div class="content" id="changelog">
+        <%= render_document(version.changelog, version.changelog_extension) %>
+      </div>
+    <% end %>
+    <% if ROLLOUT.active?(:fieri) %>
+      <% unless version.foodcritic_failure.nil? %>
+        <div class="content" id="foodcritic">
+          <% if version.foodcritic_feedback.present? %>
+            <pre><%= version.foodcritic_feedback.gsub(/\n/, '<br />').html_safe %></pre>
+          <% else %>
+            <p><%= version.version %> passed <%= link_to 'Foodcritic', 'http://acrmp.github.io/foodcritic', target: '_blank' %>.
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

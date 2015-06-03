@@ -1,8 +1,8 @@
 class CollaboratorAuthorizer < Authorizer::Base
   #
-  # Owners of a cookbook are the only ones that can transfer ownership and they
+  # Owners of a extension are the only ones that can transfer ownership and they
   # can only transfer it to someone that's already a collaborator on
-  # a cookbook.
+  # a extension.
   #
   # @return [Boolean]
   #
@@ -11,7 +11,7 @@ class CollaboratorAuthorizer < Authorizer::Base
   end
 
   #
-  # Owners of a cookbook are the only ones that can add collaborators.
+  # Owners of a extension are the only ones that can add collaborators.
   #
   # @return [Boolean]
   #
@@ -20,7 +20,7 @@ class CollaboratorAuthorizer < Authorizer::Base
   end
 
   #
-  # If you're an owner of a cookbook, you can remove any collaborator. If you
+  # If you're an owner of a extension, you can remove any collaborator. If you
   # are a collaborator, then you should be able to remove yourself, but no one
   # else.
   #

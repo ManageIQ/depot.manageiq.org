@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe OwnershipTransferRequest do
   context 'associations' do
-    it { should belong_to(:cookbook) }
+    it { should belong_to(:extension) }
     it { should belong_to(:recipient) }
     it { should belong_to(:sender) }
   end
 
   context 'validations' do
-    it { should validate_presence_of(:cookbook) }
+    it { should validate_presence_of(:extension) }
     it { should validate_presence_of(:recipient) }
     it { should validate_presence_of(:sender) }
   end
@@ -42,12 +42,12 @@ describe OwnershipTransferRequest do
       end
 
       it 'should transfer ownership to someone else' do
-        cookbook = transfer_request.cookbook
-        sally = cookbook.owner
+        extension = transfer_request.extension
+        sally = extension.owner
         jimmy = transfer_request.recipient
         transfer_request.accept!
-        cookbook.reload
-        expect(cookbook.owner).to eql(jimmy)
+        extension.reload
+        expect(extension.owner).to eql(jimmy)
       end
 
       it_should_behave_like 'returning early'

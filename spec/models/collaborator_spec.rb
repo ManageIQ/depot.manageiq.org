@@ -10,28 +10,28 @@ describe Collaborator do
     it { should validate_presence_of(:resourceable) }
 
     it 'validates the uniqueness of resourceable id scoped to user id and resourceable type' do
-      cookbook = create(:cookbook)
+      extension = create(:extension)
       tool = create(:tool)
       user = create(:user)
 
-      original_cookbook_collaborator = Collaborator.create(user: user, resourceable: cookbook)
+      original_extension_collaborator = Collaborator.create(user: user, resourceable: extension)
       original_tool_collaborator = Collaborator.create(user: user, resourceable: tool)
-      duplicate_cookbook_collaborator = Collaborator.create(user: user, resourceable: cookbook)
+      duplicate_extension_collaborator = Collaborator.create(user: user, resourceable: extension)
 
-      expect(original_cookbook_collaborator.errors[:resourceable_id].size).to be 0
+      expect(original_extension_collaborator.errors[:resourceable_id].size).to be 0
       expect(original_tool_collaborator.errors[:resourceable_id].size).to be 0
-      expect(duplicate_cookbook_collaborator.errors[:resourceable_id].size).to be 1
+      expect(duplicate_extension_collaborator.errors[:resourceable_id].size).to be 1
     end
   end
 
   it 'facilitates the transfer of ownership' do
     sally = create(:user)
     hank = create(:user)
-    cookbook = create(:cookbook, owner: sally)
-    cookbook_collaborator = create(:cookbook_collaborator, resourceable: cookbook, user: hank)
-    cookbook_collaborator.transfer_ownership
-    expect(cookbook.owner).to eql(hank)
-    expect(cookbook.collaborator_users).to include(sally)
-    expect(cookbook.collaborator_users).to_not include(hank)
+    extension = create(:extension, owner: sally)
+    extension_collaborator = create(:extension_collaborator, resourceable: extension, user: hank)
+    extension_collaborator.transfer_ownership
+    expect(extension.owner).to eql(hank)
+    expect(extension.collaborator_users).to include(sally)
+    expect(extension.collaborator_users).to_not include(hank)
   end
 end

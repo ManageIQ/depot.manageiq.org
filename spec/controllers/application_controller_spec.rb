@@ -40,11 +40,11 @@ describe ApplicationController do
       expect(response.status.to_i).to eql(404)
     end
 
-    it 'sets the default search context as cookbooks' do
+    it 'sets the default search context as extensions' do
       get :index
 
-      expect(assigns[:search][:name]).to eql('Cookbooks')
-      expect(assigns[:search][:path]).to eql(cookbooks_path)
+      expect(assigns[:search][:name]).to eql('Extensions')
+      expect(assigns[:search][:path]).to eql(extensions_path)
     end
   end
 

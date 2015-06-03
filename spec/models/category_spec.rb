@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Category do
   context 'associations' do
-    it { should have_many(:cookbooks) }
+    it { should have_many(:extensions) }
   end
 
   context 'slugs' do

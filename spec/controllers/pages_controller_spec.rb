@@ -11,10 +11,10 @@ describe PagesController do
         expect(response.status.to_i).to eql(200)
       end
 
-      it 'sends cookbook count to the view' do
+      it 'sends extension count to the view' do
         get :welcome
 
-        expect(assigns[:cookbook_count]).to_not be_nil
+        expect(assigns[:extension_count]).to_not be_nil
       end
 
       it 'sends user count to the view' do
@@ -39,16 +39,16 @@ describe PagesController do
     context 'user is signed in' do
       before { sign_in user }
 
-      it 'assigns cookbooks' do
+      it 'assigns extensions' do
         get :dashboard
 
-        expect(assigns[:cookbooks]).to_not be_nil
+        expect(assigns[:extensions]).to_not be_nil
       end
 
-      it 'assigns collaborated cookbooks' do
+      it 'assigns collaborated extensions' do
         get :dashboard
 
-        expect(assigns[:collaborated_cookbooks]).to_not be_nil
+        expect(assigns[:collaborated_extensions]).to_not be_nil
       end
 
       it 'assigns tools' do

@@ -1,5 +1,5 @@
-<%= provide :title, 'Welcome - The resource for Chef cookbooks' %>
-<%= provide :description, "Supermarket is Chef's open-source community platform. Find, explore and view Chef cookbooks for all of your ops needs." %>
+<%= provide :title, 'Welcome - The resource for ManageIQ extensions' %>
+<%= provide :description, "Supermarket is ManageIQ's open-source community platform. Find, explore and view ManageIQ extensions for all of your ops needs." %>
 
 <div class="page withspace">
   <% if flash[:signout] %>
@@ -9,7 +9,7 @@
   <% end %>
 
   <section class="sign_up_in">
-    <h2 class="text-center">Welcome to Supermarket. Find, explore and view Chef cookbooks for all of your ops needs.</h2>
+    <h2 class="text-center">Welcome to Supermarket. Find, explore and view ManageIQ extensions for all of your ops needs.</h2>
 
     <p class="text-center">
       <%= link_to 'Sign Up For a Chef Account', chef_sign_up_url, class: 'button radius' %>
@@ -23,7 +23,7 @@
 
       <ul>
         <li>
-          <%= link_to "Browse Cookbooks", cookbooks_path %>
+          <%= link_to "Browse Extensions", extensions_path %>
         </li>
         <li>
           <%= link_to 'Read the Chef Blog', chef_blog_url, target: '_blank' %>
@@ -51,7 +51,7 @@
       <h2>Share</h2>
       <ul>
         <li>
-          <%= link_to 'Share your cookbooks', chef_docs_url('knife_cookbook_site.html#share'), target: '_blank' %>
+          <%= link_to 'Share your extensions', chef_docs_url('knife_extension_site.html#share'), target: '_blank' %>
         </li>
         <li>
           <a href="irc://irc.freenode.net/chef">Chat on IRC at #chef on irc.freenode.net</a>
@@ -66,8 +66,8 @@
     </div>
   </section>
 
-  <section class="cookbooks_stats">
+  <section class="extensions_stats">
     <h2>Community Stats</h3>
-    <%= render 'resources/community_stats', cookbook_count: @cookbook_count, user_count: @user_count %>
+    <%= render 'resources/community_stats', extension_count: @extension_count, user_count: @user_count %>
   </section>
 </div>

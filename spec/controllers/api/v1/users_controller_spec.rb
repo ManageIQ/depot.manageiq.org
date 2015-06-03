@@ -4,17 +4,17 @@ describe Api::V1::UsersController do
   let!(:user) { create(:user) }
 
   let!(:redis_test) do
-    create(:cookbook, name: 'redis_test', owner: user)
+    create(:extension, name: 'redis_test', owner: user)
   end
 
   let!(:macand) do
-    create(:cookbook, name: 'macand', owner: user)
+    create(:extension, name: 'macand', owner: user)
   end
 
-  let!(:zeromq) { create(:cookbook, name: 'zeromq') }
-  let!(:apples) { create(:cookbook, name: 'apples') }
-  let!(:postgres) { create(:cookbook, name: 'postgres') }
-  let!(:ruby) { create(:cookbook, name: 'ruby') }
+  let!(:zeromq) { create(:extension, name: 'zeromq') }
+  let!(:apples) { create(:extension, name: 'apples') }
+  let!(:postgres) { create(:extension, name: 'postgres') }
+  let!(:ruby) { create(:extension, name: 'ruby') }
   let!(:berkshelf) { create(:tool, name: 'berkshelf', owner: user) }
   let!(:knife_supermarket) { create(:tool, name: 'knife_supermarket', owner: user) }
   let!(:dull_knife) { create(:tool, name: 'dull_knife') }
@@ -36,23 +36,23 @@ describe Api::V1::UsersController do
           username: 'xanadu'
         )
         create(
-          :cookbook_collaborator,
+          :extension_collaborator,
           resourceable: zeromq,
           user: user
         )
         create(
-          :cookbook_collaborator,
+          :extension_collaborator,
           resourceable: apples,
           user: user
         )
         create(
-          :cookbook_follower,
-          cookbook: postgres,
+          :extension_follower,
+          extension: postgres,
           user: user
         )
         create(
-          :cookbook_follower,
-          cookbook: ruby,
+          :extension_follower,
+          extension: ruby,
           user: user
         )
 

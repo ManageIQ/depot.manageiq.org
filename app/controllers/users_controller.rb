@@ -4,32 +4,32 @@ class UsersController < ApplicationController
   #
   # GET /users/:id
   #
-  # Display a user and a users cookbooks for a given context. The cookbooks
-  # context is given via the tab paramter. Contexts include cookbooks the user
-  # collaborates on, cookbooks the user follows and the default context of cookbooks
+  # Display a user and a users extensions for a given context. The extensions
+  # context is given via the tab paramter. Contexts include extensions the user
+  # collaborates on, extensions the user follows and the default context of extensions
   # the user owns.
   #
   def show
     case params[:tab]
     when 'collaborates'
-      @cookbooks = @user.collaborated_cookbooks
+      @extensions = @user.collaborated_extensions
     when 'follows'
-      @cookbooks = @user.followed_cookbooks
+      @extensions = @user.followed_extensions
     else
-      @cookbooks = @user.owned_cookbooks
+      @extensions = @user.owned_extensions
     end
 
-    @cookbooks = @cookbooks.order(:name).page(params[:page]).per(20)
+    @extensions = @extensions.order(:name).page(params[:page]).per(20)
   end
 
   #
-  # GET /users/:id/followed_cookbook_activity
+  # GET /users/:id/followed_extension_activity
   #
-  # Displays a feed of cookbook activity for the
-  # cookbooks the specified user follows.
+  # Displays a feed of extension activity for the
+  # extensions the specified user follows.
   #
-  def followed_cookbook_activity
-    @followed_cookbook_activity = @user.followed_cookbook_versions.limit(50)
+  def followed_extension_activity
+    @followed_extension_activity = @user.followed_extension_versions.limit(50)
   end
 
   #

@@ -1,0 +1,36 @@
+<%= provide(:title, "Extensions") %>
+<%= provide(:description, "Browse and search ManageIQ extensions.") %>
+
+<div class="page nobg">
+  <div class="heading-with-buttons">
+    <h1 class="title">
+      <%= pluralize(@number_of_extensions, 'Extension') %>
+      <small>
+        <%= link_to '<i class="fa fa-rss"></i> RSS'.html_safe, params.merge(format: 'atom'), :class => 'rss_feed_link show-for-medium-up' %>
+      </small>
+    </h1>
+
+    <div class="buttons">
+      <span>Sort by</span>
+      <%= link_to_sorted_extensions 'Most Downloaded', 'most_downloaded' %>
+      <%= link_to_sorted_extensions 'Most Followed', 'most_followed' %>
+      <%= link_to_sorted_extensions 'Recently Updated', 'recently_updated' %>
+    </div>
+  </div>
+
+  <% if @extensions.present? %>
+    <ul class="listing"><%= render @extensions %></ul>
+    <%= paginate @extensions %>
+  <% else %>
+    <div class="no-results">
+      <p>Sorry, no extensions matched your search for <strong><%= params[:q] %></strong>.</p>
+
+      <h3>Search Suggestions:</h3>
+      <ul>
+        <li>Check your spelling</li>
+        <li>Try another search term</li>
+        <li><%= link_to 'Browse the extensions directory', extensions_directory_path %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
