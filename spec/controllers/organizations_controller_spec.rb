@@ -33,16 +33,6 @@ describe OrganizationsController do
         delete :destroy, id: org1
       end.to change(Organization, :count).by(-1)
     end
-
-    it 'redirects to the CCLA signatures page' do
-      delete :destroy, id: org1
-      expect(response).to redirect_to(ccla_signatures_path)
-    end
-
-    it 'contains a helpful flash message' do
-      delete :destroy, id: org1
-      expect(request.flash[:notice]).to_not be_nil
-    end
   end
 
   describe 'PUT #combine' do
@@ -64,16 +54,6 @@ describe OrganizationsController do
       expect(Organization).to receive(:find).with(org2.id.to_s) { org2 }
       expect(org1).to receive(:combine!).with(org2)
       put :combine, id: org1, organization: { combine_with_id: org2 }
-    end
-
-    it 'redirects to the CCLA signatures page' do
-      put :combine, id: org1, organization: { combine_with_id: org2 }
-      expect(response).to redirect_to(ccla_signatures_path)
-    end
-
-    it 'contains a helpful flash message' do
-      put :combine, id: org1, organization: { combine_with_id: org2 }
-      expect(request.flash[:notice]).to_not be_nil
     end
   end
 

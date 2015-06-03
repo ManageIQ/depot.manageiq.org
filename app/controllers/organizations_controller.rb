@@ -23,7 +23,7 @@ class OrganizationsController < ApplicationController
     organization_name = @organization.name
     @organization.destroy
 
-    redirect_to ccla_signatures_path, notice: t('organizations.deleted', organization: organization_name)
+    render text: t("organizations.deleted", organization: organization_name)
   end
 
   #
@@ -37,7 +37,7 @@ class OrganizationsController < ApplicationController
     org_to_combine_name = org_to_combine.name
     @organization.combine!(org_to_combine)
 
-    redirect_to ccla_signatures_path, notice: t('organizations.combined', org_to_combine: org_to_combine_name, combined_with: @organization.name)
+    render text: t("organizations.combined", org_to_combine: org_to_combine_name, combined_with: @organization.name)
   end
 
   #

@@ -50,24 +50,6 @@ ManageIQ::Application.routes.draw do
     end
   end
 
-  resources :ccla_signatures, path: 'ccla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
-    collection do
-      post :re_sign, path: 're-sign'
-      get :agreement
-    end
-
-    member do
-      get :contributors
-    end
-
-    resources :contributor_requests, only: [:create], constraints: proc { ROLLOUT.active?(:join_ccla) && ROLLOUT.active?(:github) } do
-      member do
-        get :accept
-        get :decline
-      end
-    end
-  end
-
   namespace :curry, constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
     resources :repositories, only: [:index, :create, :destroy] do
       member do
