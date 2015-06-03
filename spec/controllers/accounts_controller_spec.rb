@@ -22,11 +22,11 @@ describe AccountsController do
     end
 
     it 'redirects to the stored location for the user on success if set' do
-      controller.store_location!(new_icla_signature_path)
+      controller.store_location!("http://www.google.com")
 
       post :create, provider: 'github'
 
-      expect(response).to redirect_to(new_icla_signature_path)
+      expect(response).to redirect_to("http://www.google.com")
     end
   end
 

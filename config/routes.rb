@@ -44,13 +44,6 @@ ManageIQ::Application.routes.draw do
     get 'versions/:version' => 'cookbook_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
   end
 
-  resources :icla_signatures, path: 'icla-signatures', constraints: proc { ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) } do
-    collection do
-      post :re_sign, path: 're-sign'
-      get :agreement
-    end
-  end
-
   resources :collaborators, only: [:index, :new, :create, :destroy] do
     member do
       put :transfer
