@@ -24,7 +24,7 @@ gem 'foreman'
 gem 'pundit'
 gem 'dotenv'
 gem 'coveralls', require: false
-gem 'octokit', github: 'octokit/octokit.rb', require: false
+gem 'octokit', github: 'octokit/octokit.rb'
 gem 'sidekiq'
 
 # Pin sprockets to ensure we get the latest security patches. Not pinning this

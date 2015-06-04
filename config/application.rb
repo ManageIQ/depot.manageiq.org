@@ -90,5 +90,7 @@ module ManageIQ
 
     # Set default from email for ActionMailer
     ActionMailer::Base.default from: ENV['FROM_EMAIL']
+
+    config.octokit = Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
   end
 end
