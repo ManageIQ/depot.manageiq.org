@@ -43,11 +43,11 @@
       </div>
     <% else %>
       <div class="content active" id="berkshelf">
-        <pre class="install">extension '<%= extension.name %>', <% if version == extension.latest_extension_version %>'~&gt;<% else %>'=<% end %> <%= version.version %>'</pre>
+        <pre class="install">extension '<%= extension.name %>', <% if version == extension.latest_extension_version %>'~&gt;<% else %>'=<% end %> <%= version.try(:version) %>'</pre>
       </div>
 
       <div class="content" id="librarian">
-        <pre class="install">extension '<%= extension.name %>', <% if version == extension.latest_extension_version %>'~&gt;<% else %>'=<% end %> <%= version.version %>'</pre>
+        <pre class="install">extension '<%= extension.name %>', <% if version == extension.latest_extension_version %>'~&gt;<% else %>'=<% end %> <%= version.try(:version) %>'</pre>
       </div>
 
       <div class="content" id="knife">

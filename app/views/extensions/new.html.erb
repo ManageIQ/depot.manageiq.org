@@ -1,1 +1,28 @@
-<p>Hi there</p>
+<%= provide(:title, "Add an Extension") %>
+
+<div class="page resource extension_show">
+  <div class="main">
+    <h1 class="heading">Add an Extension</h1>
+
+    <%= form_for @extension, html: { "data-abide" => true } do |f| %>
+      <%= render "application/form_errors", record: @extension %>
+
+      <fieldset id="" class="">
+        <div class="name-field">
+          <%= f.text_field :name, placeholder: "Name", title: "Name", required: true %>
+          <small class="error">Name is required.</small>
+        </div>
+        <div class="description-field">
+          <%= f.text_field :description, placeholder: "Description", title: "Description", required: true %>
+          <small class="error">Description is required.</small>
+        </div>
+        <div class="github_url-field">
+          <%= f.text_field :github_url, placeholder: "Github Url", title: "Github Url", required: true, pattern: "((https?://)?(www\.)?github\.com/)?[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+" %>
+          <small class="error">Github Url is required.</small>
+        </div>
+      </fieldset>
+
+      <%= f.submit "Add Extension", class: "button primary radius" %>
+    <% end %>
+  </div>
+</div>

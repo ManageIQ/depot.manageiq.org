@@ -1,5 +1,5 @@
 <%= provide(:title, "#{@extension.name} Extension") %>
-<%= provide(:description, "#{@extension.name} Extension (#{@latest_version.version}) #{@extension.supported_platforms.map(&:name).join(', ')}".strip) %>
+<%= provide(:description, "#{@extension.name} Extension (#{@latest_version.try(:version)}) #{@extension.try(:supported_platforms).map(&:name).join(', ')}".strip) %>
 
 <div class="page resource extension_show" data-equalizer itemscope itemtype="http://schema.org/Code">
   <%= render 'main', extension: @extension, version: @latest_version, extension_versions: @extension_versions %>

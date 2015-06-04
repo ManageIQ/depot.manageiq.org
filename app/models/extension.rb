@@ -65,6 +65,7 @@ class Extension < ActiveRecord::Base
   # Callbacks
   # --------------------
   before_validation :copy_name_to_lowercase_name
+  before_validation :normalize_github_url
 
   # Associations
   # --------------------
@@ -80,15 +81,15 @@ class Extension < ActiveRecord::Base
 
   # Delegations
   # --------------------
-  delegate :description, to: :latest_extension_version
-  delegate :foodcritic_failure, to: :latest_extension_version
-  delegate :foodcritic_feedback, to: :latest_extension_version
+  delegate :description, to: :latest_extension_version, allow_nil: true
+  delegate :foodcritic_failure, to: :latest_extension_version, allow_nil: true
+  delegate :foodcritic_feedback, to: :latest_extension_version, allow_nil: true
 
   # Validations
   # --------------------
   validates :name, presence: true, uniqueness: { case_sensitive: false }, format: /\A[\w_-]+\z/i
   validates :lowercase_name, presence: true, uniqueness: true
-  validates :extension_versions, presence: true
+  # validates :extension_versions, presence: true
   validates :source_url, url: {
     allow_blank: true,
     allow_nil: true
@@ -305,7 +306,7 @@ class Extension < ActiveRecord::Base
   # @return [Array<SupportedVersion>]
   #
   def supported_platforms
-    latest_extension_version.supported_platforms
+    latest_extension_version.try(:supported_platforms) || []
   end
 
   #
@@ -314,7 +315,7 @@ class Extension < ActiveRecord::Base
   # @return [Array<ExtensionDependency>]
   #
   def extension_dependencies
-    latest_extension_version.extension_dependencies
+    latest_extension_version.try(:extension_dependencies) || []
   end
 
   #
@@ -386,6 +387,15 @@ class Extension < ActiveRecord::Base
     Extension.search(query).where(deprecated: false).where.not(id: id)
   end
 
+  #
+  # Returns the username/repo formatted name of the GitHub repo.
+  #
+  # @return [String]
+  #
+  def github_repo
+    self.github_url.gsub("https://github.com/", "")
+  end
+
   private
 
   #
@@ -398,5 +408,15 @@ class Extension < ActiveRecord::Base
   #
   def copy_name_to_lowercase_name
     self.lowercase_name = name.to_s.downcase
+  end
+
+  #
+  # Normalizes the GitHub URL to a standard format.
+  #
+  def normalize_github_url
+    url = self.github_url || ""
+    url.gsub!(/(https?:\/\/)?(www\.)?github\.com\//, "")
+    self.github_url = "https://github.com/#{url}"
+    true
   end
 end

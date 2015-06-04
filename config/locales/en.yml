@@ -30,6 +30,8 @@ en:
     deprecate_with_deprecated_failure: "This extension cannot be deprecated in favor of a deprecated extension."
     activity: "%{maintainer} released v%{version} of the %{extension} extension."
     updated: "The %{name} extension has been successfully updated."
+    github_url_format_error: "must be a valid repo on which you are a collaborator."
+    created: "Your extension was added successfully!"
   contributor:
     removed: "Contributor removed."
   contributor_requests:
@@ -120,3 +122,7 @@ en:
       missing_extension_version: "Evaluation POST must contain extension_version."
       missing_foodcritic_failure: "Evaluation POST must contain foodcritic_failure."
       missing_fieri_key: "Evaluation POST must contain fieri_key."
+  activerecord:
+    attributes:
+      extension:
+        github_url: "Github URL"

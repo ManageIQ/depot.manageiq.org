@@ -56,6 +56,23 @@ class ExtensionsController < ApplicationController
   end
 
   #
+  # POST /extensions
+  #
+  # Create an extension.
+  #
+  def create
+    eparams = params.require(:extension).permit(:name, :description, :github_url)
+    create_extension = CreateExtension.new(eparams, current_user, github_client)
+    @extension = create_extension.process!
+
+    if @extension.errors.none?
+      redirect_to extension_path(@extension), notice: t("extension.created")
+    else
+      render :new
+    end
+  end
+
+  #
   # GET /extensions/directory
   #
   # Return the three most recently updated and created extensions.
@@ -92,7 +109,7 @@ class ExtensionsController < ApplicationController
     @latest_version = @extension.latest_extension_version
     @extension_versions = @extension.sorted_extension_versions
     @collaborators = @extension.collaborators
-    @supported_platforms = @extension.supported_platforms
+    @supported_platforms = [] # @extension.supported_platforms
 
     respond_to do |format|
       format.atom

@@ -1,3 +1,5 @@
+require "octokit"
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :define_search
@@ -52,5 +54,9 @@ class ApplicationController < ActionController::Base
       store_location!
       redirect_to link_github_profile_path,  notice: t('requires_linked_github')
     end
+  end
+
+  def github_client
+    @github_client ||= Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
   end
 end

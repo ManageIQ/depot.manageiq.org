@@ -23,7 +23,7 @@
         <span class="versions_count">
           <%= pluralize "(#{extension_versions.count})", 'Version' %>
         </span>
-        <%= version.version %>
+        <%= version.try(:version) %>
       <% end %>
       <ul id="versions" data-dropdown-content class="f-dropdown">
         <li>
@@ -51,7 +51,7 @@
   <dl class="tabs" data-tab data-options="deep_linking:true">
     <dd class="active"><a href="#readme">README</a></dd>
     <dd><a href="#dependencies" rel="extension_dependencies">Dependencies</a></dd>
-    <% if version.changelog %>
+    <% if version.try(:changelog) %>
       <dd><a href="#changelog" rel="changelog">Changelog</a></dd>
     <% end %>
     <% if ROLLOUT.active?(:fieri) %>
@@ -66,7 +66,7 @@
   </dl>
   <div class="tabs-content">
     <div class="content active" id="readme">
-      <%= render_document(version.readme, version.readme_extension) %>
+      <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
     </div>
     <div class="content" id="dependencies">
       <h3 class="dependent-header">Dependent extensions</h3>
@@ -103,7 +103,7 @@
         <p>There are no extensions that are contingent upon this one.</p>
       <% end %>
     </div>
-    <% if version.changelog %>
+    <% if version.try(:changelog) %>
       <div class="content" id="changelog">
         <%= render_document(version.changelog, version.changelog_extension) %>
       </div>

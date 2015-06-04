@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603181821) do
+ActiveRecord::Schema.define(version: 20150604161211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,6 +270,8 @@ ActiveRecord::Schema.define(version: 20150603181821) do
     t.boolean  "featured",                  default: false
     t.boolean  "up_for_adoption"
     t.boolean  "privacy"
+    t.string   "description"
+    t.string   "github_url"
   end
 
   add_index "extensions", ["lowercase_name"], name: "index_extensions_on_lowercase_name", unique: true, using: :btree
