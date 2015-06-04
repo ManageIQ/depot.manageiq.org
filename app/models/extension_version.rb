@@ -14,14 +14,11 @@ class ExtensionVersion < ActiveRecord::Base
 
   # Validations
   # --------------------
-  validates :license, presence: true, length: { maximum: 255 }
-  validates :description, presence: true
   validates :readme, presence: true
   validates :version, presence: true, uniqueness: { scope: :extension }
   validate :semantic_version
   validates_attachment(
     :tarball,
-    presence: true,
     content_type: {
       content_type: ['application/x-gzip', 'application/gzip',
                      'application/octet-stream', 'application/x-tar',
