@@ -8,6 +8,7 @@ describe CreateExtension do
 
   let(:extension) do
     double(:extension,
+      id: 123,
       valid?: true,
       save: true,
       github_repo: "cvincent/test",
@@ -22,10 +23,17 @@ describe CreateExtension do
   before do
     allow(Extension).to receive(:new) { extension }
     allow(github).to receive(:collaborator?).with("cvincent/test", "some_user") { true }
+    stub_const("CollectExtensionMetadataWorker", Class.new)
+    allow(CollectExtensionMetadataWorker).to receive(:perform_async)
   end
 
   it "saves a valid extension, returning the extension" do
     expect(extension).to receive(:save)
+    expect(subject.process!).to be(extension)
+  end
+
+  it "kicks off a worker to gather metadata about the valid extension" do
+    expect(CollectExtensionMetadataWorker).to receive(:perform_async).with(123)
     expect(subject.process!).to be(extension)
   end
 

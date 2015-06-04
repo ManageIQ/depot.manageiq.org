@@ -9,6 +9,7 @@ class CreateExtension
     Extension.new(@params).tap do |extension|
       if extension.valid? and repo_valid?(extension)
         extension.save
+        CollectExtensionMetadataWorker.perform_async(extension.id)
       end
     end
   end
