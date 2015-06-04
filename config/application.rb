@@ -6,7 +6,7 @@ require 'rails'
 if File.exists? (File.expand_path('../../.env', __FILE__))
   Dotenv.overload('.env', ".env.#{Rails.env}").tap do |env|
     if env.empty?
-      fail 'Cannot run Supermarket without a .env file.'
+      fail 'Cannot run ManageIQ without a .env file.'
     end
   end
 end
@@ -24,7 +24,7 @@ end
   end
 end
 
-require_relative '../lib/supermarket/host'
+require_relative '../lib/manage_iq/host'
 
 # Require the gems listed in Gemfile, including any gems
 # you have limited to :test, :development, or :production.
@@ -61,8 +61,8 @@ module ManageIQ
 
     # Define the status codes for rescuing our custom exceptions
     config.action_dispatch.rescue_responses.merge!(
-      'Supermarket::Authorization::NoAuthorizerError'  => :not_implemented,
-      'Supermarket::Authorization::NotAuthorizedError' => :unauthorized
+      'ManageIQ::Authorization::NoAuthorizerError'  => :not_implemented,
+      'ManageIQ::Authorization::NotAuthorizedError' => :unauthorized
     )
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
@@ -86,7 +86,7 @@ module ManageIQ
       protocol: ENV['PROTOCOL']
     }
 
-    config.action_mailer.asset_host = Supermarket::Host.full_url
+    config.action_mailer.asset_host = ManageIQ::Host.full_url
 
     # Set default from email for ActionMailer
     ActionMailer::Base.default from: ENV['FROM_EMAIL']

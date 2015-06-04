@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Supermarket::Authentication do
+describe ManageIQ::Authentication do
   subject do
     Class.new(ActionController::Base) do
-      include Supermarket::Authentication
+      include ManageIQ::Authentication
     end.new
   end
 

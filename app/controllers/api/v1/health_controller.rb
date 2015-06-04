@@ -11,7 +11,7 @@ class Api::V1::HealthController < Api::V1Controller
   # components.
   #
   def show
-    @health = Supermarket::Health.new
+    @health = ManageIQ::Health.new
     @health.check
   end
 end

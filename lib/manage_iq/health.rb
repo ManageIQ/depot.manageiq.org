@@ -1,4 +1,4 @@
-module Supermarket
+module ManageIQ
   class Health
     #
     # This class encapsulates the logic used to perform health checks on the

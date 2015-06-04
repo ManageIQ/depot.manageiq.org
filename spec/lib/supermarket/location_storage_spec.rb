@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Supermarket::LocationStorage do
+describe ManageIQ::LocationStorage do
   subject do
     Class.new(ActionController::Base) do
-      include Supermarket::LocationStorage
+      include ManageIQ::LocationStorage
 
       def request
         Struct.new(:path).new('/profile')

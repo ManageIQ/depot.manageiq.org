@@ -1,6 +1,6 @@
 require 'pundit'
 
-module Supermarket
+module ManageIQ
   module Authorization
     include Pundit
     extend ActiveSupport::Concern

@@ -61,7 +61,7 @@ class Api::V1::ExtensionUploadsController < Api::V1Controller
             )
           end
 
-          Supermarket::Metrics.increment 'extension.version.published'
+          ManageIQ::Metrics.increment 'extension.version.published'
           UniverseCache.flush
 
           render :create, status: 201
@@ -94,7 +94,7 @@ class Api::V1::ExtensionUploadsController < Api::V1Controller
 
       if @extension.destroyed?
         ExtensionDeletionWorker.perform_async(@extension.as_json)
-        Supermarket::Metrics.increment 'extension.deleted'
+        ManageIQ::Metrics.increment 'extension.deleted'
         UniverseCache.flush
       end
     end

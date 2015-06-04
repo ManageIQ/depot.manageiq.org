@@ -9,7 +9,7 @@ class ExtensionVersionsController < ApplicationController
   def download
     ExtensionVersion.increment_counter(:web_download_count, @version.id)
     Extension.increment_counter(:web_download_count, @extension.id)
-    Supermarket::Metrics.increment('extension.downloads.web')
+    ManageIQ::Metrics.increment('extension.downloads.web')
 
     redirect_to @version.tarball.url
   end

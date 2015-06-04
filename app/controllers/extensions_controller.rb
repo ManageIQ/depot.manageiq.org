@@ -1,5 +1,5 @@
 class ExtensionsController < ApplicationController
-  before_filter :assign_extension, except: [:index, :directory]
+  before_filter :assign_extension, except: [:index, :directory, :new, :create]
   before_filter :store_location_then_authenticate_user!, only: [:follow, :unfollow, :adoption]
 
   #
@@ -44,6 +44,15 @@ class ExtensionsController < ApplicationController
       format.html
       format.atom
     end
+  end
+
+  #
+  # GET /extensions/new
+  #
+  # Show a form for creating a new extension.
+  #
+  def new
+    @extension = Extension.new
   end
 
   #
@@ -135,7 +144,7 @@ class ExtensionsController < ApplicationController
   #
   def follow
     @extension.extension_followers.create(user: current_user)
-    Supermarket::Metrics.increment 'extension.followed'
+    ManageIQ::Metrics.increment 'extension.followed'
 
     render_follow_button
   end
@@ -149,7 +158,7 @@ class ExtensionsController < ApplicationController
     extension_follower = @extension.extension_followers.
       where(user: current_user).first!
     extension_follower.destroy
-    Supermarket::Metrics.increment 'extension.unfollowed'
+    ManageIQ::Metrics.increment 'extension.unfollowed'
 
     render_follow_button
   end

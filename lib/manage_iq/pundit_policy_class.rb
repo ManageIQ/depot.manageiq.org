@@ -1,4 +1,4 @@
-module Supermarket
+module ManageIQ
   module PunditPolicyClass
     extend ActiveSupport::Concern
 

@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :define_search
 
-  include Supermarket::Authorization
-  include Supermarket::Authentication
-  include Supermarket::LocationStorage
+  include ManageIQ::Authorization
+  include ManageIQ::Authentication
+  include ManageIQ::LocationStorage
   include CustomUrlHelper
 
   rescue_from(

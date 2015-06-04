@@ -1,4 +1,4 @@
-module Supermarket
+module ManageIQ
   module LocationStorage
     #
     # Stores the current request URL or the root URL

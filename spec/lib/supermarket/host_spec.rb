@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Supermarket::Host do
+describe ManageIQ::Host do
   include_context 'env stashing'
 
   describe '#full_url' do

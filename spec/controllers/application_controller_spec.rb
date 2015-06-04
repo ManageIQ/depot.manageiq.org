@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe ApplicationController do
-  it { should be_a(Supermarket::Authorization) }
-  it { should be_a(Supermarket::LocationStorage) }
+  it { should be_a(ManageIQ::Authorization) }
+  it { should be_a(ManageIQ::LocationStorage) }
 
   describe 'a controller which responds to specific formats' do
     controller do

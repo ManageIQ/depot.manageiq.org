@@ -24,7 +24,7 @@ class Api::V1::ExtensionVersionsController < Api::V1Controller
 
     ExtensionVersion.increment_counter(:api_download_count, @extension_version.id)
     Extension.increment_counter(:api_download_count, @extension.id)
-    Supermarket::Metrics.increment('extension.downloads.api')
+    ManageIQ::Metrics.increment('extension.downloads.api')
 
     redirect_to @extension_version.tarball.url
   end

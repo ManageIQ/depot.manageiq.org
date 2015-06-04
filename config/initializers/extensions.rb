@@ -1,3 +1,3 @@
-require 'supermarket/pundit_policy_class'
+require 'manage_iq/pundit_policy_class'
 
-ActiveRecord::Base.send(:extend, Supermarket::PunditPolicyClass)
+ActiveRecord::Base.send(:extend, ManageIQ::PunditPolicyClass)

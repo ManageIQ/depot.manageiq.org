@@ -1,4 +1,4 @@
-module Supermarket
+module ManageIQ
   module Authentication
     #
     # Include the following methods as helper methods.
