@@ -1,6 +1,7 @@
 class ExtensionsController < ApplicationController
   before_filter :assign_extension, except: [:index, :directory, :new, :create]
   before_filter :store_location_then_authenticate_user!, only: [:follow, :unfollow, :adoption]
+  before_filter :authenticate_user!, only: [:new, :create]
 
   #
   # GET /extensions
