@@ -27,13 +27,13 @@ describe ExtractExtensionCollaboratorsWorker do
   end
 
   it "adds each collaborator returned with at least one commit" do
-    expect(AddExtensionCollaborator).to receive(:new).with(extension, "test1")
-    expect(AddExtensionCollaborator).to receive(:new).with(extension, "test3")
+    expect(AddExtensionCollaborator).to receive(:new).with(extension, contributors[0])
+    expect(AddExtensionCollaborator).to receive(:new).with(extension, contributors[2])
     subject.perform(extension_id)
   end
 
   it "skips collaborators with zero commits" do
-    expect(AddExtensionCollaborator).not_to receive(:new).with(extension, "test2")
+    expect(AddExtensionCollaborator).not_to receive(:new).with(extension, contributors[1])
     subject.perform(extension_id)
   end
 

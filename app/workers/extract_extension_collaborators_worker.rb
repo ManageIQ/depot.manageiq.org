@@ -18,7 +18,7 @@ class ExtractExtensionCollaboratorsWorker
 
   def process_contributors
     @contributors.each do |c|
-      AddExtensionCollaborator.new(@extension, c[:login]).process! if c[:contributions] > 0
+      AddExtensionCollaborator.new(@extension, c).process! if c[:contributions] > 0
     end
   end
 end
