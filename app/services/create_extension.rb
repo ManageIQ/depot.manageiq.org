@@ -7,6 +7,8 @@ class CreateExtension
 
   def process!
     Extension.new(@params).tap do |extension|
+      extension.owner = @user
+
       if extension.valid? and repo_valid?(extension)
         extension.save
         CollectExtensionMetadataWorker.perform_async(extension.id)
