@@ -18,7 +18,7 @@ describe ExtractExtensionVersionWorker do
 
   it "creates a README based on the one returned from GitHub" do
     allow(octokit).to receive(:readme).with("cvincent/test", ref: "1.0") do
-      { name: "README.md", body: Base64.encode64("Hello world!") }
+      { name: "README.md", content: Base64.encode64("Hello world!") }
     end
 
     expect(versions).to receive(:create).with(readme: "Hello world!", readme_extension: "md")

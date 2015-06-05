@@ -23,8 +23,8 @@ describe ExtractExtensionVersionsWorker do
       ]
     end
 
-    expect(ExtractExtensionVersionWorker).to receive(:process_async).with(123, "1.0")
-    expect(ExtractExtensionVersionWorker).to receive(:process_async).with(123, "1.2")
+    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.0")
+    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.2")
 
     subject.perform(extension_id)
   end

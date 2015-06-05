@@ -18,7 +18,8 @@ class ExtractExtensionVersionWorker
 
   def fetch_readme
     readme = octokit.readme(@extension.github_repo, ref: @tag)
-    body = Base64.decode64(readme[:body])
+    puts readme.inspect
+    body = Base64.decode64(readme[:content])
     ext = "txt"
 
     if match = readme[:name].match(/\.[a-zA-Z0-9]+$/)

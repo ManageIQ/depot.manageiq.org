@@ -5,7 +5,7 @@ class ExtractExtensionVersionsWorker
     extension = Extension.find(extension_id)
 
     octokit.tags(extension.github_repo).each do |tag|
-      ExtractExtensionVersionWorker.process_async(extension.id, tag[:name])
+      ExtractExtensionVersionWorker.perform_async(extension.id, tag[:name])
     end
   end
 
