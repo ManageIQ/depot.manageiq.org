@@ -18,7 +18,6 @@ class ExtractExtensionVersionWorker
 
   def fetch_readme
     readme = octokit.readme(@extension.github_repo, ref: @tag)
-    puts readme.inspect
     body = Base64.decode64(readme[:content])
     ext = "txt"
 
