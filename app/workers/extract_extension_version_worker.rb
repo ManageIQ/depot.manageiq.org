@@ -11,7 +11,7 @@ class ExtractExtensionVersionWorker
     @tag = tag
     @extension = Extension.find(extension_id)
     readme_body, readme_ext = fetch_readme
-    @extension.extension_versions.create(readme: readme_body, readme_extension: readme_ext)
+    @extension.extension_versions.create!(version: tag, readme: readme_body, readme_extension: readme_ext)
   end
 
   private

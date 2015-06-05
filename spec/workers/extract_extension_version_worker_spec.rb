@@ -21,7 +21,7 @@ describe ExtractExtensionVersionWorker do
       { name: "README.md", content: Base64.encode64("Hello world!") }
     end
 
-    expect(versions).to receive(:create).with(readme: "Hello world!", readme_extension: "md")
+    expect(versions).to receive(:create!).with(version: "1.0", readme: "Hello world!", readme_extension: "md")
 
     subject.perform(extension_id, tag)
   end
@@ -29,7 +29,7 @@ describe ExtractExtensionVersionWorker do
   it "creates a default README if one is missing" do
     allow(octokit).to receive(:readme).with("cvincent/test", ref: "1.0").and_raise(Octokit::NotFound)
 
-    expect(versions).to receive(:create).with(readme: "No readme found!", readme_extension: "txt")
+    expect(versions).to receive(:create!).with(version: "1.0", readme: "No readme found!", readme_extension: "txt")
 
     subject.perform(extension_id, tag)
   end
