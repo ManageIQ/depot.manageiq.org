@@ -17,19 +17,8 @@
 
 set -e
 
-echo "Stopping the default server..."
-gear stop
-
-echo "Starting Redis..."
-pushd ${OPENSHIFT_REDIS_DIR} > /dev/null
-bin/control start
-
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 echo "Starting sidekiq..."
 bundle exec "sidekiq -d -r ./initialize.rb -P '${OPENSHIFT_DATA_DIR}sidekiq.pid' -L '${OPENSHIFT_DATA_DIR}sidekiq.log'"
-
-pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-nohup bundle exec "rackup config.ru -s puma -E production" &> ${OPENSHIFT_DATA_DIR}puma.log &
-echo $! > "${OPENSHIFT_DATA_DIR}puma.pid"
 
 exit 0
