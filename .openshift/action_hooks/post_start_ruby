@@ -13,4 +13,5 @@
 # Application start and stop is subject to different timeouts
 # throughout the system.
 
-bundle exec sidekiq
+cd $OPENSHIFT_REPO_DIR
+nohup bundle exec sidekiq > $OPENSHIFT_LOG_DIR/sidekiq.log 2>&1 &
