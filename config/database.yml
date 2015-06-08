@@ -1,8 +1,21 @@
+<% if File.exists?(File.expand_path('./.env', __FILE__)) %>
 development:
   adapter: postgresql
   database: supermarket_development
   host: localhost
   pool: 30
+<% else %>
+development:
+  adapter: postgresql
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
+  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
+  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
+  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
+  port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
+  pool: 30
+  min_messages: ERROR
+  reconnect: false
+<% end %>
 
 test:
   adapter: postgresql
