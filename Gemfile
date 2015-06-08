@@ -71,9 +71,6 @@ group :doc do
 end
 
 group :development do
-  if File.exists?(File.expand_path("../.env", __FILE__))
-    gem "rhc"
-  end
   gem "sinatra", require: false
   gem 'license_finder'
   gem 'spring'
