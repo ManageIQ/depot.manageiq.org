@@ -36,23 +36,3 @@ pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 echo "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 popd > /dev/null
-
-# Sidekiq
-
-if [ -f "${OPENSHIFT_DATA_DIR}sidekiq.pid" ]; then
-  echo "Stopping Sidekiq..."
-  SIDEKIQ_PID=$(cat "${OPENSHIFT_DATA_DIR}sidekiq.pid")
-  ps -p $SIDEKIQ_PID &> /dev/null
-  [ "$?" == 0 ] && kill $SIDEKIQ_PID
-  rm "${OPENSHIFT_DATA_DIR}sidekiq.pid" &> /dev/null
-fi
-
-if [ -f "${OPENSHIFT_DATA_DIR}puma.pid" ]; then
-  echo "Stopping Puma..."
-  PUMA_PID=$(cat "${OPENSHIFT_DATA_DIR}puma.pid")
-  ps -p $PUMA_PID &> /dev/null
-  [ "$?" == 0 ] && kill $PUMA_PID
-  rm "${OPENSHIFT_DATA_DIR}puma.pid" &> /dev/null
-fi
-
-exit 0

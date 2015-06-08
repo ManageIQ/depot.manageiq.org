@@ -13,12 +13,3 @@
 # Application start and stop is subject to different timeouts
 # throughout the system.
 
-# Sidekiq
-
-set -e
-
-pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-echo "Starting sidekiq..."
-bundle exec "sidekiq -d -r ./initialize.rb -P '${OPENSHIFT_DATA_DIR}sidekiq.pid' -L '${OPENSHIFT_DATA_DIR}sidekiq.log'"
-
-exit 0
