@@ -18,7 +18,7 @@ class ExtractExtensionCollaboratorsWorker
 
   def process_contributors
     @contributors.each do |c|
-      AddExtensionCollaborator.new(@extension, c).process! if c[:contributions] > 0
+      ExtractExtensionCollaboratorWorker.perform_async(@extension.id, c[:login]) if c[:contributions] > 0
     end
   end
 end
