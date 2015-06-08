@@ -71,6 +71,7 @@ group :doc do
 end
 
 group :development do
+  gem "rhc"
   gem "sinatra", require: false
   gem 'license_finder'
   gem 'spring'
