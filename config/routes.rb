@@ -124,8 +124,6 @@ ManageIQ::Application.routes.draw do
   get 'robots.:format' => 'pages#robots'
   root 'pages#welcome'
 
-  if Rails.env.development?
-    require "sidekiq/web"
-    mount Sidekiq::Web => "/sidekiq"
-  end
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 end
