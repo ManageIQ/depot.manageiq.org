@@ -91,7 +91,7 @@ module ManageIQ
     # Set default from email for ActionMailer
     ActionMailer::Base.default from: ENV['FROM_EMAIL']
 
-    Logger.info "ENVIRONMENT: #{ENV.inspect}"
+    Rails.logger.info "ENVIRONMENT: #{ENV.inspect}"
 
     config.octokit = Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
   end
