@@ -24,5 +24,4 @@ after_fork do |_server, _worker|
     ActiveRecord::Base.establish_connection
 end
 
-listen Integer(ENV['PORT'] || 3000)
-
+listen "/tmp/unicorn.manageiq.sock"
