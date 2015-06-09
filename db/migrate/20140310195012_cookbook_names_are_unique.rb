@@ -4,9 +4,7 @@ class CookbookNamesAreUnique < ActiveRecord::Migration
       t.string :lowercase_name
     end
 
-    Cookbook.reset_column_information
-
-    Cookbook.update_all('lowercase_name = LOWER(name)')
+    execute("UPDATE cookbooks SET lowercase_name = LOWER(name)")
 
     add_index :cookbooks, :lowercase_name, unique: true
   end
