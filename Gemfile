@@ -67,6 +67,7 @@ gem 'compass-rails'
 gem 'uglifier',     '~> 2.2'
 
 gem "capistrano", "~> 3.4.0"
+gem "sinatra", require: false
 
 group :doc do
   gem 'yard', require: false
@@ -76,7 +77,6 @@ group :development do
   gem "capistrano-rbenv"
   gem "capistrano-rails"
   gem "capistrano3-unicorn"
-  gem "sinatra", require: false
   gem 'license_finder'
   gem 'spring'
   gem 'spring-commands-rspec'
