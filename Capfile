@@ -4,8 +4,12 @@ require "capistrano/setup"
 # Include default deployment tasks
 require "capistrano/deploy"
 
+require "capistrano/rbenv"
 require "capistrano/rails"
 require "capistrano3/unicorn"
+
+set :rbenv_type, :user
+set :rbenv_ruby, "2.1.5"
 
 # Include tasks from other gems included in your Gemfile
 #

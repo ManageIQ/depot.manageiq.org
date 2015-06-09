@@ -73,6 +73,7 @@ group :doc do
 end
 
 group :development do
+  gem "capistrano-rbenv"
   gem "capistrano-rails"
   gem "capistrano3-unicorn"
   gem "sinatra", require: false
