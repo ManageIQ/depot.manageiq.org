@@ -1,6 +1,8 @@
 stderr_path "/var/www/manageiq/shared/log/unicorn.stderr.log"
 stdout_path "/var/www/manageiq/shared/log/unicorn.stdout.log"
 
+pid "/var/www/manageiq/current/tmp/pids/unicorn.pid"
+
 worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3)
 timeout 15
 preload_app true
