@@ -8,6 +8,6 @@ class AdjustCookbookUpdatedAtDates < ActiveRecord::Migration
 
     #   cookbook.updated_at = latest_version_creation_date
     #   cookbook.save(validate: false)
-    end
+    # end
   end
 end
