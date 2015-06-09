@@ -8,7 +8,7 @@ ruby '2.1.5'
 #   "https://github.com/#{repo_name}.git"
 # end
 
-gem 'rake', '~> 0.9.6'
+gem 'rake'
 
 gem 'rails', '~> 4.1.4'
 
@@ -66,11 +66,14 @@ gem 'sass-rails',   '~> 4.0.4'
 gem 'compass-rails'
 gem 'uglifier',     '~> 2.2'
 
+gem "capistrano", "~> 3.4.0"
+
 group :doc do
   gem 'yard', require: false
 end
 
 group :development do
+  gem "capistrano3-unicorn"
   gem "sinatra", require: false
   gem 'license_finder'
   gem 'spring'
@@ -107,4 +110,9 @@ group :development, :test do
   # to 1.0.0 release when added
   gem 'and_feathers', '>= 1.0.0.pre', require: false
   gem 'and_feathers-gzipped_tarball', '>= 1.0.0.pre', require: false
+end
+
+group :production do
+  gem "unicorn"
+  gem "unicorn-rails"
 end
