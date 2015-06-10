@@ -27,12 +27,13 @@ Rails.application.config.middleware.use(OmniAuth::Builder) do
     client_options[:site] = ENV['CHEF_OAUTH2_URL']
   end
 
-  provider(
+  puts provider(
     :github,
     ENV['GITHUB_KEY'],
     ENV['GITHUB_SECRET'],
     client_options: client_options
-  )
+  ).inspect
+  puts "KEY: #{ENV['GITHUB_KEY']}"
 
   provider(
     :chef_oauth2,
