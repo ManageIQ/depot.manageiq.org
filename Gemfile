@@ -77,6 +77,7 @@ group :development do
   gem "capistrano-rbenv"
   gem "capistrano-rails"
   gem "capistrano3-unicorn"
+  gem "capistrano-sidekiq"
   gem 'license_finder'
   gem 'spring'
   gem 'spring-commands-rspec'
