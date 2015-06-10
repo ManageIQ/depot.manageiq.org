@@ -118,6 +118,10 @@ class Extension < ActiveRecord::Base
     @sorted_extension_versions ||= extension_versions.sort_by { |v| Semverse::Version.new(v.version) }.reverse
   end
 
+  def tags
+    ""
+  end
+
   #
   # Transfers ownership of this extension to someone else. If the user id passed
   # in represents someone that is already a collaborator on this extension, or

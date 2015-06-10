@@ -17,8 +17,11 @@
           <small class="error">Description is required.</small>
         </div>
         <div class="github_url-field">
-          <%= f.text_field :github_url, placeholder: "Github Url", title: "Github Url", required: true, pattern: "((https?://)?(www\.)?github\.com/)?[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+" %>
+          <%= f.text_field :github_url, placeholder: "Github URL", title: "Github URL", required: true, pattern: "((https?://)?(www\.)?github\.com/)?[a-zA-Z0-9_-]+/[a-zA-Z0-9_-]+" %>
           <small class="error">Github Url is required.</small>
+        </div>
+        <div class="tags-field">
+          <%= f.text_field :tags, placeholder: "Tags", title: "Tags", class: "tokenfield" %>
         </div>
       </fieldset>
 

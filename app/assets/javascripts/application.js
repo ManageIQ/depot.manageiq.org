@@ -32,6 +32,7 @@
 //= require organizations
 //= require tools
 //= require searchToggle
+//= require vendor/bootstrap-tokenfield
 
 // Hack to resolve bug with Foundation. Resolved in master
 // here: https://github.com/zurb/foundation/issues/4684 so
@@ -46,4 +47,6 @@ $(function(){
   jQuery.extend(window.Foundation.libs.abide.settings.patterns, {
     'password': /[a-zA-Z]+/,
   });
+
+  jQuery(".tokenfield").tokenfield();
 });
