@@ -78,6 +78,8 @@ class Extension < ActiveRecord::Base
   belongs_to :replacement, class_name: 'Extension', foreign_key: :replacement_id
   has_many :collaborators, as: :resourceable, dependent: :destroy
   has_many :collaborator_users, through: :collaborators, source: :user
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
 
   # Delegations
   # --------------------
@@ -118,9 +120,11 @@ class Extension < ActiveRecord::Base
     @sorted_extension_versions ||= extension_versions.sort_by { |v| Semverse::Version.new(v.version) }.reverse
   end
 
-  def tags
-    ""
-  end
+  #
+  # Form placeholder.
+  # @return [String]
+  #
+  attr_accessor :tag_tokens
 
   #
   # Transfers ownership of this extension to someone else. If the user id passed
