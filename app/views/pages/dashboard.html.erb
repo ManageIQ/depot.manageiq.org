@@ -45,13 +45,7 @@
       </ul>
       <%= link_to 'View All of Your Extensions', current_user, class: 'button radius small expand' %>
     <% else %>
-      <p><strong>Looking to upload your extensions?</strong></p>
-      <ol>
-        <li>Ensure you have a Chef repo configured with your private key</li>
-        <li>Share your extension with <code>knife extension site share EXTENSION_NAME CATEGORY (options)</code></li>
-      </ol>
-
-      <p><%= link_to 'Read the full share docs.', chef_docs_url('knife_extension_site.html#share'), target: '_blank' %></p>
+      <%= link_to "Share an Extension", new_extension_path, class: 'button secondary radius expand' %>
     <% end %>
 
     <h3>Extensions You Collaborate On</h3>
