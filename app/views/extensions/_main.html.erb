@@ -46,58 +46,12 @@
 
   <p itemprop="description"><%= extension.description %></p>
 
-  <%= render 'extensions/installs', extension: extension, version: version %>
-
   <dl class="tabs" data-tab data-options="deep_linking:true">
     <dd class="active"><a href="#readme">README</a></dd>
-    <dd><a href="#dependencies" rel="extension_dependencies">Dependencies</a></dd>
-    <% if version.try(:changelog) %>
-      <dd><a href="#changelog" rel="changelog">Changelog</a></dd>
-    <% end %>
   </dl>
   <div class="tabs-content">
     <div class="content active" id="readme">
       <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
     </div>
-    <div class="content" id="dependencies">
-      <h3 class="dependent-header">Dependent extensions</h3>
-      <% if extension.extension_dependencies.present? %>
-        <table>
-          <tbody>
-            <%= render partial: 'extensions/dependency', collection: extension.extension_dependencies %>
-          </tbody>
-        </table>
-      <% else %>
-        <p>This extension has no specified dependencies.</p>
-      <% end %>
-
-      <h3 class="dependent-header">Contingent extensions</h3>
-      <% if extension.contingents.present? %>
-        <dl class="accordion contingents" data-accordion>
-          <% extension.contingents.group_by { |c| c.extension_version.extension.name }.each do |extension, contingents| %>
-            <dd class="accordion-navigation">
-              <a href="#panel-<%= extension %>">
-                <%= extension %>
-                <span class="right">Applicable Versions <i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
-              </a>
-              <div id="panel-<%= extension %>" class="content">
-                <table>
-                  <tbody>
-                    <%= render partial: 'extensions/contingent', collection: contingents %>
-                  </tbody>
-                </table>
-              </div>
-            </dd>
-          <% end %>
-        </dl>
-      <% else %>
-        <p>There are no extensions that are contingent upon this one.</p>
-      <% end %>
-    </div>
-    <% if version.try(:changelog) %>
-      <div class="content" id="changelog">
-        <%= render_document(version.changelog, version.changelog_extension) %>
-      </div>
-    <% end %>
   </div>
 </div>
