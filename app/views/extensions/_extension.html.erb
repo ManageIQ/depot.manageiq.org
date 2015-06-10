@@ -38,23 +38,6 @@
   </div>
   <div class="bottom">
     <div class="bottom-content">
-      <div class="extension_platforms_content show-for-medium-up">
-        <h5>Supported Platforms</h5>
-        <ul class="extension_platforms">
-          <% if extension.supported_platforms.present? %>
-            <% extension.supported_platforms.each do |platform| %>
-              <li class="extension_platform_icon has-tip" title="<%= platform.name %> <%= platform.version_constraint %>" data-tooltip data-icon="<%= supported_platform_icon(platform) %>">
-                <span><%= platform.name %></span>
-              </li>
-            <% end %>
-          <% else %>
-            <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
-              <span class="fa fa-question-circle"></span>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
       <ul class="extension_stats">
         <li>
           <i class="fa fa-inbox"></i>
