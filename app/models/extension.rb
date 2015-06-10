@@ -48,18 +48,19 @@ class Extension < ActiveRecord::Base
   pg_search_scope(
     :search,
     against: {
-      name: 'A'
+      name: "A"
     },
     associated_against: {
-      github_account: { username: 'B' },
-      extension_versions: { description: 'C' }
+      tags: { name: "B" },
+      github_account: { username: "C" },
+      extension_versions: { description: "D" }
     },
     using: {
-      tsearch: { dictionary: 'english', only: [:username, :description], prefix: true },
+      tsearch: { dictionary: "english", only: [:username, :description], prefix: true },
       trigram: { only: [:name] }
     },
-    ranked_by: ':trigram + (0.5 * :tsearch)',
-    order_within_rank: 'extensions.name'
+    ranked_by: ":trigram + (0.5 * :tsearch)",
+    order_within_rank: "extensions.name"
   )
 
   # Callbacks
@@ -78,6 +79,7 @@ class Extension < ActiveRecord::Base
   belongs_to :replacement, class_name: 'Extension', foreign_key: :replacement_id
   has_many :collaborators, as: :resourceable, dependent: :destroy
   has_many :collaborator_users, through: :collaborators, source: :user
+
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
