@@ -33,6 +33,8 @@
 //= require tools
 //= require searchToggle
 //= require vendor/bootstrap-tokenfield
+//= require vendor/twitter-typeahead
+//= require vendor/twitter-bloodhound
 
 // Hack to resolve bug with Foundation. Resolved in master
 // here: https://github.com/zurb/foundation/issues/4684 so
@@ -48,5 +50,19 @@ $(function(){
     'password': /[a-zA-Z]+/,
   });
 
-  jQuery(".tokenfield").tokenfield();
+  jQuery(".tokenfield").each(function(i, e) {
+    var el = jQuery(e);
+    var values = el.data("autofill");
+
+    var engine = new Bloodhound({
+      local: values,
+      datumTokenizer: function(d) { return d.split(","); },
+      queryTokenizer: function(v) { return v.split(",") }
+    });
+
+    engine.initialize();
+
+    el.tokenfield({ typeahead: [null, { source: engine.ttAdapter() }] });
+  });
 });
+
