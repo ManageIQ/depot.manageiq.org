@@ -365,14 +365,15 @@ ActiveRecord::Schema.define(version: 20150610204258) do
 
   create_table "taggings", force: true do |t|
     t.integer  "taggable_id"
+    t.string   "taggable_type"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "tag_id"], name: "index_taggings_on_taggable_id_and_tag_id", unique: true, using: :btree
-  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "tag_id"], name: "index_taggings_on_taggable_id_and_taggable_type_and_tag_id", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
