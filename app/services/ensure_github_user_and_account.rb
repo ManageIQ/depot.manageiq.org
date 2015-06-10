@@ -29,8 +29,8 @@ class EnsureGithubUserAndAccount
       email: @github_user[:email]
     )
 
-    account.save(validate: false)
     account.user.save(validate: false)
+    account.save(validate: false)
 
     return account.user, account
   end
