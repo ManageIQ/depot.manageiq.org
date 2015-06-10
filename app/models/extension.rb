@@ -76,7 +76,7 @@ class Extension < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_one :github_account, through: :owner
   belongs_to :replacement, class_name: 'Extension', foreign_key: :replacement_id
-  has_many :collaborators, as: :resourceable
+  has_many :collaborators, as: :resourceable, dependent: :destroy
   has_many :collaborator_users, through: :collaborators, source: :user
 
   # Delegations
