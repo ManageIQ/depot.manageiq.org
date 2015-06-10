@@ -30,7 +30,7 @@ class EnsureGithubUserAndAccount
     )
 
     account.save(validate: false)
-    account.user.save!
+    account.user.save(validate: false)
 
     return account.user, account
   end
