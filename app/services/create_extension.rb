@@ -1,6 +1,7 @@
 class CreateExtension
   def initialize(params, user, github)
     @params = params
+    @tags = params[:tag_tokens]
     @user = user
     @github = github
   end
@@ -10,7 +11,11 @@ class CreateExtension
       extension.owner = @user
 
       if extension.valid? and repo_valid?(extension)
-        extension.save
+        ActiveRecord::Base.transaction do
+          extension.save
+          create_tags(extension)
+        end
+
         CollectExtensionMetadataWorker.perform_async(extension.id)
       end
     end
@@ -28,5 +33,11 @@ class CreateExtension
     if !result then extension.errors[:github_url] = I18n.t("extension.github_url_format_error") end
 
     result
+  end
+
+  def create_tags(extension)
+    (@tags || "").split(",").map(&:strip).each do |tag|
+      extension.taggings.add(tag)
+    end
   end
 end

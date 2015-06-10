@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe CreateExtension do
-  let(:params) { { name: "asdf", description: "desc", github_url: "cvincent/test" } }
+  let(:params) { { name: "asdf", description: "desc", github_url: "cvincent/test", tag_tokens: "tag1, tag2" } }
   let(:user) { double(:user, github_account: github_account) }
   let(:github_account) { double(:github_account, username: "some_user") }
   let(:github) { double(:github) }
@@ -17,12 +17,15 @@ describe CreateExtension do
   end
 
   let(:errors) { double(:errors) }
+  let(:taggings) { double(:taggings) }
 
   subject { CreateExtension.new(params, user, github) }
 
   before do
     allow(Extension).to receive(:new) { extension }
     allow(extension).to receive(:owner=).with(user)
+    allow(extension).to receive(:taggings) { taggings }
+    allow(taggings).to receive(:add)
     allow(github).to receive(:collaborator?).with("cvincent/test", "some_user") { true }
     stub_const("CollectExtensionMetadataWorker", Class.new)
     allow(CollectExtensionMetadataWorker).to receive(:perform_async)
@@ -31,6 +34,12 @@ describe CreateExtension do
   it "saves a valid extension, returning the extension" do
     expect(extension).to receive(:owner=).with(user)
     expect(extension).to receive(:save)
+    expect(subject.process!).to be(extension)
+  end
+
+  it "adds tags" do
+    expect(taggings).to receive(:add).with("tag1")
+    expect(taggings).to receive(:add).with("tag2")
     expect(subject.process!).to be(extension)
   end
 
