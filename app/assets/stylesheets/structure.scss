@@ -292,8 +292,8 @@ pre {
     }
 
     a.button {
-      background-color: darken($clouds, 5%);
-      color: $concrete;
+      background-color: $primary-color;
+      color: white;
       font: {
         size: rem-calc(14);
         weight: $normal;
@@ -303,8 +303,8 @@ pre {
       text-transform: none;
 
       &:hover {
-        background-color: darken($clouds, 10%);
-        color: darken($concrete, 5%);
+        background-color: darken($primary-color, 10%);
+        color: white;
       }
 
       &.dropdown {

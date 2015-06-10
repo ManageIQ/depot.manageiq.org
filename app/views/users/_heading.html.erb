@@ -1,7 +1,9 @@
 <div class="heading-with-buttons">
   <h1 class="title"><%= title %></h1>
 
-  <div class="buttons">
-    <%= link_to "Extensions", user, class: "button radius secondary #{'active' if active == 'extensions'}", rel: "view_extensions" %>
-  </div>
+  <% if current_user == user %>
+    <div class="buttons">
+      <%= link_to "Share an Extension", new_extension_path, class: "button radius primary", rel: "new_extension" %>
+    </div>
+  <% end %>
 </div>
