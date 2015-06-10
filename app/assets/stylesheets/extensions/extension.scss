@@ -4,7 +4,7 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/inline-block";
 
-.cookbook_stats {
+.extension_stats {
   list-style: none;
   float: right;
   margin: 0;
@@ -58,13 +58,13 @@
   }
 }
 
-// Cookbook row element
-.cookbook_body {
+// Extension row element
+.extension_body {
   @include grid-row();
 }
 
-// Cookbooks sidebar column
-.cookbook_sidebar {
+// Extensions sidebar column
+.extension_sidebar {
   @include grid-column($columns: 3, $collapse: true);
 
   ul {
@@ -137,7 +137,7 @@
 }
 
 @media #{$mobile-only} {
-  .cookbook_sidebar {
+  .extension_sidebar {
     @include grid-row();
 
     ul {
@@ -182,7 +182,7 @@
 }
 
 @media #{$small-only} {
-  .cookbook_sidebar {
+  .extension_sidebar {
     @include grid-row();
 
     ul {
@@ -222,7 +222,7 @@
   }
 }
 
-.cookbook_sidebar_heading {
+.extension_sidebar_heading {
   border-bottom: rem-calc(2) solid lighten($secondary_gray, 35%);
   color: $concrete;
   font: {
@@ -235,13 +235,13 @@
 }
 
 @media #{$mobile-only} {
-  .cookbook_sidebar_heading {
+  .extension_sidebar_heading {
     display: none;
   }
 }
 
 @media #{$small-only} {
-  .cookbook_sidebar_heading {
+  .extension_sidebar_heading {
     display: none;
   }
 }
