@@ -11,7 +11,7 @@ class ExtensionVersionsController < ApplicationController
     Extension.increment_counter(:web_download_count, @extension.id)
     ManageIQ::Metrics.increment('extension.downloads.web')
 
-    redirect_to @version.tarball.url
+    redirect_to @version.download_url
   end
 
   #

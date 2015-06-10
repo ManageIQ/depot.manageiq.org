@@ -8,30 +8,11 @@ class ExtensionVersion < ActiveRecord::Base
   has_many :extension_dependencies, dependent: :destroy
   belongs_to :extension
 
-  # Attachments
-  # --------------------
-  has_attached_file :tarball
-
   # Validations
   # --------------------
   validates :readme, presence: true
   validates :version, presence: true, uniqueness: { scope: :extension }
   validate :semantic_version
-  validates_attachment(
-    :tarball,
-    content_type: {
-      content_type: ['application/x-gzip', 'application/gzip',
-                     'application/octet-stream', 'application/x-tar',
-                     'application/x-compressed-tar', 'application/x-gtar',
-                     'application/x-bzip2', 'application/gzipped-tar',
-                     'application/x-compressed', 'application/download',
-                     'application/x-gtar-compressed', 'application/zip',
-                     'application/x-bzip', 'application/x-zip-compressed',
-                     'application/cap', 'application/x-tar-gz',
-                     'application/postscript', 'application/x-targz'],
-      message: ->(_, info) { "can not be #{info[:value]}." }
-    }
-  )
 
   # Delegations
   # --------------------
@@ -48,6 +29,10 @@ class ExtensionVersion < ActiveRecord::Base
   #
   def to_param
     version
+  end
+
+  def download_url
+    "https://github.com/#{extension.github_repo}/archive/#{version}.zip"
   end
 
   #
