@@ -1,19 +1,24 @@
 class ExtractExtensionVersionWorker
   include Sidekiq::Worker
 
-  def perform(extension_id, tag)
+  def perform(extension_id, tag, compatible_platforms)
     return if not semver?(tag)
 
     @tag = tag
     @extension = Extension.find(extension_id)
+    @compatible_platforms = SupportedPlatform.find(compatible_platforms)
 
     readme_body, readme_ext = fetch_readme
 
-    @extension.extension_versions.create!(
+    version = @extension.extension_versions.create!(
       version: tag,
       readme: readme_body,
       readme_extension: readme_ext
     )
+
+    @compatible_platforms.each do |p|
+      version.extension_version_platforms.create(supported_platform_id: p.id)
+    end
   end
 
   private

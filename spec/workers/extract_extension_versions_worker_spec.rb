@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe ExtractExtensionVersionsWorker do
   let(:extension_id) { 123 }
+  let(:compatible_platforms) { ["1", "2"] }
 
   let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test") }
   let(:octokit) { double(:octokit) }
@@ -23,9 +24,9 @@ describe ExtractExtensionVersionsWorker do
       ]
     end
 
-    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.0")
-    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.2")
+    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.0", compatible_platforms)
+    expect(ExtractExtensionVersionWorker).to receive(:perform_async).with(123, "1.2", compatible_platforms)
 
-    subject.perform(extension_id)
+    subject.perform(extension_id, compatible_platforms)
   end
 end
