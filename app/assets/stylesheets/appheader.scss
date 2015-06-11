@@ -63,8 +63,8 @@
   background-color: #222;
 }
 
-.logochef {
-  background: url(image-path('logo-supermarket.svg')) no-repeat;
+.logomanageiq {
+  background: url(image-path('logo-manageiq.svg')) no-repeat;
   @include background-size(rem-calc(140) rem-calc(36));
   float: left;
   height: rem-calc(36);
@@ -72,7 +72,7 @@
   width: rem-calc(140);
 
   .no-svg & {
-    background: url(image-path('logo-supermarket.png')) no-repeat;
+    background: url(image-path('logo-manageiq.png')) no-repeat;
   }
 
   a {
