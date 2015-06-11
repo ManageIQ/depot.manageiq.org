@@ -1,5 +1,3 @@
-require 'active_model/validations/chef_version_constraint_validator'
-
 class SupportedPlatform < ActiveRecord::Base
   include SeriousErrors
 
@@ -10,23 +8,6 @@ class SupportedPlatform < ActiveRecord::Base
 
   # Validations
   # --------------------
-  validates :name, presence: true, uniqueness: { scope: :version_constraint }
-  validates :version_constraint, chef_version_constraint: true
-
-  #
-  # Creates or returns a SupportedPlatform, as necessary, given the name and
-  # version information.
-  #
-  # @param name [String] the platform name
-  # @param version [String] the version constraint
-  #
-  def self.for_name_and_version(name, version)
-    platform = where(name: name, version_constraint: version).first
-
-    if platform
-      platform
-    else
-      create! name: name, version_constraint: version
-    end
-  end
+  validates :name, presence: true
+  validates :released_on, presence: true
 end

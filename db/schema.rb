@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610204258) do
+ActiveRecord::Schema.define(version: 20150611190657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,13 +349,11 @@ ActiveRecord::Schema.define(version: 20150610204258) do
   add_index "ownership_transfer_requests", ["token"], name: "index_ownership_transfer_requests_on_token", unique: true, using: :btree
 
   create_table "supported_platforms", force: true do |t|
-    t.string   "name",                                    null: false
-    t.string   "version_constraint", default: ">= 0.0.0", null: false
+    t.string   "name",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "released_on", null: false
   end
-
-  add_index "supported_platforms", ["name", "version_constraint"], name: "index_supported_platforms_on_name_and_version_constraint", unique: true, using: :btree
 
   create_table "system_emails", force: true do |t|
     t.string   "name",       null: false
