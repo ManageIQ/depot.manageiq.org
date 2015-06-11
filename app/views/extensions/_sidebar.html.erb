@@ -56,6 +56,21 @@
       <small>Created on <span itemprop="dateModified"><%= extension.created_at.to_s(:longish) %></span></small>
     </h4>
 
+    <h4><i class="fa fa-desktop"></i> Platforms</h4>
+    <ul class="extension_platforms">
+      <% if extension.supported_platforms.present? %>
+        <% supported_platforms.each do |platform| %>
+          <li title="<%= platform.name %>">
+            <%= platform.name %>
+          </li>
+        <% end %>
+      <% else %>
+        <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
+          <span class="fa fa-question-circle"></span>
+        </li>
+      <% end %>
+    </ul>
+
     <h4><i class="fa fa-key"></i> License</h4>
     <p><%= version.try(:license) %></p>
 
