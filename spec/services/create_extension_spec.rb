@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe CreateExtension do
-  let(:params) { { name: "asdf", description: "desc", github_url: "cvincent/test", tag_tokens: "tag1, tag2" } }
+  let(:params) { { name: "asdf", description: "desc", github_url: "cvincent/test", tag_tokens: "tag1, tag2", compatible_platforms: ["", "p1", "p2"] } }
   let(:user) { double(:user, github_account: github_account) }
   let(:github_account) { double(:github_account, username: "some_user") }
   let(:github) { double(:github) }
@@ -44,7 +44,7 @@ describe CreateExtension do
   end
 
   it "kicks off a worker to gather metadata about the valid extension" do
-    expect(CollectExtensionMetadataWorker).to receive(:perform_async).with(123)
+    expect(CollectExtensionMetadataWorker).to receive(:perform_async).with(123, ["p1", "p2"])
     expect(subject.process!).to be(extension)
   end
 

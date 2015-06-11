@@ -23,6 +23,11 @@
         <div class="tag_tokens-field">
           <%= f.text_field :tag_tokens, placeholder: "Tags", title: "Tags", class: "tokenfield", data: { autofill: ["yellow", "red", "blue"] } %>
         </div>
+
+        <h2>Compatible ManageIQ Versions</h2>
+        <div class="tag_tokens-field">
+          <%= f.select :compatible_platforms, SupportedPlatform.pluck(:name, :id), {}, multiple: true %>
+        </div>
       </fieldset>
 
       <%= f.submit "Add Extension", class: "button primary radius" %>

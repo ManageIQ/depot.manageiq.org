@@ -62,7 +62,7 @@ class ExtensionsController < ApplicationController
   # Create an extension.
   #
   def create
-    eparams = params.require(:extension).permit(:name, :description, :github_url, :tag_tokens)
+    eparams = params.require(:extension).permit(:name, :description, :github_url, :tag_tokens, compatible_platforms: [])
     create_extension = CreateExtension.new(eparams, current_user, github_client)
     @extension = create_extension.process!
 

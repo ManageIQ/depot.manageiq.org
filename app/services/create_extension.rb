@@ -2,6 +2,7 @@ class CreateExtension
   def initialize(params, user, github)
     @params = params
     @tags = params[:tag_tokens]
+    @compatible_platforms = params[:compatible_platforms]
     @user = user
     @github = github
   end
@@ -16,7 +17,7 @@ class CreateExtension
           create_tags(extension)
         end
 
-        CollectExtensionMetadataWorker.perform_async(extension.id)
+        CollectExtensionMetadataWorker.perform_async(extension.id, @compatible_platforms.select { |p| !p.strip.blank? })
       end
     end
   end
@@ -36,7 +37,7 @@ class CreateExtension
   end
 
   def create_tags(extension)
-    (@tags || "").split(",").map(&:strip).each do |tag|
+    (@tags || "").split(",").map(&:strip).uniq.each do |tag|
       extension.taggings.add(tag)
     end
   end

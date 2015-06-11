@@ -129,6 +129,12 @@ class Extension < ActiveRecord::Base
   attr_accessor :tag_tokens
 
   #
+  # Form placeholder.
+  # @return [Array]
+  #
+  attr_accessor :compatible_platforms
+
+  #
   # Transfers ownership of this extension to someone else. If the user id passed
   # in represents someone that is already a collaborator on this extension, or
   # if the User initiating this transfer is an admin, then we just assign the
