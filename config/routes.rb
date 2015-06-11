@@ -1,4 +1,10 @@
 ManageIQ::Application.routes.draw do
+  namespace :api do
+  namespace :v1 do
+    get 'tags/index'
+    end
+  end
+
   VERSION_PATTERN = /latest|([0-9_\-\.]+)/ unless defined?(VERSION_PATTERN)
 
   if Rails.env.development?
@@ -16,6 +22,8 @@ ManageIQ::Application.routes.draw do
       get 'extensions/:extension/versions/:version/download' => 'extension_versions#download', as: :extension_version_download, constraints: { version: VERSION_PATTERN }
       delete 'extensions/:extension/versions/:version' => 'extension_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
       get 'users/:user' => 'users#show', as: :user
+
+      resources :tags, only: [:index]
     end
   end
 

@@ -64,5 +64,19 @@ $(function(){
 
     el.tokenfield({ typeahead: [null, { source: engine.ttAdapter() }] });
   });
+
+  var tagEngine = new Bloodhound({
+    datumTokenizer: function(d) { return [d]; },
+    queryTokenizer: function(v) { return [v]; },
+    identify: function(d) { console.log(v); return v; },
+    remote: {
+      url: "/api/v1/tags?q=%QUERY",
+      wildcard: "%QUERY"
+    },
+  });
+
+  tagEngine.initialize();
+
+  jQuery(".extension_search_textfield").typeahead(null, { source: tagEngine.ttAdapter() });
 });
 
