@@ -19,6 +19,6 @@ class ExtractExtensionLicenseWorker
   private
 
   def octokit
-    @octokit ||= Rails.configuration.octokit
+    @octokit ||= @extension.octokit
   end
 end

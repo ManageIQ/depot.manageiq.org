@@ -412,6 +412,17 @@ class Extension < ActiveRecord::Base
     self.github_url.gsub("https://github.com/", "")
   end
 
+  #
+  # Returns an Octokit client configured for the Extension's owner.
+  #
+  # @ return [Ocotkit::Client]
+  #
+  def octokit
+    Rails.configuration.octokit.tap do |o|
+      o.access_token = owner.github_account.oauth_token
+    end
+  end
+
   private
 
   #

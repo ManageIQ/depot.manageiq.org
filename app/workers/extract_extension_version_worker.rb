@@ -45,7 +45,7 @@ class ExtractExtensionVersionWorker
   end
 
   def octokit
-    @octokit ||= Rails.configuration.octokit
+    @octokit ||= @extension.octokit
   end
 
   def extract_readme_file_extension(filename)

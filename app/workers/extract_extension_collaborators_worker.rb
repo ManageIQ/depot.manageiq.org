@@ -13,7 +13,7 @@ class ExtractExtensionCollaboratorsWorker
   private
 
   def octokit
-    @octokit ||= Rails.configuration.octokit
+    @octokit ||= @extension.octokit
   end
 
   def process_contributors
