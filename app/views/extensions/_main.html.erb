@@ -18,28 +18,30 @@
   </small>
   <h1 class="heading">
     <span itemprop="name"><%= extension.name %></span>
-    <small class="version_dropdown">
-      <%= link_to '#', 'data-dropdown' => 'versions', class: 'button radius tiny dropdown secondary', rel: 'extension_versions' do %>
-        <span class="versions_count">
-          <%= pluralize "(#{extension_versions.count})", 'Version' %>
-        </span>
-        <%= version.try(:version) %>
-      <% end %>
-      <ul id="versions" data-dropdown-content class="f-dropdown">
-        <li>
-          <ul>
-            <% extension_versions.each do |extension_version| %>
-              <li>
-                <%= link_to extension_version_path(extension, extension_version), rel: 'extension_version' do %>
-                  <%= extension_version.version %>
-                  <% if extension_version == version %><i class="fa fa-check right"></i><% end %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
-    </small>
+    <% if extension_versions.count > 0 %>
+      <small class="version_dropdown">
+        <%= link_to '#', 'data-dropdown' => 'versions', class: 'button radius tiny dropdown secondary', rel: 'extension_versions' do %>
+          <span class="versions_count">
+            <%= pluralize "(#{extension_versions.count})", 'Version' %>
+          </span>
+          <%= version.try(:version) %>
+        <% end %>
+        <ul id="versions" data-dropdown-content class="f-dropdown">
+          <li>
+            <ul>
+              <% extension_versions.each do |extension_version| %>
+                <li>
+                  <%= link_to extension_version_path(extension, extension_version), rel: 'extension_version' do %>
+                    <%= extension_version.version %>
+                    <% if extension_version == version %><i class="fa fa-check right"></i><% end %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </small>
+    <% end %>
 
     <%= render 'extensions/follow_button_show', extension: @extension %>
   </h1>
