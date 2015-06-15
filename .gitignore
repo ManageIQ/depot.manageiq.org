@@ -39,6 +39,7 @@ doc/
 # Ignore vendored gems
 vendor/gems
 vendor/ruby
+vendor/cache
 
 # Ignore any Opscode-specific fixture data
 db/fixtures
