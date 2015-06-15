@@ -96,12 +96,12 @@ module ManageIQ
       client_id: ENV["GITHUB_KEY"],
       client_secret: ENV["GITHUB_SECRET"]
     )
-  end
 
-  config.generators do |g|
-    g.assets false
-    g.helper false
-    g.javascripts false
-    g.stylesheets false
+    config.generators do |g|
+      g.assets false
+      g.helper false
+      g.javascripts false
+      g.stylesheets false
+    end
   end
 end
