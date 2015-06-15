@@ -26,7 +26,7 @@ class CreateExtension
 
   def repo_valid?(extension)
     begin
-      @github.access_token = user.github_account.oauth_token
+      @github.access_token = @user.github_account.oauth_token
       result = @github.collaborator?(extension.github_repo, @user.github_account.username)
     rescue ArgumentError, Octokit::Unauthorized, Octokit::Forbidden
       result = false
