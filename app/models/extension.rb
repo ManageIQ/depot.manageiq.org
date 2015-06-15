@@ -51,9 +51,10 @@ class Extension < ActiveRecord::Base
       name: "A"
     },
     associated_against: {
-      tags: { name: "B" },
-      github_account: { username: "C" },
-      extension_versions: { description: "D" }
+      all_supported_platforms: { name: "B" },
+      tags: { name: "C" },
+      github_account: { username: "D" },
+      extension_versions: { description: "D" },
     },
     using: {
       tsearch: { dictionary: "english", only: [:username, :description], prefix: true },
@@ -82,6 +83,8 @@ class Extension < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+
+  has_many :all_supported_platforms, through: :extension_versions, class: SupportedPlatform, source: :supported_platforms
 
   # Delegations
   # --------------------
