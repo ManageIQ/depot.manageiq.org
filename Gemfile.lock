@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/octokit/octokit.rb.git
-  revision: 4e0f5ad48aeccc945011b9eb861566c51cfd868e
+  revision: 703d8587665e8ed6279847a69095f79996b027ec
   specs:
     octokit (4.0.0)
       sawyer (~> 0.6.0, >= 0.5.3)
@@ -53,6 +53,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    airbrake (4.2.1)
+      builder
+      multi_json
     and_feathers (1.0.0.pre.2)
     and_feathers-gzipped_tarball (1.0.0.pre)
     arel (5.0.1.20140414130214)
@@ -475,6 +478,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   and_feathers (>= 1.0.0.pre)
   and_feathers-gzipped_tarball (>= 1.0.0.pre)
   aws-sdk

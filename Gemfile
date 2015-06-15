@@ -69,6 +69,8 @@ gem 'uglifier',     '~> 2.2'
 gem "capistrano", "~> 3.4.0"
 gem "sinatra", require: false
 
+gem "airbrake"
+
 group :doc do
   gem 'yard', require: false
 end

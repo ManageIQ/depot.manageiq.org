@@ -53,3 +53,6 @@ namespace :deploy do
     invoke "unicorn:legacy_restart"
   end
 end
+
+require 'airbrake/capistrano3'
+after "deploy:finished", "airbrake:deploy"
