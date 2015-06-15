@@ -1,10 +1,4 @@
 ManageIQ::Application.routes.draw do
-  namespace :api do
-  namespace :v1 do
-    get 'tags/index'
-    end
-  end
-
   VERSION_PATTERN = /latest|([0-9_\-\.]+)/ unless defined?(VERSION_PATTERN)
 
   if Rails.env.development?
@@ -24,6 +18,7 @@ ManageIQ::Application.routes.draw do
       get 'users/:user' => 'users#show', as: :user
 
       resources :tags, only: [:index]
+      resources :supported_platforms, only: [:index]
     end
   end
 
