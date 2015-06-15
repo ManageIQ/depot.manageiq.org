@@ -27,7 +27,7 @@ class CreateExtension
   def repo_valid?(extension)
     begin
       result = @github.collaborator?(extension.github_repo, @user.github_account.username)
-    rescue ArgumentError, Octokit::Unauthorized
+    rescue ArgumentError, Octokit::Unauthorized, Octokit::Forbidden
       result = false
     end
 
