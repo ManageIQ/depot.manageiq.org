@@ -14,6 +14,8 @@ class EnsureGithubUserAndAccount
       provider: "github"
     ).first_or_initialize
 
+    @github_user[:name] ||= "Unknown Name"
+
     if @github_user[:name].include?(" ")
       split = @github_user[:name].split(" ")
       first_name = split[0]
