@@ -18,7 +18,6 @@ ManageIQ::Application.routes.draw do
       get 'users/:user' => 'users#show', as: :user
 
       resources :tags, only: [:index]
-      resources :supported_platforms, only: [:index]
     end
   end
 
