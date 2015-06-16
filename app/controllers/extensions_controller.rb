@@ -161,6 +161,7 @@ class ExtensionsController < ApplicationController
   # Makes the current user follow the specified extension.
   #
   def follow
+    FollowExtensionWorker.perform_async(@extension.id, current_user.id)
     @extension.extension_followers.create(user: current_user)
     ManageIQ::Metrics.increment 'extension.followed'
 
@@ -173,6 +174,7 @@ class ExtensionsController < ApplicationController
   # Makes the current user unfollow the specified extension.
   #
   def unfollow
+    UnfollowExtensionWorker.perform_async(@extension.id, current_user.id)
     extension_follower = @extension.extension_followers.
       where(user: current_user).first!
     extension_follower.destroy

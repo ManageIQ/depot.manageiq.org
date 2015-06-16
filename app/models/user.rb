@@ -56,6 +56,17 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :email_preferences, allow_destroy: true
 
   #
+  # Returns an Octokit client configured for this User.
+  #
+  # @return [Ocotkit::Client]
+  #
+  def octokit
+    Rails.configuration.octokit.tap do |o|
+      o.access_token = github_account.oauth_token
+    end
+  end
+
+  #
   # Return the +EmailPreference+ for the name given. The name in question
   # should be the name of an existing +SystemEmail+.
   #
