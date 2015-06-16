@@ -10,7 +10,7 @@
     }
 
     h3, h4 {
-      color: adjust-lightness($primary_gray, 10%);
+      color: $body-font-color;
       font: {
         size: rem-calc(12);
         weight: $bold;
@@ -18,7 +18,7 @@
       text-transform: uppercase;
 
       small {
-        color: adjust-lightness($primary_gray, 20%);
+        color: $body-font-color;
         display: block;
         font: $normal rem-calc(12) $default_font;
         margin: rem-calc(5 0 0 20);
@@ -38,7 +38,7 @@
     }
 
     p {
-      color: adjust-lightness($primary_gray, 20%);
+      color: $body-font-color;
       font: $normal rem-calc(12) $default_font;
       margin: rem-calc(0 0 24 20);
     }

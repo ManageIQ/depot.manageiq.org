@@ -6,13 +6,13 @@
   text-align: center;
 
   .stat {
-    color: adjust-lightness($primary_gray, 20%);
+    color: $body-font-color;
     font-family: $accent_font;
     font-size: rem-calc(36);
     padding: rem-calc(0 24);
 
     .number {
-      color: $primary-gray;
+      color: $body-font-color;
     }
   }
 

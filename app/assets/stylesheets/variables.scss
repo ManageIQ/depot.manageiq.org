@@ -1,19 +1,19 @@
 // ManageIQ Default Colors
-$primary_orange: #f8971d;
-$primary_gray: #5c6f7c;
-$primary_blue: #1e3b4c;
-$primary_red: #F04124;
-$secondary_gray: #959ca2;
-$secondary_blue: #79bde8;
+$primary_orange: #EF2929;
+$primary_gray: #F8F8F8;
+$primary_blue: #89A3CA;
+$primary_red: #EF2929;
+$secondary_gray: #CCCCCC;
+$secondary_blue: #ACC2E0;
 $secondary_green: #73cbc8;
 $secondary_yellow: #fcb713;
 $secondary_red: #7c3a00;
 $trinary_gray: #F0F0F0;
 $sidebar_blue: #f8f9fa;
 $body-bg: #ecf0f1;
-$body-font-color: #222;
-$primary-color: #79bde8;
-$header-font-color: saturate(lighten($primary_gray, 20%), 13%);
+$body-font-color: #333;
+$primary-color: #89A3CA;
+$header-font-color: $body-font-color;
 
 // Layout Defaults
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -58,18 +58,6 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 $xxlarge-down: "#{$screen} and (max-width:#{upper-bound($xxlarge-range)})";
 
 $redonkulous-up: "#{$screen} and (min-width:127em)";
-
-// Category Colors
-$category_applications: #b1dcf0;
-$category_databases: #5c6f7c;
-$category_monitoring_and_trending: #f8971d;
-$category_networking: #7c3a00;
-$category_package_management: #f1c40f;
-$category_process_management: #73cbc7;
-$category_programming_languages: #82a0ad;
-$category_utilities: #c4cdd2;
-$category_web_servers: #51c15c;
-$category_other: #9b59b6;
 
 // Flatuicolors.com Palette
 $clouds: #ecf0f1;

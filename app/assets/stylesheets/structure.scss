@@ -20,7 +20,7 @@ html, body { height: 100%; min-height: 100%; }
 }
 
 body {
-  background: $clouds;
+  background: white;
   margin: 0;
 }
 
@@ -76,7 +76,7 @@ pre {
 .page {
   @include grid-row();
   background: white;
-  color: $secondary_gray;
+  color: $body-font-color;
   position: relative;
   z-index: 1;
 
@@ -174,7 +174,7 @@ pre {
 
 .sidebar {
   @include grid-column(4);
-  background: $sidebar_blue;
+  background: $trinary_gray;
   padding: rem-calc(55 25 55 25);
 
   h3, h4, h5 {

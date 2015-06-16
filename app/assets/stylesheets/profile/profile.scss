@@ -21,7 +21,7 @@
     }
 
     .fa {
-      color: $secondary_gray;
+      color: $body-font-color;
       padding-right: rem-calc(5);
     }
 
@@ -34,7 +34,7 @@
 
       .has-tip, a {
         border-bottom: none;
-        color: saturate(lighten($primary_gray, 20%), 13%);
+        color: $body-font-color;
         font-size: rem-calc(14);
       }
     }

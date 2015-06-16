@@ -10,7 +10,7 @@
   margin: 0;
 
   li {
-    color: $primary_gray;
+    color: $concrete;
     font-size: rem-calc(10);
     display: inline;
     margin: rem-calc(0 16 0 0);
@@ -247,7 +247,7 @@
 }
 
 .versions_count {
-  color: darken($primary_gray, 10%);
+  color: $body-font-color;
   font: {
     size: rem-calc(12);
     weight: $bold;

@@ -3,7 +3,7 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: join("Montserrat", $body-font-family);
   font-weight: 400;
-  color: saturate(lighten($primary_gray, 20%), 13%);
+  color: $body-font-color;
   line-height: 1.4;
   margin-bottom: 1.5rem;
 }
@@ -34,7 +34,7 @@ h6 {
 
 small {
   font-size: 60%;
-  color: scale-color($header-font-color, $lightness: 35%);
+  color: $header-font-color;
 }
 
 a {
