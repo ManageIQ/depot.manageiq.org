@@ -418,7 +418,7 @@ class Extension < ActiveRecord::Base
   #
   # Returns an Octokit client configured for the Extension's owner.
   #
-  # @ return [Ocotkit::Client]
+  # @return [Ocotkit::Client]
   #
   def octokit
     Rails.configuration.octokit.tap do |o|
