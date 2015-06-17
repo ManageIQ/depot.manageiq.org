@@ -30,5 +30,5 @@ ManageIQ::Application.configure do
   # Don't cache anything
   config.cache_store = :null_store
 
-  Rails.application.default_url_options[:host] = "ec2-54-237-81-251.compute-1.amazonaws.com"
+  Rails.application.default_url_options[:host] = "miqed.localtunnel.me"
 end
