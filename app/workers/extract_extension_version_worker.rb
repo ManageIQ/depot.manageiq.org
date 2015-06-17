@@ -19,6 +19,7 @@ class ExtractExtensionVersionWorker
     @compatible_platforms.each do |p|
       version.extension_version_platforms.create(supported_platform_id: p.id)
     end
+  rescue ActiveRecord::RecordInvalid
   end
 
   private
