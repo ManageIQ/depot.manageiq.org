@@ -96,4 +96,6 @@ ManageIQ::Application.configure do
       config.action_mailer.delivery_method = :sendmail
     end
   end
+
+  Rails.application.default_url_options[:host] = "ec2-54-237-81-251.compute-1.amazonaws.com"
 end
