@@ -18,6 +18,7 @@ class CreateExtension
         end
 
         CollectExtensionMetadataWorker.perform_async(extension.id, @compatible_platforms.select { |p| !p.strip.blank? })
+        SetupExtensionWebHooksWorker.perform_async(extension.id)
       end
     end
   end
