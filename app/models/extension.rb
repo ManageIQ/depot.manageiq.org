@@ -421,9 +421,11 @@ class Extension < ActiveRecord::Base
   # @return [Ocotkit::Client]
   #
   def octokit
-    Rails.configuration.octokit.tap do |o|
-      o.access_token = owner.github_account.oauth_token
-    end
+    @octokit ||= Octokit::Client.new(
+      access_token: owner.github_account.oauth_token,
+      client_id: Rails.configuration.octokit.client_id,
+      client_secret: Rails.configuration.octokit.client_secret
+    )
   end
 
   private
