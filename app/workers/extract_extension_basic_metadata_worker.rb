@@ -9,6 +9,7 @@ class ExtractExtensionBasicMetadataWorker
       extension_followers_count: repo[:stargazers_count],
       issues_url: "https://github.com/#{@extension.github_repo}/issues"
     )
+    puts @extension.changes
     puts @extension.save!(validate: false).inspect
     puts @extension.inspect
     puts @extension.errors.inspect
