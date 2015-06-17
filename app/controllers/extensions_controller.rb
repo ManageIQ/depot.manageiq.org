@@ -3,6 +3,8 @@ class ExtensionsController < ApplicationController
   before_filter :store_location_then_authenticate_user!, only: [:follow, :unfollow, :adoption]
   before_filter :authenticate_user!, only: [:new, :create]
 
+  skip_before_action :verify_authenticity_token, only: [:webhook]
+
   #
   # GET /extensions
   #
@@ -270,6 +272,7 @@ class ExtensionsController < ApplicationController
     )
   end
 
+  #
   # GET /extensions/:id/deprecate_search?q=QUERY
   #
   # Return extensions with a name that contains the specified query. Takes the
@@ -285,6 +288,16 @@ class ExtensionsController < ApplicationController
     respond_to do |format|
       format.json
     end
+  end
+
+  #
+  # POST /extensions/:id/webhook
+  #
+  # Receive updates from GitHub's webhook API about an extension's repo.
+  #
+  def webhook
+    CollectExtensionMetadataWorker.perform_async(@extension.id, [])
+    head :ok
   end
 
   private
