@@ -5,7 +5,7 @@ describe ExtractExtensionVersionWorker do
   let(:tag) { "1.0" }
   let(:compatible_platforms) { ["1", "2"] }
 
-  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test", extension_versions: versions) }
+  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test", extension_versions: versions, octokit: octokit) }
   let(:versions) { double(:versions) }
   let(:octokit) { double(:octokit, readme: { name: "README.md", content: "hi" }) }
   let(:version) { double(:version, extension_version_platforms: evp_assoc) }
@@ -24,7 +24,6 @@ describe ExtractExtensionVersionWorker do
     stub_const("Extension", Class.new)
     allow(Extension).to receive(:find).with(extension_id) { extension }
     allow(SupportedPlatform).to receive(:find).with(compatible_platforms) { supported_platforms }
-    allow(Rails.configuration).to receive(:octokit) { octokit }
     allow(versions).to receive(:create!) { version }
     allow(evp_assoc).to receive(:create)
   end
