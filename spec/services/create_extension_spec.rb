@@ -29,6 +29,7 @@ describe CreateExtension do
     allow(github).to receive(:collaborator?).with("cvincent/test", "some_user") { true }
     stub_const("CollectExtensionMetadataWorker", Class.new)
     allow(CollectExtensionMetadataWorker).to receive(:perform_async)
+    allow(SetupExtensionWebHooksWorker).to receive(:perform_async)
   end
 
   it "saves a valid extension, returning the extension" do
@@ -45,6 +46,11 @@ describe CreateExtension do
 
   it "kicks off a worker to gather metadata about the valid extension" do
     expect(CollectExtensionMetadataWorker).to receive(:perform_async).with(123, ["p1", "p2"])
+    expect(subject.process!).to be(extension)
+  end
+
+  it "kicks off a worker to set up the repo's web hook for updates" do
+    expect(SetupExtensionWebHooksWorker).to receive(:perform_async).with(123)
     expect(subject.process!).to be(extension)
   end
 
