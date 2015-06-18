@@ -4,38 +4,31 @@ describe 'GET /universe' do
   let(:redis) { create(:extension, name: 'redis') }
   let(:apt) { create(:extension, name: 'apt') }
   let(:narf) { create(:extension, name: 'narf') }
-  let(:tarball) do
-    File.open('spec/support/extension_fixtures/redis-test-v1.tgz')
-  end
 
   before do
     redis_version1 = create(
       :extension_version,
       extension: redis,
       license: 'MIT',
-      version: '1.2.0',
-      tarball: tarball
+      version: '1.2.0'
     )
     redis_version2 = create(
       :extension_version,
       extension: redis,
       license: 'MIT',
-      version: '1.3.0',
-      tarball: tarball
+      version: '1.3.0'
     )
     apt_version = create(
       :extension_version,
       extension: apt,
       license: 'BSD',
-      version: '1.1.0',
-      tarball: tarball
+      version: '1.1.0'
     )
     narf_version = create(
       :extension_version,
       extension: narf,
       license: 'GPL',
-      version: '1.4.0',
-      tarball: tarball
+      version: '1.4.0'
     )
     create(:extension_dependency, extension_version: redis_version1, extension: apt, name: 'apt', version_constraint: '>= 1.0.0')
     create(:extension_dependency, extension_version: redis_version1, extension: narf, name: 'narf', version_constraint: '>= 1.1.0')
