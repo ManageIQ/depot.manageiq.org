@@ -1,10 +1,10 @@
 class CreateExtension
-  def initialize(params, user, github)
+  def initialize(params, user)
     @params = params
     @tags = params[:tag_tokens]
     @compatible_platforms = params[:compatible_platforms]
     @user = user
-    @github = github
+    @github = @user.octokit
   end
 
   def process!
@@ -27,7 +27,6 @@ class CreateExtension
 
   def repo_valid?(extension)
     begin
-      @github.access_token = @user.github_account.oauth_token
       result = @github.collaborator?(extension.github_repo, @user.github_account.username)
     rescue ArgumentError, Octokit::Unauthorized, Octokit::Forbidden
       result = false

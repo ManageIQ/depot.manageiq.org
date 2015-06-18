@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe CreateExtension do
   let(:params) { { name: "asdf", description: "desc", github_url: "cvincent/test", tag_tokens: "tag1, tag2", compatible_platforms: ["", "p1", "p2"] } }
-  let(:user) { double(:user, github_account: github_account) }
+  let(:user) { double(:user, github_account: github_account, octokit: github) }
   let(:github_account) { double(:github_account, username: "some_user") }
   let(:github) { double(:github) }
 
@@ -19,7 +19,7 @@ describe CreateExtension do
   let(:errors) { double(:errors) }
   let(:taggings) { double(:taggings) }
 
-  subject { CreateExtension.new(params, user, github) }
+  subject { CreateExtension.new(params, user) }
 
   before do
     allow(Extension).to receive(:new) { extension }
