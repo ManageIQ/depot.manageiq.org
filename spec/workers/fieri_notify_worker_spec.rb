@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'webmock/rspec'
 
-describe FieriNotifyWorker do
+describe FieriNotifyWorker, pending: "no fieri" do
   let(:extension) { create(:extension) }
 
   it 'sends a POST request to the configured fieri_url for extension evaluation' do
