@@ -3,7 +3,7 @@ require "spec_helper"
 describe ExtractExtensionCollaboratorsWorker do
   let(:extension_id) { 123 }
 
-  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test") }
+  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test", octokit: octokit) }
   let(:octokit) { double(:octokit) }
 
   let(:contributors) do
