@@ -3,7 +3,7 @@ require "spec_helper"
 describe ExtractExtensionLicenseWorker do
   let(:extension_id) { 123 }
 
-  let(:extension) { double(:extension, github_repo: "cvincent/test") }
+  let(:extension) { double(:extension, github_repo: "cvincent/test", octokit: octokit) }
   let(:octokit) { double(:octokit) }
 
   subject { ExtractExtensionLicenseWorker.new }
@@ -11,7 +11,6 @@ describe ExtractExtensionLicenseWorker do
   before do
     stub_const("Extension", Class.new)
     allow(Extension).to receive(:find).with(extension_id) { extension }
-    allow(Rails.configuration).to receive(:octokit) { octokit }
   end
 
   it "updates the extension with the license if one is present" do
