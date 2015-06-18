@@ -16,8 +16,6 @@ describe ExtractExtensionCollaboratorsWorker do
 
   before do
     allow(Extension).to receive(:find).with(extension_id) { extension }
-
-    allow(Rails.configuration).to receive(:octokit) { octokit }
     allow(octokit).to receive(:contributors).with("cvincent/test", nil, page: 1) { contributors }
 
     stub_const("ExtractExtensionCollaboratorWorker", Class.new)
