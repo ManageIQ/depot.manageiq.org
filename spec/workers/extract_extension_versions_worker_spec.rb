@@ -4,7 +4,7 @@ describe ExtractExtensionVersionsWorker do
   let(:extension_id) { 123 }
   let(:compatible_platforms) { ["1", "2"] }
 
-  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test") }
+  let(:extension) { double(:extension, id: extension_id, github_repo: "cvincent/test", octokit: octokit) }
   let(:octokit) { double(:octokit) }
 
   subject { ExtractExtensionVersionsWorker.new }
@@ -12,7 +12,6 @@ describe ExtractExtensionVersionsWorker do
   before do
     stub_const("Extension", Class.new)
     allow(Extension).to receive(:find).with(extension_id) { extension }
-    allow(Rails.configuration).to receive(:octokit) { octokit }
     stub_const("ExtractExtensionVersionWorker", Class.new)
   end
 
