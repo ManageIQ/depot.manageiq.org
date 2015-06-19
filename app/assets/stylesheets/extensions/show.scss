@@ -245,3 +245,23 @@
     margin-right: -2px;
   }
 }
+
+.toggle-platforms-edit {
+  label {
+    font-size: inherit;
+    display: inline;
+    line-height: inherit;
+  }
+
+  input {
+    margin-bottom: 0;
+  }
+}
+
+.toggle-platforms-hidden {
+  display: none;
+}
+
+.extension_platforms .extension_no_platform_icon {
+  margin-bottom: 20px !important;
+}

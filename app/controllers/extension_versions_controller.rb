@@ -1,5 +1,6 @@
 class ExtensionVersionsController < ApplicationController
   before_filter :set_extension_and_version
+  before_filter :authenticate_user!, only: [:update_platforms]
 
   #
   # GET /extensions/:extension_id/versions/:version/download
@@ -25,6 +26,22 @@ class ExtensionVersionsController < ApplicationController
     @collaborators = @extension.collaborators
     @supported_platforms = @version.supported_platforms
     @owner_collaborator = Collaborator.new resourceable: @extension, user: @owner
+  end
+
+  #
+  # PUT /extension/:extension_id/versions/:version
+  #
+  # Updates the supported platforms for the extension version.
+  #
+  def update_platforms
+    # TODO: Check auth and policy
+    if policy(@extension).manage?
+      params[:supported_platforms] ||= []
+      @version.supported_platforms = SupportedPlatform.where(name: params[:supported_platforms])
+      @version.save
+    end
+
+    redirect_to({ action: :show }.merge(params.slice(:extension_id, :version)))
   end
 
   private

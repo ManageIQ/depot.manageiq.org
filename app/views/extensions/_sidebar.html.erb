@@ -1,4 +1,4 @@
-<div class="sidebar" data-equalizer-watch>
+<div class="sidebar">
   <%= render 'resources/owner', resource: extension %>
   <%= render 'resources/collaborators', collaborators: collaborators, resource: extension %>
 
@@ -56,20 +56,43 @@
       <small>Created on <span itemprop="dateModified"><%= extension.created_at.to_s(:longish) %></span></small>
     </h4>
 
-    <h4><i class="fa fa-desktop"></i> Platforms</h4>
-    <ul class="extension_platforms">
-      <% if extension.supported_platforms.present? %>
+    <h4>
+      <i class="fa fa-desktop"></i> Platforms
+      <% if policy(extension).manage? %>
+        <a href="#" class="toggle-platforms-edit">edit</a>
+        <a href="#" class="toggle-platforms-edit toggle-platforms-hidden">cancel</a>
+      <% end %>
+    </h4>
+    <% if extension.supported_platforms.present? %>
+      <ul class="extension_platforms toggle-platforms-edit">
         <% supported_platforms.each do |platform| %>
           <li title="<%= platform.name %>">
             <%= platform.name %>
           </li>
         <% end %>
-      <% else %>
+      </ul>
+    <% else %>
+      <ul class="extension_platforms">
         <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
           <span class="fa fa-question-circle"></span>
         </li>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
+
+    <%= form_tag({ action: "update_platforms" }, method: :put, class: "toggle-platforms-edit toggle-platforms-hidden") do %>
+      <ul class="extension_platforms">
+        <% SupportedPlatform.all.each do |sp| %>
+          <li title="<%= sp.name %>">
+            <label>
+              <%= check_box_tag :"supported_platforms[]", sp.name, supported_platforms.include?(sp) %>
+              <%= sp.name %>
+            </label>
+          </li>
+        <% end %>
+
+        <%= submit_tag "Save", class: "button primary small" %>
+      </ul>
+    <% end %>
 
     <h4><i class="fa fa-key"></i> License</h4>
     <p><%= version.try(:license) %></p>

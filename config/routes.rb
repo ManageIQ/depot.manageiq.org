@@ -45,6 +45,7 @@ ManageIQ::Application.routes.draw do
 
     get 'versions/:version/download' => 'extension_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
     get 'versions/:version' => 'extension_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
+    put "versions/:version/update_platforms" => "extension_versions#update_platforms", as: :update_platforms, constraints: { version: VERSION_PATTERN }
   end
 
   resources :collaborators, only: [:index, :new, :create, :destroy] do
