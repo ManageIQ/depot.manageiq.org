@@ -5,7 +5,7 @@ class ExtractExtensionBasicMetadataWorker
     @extension = Extension.find(extension_id)
     repo = octokit.repo(@extension.github_repo)
 
-    @extension.update_attributes(
+    Extension.where(id: @extension.id).update_all(
       extension_followers_count: repo[:stargazers_count],
       issues_url: "https://github.com/#{@extension.github_repo}/issues"
     )
