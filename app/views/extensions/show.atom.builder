@@ -1,6 +1,6 @@
 atom_feed language: 'en-US' do |feed|
   feed.title "#{@extension.name} versions"
-  feed.updated @extension_versions.max_by(&:updated_at).updated_at
+  feed.updated @extension_versions.max_by(&:updated_at).try(:updated_at)
 
   @extension_versions.each do |v|
     feed.entry(v, url: extension_version_url(@extension, v)) do |entry|
