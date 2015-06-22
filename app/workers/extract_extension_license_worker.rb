@@ -7,7 +7,14 @@ class ExtractExtensionLicenseWorker
     @repo = octokit.repo(@extension.github_repo, accept: "application/vnd.github.drax-preview+json")
 
     if @repo[:license]
-      license = octokit.license(@repo[:license][:key], accept: "application/vnd.github.drax-preview+json")
+      begin
+        license = octokit.license(@repo[:license][:key], accept: "application/vnd.github.drax-preview+json")
+      rescue Octokit::NotFound
+        license = {
+          name: @repo[:license][:name],
+          body: ""
+        }
+      end
 
       @extension.update_attributes(
         license_name: license[:name],
