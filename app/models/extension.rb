@@ -94,7 +94,7 @@ class Extension < ActiveRecord::Base
 
   # Validations
   # --------------------
-  validates :name, presence: true, uniqueness: { case_sensitive: false }, format: /\A[\w_-]+\z/i
+  validates :name, presence: true, uniqueness: { case_sensitive: false }, format: /\A[\w\s_-]+\z/i
   validates :lowercase_name, presence: true, uniqueness: true
   # validates :extension_versions, presence: true
   validates :source_url, url: {
