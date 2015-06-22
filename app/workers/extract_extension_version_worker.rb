@@ -20,6 +20,7 @@ class ExtractExtensionVersionWorker
       version.extension_version_platforms.create(supported_platform_id: p.id)
     end
   rescue ActiveRecord::RecordInvalid
+    # Fail silently when we try to create a duplicate version
   end
 
   private
