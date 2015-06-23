@@ -20,6 +20,7 @@ class SitemapRefreshWorker
   #   SitemapResfreshWorker.new.perform
   #
   def perform
+    return # TODO: Silence errors for now
     SitemapGenerator::Interpreter.run
     SitemapGenerator::Sitemap.ping_search_engines
   end
