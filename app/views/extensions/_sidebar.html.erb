@@ -79,7 +79,7 @@
       </ul>
     <% end %>
 
-    <%= form_tag({ controller: "extension_versions", action: "update_platforms" }, method: :put, class: "toggle-platforms-edit toggle-platforms-hidden") do %>
+    <%= form_tag({ controller: "extension_versions", action: "update_platforms", version: version.try(:name) }, method: :put, class: "toggle-platforms-edit toggle-platforms-hidden") do %>
       <ul class="extension_platforms">
         <% SupportedPlatform.all.each do |sp| %>
           <li title="<%= sp.name %>">
