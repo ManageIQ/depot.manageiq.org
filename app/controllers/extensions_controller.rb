@@ -109,10 +109,10 @@ class ExtensionsController < ApplicationController
   # Displays an extension.
   #
   def show
-    @latest_version = @extension.latest_extension_version
+    @latest_version = @extension.latest_extension_version # || ExtensionVersion::Nil.new(@extension)
     @extension_versions = @extension.sorted_extension_versions
     @collaborators = @extension.collaborators
-    @supported_platforms = [] # @extension.supported_platforms
+    @supported_platforms = @extension.supported_platforms
 
     respond_to do |format|
       format.atom
