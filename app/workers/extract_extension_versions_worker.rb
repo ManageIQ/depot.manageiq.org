@@ -7,6 +7,8 @@ class ExtractExtensionVersionsWorker
     octokit.tags(@extension.github_repo).each do |tag|
       ExtractExtensionVersionWorker.perform_async(@extension.id, tag[:name], compatible_platforms)
     end
+
+    ExtractExtensionVersionWorker.perform_async(@extension.id, "master", compatible_platforms)
   end
 
   private

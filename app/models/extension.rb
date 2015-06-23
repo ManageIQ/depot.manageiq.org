@@ -122,7 +122,11 @@ class Extension < ActiveRecord::Base
   # @return [Array<ExtensionVersion>] the sorted ExtensionVersion records
   #
   def sorted_extension_versions
-    @sorted_extension_versions ||= extension_versions.sort_by { |v| Semverse::Version.new(v.version) }.reverse
+    @sorted_extension_versions ||= extension_versions.
+      reject { |v| v.version == "master" }.
+      sort_by { |v| Semverse::Version.new(v.version) }.
+      reverse.
+      concat(extension_versions.select { |v| v.version == "master" })
   end
 
   #

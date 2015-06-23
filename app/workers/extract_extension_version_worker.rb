@@ -26,6 +26,8 @@ class ExtractExtensionVersionWorker
   private
 
   def semver?(tag)
+    return true if tag == "master"
+
     begin
       Semverse::Version.new(tag)
       return true

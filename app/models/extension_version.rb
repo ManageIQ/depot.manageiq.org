@@ -58,9 +58,11 @@ class ExtensionVersion < ActiveRecord::Base
 
   #
   # Ensure that the version string we have been given conforms to semantic
-  # versioning at http://semver.org
+  # versioning at http://semver.org. Also accept "master".
   #
   def semantic_version
+    return true if version == "master"
+
     begin
       Semverse::Version.new(version)
     rescue Semverse::InvalidVersionFormat
