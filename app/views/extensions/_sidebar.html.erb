@@ -64,7 +64,7 @@
       <% end %>
     </h4>
 
-    <% if extension.supported_platforms.present? %>
+    <% if supported_platforms.present? %>
       <ul class="extension_platforms toggle-platforms-edit">
         <% supported_platforms.each do |platform| %>
           <li title="<%= platform.name %>">
