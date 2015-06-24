@@ -19,6 +19,8 @@ class ExtractExtensionVersionWorker
     @compatible_platforms.each do |p|
       version.extension_version_platforms.create(supported_platform_id: p.id)
     end
+
+    ExtractExtensionVersionContentsWorker.perform_async(version_id)
   rescue ActiveRecord::RecordInvalid
     # Fail silently when we try to create a duplicate version
   end
