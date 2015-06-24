@@ -6,5 +6,6 @@ class CollectExtensionMetadataWorker
     ExtractExtensionLicenseWorker.perform_async(extension_id)
     ExtractExtensionVersionsWorker.perform_async(extension_id, compatible_platforms)
     ExtractExtensionCollaboratorsWorker.perform_async(extension_id)
+    ExtractExtensionStargazersWorker.perform_async(extension_id)
   end
 end
