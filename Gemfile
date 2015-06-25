@@ -26,6 +26,7 @@ gem 'dotenv'
 gem 'coveralls', require: false
 gem 'octokit', github: 'octokit/octokit.rb'
 gem 'sidekiq'
+gem "safe_yaml", require: false
 
 # Pin sprockets to ensure we get the latest security patches. Not pinning this
 # meant that the gem that depended on sprockets was pulling in an old

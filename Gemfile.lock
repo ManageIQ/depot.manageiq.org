@@ -525,6 +525,7 @@ DEPENDENCIES
   rollout
   rspec-rails (~> 3.1.0)
   rubocop (>= 0.23.0)
+  safe_yaml
   sass-rails (~> 4.0.4)
   semverse
   sentry-raven (~> 0.8.0)

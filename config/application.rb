@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require 'dotenv'
 require 'rails'
+require "safe_yaml/load"
 
 # Do not use dotenv on openshift
 if File.exists? (File.expand_path('../../.env', __FILE__))
