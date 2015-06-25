@@ -52,10 +52,18 @@
 
   <dl class="tabs" data-tab data-options="deep_linking:true">
     <dd class="active"><a href="#readme">README</a></dd>
+    <dd><a href="#contents">Contents</a></dd>
   </dl>
   <div class="tabs-content">
     <div class="content active" id="readme">
       <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
+    </div>
+    <div class="content" id="contents">
+      <ul>
+        <% version.extension_version_content_items.each do |ci| %>
+          <li><%= ci.item_type %>: <%= link_to ci.name, ci.github_url, target: "_blank" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
