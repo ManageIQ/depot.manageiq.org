@@ -6,6 +6,7 @@ class ExtensionVersion < ActiveRecord::Base
   has_many :extension_version_platforms
   has_many :supported_platforms, through: :extension_version_platforms
   has_many :extension_dependencies, dependent: :destroy
+  has_many :extension_version_content_items, dependent: :destroy
   belongs_to :extension
 
   # Validations
