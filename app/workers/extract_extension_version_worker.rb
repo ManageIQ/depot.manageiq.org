@@ -22,8 +22,6 @@ class ExtractExtensionVersionWorker
     end
 
     ExtractExtensionVersionContentsWorker.perform_async(version_id)
-  rescue ActiveRecord::RecordInvalid
-    # Fail silently when we try to create a duplicate version
   end
 
   private
