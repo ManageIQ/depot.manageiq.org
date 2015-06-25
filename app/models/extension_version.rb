@@ -10,7 +10,6 @@ class ExtensionVersion < ActiveRecord::Base
 
   # Validations
   # --------------------
-  validates :readme, presence: true
   validates :version, presence: true, uniqueness: { scope: :extension }
   validate :semantic_version
 

@@ -10,8 +10,9 @@ class ExtractExtensionVersionWorker
 
     readme_body, readme_ext = fetch_readme
 
-    version = @extension.extension_versions.create!(
-      version: tag,
+    version = @extension.extension_versions.first_or_create(version: tag)
+
+    version.update_attributes(
       readme: readme_body,
       readme_extension: readme_ext
     )
