@@ -18,10 +18,10 @@ class ExtractExtensionVersionWorker
     )
 
     @compatible_platforms.each do |p|
-      version.extension_version_platforms.create(supported_platform_id: p.id)
+      version.extension_version_platforms.first_or_create(supported_platform_id: p.id)
     end
 
-    ExtractExtensionVersionContentsWorker.perform_async(version_id)
+    ExtractExtensionVersionContentsWorker.perform_async(version.id)
   end
 
   private

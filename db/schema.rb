@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615193344) do
+ActiveRecord::Schema.define(version: 20150625194151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,6 +216,19 @@ ActiveRecord::Schema.define(version: 20150615193344) do
   end
 
   add_index "extension_followers", ["extension_id", "user_id"], name: "index_extension_followers_on_extension_id_and_user_id", unique: true, using: :btree
+
+  create_table "extension_version_content_items", force: true do |t|
+    t.integer  "extension_version_id", null: false
+    t.string   "name",                 null: false
+    t.string   "path",                 null: false
+    t.string   "item_type",            null: false
+    t.string   "github_url",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "extension_version_content_items", ["extension_version_id", "path"], name: "evcis_evid_path", unique: true, using: :btree
+  add_index "extension_version_content_items", ["extension_version_id"], name: "index_extension_version_content_items_on_extension_version_id", using: :btree
 
   create_table "extension_version_platforms", force: true do |t|
     t.integer  "extension_version_id"
