@@ -12,35 +12,11 @@
     </div>
   <% end %>
 
-  <h3 class="<%= 'show-extension-urls-manage' if policy(extension).manage_extension_urls? %>" rel="edit-extension-urls">
-    <% if policy(extension).manage_extension_urls? %>
-      <%= link_to '#' do %>
-         <i class="fa fa-gear"></i>
-      <% end %>
-    <% end %>
+  <h3 rel="edit-extension-urls">
     Details
   </h3>
 
   <div class="extension-details">
-    <% if policy(extension).manage_extension_urls? %>
-      <div class="manage-extension-urls hide">
-        <%= form_for extension, data: { abide: true } do |f| %>
-          <div class="source-url-field">
-            <%= f.text_field :source_url, placeholder: 'Source URL: http://example.com', pattern: 'url' %>
-            <small class="error">Must be formatted as a URL.</small>
-          </div>
-
-          <div class="issues-url-field">
-            <%= f.text_field :issues_url, placeholder: 'Issues URL: http://example.com', pattern: 'url' %>
-            <small class="error">Must be formatted as a URL.</small>
-          </div>
-
-          <%= f.submit 'Save', class: 'button radius tiny submit-urls', data: { disable_with: 'Saving...' } %>
-          <a href="#" class="button radius tiny secondary cancel-submit-urls">Cancel</a>
-        <% end %>
-      </div>
-    <% end %>
-
     <div class="extension-urls">
       <% if extension.source_url.present? %>
         <%= link_to 'View Source', extension.source_url, class: 'button radius tiny source-url', itemprop: 'codeRepository' %>
@@ -57,7 +33,7 @@
     </h4>
 
     <h4>
-      <i class="fa fa-desktop"></i> Platforms
+      <i class="fa fa-desktop"></i> Compatible ManageIQ Versions
       <% if policy(extension).manage? %>
         <a href="#" class="toggle-platforms-edit">edit</a>
         <a href="#" class="toggle-platforms-edit toggle-platforms-hidden">cancel</a>
@@ -74,8 +50,8 @@
       </ul>
     <% else %>
       <ul class="extension_platforms">
-        <li data-tooltip class="has-tip extension_no_platform_icon" title="Not specified">
-          <span class="fa fa-question-circle"></span>
+        <li>
+          Not specified
         </li>
       </ul>
     <% end %>
