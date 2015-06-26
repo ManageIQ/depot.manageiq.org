@@ -46,7 +46,7 @@ class ExtractExtensionVersionWorker
     return body, ext
 
   rescue Octokit::NotFound
-    return "No readme found!", "txt"
+    return "There is no README file for this extension.", "txt"
   end
 
   def octokit
