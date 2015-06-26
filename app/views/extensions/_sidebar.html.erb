@@ -96,7 +96,7 @@
     <% end %>
 
     <h4><i class="fa fa-key"></i> License</h4>
-    <p><%= version.try(:license) %></p>
+    <p><%= version.try(:license) || "Unknown" %></p>
 
     <h4 class="extension_show_sidebar_downloads">
       <i class="fa fa-download"></i> <span itemprop="interactionCount"><%= number_with_delimiter(version.try(:download_count) || 0) %></span> Downloads of Version <%= version.try(:version) %>
