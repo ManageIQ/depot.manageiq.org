@@ -16,7 +16,7 @@ class Extension < ActiveRecord::Base
   #   a thing.
   #
   scope :with_name, lambda { |names|
-    lowercase_names = Array(names).map { |name| name.to_s.downcase }
+    lowercase_names = Array(names).map { |name| name.to_s.downcase.parameterize }
 
     where(lowercase_name: lowercase_names)
   }
@@ -443,7 +443,7 @@ class Extension < ActiveRecord::Base
   # less-than ideal
   #
   def copy_name_to_lowercase_name
-    self.lowercase_name = name.to_s.downcase
+    self.lowercase_name = name.to_s.downcase.parameterize
   end
 
   #
