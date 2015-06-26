@@ -80,4 +80,9 @@
     </h4>
     <%= link_to "Download Extension", { action: 'download' }, class: 'button secondary radius expand button_download_extension' %>
   </div>
+
+  <h3>Tags</h3>
+  <p>
+    <%= extension.tags.map { |t| link_to(t.name, controller: "extensions", action: "index", q: t.name).html_safe }.join(", ").html_safe %>
+  </p>
 </div>
