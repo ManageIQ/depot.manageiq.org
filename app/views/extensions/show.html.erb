@@ -1,7 +1,21 @@
 <%= provide(:title, "#{@extension.name} Extension") %>
-<%= provide(:description, "#{@extension.name} Extension (#{@latest_version.try(:version)}) #{@extension.try(:supported_platforms).map(&:name).join(', ')}".strip) %>
 
-<div class="page resource extension_show" data-equalizer itemscope itemtype="http://schema.org/Code">
-  <%= render 'main', extension: @extension, version: @latest_version, extension_versions: @extension_versions %>
-  <%= render 'sidebar', extension: @extension, version: @latest_version, supported_platforms: @supported_platforms, collaborators: @collaborators %>
-</div>
+<% if @latest_version %>
+  <%= provide(:description, "#{@extension.name} Extension (#{@latest_version.try(:version)}) #{@extension.try(:supported_platforms).map(&:name).join(', ')}".strip) %>
+
+  <div class="page resource extension_show" data-equalizer itemscope itemtype="http://schema.org/Code">
+    <%= render 'main', extension: @extension, version: @latest_version, extension_versions: @extension_versions %>
+    <%= render 'sidebar', extension: @extension, version: @latest_version, supported_platforms: @supported_platforms, collaborators: @collaborators %>
+  </div>
+<% else %>
+  <div class="page nobg">
+    <p class="text-center">
+      <%= image_tag "spinner.gif" %>
+      Scanning your extension...
+    </p>
+  </div>
+
+  <script type="text/javascript">
+    setTimeout(function() { window.location.reload(1); }, 5000);
+  </script>
+<% end %>
