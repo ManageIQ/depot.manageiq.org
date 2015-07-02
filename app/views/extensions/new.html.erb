@@ -25,8 +25,12 @@
         </div>
 
         <h2>Compatible ManageIQ Versions</h2>
-        <div class="tag_tokens-field">
-          <%= f.select :compatible_platforms, SupportedPlatform.pluck(:name, :id), {}, multiple: true %>
+        <div class="compatible_platforms-field">
+          <% SupportedPlatform.pluck(:name, :id).each do |name, id| %>
+            <div>
+              <label><%= f.check_box :compatible_platforms, { multiple: true }, id.to_s, nil %> <%= name %></label>
+            </div>
+          <% end %>
         </div>
       </fieldset>
 
