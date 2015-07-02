@@ -59,11 +59,21 @@
       <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
     </div>
     <div class="content" id="contents">
-      <ul>
-        <% version.extension_version_content_items.each do |ci| %>
-          <li><%= ci.item_type %>: <%= link_to ci.name, ci.github_url, target: "_blank" %></li>
+
+      <dl class="accordion" data-accordion>
+        <% version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort.each do |type| %>
+          <dd class="accordion-navigation">
+            <a href="#<%= type.downcase %>-items"><%= type.pluralize %></a>
+            <div id="<%= type.downcase %>-items" class="content">
+              <ul>
+                <% version.extension_version_content_items.where(item_type: type).each do |ci| %>
+                  <li><%= link_to ci.name, ci.github_url, target: "_blank" %></li>
+                <% end %>
+              </ul>
+            </div>
+          </dd>
         <% end %>
-      </ul>
+      </dl>
     </div>
   </div>
 </div>
