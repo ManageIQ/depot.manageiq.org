@@ -1,5 +1,7 @@
 module ManageIQ
   module Authentication
+    AUTH_SCOPE = "public_repo,user:email,write:repo_hook"
+
     #
     # Include the following methods as helper methods.
     #
@@ -29,7 +31,7 @@ module ManageIQ
     # Redirect to the sign in url if there is no current_user
     #
     def authenticate_user!
-      unless signed_in?
+      if !signed_in? or current_user.auth_scope != AUTH_SCOPE
         redirect_to sign_in_url, notice: t('user.must_be_signed_in')
       end
     end

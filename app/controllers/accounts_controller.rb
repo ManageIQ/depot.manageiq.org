@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
   #
   def create
     account = current_user.account_from_oauth(request.env['omniauth.auth'])
+    account.auth_scope = ManageIQ::Authentication::AUTH_SCOPE
 
     if account.save
       redirect_to after_link_location, notice: "Successfully

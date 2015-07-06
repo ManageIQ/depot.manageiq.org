@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625194151) do
+ActiveRecord::Schema.define(version: 20150706185934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -425,6 +425,7 @@ ActiveRecord::Schema.define(version: 20150625194151) do
     t.string   "twitter_username"
     t.text     "public_key"
     t.string   "install_preference"
+    t.string   "auth_scope",         default: "", null: false
   end
 
 end

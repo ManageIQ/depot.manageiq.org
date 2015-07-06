@@ -32,7 +32,7 @@ Rails.application.config.middleware.use(OmniAuth::Builder) do
     ENV['GITHUB_KEY'],
     ENV['GITHUB_SECRET'],
     client_options: client_options,
-    scope: "public_repo,user:email,write:repo_hook"
+    scope: ManageIQ::Authentication::AUTH_SCOPE
   ).inspect
 
   provider(
