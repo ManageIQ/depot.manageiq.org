@@ -7,6 +7,12 @@ worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3)
 timeout 15
 preload_app true
 
+current_path = "/var/www/manageiq/current"
+
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{current_path}/Gemfile"
+end
+
 before_fork do |_server, _worker|
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
