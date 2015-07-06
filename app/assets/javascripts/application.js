@@ -50,6 +50,8 @@ $(function(){
     'password': /[a-zA-Z]+/,
   });
 
+  // Autocomplete
+
   jQuery(".tokenfield").each(function(i, e) {
     var el = jQuery(e);
     var values = el.data("autofill");
@@ -78,5 +80,12 @@ $(function(){
   tagEngine.initialize();
 
   jQuery(".extension_search_textfield").typeahead(null, { source: tagEngine.ttAdapter() });
+
+
+  // Advanced search options
+
+  jQuery("#advanced-search-toggle").click(function() {
+    $("#advanced-search").slideToggle();
+  });
 });
 

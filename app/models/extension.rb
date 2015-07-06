@@ -34,6 +34,10 @@ class Extension < ActiveRecord::Base
     joins(owner: :github_account).where('accounts.username = ?', username)
   }
 
+  scope :supported_platforms, lambda { |sp_ids|
+    joins(:all_supported_platforms).where('supported_platforms.id IN (?)', sp_ids)
+  }
+
   scope :index, lambda { |opts = {}|
     includes(:extension_versions, owner: :github_account)
     .ordered_by(opts.fetch(:order, 'name ASC'))
@@ -51,9 +55,8 @@ class Extension < ActiveRecord::Base
       name: "A"
     },
     associated_against: {
-      all_supported_platforms: { name: "B" },
-      tags: { name: "C" },
-      github_account: { username: "D" },
+      tags: { name: "B" },
+      github_account: { username: "C" },
       extension_versions: { description: "D" },
     },
     using: {

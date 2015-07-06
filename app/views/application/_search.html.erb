@@ -20,5 +20,22 @@
         GO
       <% end %>
     </div>
+
+    <p class="text-right">
+      <a href="#" id="advanced-search-toggle">Advanced Options</a>
+    </p>
+
+    <div id="advanced-search" class="hide">
+      <h4 class="text-center">Supported Platforms</h4>
+
+      <% SupportedPlatform.all.each do |sp| %>
+        <div class="supported-platform">
+          <label>
+            <%= check_box_tag "supported_platforms[]", sp.id.to_s, false, { multiple: true } %>
+            <%= sp.name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

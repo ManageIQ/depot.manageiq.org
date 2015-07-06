@@ -187,3 +187,18 @@ input[type="search"].extension_search_textfield {
     color: white;
   }
 }
+
+#advanced-search {
+  .supported-platform {
+    float: left;
+    width: 50%;
+  }
+
+  h4, label {
+    color: $trinary_gray;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+}
