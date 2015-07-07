@@ -76,4 +76,20 @@ class ExtensionMailer < ActionMailer::Base
 
     mail(to: transfer_request.recipient.email, subject: subject)
   end
+
+  #
+  # Sends an email to the given moderator notifying them that an extension has
+  # just been added.
+  #
+  # @param extension_id (Fixnum)
+  # @param user_id (Fixnum)
+  #
+  def notify_moderator_of_new(extension_id, user_id)
+    @extension = Extension.find(extension_id)
+    @moderator = User.find(user_id)
+
+    @subject = %(New extension "#{@extension.name}" awaiting moderation)
+
+    mail(to: @moderator.email, subject: @subject)
+  end
 end
