@@ -81,8 +81,23 @@
     <%= link_to "Download Extension", { action: 'download' }, class: 'button secondary radius expand button_download_extension' %>
   </div>
 
-  <h3>Tags</h3>
-  <p>
+  <h4>
+    <i class="fa fa-tags"></i> Tags
+    <% if policy(extension).manage? %>
+      <a href="#" class="toggle-tags-edit">edit</a>
+      <a href="#" class="toggle-tags-edit toggle-tags-hidden">cancel</a>
+    <% end %>
+  </h4>
+  <p class="toggle-tags-edit">
     <%= extension.tags.map { |t| link_to(t.name, controller: "extensions", action: "index", q: t.name).html_safe }.join(", ").html_safe %>
   </p>
+
+  <div class="toggle-tags-edit toggle-tags-hidden">
+    <%= form_for @extension do |f| %>
+      <div class="tag_tokens-field">
+        <%= f.text_field :tag_tokens, placeholder: "Tags", title: "Tags", class: "tokenfield", data: { autofill: Tag::DEFAULT_TAGS } %>
+      </div>
+      <%= submit_tag "Save", class: "button primary small" %>
+    <% end %>
+  </div>
 </div>

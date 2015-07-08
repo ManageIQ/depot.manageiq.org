@@ -144,12 +144,12 @@ class ExtensionsController < ApplicationController
   # NOTE: :id must be the name of the extension.
   #
   def update
-    authorize! @extension, :manage_extension_urls?
+    authorize! @extension, :manage?
 
-    @extension.update_attributes(extension_urls_params)
+    @extension.update_attributes(extension_edit_params)
 
-    key = if extension_urls_params.key?(:up_for_adoption)
-            if extension_urls_params[:up_for_adoption] == 'true'
+    key = if extension_edit_params.key?(:up_for_adoption)
+            if extension_edit_params[:up_for_adoption] == 'true'
               'adoption.up'
             else
               'adoption.down'
@@ -326,8 +326,8 @@ class ExtensionsController < ApplicationController
     authenticate_user!
   end
 
-  def extension_urls_params
-    params.require(:extension).permit(:source_url, :issues_url, :up_for_adoption)
+  def extension_edit_params
+    params.require(:extension).permit(:source_url, :issues_url, :up_for_adoption, :tag_tokens)
   end
 
   def extension_deprecation_params

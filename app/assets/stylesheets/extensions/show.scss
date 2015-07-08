@@ -116,6 +116,10 @@
     .button_download_extension {
       margin-top: rem-calc(20);
     }
+
+    .tokenfield {
+      background: white;
+    }
   }
 
   #readme {
@@ -246,7 +250,7 @@
   }
 }
 
-.toggle-platforms-edit {
+.toggle-platforms-edit, .toggle-tags-edit {
   label {
     font-size: inherit;
     display: inline;
@@ -258,7 +262,7 @@
   }
 }
 
-.toggle-platforms-hidden {
+.toggle-platforms-hidden, .toggle-tags-hidden {
   display: none;
 }
 

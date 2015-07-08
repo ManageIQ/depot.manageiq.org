@@ -12,5 +12,11 @@ $(function() {
 
   $("a.toggle-platforms-edit").click(function(event) {
     $(".toggle-platforms-edit").toggle();
+    event.preventDefault();
+  });
+
+  $("a.toggle-tags-edit").click(function(event) {
+    $(".toggle-tags-edit").toggle();
+    event.preventDefault();
   });
 });
