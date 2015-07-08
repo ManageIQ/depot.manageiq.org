@@ -10,6 +10,11 @@ $(function() {
     $(this).parents('.gravatar-container').remove();
   });
 
+  $("a.toggle-details-edit").click(function(event) {
+    $(".toggle-details-edit").toggle();
+    event.preventDefault();
+  });
+
   $("a.toggle-platforms-edit").click(function(event) {
     $(".toggle-platforms-edit").toggle();
     event.preventDefault();

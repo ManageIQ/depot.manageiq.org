@@ -120,6 +120,10 @@
     .tokenfield {
       background: white;
     }
+
+    .edit-field {
+      margin: 8px 0;
+    }
   }
 
   #readme {
@@ -250,7 +254,7 @@
   }
 }
 
-.toggle-platforms-edit, .toggle-tags-edit {
+.toggle-details-edit, .toggle-platforms-edit, .toggle-tags-edit {
   label {
     font-size: inherit;
     display: inline;
@@ -262,7 +266,7 @@
   }
 }
 
-.toggle-platforms-hidden, .toggle-tags-hidden {
+.toggle-details-hidden, .toggle-platforms-hidden, .toggle-tags-hidden {
   display: none;
 }
 

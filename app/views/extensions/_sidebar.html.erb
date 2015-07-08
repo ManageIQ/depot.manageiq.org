@@ -14,7 +14,25 @@
 
   <h4 rel="edit-extension-urls">
     Details
+    <% if policy(extension).manage? %>
+      <a href="#" class="toggle-details-edit">edit</a>
+      <a href="#" class="toggle-details-edit toggle-details-hidden">cancel</a>
+    <% end %>
   </h4>
+
+  <div class="toggle-details-edit toggle-details-hidden">
+    <%= form_for @extension do |f| %>
+      <div class="edit-field">
+        <%= f.text_field :name, placeholder: "Name" %>
+      </div>
+      <div class="edit-field">
+        <%= f.text_field :description, placeholder: "description" %>
+      </div>
+      <div class="edit-field">
+        <%= submit_tag "Save", class: "button primary small" %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="extension-details">
     <div class="extension-urls">

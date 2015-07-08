@@ -327,7 +327,7 @@ class ExtensionsController < ApplicationController
   end
 
   def extension_edit_params
-    params.require(:extension).permit(:source_url, :issues_url, :up_for_adoption, :tag_tokens)
+    params.require(:extension).permit(:source_url, :issues_url, :up_for_adoption, :tag_tokens, :name, :description)
   end
 
   def extension_deprecation_params
