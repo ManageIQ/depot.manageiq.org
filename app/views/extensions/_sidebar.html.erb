@@ -12,18 +12,18 @@
     </div>
   <% end %>
 
-  <h3 rel="edit-extension-urls">
+  <h4 rel="edit-extension-urls">
     Details
-  </h3>
+  </h4>
 
   <div class="extension-details">
     <div class="extension-urls">
-      <% if extension.source_url.present? %>
-        <%= link_to 'View Source', extension.source_url, class: 'button radius tiny source-url', itemprop: 'codeRepository' %>
+      <% if extension.github_url.present? %>
+        <%= link_to 'View Source', extension.github_url, class: 'button radius tiny source-url', itemprop: 'codeRepository', target: "_blank" %>
       <% end %>
 
       <% if extension.issues_url.present? %>
-        <%= link_to 'View Issues', extension.issues_url, class: 'button secondary radius tiny issues-url', itemprop: 'discussionUrl' %>
+        <%= link_to 'View Issues', extension.issues_url, class: 'button secondary radius tiny issues-url', itemprop: 'discussionUrl, target: "_blank"' %>
       <% end %>
     </div>
 
