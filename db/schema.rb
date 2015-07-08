@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707164033) do
+ActiveRecord::Schema.define(version: 20150708202256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,8 +287,10 @@ ActiveRecord::Schema.define(version: 20150707164033) do
     t.string   "github_url"
     t.string   "license_name",              default: ""
     t.text     "license_text",              default: ""
+    t.boolean  "enabled",                   default: true,  null: false
   end
 
+  add_index "extensions", ["enabled"], name: "index_extensions_on_enabled", using: :btree
   add_index "extensions", ["lowercase_name"], name: "index_extensions_on_lowercase_name", unique: true, using: :btree
   add_index "extensions", ["name"], name: "index_extensions_on_name", using: :btree
   add_index "extensions", ["user_id"], name: "index_extensions_on_user_id", using: :btree

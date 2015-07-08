@@ -1,6 +1,8 @@
 class Extension < ActiveRecord::Base
   include PgSearch
 
+  default_scope { where(enabled: true) }
+
   #
   # Query extensions by case-insensitive name.
   #
