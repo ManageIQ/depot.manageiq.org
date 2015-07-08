@@ -12,10 +12,7 @@ class CreateExtension
       extension.owner = @user
 
       if extension.valid? and repo_valid?(extension)
-        ActiveRecord::Base.transaction do
-          extension.save
-          create_tags(extension)
-        end
+        extension.save
 
         CollectExtensionMetadataWorker.perform_async(extension.id, @compatible_platforms.select { |p| !p.strip.blank? })
         SetupExtensionWebHooksWorker.perform_async(extension.id)
@@ -36,11 +33,5 @@ class CreateExtension
     if !result then extension.errors[:github_url] = I18n.t("extension.github_url_format_error") end
 
     result
-  end
-
-  def create_tags(extension)
-    (@tags || "").split(",").map(&:strip).uniq.each do |tag|
-      extension.taggings.add(tag)
-    end
   end
 end

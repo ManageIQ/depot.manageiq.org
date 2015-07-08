@@ -73,6 +73,7 @@ class Extension < ActiveRecord::Base
   # --------------------
   before_validation :copy_name_to_lowercase_name
   before_validation :normalize_github_url
+  before_save :update_tags
 
   # Associations
   # --------------------
@@ -139,6 +140,10 @@ class Extension < ActiveRecord::Base
   # @return [String]
   #
   attr_accessor :tag_tokens
+
+  def tag_tokens
+    @tag_tokens ||= tags.map(&:name).join(", ")
+  end
 
   #
   # Form placeholder.
@@ -458,6 +463,13 @@ class Extension < ActiveRecord::Base
     url = self.github_url || ""
     url.gsub!(/(https?:\/\/)?(www\.)?github\.com\//, "")
     self.github_url = "https://github.com/#{url}"
+    true
+  end
+
+  def update_tags
+    self.tags = self.tag_tokens.split(",").map do |token|
+      Tag.where(name: token).first_or_create
+    end
     true
   end
 end
