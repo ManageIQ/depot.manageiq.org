@@ -87,6 +87,15 @@ class ExtensionAuthorizer < Authorizer::Base
     admin?
   end
 
+  #
+  # Admins can disable an extension.
+  #
+  # @return [Boolean]
+  #
+  def disable?
+    admin?
+  end
+
   private
 
   def admin?

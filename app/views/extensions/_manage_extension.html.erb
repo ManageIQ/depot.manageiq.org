@@ -73,4 +73,12 @@
       <% end %>
     </li>
   <% end %>
+
+  <% if policy(extension).disable? %>
+    <li>
+      <%= link_to disable_extension_path(extension), method: 'put', rel: 'disable' do %>
+        <i class="fa fa-times"></i> Disable
+      <% end %>
+    </li>
+  <% end %>
 </ul>

@@ -277,6 +277,17 @@ class ExtensionsController < ApplicationController
   end
 
   #
+  # PUT /extensions/:extension/disable
+  #
+  # Allows an admin to disable an extension, hiding it from view.
+  #
+  def disable
+    authorize! @extension
+    @extension.update_attribute(:enabled, false)
+    redirect_to "/", notice: t("extension.disabled"), extension: @extension.name
+  end
+
+  #
   # GET /extensions/:id/deprecate_search?q=QUERY
   #
   # Return extensions with a name that contains the specified query. Takes the

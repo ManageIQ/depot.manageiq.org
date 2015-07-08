@@ -41,6 +41,7 @@ ManageIQ::Application.routes.draw do
       get :deprecate_search
       post :adoption
       post :webhook
+      put :disable
     end
 
     get 'versions/:version/download' => 'extension_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
