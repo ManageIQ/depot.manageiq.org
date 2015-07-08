@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708202256) do
+ActiveRecord::Schema.define(version: 20150708210900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -427,10 +427,10 @@ ActiveRecord::Schema.define(version: 20150708202256) do
     t.string   "twitter_username"
     t.text     "public_key"
     t.string   "install_preference"
-    t.string   "auth_scope",         default: "",    null: false
-    t.boolean  "moderator",          default: false, null: false
+    t.string   "auth_scope",         default: "", null: false
   end
 
-  add_index "users", ["moderator"], name: "index_users_on_moderator", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["roles_mask"], name: "index_users_on_roles_mask", using: :btree
 
 end

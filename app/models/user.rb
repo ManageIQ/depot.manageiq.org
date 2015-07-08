@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # --------------------
   scope :with_email, ->(email) { where(email: email) }
   scope :with_username, ->(username) { joins(:github_account).where('accounts.username' => username) }
-  scope :moderator, -> { where(moderator: true) }
+  scope :moderator, -> { where("roles_mask > 0") }
 
   # Search
   # --------------------
