@@ -30,7 +30,7 @@ class ExtractExtensionVersionFileWorker
 
     ExtensionVersion
       .where(id: version_id)
-      .update_all("yml_line_count = yml_line_count + ?", body.count("\n") + 1)
+      .update_all(["yml_line_count = yml_line_count + ?", body.count("\n") + 1])
 
     # Widgets
     # Reports (type of Widget)

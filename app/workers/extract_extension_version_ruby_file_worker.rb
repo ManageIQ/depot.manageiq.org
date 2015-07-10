@@ -9,6 +9,6 @@ class ExtractExtensionVersionRubyFileWorker
 
     ExtensionVersion
       .where(id: version_id)
-      .update_all("rb_line_count = rb_line_count + ?", body.count("\n") + 1)
+      .update_all(["rb_line_count = rb_line_count + ?", body.count("\n") + 1])
   end
 end
