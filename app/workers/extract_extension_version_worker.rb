@@ -14,7 +14,9 @@ class ExtractExtensionVersionWorker
 
     version.update_attributes(
       readme: readme_body,
-      readme_extension: readme_ext
+      readme_extension: readme_ext,
+      yml_line_count: 0,
+      rb_line_count: 0
     )
 
     @compatible_platforms.each do |p|

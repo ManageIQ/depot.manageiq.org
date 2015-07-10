@@ -11,8 +11,11 @@ class ExtractExtensionVersionContentsWorker
     contents.each do |item|
       if item[:type] == "file" and item.name =~ /(\.yml|\.yaml)$/
         ExtractExtensionVersionFileWorker.perform_async(version_id, item[:path])
+      elsif item[:type] == "file" and item.name =~ /\.rb$/
+        ExtractExtensionVersionRubyFileWorker.perform_async(version_id, item[:path])
       elsif item[:type] == "dir" and item.name =~ /\.class$/
         ExtractExtensionVersionClassWorker.perform_async(version_id, item[:path])
+        ExtractExtensionVersionContentsWorker.perform_async(version_id, item[:path])
       elsif item[:type] == "dir"
         ExtractExtensionVersionContentsWorker.perform_async(version_id, item[:path])
       end
