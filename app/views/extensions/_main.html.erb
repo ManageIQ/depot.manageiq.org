@@ -62,6 +62,7 @@
       <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
 
       <p><%= item_types.map { |type| pluralize(version.extension_version_content_items.where(item_type: type).count, type) }.join(", ") %></p>
+      <p><%= pluralize(version.yml_line_count, "line") %> of YAML, <%= pluralize(version.rb_line_count, "line") %> of Ruby</p>
 
       <dl class="accordion" data-accordion>
         <% item_types.each do |type| %>
