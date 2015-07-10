@@ -4,7 +4,7 @@ class ExtractExtensionVersionContentsWorker
   def perform(version_id, path = "")
     @version = ExtensionVersion.find(version_id)
     @extension = @version.extension
-    @version.extension_version_content_items.destroy_all
+    @version.extension_version_content_items.destroy_all if path == ""
 
     contents = @extension.octokit.contents(@extension.github_repo, ref: @version.version, path: path)
 
