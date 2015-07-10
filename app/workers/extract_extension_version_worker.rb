@@ -24,6 +24,7 @@ class ExtractExtensionVersionWorker
     end
 
     ExtractExtensionVersionContentsWorker.perform_async(version.id)
+    ExtractExtensionVersionLastCommitWorker.perform_async(version.id)
   end
 
   private

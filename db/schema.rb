@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710182219) do
+ActiveRecord::Schema.define(version: 20150710195130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,10 @@ ActiveRecord::Schema.define(version: 20150710182219) do
     t.text     "foodcritic_feedback"
     t.integer  "rb_line_count",         default: 0,     null: false
     t.integer  "yml_line_count",        default: 0,     null: false
+    t.string   "last_commit_string"
+    t.datetime "last_commit_at"
+    t.string   "last_commit_sha"
+    t.string   "last_commit_url"
   end
 
   add_index "extension_versions", ["legacy_id"], name: "index_extension_versions_on_legacy_id", unique: true, using: :btree
