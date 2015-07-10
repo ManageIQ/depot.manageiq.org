@@ -1,4 +1,6 @@
 <div class="collaborators_avatar">
+  <h4><%= pluralize(collaborators.count, "collaborator") %></h4>
+
   <% collaborators.each do |collaborator| %>
     <div class="gravatar-container">
       <% collaboration_permissions_for(collaborator) do |transfer, destroy| %>
