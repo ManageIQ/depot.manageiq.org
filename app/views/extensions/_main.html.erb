@@ -59,9 +59,12 @@
       <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
     </div>
     <div class="content" id="contents">
+      <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
+
+      <p><%= item_types.map { |type| pluralize(version.extension_version_content_items.where(item_type: type).count, type) }.join(", ") %></p>
 
       <dl class="accordion" data-accordion>
-        <% version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort.each do |type| %>
+        <% item_types.each do |type| %>
           <dd class="accordion-navigation">
             <a href="#<%= type.downcase %>-items"><%= type.pluralize %></a>
             <div id="<%= type.downcase %>-items" class="content">
