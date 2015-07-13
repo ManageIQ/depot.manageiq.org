@@ -1,6 +1,6 @@
 <nav class="appnav">
   <ul class="mainnav">
-    <li><%= link_to 'Extensions', extensions_directory_path, 'data-hover' => 'Extensions', :rel => 'extensions' %></li>
+    <li><%= link_to 'Extensions', root_path, 'data-hover' => 'Extensions', :rel => 'extensions' %></li>
     <% if ROLLOUT.active?(:cla) %>
       <li><%= link_to 'Contributors', contributors_path, 'data-hover' => 'Contributors', :rel => 'contributors' %></li>
     <% end %>
