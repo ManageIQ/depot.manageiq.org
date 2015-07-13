@@ -61,6 +61,10 @@
     <div class="content" id="contents">
       <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
 
+      <p>
+        Last commit on <%= version.last_commit_at %>:<br>
+        <%= link_to(version.last_commit_string, version.last_commit_url, target: "_blank") %>
+      </p>
       <p><%= item_types.map { |type| pluralize(version.extension_version_content_items.where(item_type: type).count, type) }.join(", ") %></p>
       <p><%= pluralize(version.yml_line_count, "line") %> of YAML, <%= pluralize(version.rb_line_count, "line") %> of Ruby</p>
 
