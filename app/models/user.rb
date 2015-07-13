@@ -359,7 +359,8 @@ class User < ActiveRecord::Base
       public_key: extractor.public_key,
       first_name: extractor.first_name,
       last_name: extractor.last_name,
-      email: extractor.email
+      email: extractor.email,
+      avatar_url: extractor.image_url
     )
 
     transaction do
