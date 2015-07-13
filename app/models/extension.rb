@@ -94,7 +94,6 @@ class Extension < ActiveRecord::Base
 
   # Delegations
   # --------------------
-  delegate :description, to: :latest_extension_version, allow_nil: true
   delegate :foodcritic_failure, to: :latest_extension_version, allow_nil: true
   delegate :foodcritic_feedback, to: :latest_extension_version, allow_nil: true
 
