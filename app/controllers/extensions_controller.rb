@@ -59,6 +59,7 @@ class ExtensionsController < ApplicationController
   # Show a form for creating a new extension.
   #
   def new
+    @repo_names = current_user.octokit.repos.map { |r| r[:full_name] } rescue []
     @extension = Extension.new
   end
 

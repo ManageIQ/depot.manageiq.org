@@ -9,7 +9,7 @@
 
       <fieldset id="" class="">
         <div class="name-field">
-          <%= f.text_field :name, placeholder: "Name", title: "Name", required: true %>
+          <%= f.text_field :name, placeholder: "Name", title: "Name", required: true, class: "autofill", data: { autofill: @repo_names } %>
           <small class="error">Name is required.</small>
         </div>
         <div class="description-field">

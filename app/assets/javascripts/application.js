@@ -67,10 +67,25 @@ $(function(){
     el.tokenfield({ typeahead: [null, { source: engine.ttAdapter() }] });
   });
 
+  jQuery(".autofill").each(function(i, e) {
+    var el = jQuery(e);
+    var values = el.data("autofill");
+
+    var engine = new Bloodhound({
+      local: values,
+      datumTokenizer: function(d) { return d.split(","); },
+      queryTokenizer: function(v) { return v.split(",") }
+    });
+
+    engine.initialize();
+
+    el.typeahead(null, { source: engine.ttAdapter() });
+  });
+
   var tagEngine = new Bloodhound({
     datumTokenizer: function(d) { return [d]; },
     queryTokenizer: function(v) { return [v]; },
-    identify: function(d) { console.log(v); return v; },
+    identify: function(d) { return v; },
     remote: {
       url: "/api/v1/tags?q=%QUERY",
       wildcard: "%QUERY"
