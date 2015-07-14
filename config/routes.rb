@@ -42,6 +42,7 @@ ManageIQ::Application.routes.draw do
       post :adoption
       post :webhook
       put :disable
+      put :report
     end
 
     get 'versions/:version/download' => 'extension_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }

@@ -92,4 +92,20 @@ class ExtensionMailer < ActionMailer::Base
 
     mail(to: @moderator.email, subject: @subject)
   end
+
+  #
+  # Sends an email to the given moderator notifying them that an extension has
+  # just been reported.
+  #
+  # @param extension_id (Fixnum)
+  # @param user_id (Fixnum)
+  #
+  def notify_moderator_of_reported(extension_id, user_id)
+    @extension = Extension.find(extension_id)
+    @moderator = User.find(user_id)
+
+    @subject = %(Extension "#{@extension.name}" reported)
+
+    mail(to: @moderator.email, subject: @subject)
+  end
 end

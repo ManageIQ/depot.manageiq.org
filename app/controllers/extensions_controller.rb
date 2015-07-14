@@ -284,7 +284,17 @@ class ExtensionsController < ApplicationController
   def disable
     authorize! @extension
     @extension.update_attribute(:enabled, false)
-    redirect_to "/", notice: t("extension.disabled"), extension: @extension.name
+    redirect_to "/", notice: t("extension.disabled", extension: @extension.name)
+  end
+
+  #
+  # PUT /extensions/:extension/report
+  #
+  # Notifies moderators to check an extension for inappropriate content.
+  #
+  def report
+    NotifyModeratorsOfReportedExtensionWorker.perform_async(@extension.id)
+    redirect_to @extension, notice: t("extension.reported", extension: @extension.name)
   end
 
   #
@@ -311,6 +321,7 @@ class ExtensionsController < ApplicationController
   # Receive updates from GitHub's webhook API about an extension's repo.
   #
   def webhook
+    # TODO: Don't do a full update on watch event
     CollectExtensionMetadataWorker.perform_async(@extension.id, [])
     head :ok
   end

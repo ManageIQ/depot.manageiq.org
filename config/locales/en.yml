@@ -28,6 +28,7 @@ en:
     undeprecated: "%{extension} is no longer deprecated."
     featured: "%{extension} is now %{state}."
     disabled: "%{extension} is now disabled."
+    reported: "%{extension} has been reported."
     deprecate_with_deprecated_failure: "This extension cannot be deprecated in favor of a deprecated extension."
     activity: "%{maintainer} released v%{version} of the %{extension} extension."
     updated: "The %{name} extension has been successfully updated."

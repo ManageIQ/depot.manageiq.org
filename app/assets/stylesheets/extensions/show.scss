@@ -273,3 +273,18 @@
 .extension_platforms .extension_no_platform_icon {
   margin-bottom: 20px !important;
 }
+
+.reveal-modal {
+  .close-reveal-modal {
+    font-size: 1rem;
+    position: static !important;
+    margin-right: 20px;
+  }
+}
+
+.button_to {
+  display: inline;
+  div {
+    display: inline;
+  }
+}
