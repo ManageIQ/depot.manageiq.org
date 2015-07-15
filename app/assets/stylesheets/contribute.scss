@@ -11,7 +11,7 @@
   .tabs span {
     background: lighten($secondary_gray, 20%);
     border-radius: rem-calc(4);
-    color: white;
+    color: $secondary_gray;
     font-size: rem-calc(12);
     margin-left: rem-calc(5);
     padding: rem-calc(1 5 1 5);
