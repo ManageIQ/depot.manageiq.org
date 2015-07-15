@@ -42,7 +42,7 @@ class ContributorsController < ApplicationController
   # Display all of the users who are authorized to contribute
   #
   def index
-    @contributors = User.authorized_contributors.page(params[:page]).per(20)
+    @contributors = User.page(params[:page]).per(20)
     @contributor_list = ContributorList.new(@contributors)
   end
 
