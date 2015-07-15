@@ -2,7 +2,13 @@
   <div class="header">
     <div class="header-content">
       <h2 class="title">
-        <%= link_to extension, rel: 'extension', itemprop: 'name' do %><%= extension.name %><% end %>
+        <% if extension.enabled? %>
+          <%= link_to extension, rel: 'extension', itemprop: 'name' do %><%= extension.name %><% end %>
+        <% else %>
+          <%= extension.name %>
+          <i class="fa fa-times"></i>
+          <small>Disabled</small>
+        <% end %>
         <i class="fa fa-file"></i>
         <small><%= extension.latest_extension_version.try(:version) %></small>
       </h2>
