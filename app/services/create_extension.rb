@@ -2,7 +2,7 @@ class CreateExtension
   def initialize(params, user)
     @params = params
     @tags = params[:tag_tokens]
-    @compatible_platforms = params[:compatible_platforms]
+    @compatible_platforms = params[:compatible_platforms] || []
     @user = user
     @github = @user.octokit
   end
