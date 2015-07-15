@@ -10,13 +10,19 @@ class UsersController < ApplicationController
   # the user owns.
   #
   def show
+    if @user == current_user
+      @extensions = Extension.unscoped
+    else
+      @extensions = Extension.all
+    end
+
     case params[:tab]
     when 'collaborates'
-      @extensions = @user.collaborated_extensions
+      @extensions = @extensions.merge(@user.collaborated_extensions)
     when 'follows'
-      @extensions = @user.followed_extensions
+      @extensions = @extensions.merge(@user.followed_extensions)
     else
-      @extensions = @user.owned_extensions
+      @extensions = @extensions.merge(@user.owned_extensions)
     end
 
     @extensions = @extensions.order(:name).page(params[:page]).per(20)
