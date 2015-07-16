@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create do
     add(extension_version_path(extension_version.extension, extension_version), lastmod: extension_version.updated_at)
   end
 
-  User.includes(:chef_account).find_each do |user|
+  User.includes(:github_account).find_each do |user|
     add(user_path(user), lastmod: user.updated_at)
   end
 end
