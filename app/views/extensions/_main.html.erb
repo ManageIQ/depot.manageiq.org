@@ -88,12 +88,3 @@
     </div>
   </div>
 </div>
-
-<div class="reveal-modal" id="report-extension" data-reveal>
-  <h2>Are you sure you want to report this extension?</h2>
-  <p class="lead">Our moderators will be notified and will disable the extension if it is found to be inappropriate.</p>
-  <div class="text-right">
-    <%= link_to "Cancel", "#", class: "close-reveal-modal" %>
-    <%= button_to "Report", report_extension_path(extension), method: :put, class: "button primary button_to" %>
-  </div>
-</div>
