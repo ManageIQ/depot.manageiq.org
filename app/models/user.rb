@@ -356,6 +356,8 @@ class User < ActiveRecord::Base
       oauth_expires: extractor.oauth_expires
     )
 
+    raise RuntimeError.new("User is disabled") if !account.user
+
     account.user.assign_attributes(
       public_key: extractor.public_key,
       first_name: extractor.first_name,

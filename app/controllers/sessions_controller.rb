@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
     user.update_attribute(:auth_scope, ManageIQ::Authentication::AUTH_SCOPE)
     session[:user_id] = user.id
     redirect_to redirect_path, notice: t('user.signed_in', name: user.name)
+  rescue RuntimeError
+    redirect_to root_path, notice: t("user.user_is_disabled")
   end
 
   #
