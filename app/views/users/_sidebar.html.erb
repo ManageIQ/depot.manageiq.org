@@ -69,6 +69,10 @@
     <%= link_to 'Revoke Admin', revoke_admin_user_path(@user), method: 'delete', class: 'button medium expand radius', rel: 'revoke_admin' %>
   <% end %>
 
+  <% if policy(@user).disable? %>
+    <%= link_to "Disable", disable_user_path(@user), method: "put", class: "button medium expand radius", rel: "disable" %>
+  <% end %>
+
   <% if @user == current_user %>
     <% if params[:controller] == "profile" %>
       <%= link_to 'View Profile', @user, class: 'button medium expand radius', rel: 'view_profile' %>

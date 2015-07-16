@@ -42,7 +42,8 @@ class ContributorsController < ApplicationController
   # Display all of the users who are authorized to contribute
   #
   def index
-    @contributors = User.page(params[:page]).per(20)
+    @contributors = User.includes(:github_account).page(params[:page]).per(20)
+    @contributors = @contributors.unscope(where: :enabled) if current_user && current_user.is?(:admin)
     @contributor_list = ContributorList.new(@contributors)
   end
 

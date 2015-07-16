@@ -14,4 +14,18 @@ class UserAuthorizer < Authorizer::Base
   def revoke_admin?
     user.is?(:admin) && user != record
   end
+
+  #
+  # Admins can disabled users
+  #
+  def disable?
+    user.is?(:admin) && record.enabled?
+  end
+
+  #
+  # Admins can enable users
+  #
+  def enable?
+    user.is?(:admin) && !record.enabled?
+  end
 end

@@ -47,6 +47,19 @@ class UsersController < ApplicationController
   end
 
   #
+  # PUT /users/:id/disable
+  #
+  # Disables the given user then redirects back to home.
+  #
+  def disable(*args)
+    authorize! @user
+    @user.enabled = false
+    @user.save
+    @user.owned_extensions.update_all(enabled: false)
+    redirect_to root_path, notice: t("user.disabled", name: @user.username)
+  end
+
+  #
   # DELETE /users/:id/revoke_admin
   #
   # Revokes the admin role to a given user then redirects back to

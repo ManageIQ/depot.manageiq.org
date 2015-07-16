@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   # Validations
   # --------------------
-  validates_presence_of :email
+  # validates_presence_of :email
 
   # Callbacks
   # --------------------
@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   # Scope
   # --------------------
+  default_scope ->{ where(enabled: true) }
   scope :with_email, ->(email) { where(email: email) }
   scope :with_username, ->(username) { joins(:github_account).where('accounts.username' => username) }
   scope :moderator, -> { where("roles_mask > 0") }
