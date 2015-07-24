@@ -429,6 +429,15 @@ class Extension < ActiveRecord::Base
   end
 
   #
+  # Returns the file system path where the repo is stored for syncing.
+  #
+  # @return [String]
+  #
+  def repo_path
+    @repo_path ||= "/tmp/extension-repo-#{id}"
+  end
+
+  #
   # Returns an Octokit client configured for the Extension's owner.
   #
   # @return [Ocotkit::Client]
