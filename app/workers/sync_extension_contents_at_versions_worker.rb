@@ -1,7 +1,7 @@
 class SyncExtensionContentsAtVersionsWorker
   include Sidekiq::Worker
 
-  def perform(extension_id, tags, compatible_platforms)
+  def perform(extension_id, tags, compatible_platforms = [])
     @extension = Extension.find(extension_id)
     @tags = tags
     @tag = @tags.shift
