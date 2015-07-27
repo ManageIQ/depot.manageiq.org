@@ -59,7 +59,7 @@ class ExtensionsController < ApplicationController
   # Show a form for creating a new extension.
   #
   def new
-    @repo_names = current_user.octokit.repos.map { |r| r[:full_name] } rescue []
+    @repo_names = current_user.octokit.repos.map { |r| r.to_h.slice(:full_name, :name, :description) } rescue []
     @extension = Extension.new
   end
 
@@ -76,7 +76,7 @@ class ExtensionsController < ApplicationController
     if @extension.errors.none?
       redirect_to extension_path(@extension), notice: t("extension.created")
     else
-      @repo_names = current_user.octokit.repos.map { |r| r[:full_name] } rescue []
+      @repo_names = current_user.octokit.repos.map { |r| r.to_h.slice(:full_name, :name, :description) } rescue []
       render :new
     end
   end

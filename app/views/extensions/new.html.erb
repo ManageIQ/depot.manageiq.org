@@ -9,16 +9,14 @@
 
       <fieldset id="" class="">
         <div class="name-field">
-          <%= f.select :name, @repo_names, { include_blank: "Select a Repository" }, required: true %>
+          <%= f.select :github_url_short, @repo_names.map { |r| r[:full_name] }, { include_blank: "Select a Repository" }, required: true, id: "extension-url-short-field", data: { repos: @repo_names } %>
           <small class="error">Name is required.</small>
+          <%= f.hidden_field :github_url, id: "extension-url-field" %>
+          <%= f.hidden_field :name, id: "extension-name-field" %>
         </div>
         <div class="description-field">
-          <%= f.text_field :description, placeholder: "Description", title: "Description", required: true %>
+          <%= f.text_field :description, placeholder: "Description", title: "Description", required: true, id: "extension-desc-field" %>
           <small class="error">Description is required.</small>
-        </div>
-        <div class="github_url-field">
-          <%= f.text_field :github_url, placeholder: "Github URL", title: "Github URL", required: true, pattern: "((https?://)?(www\.)?github\.com/)?[.a-zA-Z0-9_-]+/[.a-zA-Z0-9_-]+" %>
-          <small class="error">Github Url is required.</small>
         </div>
         <div class="tag_tokens-field">
           <%= f.text_field :tag_tokens, placeholder: "Tags", title: "Tags", class: "tokenfield", data: { autofill: Tag::DEFAULT_TAGS } %>

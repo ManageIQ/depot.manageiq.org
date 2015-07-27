@@ -139,6 +139,7 @@ class Extension < ActiveRecord::Base
   # @return [String]
   #
   attr_accessor :tag_tokens
+  attr_accessor :github_url_short
 
   def tag_tokens
     @tag_tokens ||= tags.map(&:name).join(", ")
