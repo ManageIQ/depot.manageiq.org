@@ -24,5 +24,7 @@ jQuery(function() {
     updateNameAndDescription();
   });
 
-  updateNameAndDescription();
+  if ($("#extension-url-short-field").size > 0) {
+    updateNameAndDescription();
+  }
 });
