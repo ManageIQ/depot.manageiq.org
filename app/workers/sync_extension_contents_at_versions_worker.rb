@@ -1,7 +1,13 @@
 class SyncExtensionContentsAtVersionsWorker
   include Sidekiq::Worker
 
+  def logger
+    @logger ||= Logger.new("log/scan.log")
+  end
+
   def perform(extension_id, tags, compatible_platforms = [])
+    logger.info("PERFORMING: #{extension_id}, #{tags.inspect}, #{compatible_platforms.inspect}")
+
     @extension = Extension.find(extension_id)
     @tags = tags
     @tag = @tags.shift
@@ -45,12 +51,12 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def fetch_readme
-    filename = @run.cmd("ls README*")
+    filename = @run.cmd("ls README*").split("\n")
 
     if filename = filename.first
       ext = extract_readme_file_extension(filename)
-      body = @run.cmd("cat #{filename}")
-      return "README body here", "txt"
+      body = @run.cmd("cat '#{filename}'")
+      return body, ext
     else
       return "There is no README file for this extension.", "txt"
     end
@@ -65,13 +71,13 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def ensure_updated_version(readme_body, readme_ext)
-    yml_line_count = @run.cmd("find . -name '*.yml' -o -name '*.yaml' | xargs wc -l").split("\n").last || ""
-    rb_line_count = @run.cmd("find . -name '*.rb' | xargs wc -l").split("\n").last || ""
+    yml_line_count = @run.cmd("find . -name '*.yml' -o -name '*.yaml' -print0 | xargs -0 wc -l").split("\n").last || ""
+    rb_line_count = @run.cmd("find . -name '*.rb' -print0 | xargs -0 wc -l").split("\n").last || ""
 
     yml_line_count = yml_line_count.strip.to_i
-    rb_line_count = yml_line_count.strip.to_i
+    rb_line_count = rb_line_count.strip.to_i
 
-    @extension.extension_versions.first_or_create(version: @tag).tap do |version|
+    @extension.extension_versions.where(version: @tag).first_or_create!.tap do |version|
       version.update_attributes(
         readme: readme_body,
         readme_extension: readme_ext,
@@ -88,7 +94,7 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def set_last_commit(version)
-    commit = @run.cmd("git log HEAD^..HEAD")
+    commit = @run.cmd("git log -1")
     sha, author, date = *commit.split("\n")
     message = commit.split("\n\n").last.gsub("\n", " ").strip
 
@@ -103,13 +109,15 @@ class SyncExtensionContentsAtVersionsWorker
 
   def scan_files(version)
     version.extension_version_content_items.destroy_all
+    logger.info("SCANNING FILES")
     scan_yml_files(version)
     scan_class_dirs(version)
   end
 
   def scan_yml_files(version)
-    @run.cmd("find . -name '*.yml' -o -name '*.yaml'").split("\n").each do |path|
-      body = @run.cmd("cat #{path}")
+    @run.cmd("find . -name '*.yml' -o -name '*.yaml'").tap { |r| logger.info("YAML FILES: #{r.inspect}") }.split("\n").each do |path|
+      logger.info("SCANNING: #{path}")
+      body = @run.cmd("cat '#{path}'")
       path = path.gsub("./", "")
 
       type = if body["MiqReport"]
@@ -126,23 +134,22 @@ class SyncExtensionContentsAtVersionsWorker
 
       next if type.nil?
 
-      @version.extension_version_content_items.first_or_create(
+      logger.info version.extension_version_content_items.where(path: path).first_or_create!(
         name: path.gsub(/.+\//, ""),
-        path: path,
         item_type: type,
-        github_url: version.extension.github_url + "/blob/#{version.version}/#{path}"
-      )
+        github_url: version.extension.github_url + "/blob/#{version.version}/#{CGI.escape(path)}"
+      ).inspect
     end
   end
 
   def scan_class_dirs(version)
-    @run.cmd("find . -name '*.class'").split("\n").each do |path|
-      @version.extension_version_content_items.first_or_create(
+    @run.cmd("find . -name '*.class'").tap { |r| logger.info("RB FILES: #{r.inspect}") }.split("\n").each do |path|
+      logger.info("SCANNING: #{path}")
+      logger.info version.extension_version_content_items.where(path: path).first_or_create!(
         name: path.gsub(/.+\//, ""),
-        path: path,
         item_type: "Class",
         github_url: version.extension.github_url + "/blob/#{version.version}/#{path}"
-      )
+      ).inspect
     end
   end
 end
