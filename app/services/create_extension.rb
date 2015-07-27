@@ -17,7 +17,7 @@ class CreateExtension
         CollectExtensionMetadataWorker.perform_async(extension.id, @compatible_platforms.select { |p| !p.strip.blank? })
         SetupExtensionWebHooksWorker.perform_async(extension.id)
         NotifyModeratorsOfNewExtension.perform_async(extension.id)
-      elsif existing = Extension.where(enabled: false, github_url: extension.github_url)
+      elsif existing = Extension.unscoped.where(enabled: false, github_url: extension.github_url).first
         existing.update_attribute(:enabled, true)
         return existing
       end
