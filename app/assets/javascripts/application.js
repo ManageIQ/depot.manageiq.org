@@ -27,6 +27,7 @@
 //= require flash
 //= require select2.min
 //= require collaborators
+//= require extensionNew
 //= require extensionDeprecate
 //= require extensionInstallTabs
 //= require organizations
