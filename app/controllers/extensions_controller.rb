@@ -76,6 +76,7 @@ class ExtensionsController < ApplicationController
     if @extension.errors.none?
       redirect_to extension_path(@extension), notice: t("extension.created")
     else
+      @repo_names = current_user.octokit.repos.map { |r| r[:full_name] } rescue []
       render :new
     end
   end
