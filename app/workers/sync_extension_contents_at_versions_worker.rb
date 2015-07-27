@@ -45,11 +45,11 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def fetch_readme
-    filename = @cmd.run("ls README*")
+    filename = @run.cmd("ls README*")
 
     if filename = filename.first
       ext = extract_readme_file_extension(filename)
-      body = @cmd.run("cat #{filename}")
+      body = @run.cmd("cat #{filename}")
       return "README body here", "txt"
     else
       return "There is no README file for this extension.", "txt"
@@ -65,8 +65,8 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def ensure_updated_version(readme_body, readme_ext)
-    yml_line_count = @cmd.run("find . -name '*.yml' -o -name '*.yaml' | xargs wc -l").split("\n").last || ""
-    rb_line_count = @cmd.run("find . -name '*.rb' | xargs wc -l").split("\n").last || ""
+    yml_line_count = @run.cmd("find . -name '*.yml' -o -name '*.yaml' | xargs wc -l").split("\n").last || ""
+    rb_line_count = @run.cmd("find . -name '*.rb' | xargs wc -l").split("\n").last || ""
 
     yml_line_count = yml_line_count.strip.to_i
     rb_line_count = yml_line_count.strip.to_i
@@ -88,7 +88,7 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def set_last_commit(version)
-    commit = @cmd.run("git log HEAD^..HEAD")
+    commit = @run.cmd("git log HEAD^..HEAD")
     sha, author, date = *commit.split("\n")
     message = commit.split("\n\n").last.gsub("\n", " ").strip
 
@@ -108,8 +108,8 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def scan_yml_files(version)
-    @cmd.run("find . -name '*.yml' -o -name '*.yaml'").split("\n").each do |path|
-      body = @cmd.run("cat #{path}")
+    @run.cmd("find . -name '*.yml' -o -name '*.yaml'").split("\n").each do |path|
+      body = @run.cmd("cat #{path}")
       path = path.gsub("./", "")
 
       type = if body["MiqReport"]
@@ -136,7 +136,7 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def scan_class_dirs(version)
-    @cmd.run("find . -name '*.class'").split("\n").each do |path|
+    @run.cmd("find . -name '*.class'").split("\n").each do |path|
       @version.extension_version_content_items.first_or_create(
         name: path.gsub(/.+\//, ""),
         path: path,
