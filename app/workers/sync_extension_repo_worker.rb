@@ -7,6 +7,6 @@ class SyncExtensionRepoWorker
 
     tags = `cd #{@extension.repo_path} && git tag`.split("\n")
 
-    SyncExtensionContentsAtVersions.perform_async(extension_id, ["master", *tags])
+    SyncExtensionContentsAtVersionsWorker.perform_async(extension_id, ["master", *tags])
   end
 end
