@@ -2,7 +2,7 @@
 lock "3.4.0"
 
 set :application, "manageiq"
-set :repo_url, "git@github.com:gofullstack/extensions-depot.git"
+set :repo_url, "git@github.com:ManageIQ/depot.manageiq.org.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
