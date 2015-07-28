@@ -64,6 +64,7 @@
     <div class="content" id="contents">
       <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
 
+      <p><%= pluralize(number_with_delimiter(version.commit_count), "commit") %> total for this version.</p>
       <p>
         Last commit on <%= version.last_commit_at %>:<br>
         <%= link_to(version.last_commit_string, version.last_commit_url, target: "_blank") %>

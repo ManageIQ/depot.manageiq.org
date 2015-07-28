@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728152330) do
+ActiveRecord::Schema.define(version: 20150728171514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 20150728152330) do
     t.datetime "last_commit_at"
     t.string   "last_commit_sha"
     t.string   "last_commit_url"
+    t.integer  "commit_count",          default: 0,     null: false
   end
 
   add_index "extension_versions", ["legacy_id"], name: "index_extension_versions_on_legacy_id", unique: true, using: :btree

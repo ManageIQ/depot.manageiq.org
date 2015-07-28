@@ -26,6 +26,7 @@ class SyncExtensionContentsAtVersionsWorker
     version = ensure_updated_version(readme_body, readme_ext)
     set_compatible_platforms(version)
     set_last_commit(version)
+    set_commit_count(version)
     scan_files(version)
     version.save
 
@@ -113,6 +114,11 @@ class SyncExtensionContentsAtVersionsWorker
     version.last_commit_at = date
     version.last_commit_string = message
     version.last_commit_url = version.extension.github_url + "/commit/#{sha}"
+  end
+
+  def set_commit_count(version)
+    version.commit_count = @run.cmd("git shortlog | grep -E '^[ ]+\\w+' | wc -l").strip.to_i
+    logger.info "COMMIT COUNT: #{version.commit_count}"
   end
 
   def scan_files(version)
