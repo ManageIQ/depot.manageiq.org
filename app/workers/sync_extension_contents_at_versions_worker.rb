@@ -16,7 +16,7 @@ class SyncExtensionContentsAtVersionsWorker
 
     @tags = tags
     @tag = @tags.shift
-    @compatible_platforms = SupportedPlatform.find(compatible_platforms)
+    @compatible_platforms = compatible_platforms
     @run = CmdAtPath.new(@extension.repo_path)
 
     perform_next and return unless semver?
@@ -30,6 +30,8 @@ class SyncExtensionContentsAtVersionsWorker
     version.save
 
     perform_next
+  ensure
+    @extension.update_attribute(syncing: false) if @extension
   end
 
   private
@@ -95,9 +97,7 @@ class SyncExtensionContentsAtVersionsWorker
 
   def set_compatible_platforms(version)
     unless version.extension_version_platforms.any?
-      version.extension_version_platforms = @compatible_platforms.map do |cp|
-        version.extension_version_platforms.first_or_initialize(supported_platform_id: cp.id)
-      end
+      version.extension_version_platform_ids = @compatible_platforms
     end
   end
 
