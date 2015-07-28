@@ -5,10 +5,10 @@ class SyncExtensionRepoWorker
     @extension = Extension.find(extension_id)
 
     clone_and_pull_repo
-    tags = extract_tags_from_releases
+    @tags = extract_tags_from_releases
     destroy_unreleased_versions
 
-    SyncExtensionContentsAtVersionsWorker.perform_async(extension_id, tags, compatible_platforms)
+    SyncExtensionContentsAtVersionsWorker.perform_async(extension_id, @tags, compatible_platforms)
   end
 
   private
@@ -24,6 +24,6 @@ class SyncExtensionRepoWorker
   end
 
   def destroy_unreleased_versions
-    @extension.extension_versions.where.not(version: tags).destroy_all
+    @extension.extension_versions.where.not(version: @tags).destroy_all
   end
 end
