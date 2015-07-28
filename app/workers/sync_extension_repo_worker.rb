@@ -5,6 +5,7 @@ class SyncExtensionRepoWorker
     @extension = Extension.find(extension_id)
     `git clone #{@extension.github_url} #{@extension.repo_path}`
 
+    `cd #{@extension.repo_path} && git pull`
     tags = `cd #{@extension.repo_path} && git tag`.split("\n")
 
     SyncExtensionContentsAtVersionsWorker.perform_async(extension_id, ["master", *tags], compatible_platforms)
