@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716193615) do
+ActiveRecord::Schema.define(version: 20150728152330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -294,6 +294,7 @@ ActiveRecord::Schema.define(version: 20150716193615) do
     t.string   "license_name",              default: ""
     t.text     "license_text",              default: ""
     t.boolean  "enabled",                   default: true,  null: false
+    t.boolean  "syncing",                   default: false
   end
 
   add_index "extensions", ["enabled"], name: "index_extensions_on_enabled", using: :btree

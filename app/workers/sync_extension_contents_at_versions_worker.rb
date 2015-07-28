@@ -8,7 +8,12 @@ class SyncExtensionContentsAtVersionsWorker
   def perform(extension_id, tags, compatible_platforms = [])
     logger.info("PERFORMING: #{extension_id}, #{tags.inspect}, #{compatible_platforms.inspect}")
 
-    @extension = Extension.find(extension_id)
+    Extension.transaction do
+      @extension = Extension.where(id: extension_id, syncing: false).lock(true).first
+      raise RuntimeError.new("Syncing already in progress.") unless @extension
+      @extension.update_attribute(:syncing, true)
+    end
+
     @tags = tags
     @tag = @tags.shift
     @compatible_platforms = SupportedPlatform.find(compatible_platforms)
@@ -31,6 +36,7 @@ class SyncExtensionContentsAtVersionsWorker
 
   def perform_next
     if @tags.any?
+      @extension.update_attribute(:syncing, false)
       self.class.perform_async(@extension.id, @tags, @compatible_platforms)
     end
   end
@@ -88,8 +94,10 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def set_compatible_platforms(version)
-    version.extension_version_platforms = @compatible_platforms.map do |cp|
-      version.extension_version_platforms.first_or_initialize(supported_platform_id: cp.id)
+    unless version.extension_version_platforms.any?
+      version.extension_version_platforms = @compatible_platforms.map do |cp|
+        version.extension_version_platforms.first_or_initialize(supported_platform_id: cp.id)
+      end
     end
   end
 
