@@ -31,7 +31,7 @@ class SyncExtensionContentsAtVersionsWorker
 
     perform_next
   ensure
-    @extension.update_attribute(syncing: false) if @extension
+    @extension.update_attribute(:syncing, false) if @extension
   end
 
   private
