@@ -105,8 +105,13 @@ class SyncExtensionContentsAtVersionsWorker
   def set_last_commit(version)
     commit = @run.cmd("git log -1")
     sha, author, date = *commit.split("\n")
-    message = commit.split("\n\n").last.gsub("\n", " ").strip
 
+    unless message = commit.split("\n\n").last
+      # Empty repo; no commits
+      return
+    end
+
+    message = message.gsub("\n", " ").strip
     sha = sha.gsub("commit ", "")
     date = Time.parse(date.gsub("Date:", "").strip)
 
