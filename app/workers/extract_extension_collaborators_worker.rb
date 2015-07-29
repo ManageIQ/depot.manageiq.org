@@ -4,6 +4,7 @@ class ExtractExtensionCollaboratorsWorker
   def perform(extension_id, page = 1)
     @extension = Extension.find(extension_id)
     @contributors = octokit.contributors(@extension.github_repo, nil, page: page)
+    return if @contributors.empty?
 
     process_contributors
 
