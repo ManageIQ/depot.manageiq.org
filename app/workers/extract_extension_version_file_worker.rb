@@ -21,7 +21,7 @@ class ExtractExtensionVersionFileWorker
 
     return if type.nil?
 
-    @version.extension_version_content_items.create(
+    @version.extension_version_content_items.first_or_create(
       name: contents[:name],
       path: contents[:path],
       item_type: type,
