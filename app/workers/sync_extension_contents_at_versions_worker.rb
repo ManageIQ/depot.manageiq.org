@@ -103,7 +103,7 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def set_last_commit(version)
-    commit = @run.cmd("git log -1")
+    commit = @run.cmd("git log -1").gsub(/^Merge: [^\n]+\n/, "")
     sha, author, date = *commit.split("\n")
 
     unless message = commit.split("\n\n").last
