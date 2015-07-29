@@ -1,6 +1,6 @@
 module ManageIQ
   module Authentication
-    AUTH_SCOPE = "public_repo,user:email,write:repo_hook"
+    AUTH_SCOPE = "public_repo,user:email,write:repo_hook,push"
 
     #
     # Include the following methods as helper methods.
