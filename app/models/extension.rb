@@ -152,40 +152,25 @@ class Extension < ActiveRecord::Base
   attr_accessor :compatible_platforms
 
   #
-  # Transfers ownership of this extension to someone else. If the user id passed
-  # in represents someone that is already a collaborator on this extension, or
-  # if the User initiating this transfer is an admin, then we just assign the
-  # new owner and move on. If they're not already a collaborator, then we send
-  # them an email asking if they want ownership of this extension. This
-  # prevents abuse of people assigning random owners without getting permission.
+  # Returns an array of users to whom this extension can be transferred.
+  #
+  # @return [Array] array of users who may receive ownership
+  #
+  def transferrable_to_users
+    collaborator_users.where.not(id: user_id)
+  end
+
+  #
+  # Transfers ownership of this extension to someone else.
   #
   # @param initiator [User] the User initiating the transfer
   # @param recipient [User] the User to assign ownership to
   #
   # @return [String] a key representing a message to display to the user
   #
-  def transfer_ownership(initiator, recipient)
-    if initiator.is?(:admin) || collaborator_users.include?(recipient)
-      update_attribute(:user_id, recipient.id)
-
-      if collaborator_users.include?(recipient)
-        collaborator = collaborators.where(
-          user_id: recipient.id,
-          resourceable: self
-        ).first
-        collaborator.destroy unless collaborator.nil?
-      end
-
-      'extension.ownership_transfer.done'
-    else
-      transfer_request = OwnershipTransferRequest.create(
-        sender: initiator,
-        recipient: recipient,
-        extension: self
-      )
-      ExtensionMailer.delay.transfer_ownership_email(transfer_request)
-      'extension.ownership_transfer.email_sent'
-    end
+  def transfer_ownership(recipient)
+    update_attribute(:user_id, recipient.id)
+    'extension.ownership_transfer.done'
   end
 
   #

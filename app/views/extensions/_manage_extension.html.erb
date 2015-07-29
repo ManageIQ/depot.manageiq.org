@@ -18,7 +18,7 @@
       <%= form_for extension, url: transfer_ownership_path(extension), method: :put do |f| %>
         <div class="row collapse">
           <div class="small-9 columns">
-            <%= f.hidden_field :user_id, class: 'collaborators', 'data-url' => collaborators_path(ineligible_user_ids: Collaborator.ineligible_owners_for(extension).map(&:id)) %>
+            <%= f.select :user_id, extension.transferrable_to_users.map { |u| [u.github_account.username, u.id] } %>
           </div>
           <div class="small-3 columns">
             <%= f.submit 'Transfer', class: 'button radius postfix' %>
