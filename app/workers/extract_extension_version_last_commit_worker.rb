@@ -13,5 +13,7 @@ class ExtractExtensionVersionLastCommitWorker
         last_commit_url: last_commit[:html_url]
       )
     end
+  rescue Octokit::Conflict
+    # Do nothing for empty repo
   end
 end
