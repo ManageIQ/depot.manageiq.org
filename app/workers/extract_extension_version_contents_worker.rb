@@ -20,5 +20,7 @@ class ExtractExtensionVersionContentsWorker
         ExtractExtensionVersionContentsWorker.perform_async(version_id, item[:path])
       end
     end
+  rescue Octokit::NotFound
+    # Do nothing if the extension is no longer accessible
   end
 end
