@@ -9,6 +9,7 @@ set :repo_url, "git@github.com:ManageIQ/depot.manageiq.org.git"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/manageiq"
+set :deploy_via, :remote_cache
 
 # Default value for :scm is :git
 # set :scm, :git
