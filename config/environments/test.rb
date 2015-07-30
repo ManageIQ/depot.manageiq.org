@@ -36,4 +36,6 @@ ManageIQ::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
 end

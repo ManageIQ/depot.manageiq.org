@@ -30,5 +30,7 @@ ManageIQ::Application.configure do
   # Don't cache anything
   config.cache_store = :null_store
 
+  config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
+
   Rails.application.default_url_options[:host] = "miqed.localtunnel.me"
 end
