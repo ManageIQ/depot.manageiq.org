@@ -65,7 +65,6 @@ class ExtensionsController < ApplicationController
       FetchAccessibleReposWorker.perform_async(current_user.id)
     end
 
-    @repo_names = current_user.octokit.repos.map { |r| r.to_h.slice(:full_name, :name, :description) } rescue []
     @extension = Extension.new
   end
 

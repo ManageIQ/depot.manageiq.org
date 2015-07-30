@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :assign_user
+  before_filter :assign_user, except: :accessible_repos
 
   #
   # GET /users/:id
@@ -21,6 +21,15 @@ class UsersController < ApplicationController
 
     @extensions = @extensions.unscope(where: :enabled) if @user == current_user
     @extensions = @extensions.order(:name).page(params[:page]).per(20)
+  end
+
+  def accessible_repos
+    if @repo_names = Rails.configuration.redis.get("user-repos-#{current_user.id}")
+      @repo_names = Marshal.load(@repo_names)
+      render json: { repo_names: @repo_names }
+    else
+      render json: { waiting: true }
+    end
   end
 
   #

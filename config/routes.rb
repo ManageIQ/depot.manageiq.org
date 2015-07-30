@@ -64,6 +64,10 @@ ManageIQ::Application.routes.draw do
       get :followed_extension_activity, format: :atom
     end
 
+    collection do
+      get :accessible_repos
+    end
+
     resources :accounts, only: [:destroy]
   end
 

@@ -20,11 +20,46 @@ jQuery(function() {
     }
   }
 
-  $("#extension-url-short-field").change(function(ev) {
-    updateNameAndDescription();
-  });
+  var attemptExtensionsLoad = function() {
+    $.get("/users/accessible_repos", function(resp) {
+      if (resp.repo_names) {
+        $("#loading-extensions").remove();
 
-  if ($("#extension-url-short-field").size > 0) {
+        var select = $("<select></select>");
+        select.attr("data-repos", JSON.stringify(resp.repo_names));
+        select.attr("id", "extension-url-short-field");
+        select.attr("name", "extension[github_url_short]");
+        select.attr("required", "required");
+        select.append($("<option value=''>Select a Repository</option>"));
+
+        for (var i = 0; i < resp.repo_names.length; i++) {
+          var item = resp.repo_names[i];
+          select.append($("<option value='" + item.full_name + "'>" + item.full_name + "</option>"));
+        }
+
+        $("#extensions-selector").prepend(select);
+
+        select.blur(function() {
+          Foundation.libs.abide.parse_patterns($(this));
+        });
+
+        $("#extension-url-short-field").change(function(ev) {
+          updateNameAndDescription();
+        });
+      } else {
+        setTimeout(attemptExtensionsLoad, 1000);
+      }
+
+    })
+  }
+
+  if ($("#extension-url-short-field").size() > 0) {
+    $("#extension-url-short-field").change(function(ev) {
+      updateNameAndDescription();
+    });
+
     updateNameAndDescription();
+  } else if ($("#loading-extensions").size() > 0) {
+    setTimeout(attemptExtensionsLoad, 1000);
   }
 });

@@ -8,8 +8,12 @@
       <%= render "application/form_errors", record: @extension %>
 
       <fieldset id="" class="">
-        <div class="name-field">
-          <%= f.select :github_url_short, @repo_names.map { |r| r[:full_name] }, { include_blank: "Select a Repository" }, required: true, id: "extension-url-short-field", data: { repos: @repo_names } %>
+        <div id="extensions-selector" class="name-field">
+          <% if @repo_names %>
+            <%= f.select :github_url_short, @repo_names.map { |r| r[:full_name] }, { include_blank: "Select a Repository" }, required: true, id: "extension-url-short-field", data: { repos: @repo_names } %>
+          <% else %>
+            <p id="loading-extensions"><%= image_tag "spinner.gif" %> Loading your extensions...</p>
+          <% end %>
           <small class="error">Name is required.</small>
           <%= f.hidden_field :github_url, id: "extension-url-field" %>
           <%= f.hidden_field :name, id: "extension-name-field" %>
