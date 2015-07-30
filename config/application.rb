@@ -90,7 +90,7 @@ module ManageIQ
     config.action_mailer.asset_host = ManageIQ::Host.full_url
 
     # Set default from email for ActionMailer
-    ActionMailer::Base.default from: ENV['FROM_EMAIL']
+    ActionMailer::Base.default from: "depot@manageiq.org"
 
     config.octokit = Octokit::Client.new(
       access_token: ENV["GITHUB_ACCESS_TOKEN"],
