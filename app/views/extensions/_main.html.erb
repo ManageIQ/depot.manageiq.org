@@ -90,11 +90,18 @@
   </div>
 </div>
 
-<div class="reveal-modal" id="disable-user" data-reveal>
-  <h2>Are you sure you want to disable this user?</h2>
-  <p class="lead">The user and all extensions owned by the user will be disabled and hidden from view. Admins will still be able to see the user in the users list.</p>
-  <div class="text-right">
-    <%= link_to "Cancel", "#", class: "close-reveal-modal" %>
-    <%= button_to "Disable", disable_user_path(@user), method: :put, class: "button primary button_to" %>
-  </div>
+<div class="reveal-modal" id="report-extension" data-reveal>
+  <h2>Are you sure you want to report this extension?</h2>
+  <p class="lead">Please describe the reason for reporting this extension. Our moderators will be notified and will disable the extension if it is found to be inappropriate.</p>
+  <%= form_for :report, url: report_extension_path(extension), method: :put do |f| %>
+    <div>
+      <%= f.label :description, "Describe the issue:" %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="text-right">
+      <%= link_to "Cancel", "#", class: "close-reveal-modal" %>
+      <%= f.submit "Report", class: "button primary button_to" %>
+    </div>
+  <% end %>
 </div>

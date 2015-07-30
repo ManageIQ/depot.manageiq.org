@@ -1,4 +1,6 @@
 <h1><%= @subject %></h1>
+
+<p>Reason given: <%= @description %></p>
 <p>You may disable or edit this extension if necessary.</p>
 <div>
   <%= link_to "View Extension", extension_url(@extension), class: "button accept" %>
