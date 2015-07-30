@@ -16,7 +16,10 @@
           <tbody>
             <% @contributor_list.each do |user, github_account| %>
               <tr class="contributor">
-                <td><%= link_to user.name, user_path(id: user.username) %></td>
+                <td>
+                  <%= link_to user.name, user_path(id: user.username) %>
+                  <%= "(disabled)" if !user.enabled %>
+                </td>
                 <td>
                 <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
                 </td>
