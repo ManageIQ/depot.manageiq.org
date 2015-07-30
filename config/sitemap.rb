@@ -19,7 +19,12 @@ SitemapGenerator::Sitemap.create do
   end
 
   ExtensionVersion.includes(:extension).find_each do |extension_version|
-    add(extension_version_path(extension_version.extension, extension_version), lastmod: extension_version.updated_at)
+    begin
+      add(extension_version_path(extension_version.extension, extension_version), lastmod: extension_version.updated_at)
+    rescue ActionController::UrlGenerationError
+      # Ignore cases where we have an extension version with a missing or
+      # deleted extension
+    end
   end
 
   User.includes(:github_account).find_each do |user|
