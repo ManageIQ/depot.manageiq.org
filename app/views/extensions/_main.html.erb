@@ -89,3 +89,12 @@
     </div>
   </div>
 </div>
+
+<div class="reveal-modal" id="disable-user" data-reveal>
+  <h2>Are you sure you want to disable this user?</h2>
+  <p class="lead">The user and all extensions owned by the user will be disabled and hidden from view. Admins will still be able to see the user in the users list.</p>
+  <div class="text-right">
+    <%= link_to "Cancel", "#", class: "close-reveal-modal" %>
+    <%= button_to "Disable", disable_user_path(@user), method: :put, class: "button primary button_to" %>
+  </div>
+</div>
