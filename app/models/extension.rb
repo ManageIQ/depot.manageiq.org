@@ -53,20 +53,12 @@ class Extension < ActiveRecord::Base
   # --------------------
   pg_search_scope(
     :search,
-    against: {
-      name: "A"
-    },
+    against: [:name],
     associated_against: {
-      tags: { name: "B" },
-      github_account: { username: "C" },
-      extension_versions: { description: "D" },
-    },
-    using: {
-      tsearch: { dictionary: "english", only: [:username, :description], prefix: true },
-      trigram: { only: [:name] }
-    },
-    ranked_by: ":trigram + (0.5 * :tsearch)",
-    order_within_rank: "extensions.name"
+      tags: [:name],
+      github_account: [:username],
+      extension_versions: [:description]
+    }
   )
 
   # Callbacks
@@ -464,6 +456,7 @@ class Extension < ActiveRecord::Base
     self.tags = self.tag_tokens.split(",").map(&:downcase).map do |token|
       Tag.where(name: token).first_or_create
     end
+    self.tag_list = self.tag_tokens
     true
   end
 end
