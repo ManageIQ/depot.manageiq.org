@@ -456,7 +456,6 @@ class Extension < ActiveRecord::Base
     self.tags = self.tag_tokens.split(",").map(&:downcase).map do |token|
       Tag.where(name: token).first_or_create
     end
-    self.tag_list = self.tag_tokens
     true
   end
 end
