@@ -16,7 +16,7 @@ class UserAuthorizer < Authorizer::Base
   end
 
   #
-  # Admins can disabled users
+  # Admins can disable users
   #
   def disable?
     user.is?(:admin) && record.enabled?

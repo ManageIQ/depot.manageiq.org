@@ -21,6 +21,9 @@
                     <%= link_to user.name, user_path(id: user.username) %>
                   <% else %>
                     <%= user.name %> (disabled)
+                    <% if policy(user).enable? %>
+                      <%= link_to "Enable", enable_user_path(user), method: :put %>
+                    <% end %>
                   <% end %>
                 </td>
                 <td>

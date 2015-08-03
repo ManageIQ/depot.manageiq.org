@@ -61,6 +61,7 @@ ManageIQ::Application.routes.draw do
     member do
       put :make_admin
       put :disable
+      put :enable
       delete :revoke_admin
       get :followed_extension_activity, format: :atom
     end

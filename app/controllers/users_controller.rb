@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :assign_user, except: :accessible_repos
+  before_filter :assign_user, except: [:accessible_repos, :enable]
 
   #
   # GET /users/:id
@@ -60,12 +60,26 @@ class UsersController < ApplicationController
   #
   # Disables the given user then redirects back to home.
   #
-  def disable(*args)
+  def disable
     authorize! @user
     @user.enabled = false
     @user.save
     @user.owned_extensions.update_all(enabled: false)
     redirect_to root_path, notice: t("user.disabled", name: @user.username)
+  end
+
+  #
+  # PUT /users/:id/enable
+  #
+  # Disables the given user then redirects back to home.
+  #
+  def enable
+    account = Account.for("github").with_username(params[:id]).first!
+    @user = User.unscoped.where(id: account.user_id).first
+    authorize! @user
+    @user.enabled = true
+    @user.save
+    redirect_to :back, notice: t("user.enabled", name: @user.username)
   end
 
   #
