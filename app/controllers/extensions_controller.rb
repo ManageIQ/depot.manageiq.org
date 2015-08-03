@@ -295,6 +295,17 @@ class ExtensionsController < ApplicationController
   end
 
   #
+  # PUT /extensions/:extension/enable
+  #
+  # Allows an admin to enable an extension, hiding it from view.
+  #
+  def enable
+    authorize! @extension, :disable?
+    @extension.update_attribute(:enabled, true)
+    redirect_to extension_url(@extension), notice: t("extension.enabled", extension: @extension.name)
+  end
+
+  #
   # PUT /extensions/:extension/report
   #
   # Notifies moderators to check an extension for inappropriate content.

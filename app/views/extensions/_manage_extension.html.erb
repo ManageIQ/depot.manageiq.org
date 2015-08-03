@@ -75,10 +75,18 @@
   <% end %>
 
   <% if policy(extension).disable? %>
-    <li>
-      <%= link_to disable_extension_path(extension), method: 'put', rel: 'disable' do %>
-        <i class="fa fa-times"></i> Disable
-      <% end %>
-    </li>
+    <% if extension.enabled? %>
+      <li>
+        <%= link_to disable_extension_path(extension), method: 'put', rel: 'disable' do %>
+          <i class="fa fa-times"></i> Disable
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to enable_extension_path(extension), method: 'put', rel: 'enable' do %>
+          <i class="fa fa-circle"></i> Enable
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

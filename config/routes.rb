@@ -42,6 +42,7 @@ ManageIQ::Application.routes.draw do
       post :adoption
       post :webhook
       put :disable
+      put :enable
       put :report
     end
 
