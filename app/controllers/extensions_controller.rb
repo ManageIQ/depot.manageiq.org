@@ -336,7 +336,17 @@ class ExtensionsController < ApplicationController
   private
 
   def assign_extension
-    @extension ||= Extension.with_name(params[:id]).first!
+    @extension ||= begin
+      Extension.with_name(params[:id]).first!
+    rescue ActiveRecord::RecordNotFound
+      if extension = Extension.unscoped.with_name(params[:id]).first
+        if current_user == extension.owner or (current_user and current_user.roles_mask > 0)
+          @extension = extension
+        else
+          raise ActiveRecord::RecordNotFound
+        end
+      end
+    end
   end
 
   def store_location_then_authenticate_user!
