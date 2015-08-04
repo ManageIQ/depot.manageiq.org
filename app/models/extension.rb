@@ -63,7 +63,7 @@ class Extension < ActiveRecord::Base
 
   # Callbacks
   # --------------------
-  before_validation :copy_name_to_lowercase_name
+  before_validation :copy_name_to_lowercase_name, on: :create
   before_validation :normalize_github_url
   before_save :update_tags
 
