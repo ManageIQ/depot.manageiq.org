@@ -20,53 +20,32 @@
     <%= render 'google_analytics' %>
   </head>
   <body class="<%= controller.controller_name %>">
-    <div class="off-canvas-wrap">
-      <div class="inner-wrap">
-        <!-- Chef Property Menu -->
-        <aside class="left-off-canvas-menu">
-          <ul class="off-canvas-list hide-for-medium-up">
-            <li><%= link_to 'Extensions', root_path %></li>
-            <% if !signed_in? %>
-              <li><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
-            <% end %>
-          </ul>
-          <ul class="off-canvas-list">
-            <li><%= link_to 'Get Chef', chef_www_url, target: '_blank' %></li>
-            <li><%= link_to 'Learn Chef', learn_chef_url, target: '_blank' %></li>
-            <li><%= link_to 'Docs', chef_docs_url, target: '_blank' %></li>
-            <li><%= link_to 'Training', chef_training_url, target: '_blank' %></li>
-            <li><%= link_to 'Botbot IRC Logs', 'https://botbot.me/freenode/chef', target: '_blank' %></li>
-          </ul>
-        </aside>
-
-        <header class="globalheader">
-          <a class="left-off-canvas-toggle fa fa-bars"><span class="hide">Menu</span></a>
-          <div class="inner_wrap">
-            <div class="logo_and_nav_toggle">
-              <h2 class="logomanageiq"><%= link_to root_path do %><span>Chef Supermarket</span><% end %></h2>
-            </div>
-            <%= render partial: 'appheader' %>
+    <div class="inner-wrap">
+      <!-- Chef Property Menu -->
+      <header class="globalheader">
+        <div class="inner_wrap">
+          <div class="logo_and_nav_toggle">
+            <h2 class="logomanageiq"><%= link_to root_path do %><span>Chef Supermarket</span><% end %></h2>
           </div>
-        </header>
-
-        <% if ROLLOUT.active?(:announcement) %>
-          <%= render partial: 'announcement_banner' %>
-        <% end %>
-
-        <%= render partial: 'flash' %>
-        <%= render partial: 'search' %>
-
-        <div class="container">
-          <%= yield %>
+          <%= render partial: 'appheader' %>
         </div>
-        <footer class="footer">
-          &copy; 2014&thinsp;&ndash;&thinsp;<%= Time.new.year %> ManageIQ. Sponsored by Red Hat, Inc. All Rights Reserved.
-          <br><br><%= link_to 'Code of Conduct', chef_docs_url('community_guidelines.html') %>
-        </footer>
+      </header>
 
-        <a class="exit-off-canvas"></a>
+      <% if ROLLOUT.active?(:announcement) %>
+        <%= render partial: 'announcement_banner' %>
+      <% end %>
+
+      <%= render partial: 'flash' %>
+      <%= render partial: 'search' %>
+
+      <div class="container">
+        <%= yield %>
       </div>
-    </div>
+      <footer class="footer">
+        &copy; 2014&thinsp;&ndash;&thinsp;<%= Time.new.year %> ManageIQ. Sponsored by Red Hat, Inc. All Rights Reserved.
+        <br><br><%= link_to 'Code of Conduct', chef_docs_url('community_guidelines.html') %>
+    </footer>
+  </div>
 
     <%= javascript_include_tag 'application' %>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-558071333389cb6a" async="async"></script>
