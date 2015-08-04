@@ -50,41 +50,32 @@
 
   <div class="addthis_sharing_toolbox"></div>
 
-  <dl class="tabs" data-tab data-options="deep_linking:true">
-    <dd class="active"><a href="#readme">README</a></dd>
-    <dd><a href="#contents">Contents</a></dd>
+  <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
+
+  <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
+
+  <p><%= pluralize(number_with_delimiter(version.commit_count), "commit") %> total for this version.</p>
+  <p>
+    Last commit on <%= version.last_commit_at %>:<br>
+    <%= link_to(version.last_commit_string, version.last_commit_url, target: "_blank") %>
+  </p>
+  <p><%= item_types.map { |type| pluralize(version.extension_version_content_items.where(item_type: type).count, type) }.join(", ") %></p>
+  <p><%= pluralize(version.yml_line_count, "line") %> of YAML, <%= pluralize(version.rb_line_count, "line") %> of Ruby</p>
+
+  <dl class="accordion" data-accordion>
+    <% item_types.each do |type| %>
+      <dd class="accordion-navigation">
+        <a href="#<%= type.downcase %>-items"><%= type.pluralize %></a>
+        <div id="<%= type.downcase %>-items" class="content">
+          <ul>
+            <% version.extension_version_content_items.where(item_type: type).each do |ci| %>
+              <li><%= link_to ci.name, ci.github_url, target: "_blank" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </dd>
+    <% end %>
   </dl>
-  <div class="tabs-content">
-    <div class="content active" id="readme">
-      <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
-    </div>
-    <div class="content" id="contents">
-      <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
-
-      <p><%= pluralize(number_with_delimiter(version.commit_count), "commit") %> total for this version.</p>
-      <p>
-        Last commit on <%= version.last_commit_at %>:<br>
-        <%= link_to(version.last_commit_string, version.last_commit_url, target: "_blank") %>
-      </p>
-      <p><%= item_types.map { |type| pluralize(version.extension_version_content_items.where(item_type: type).count, type) }.join(", ") %></p>
-      <p><%= pluralize(version.yml_line_count, "line") %> of YAML, <%= pluralize(version.rb_line_count, "line") %> of Ruby</p>
-
-      <dl class="accordion" data-accordion>
-        <% item_types.each do |type| %>
-          <dd class="accordion-navigation">
-            <a href="#<%= type.downcase %>-items"><%= type.pluralize %></a>
-            <div id="<%= type.downcase %>-items" class="content">
-              <ul>
-                <% version.extension_version_content_items.where(item_type: type).each do |ci| %>
-                  <li><%= link_to ci.name, ci.github_url, target: "_blank" %></li>
-                <% end %>
-              </ul>
-            </div>
-          </dd>
-        <% end %>
-      </dl>
-    </div>
-  </div>
 </div>
 
 <div class="reveal-modal" id="report-extension" data-reveal>
