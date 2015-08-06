@@ -56,7 +56,7 @@ ManageIQ::Application.configure do
   # Use a different cache store in production.
   config.cache_store = :redis_store, ENV['REDIS_URL'] || 'redis://localhost:6379/0/supermarket'
 
-  config.redis = Redis.new(ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
+  config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
