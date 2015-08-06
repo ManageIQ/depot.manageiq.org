@@ -46,9 +46,20 @@
     <%= render 'extensions/follow_button_show', extension: @extension %>
   </h1>
 
-  <p itemprop="description"><%= extension.description %></p>
-
   <div class="addthis_sharing_toolbox"></div>
+
+  <p class="description" itemprop="description"><%= extension.description %></p>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <h4>Downloads in last week</h4>
+      <div class="sparkline"><%= @downloads.join(",") %></div>
+    </div>
+    <div class="small-6 columns">
+      <h4>Commits in last week</h4>
+      <div class="sparkline"><%= @commits.join(",") %></div>
+    </div>
+  </div>
 
   <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
 

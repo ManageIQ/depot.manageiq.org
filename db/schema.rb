@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728171514) do
+ActiveRecord::Schema.define(version: 20150806202613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,16 @@ ActiveRecord::Schema.define(version: 20150728171514) do
     t.datetime "updated_at"
     t.string   "callback_url", null: false
   end
+
+  create_table "daily_metrics", force: true do |t|
+    t.string   "key",                    null: false
+    t.integer  "count",      default: 0, null: false
+    t.date     "day",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "daily_metrics", ["key", "day"], name: "index_daily_metrics_on_key_and_day", using: :btree
 
   create_table "email_preferences", force: true do |t|
     t.integer  "user_id",         null: false

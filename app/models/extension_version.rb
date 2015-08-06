@@ -54,6 +54,10 @@ class ExtensionVersion < ActiveRecord::Base
     ExtensionVersionPlatform.create! supported_platform: platform, extension_version: self
   end
 
+  def download_daily_metric_key
+    @download_daily_metric_key ||= "downloads.extension-#{extension_id}.version-#{id}"
+  end
+
   private
 
   #

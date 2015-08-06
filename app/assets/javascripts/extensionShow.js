@@ -1,3 +1,5 @@
+//= require vendor/jquery-sparkline
+
 $(function() {
   $(".show-extension-urls-manage, .cancel-submit-urls").click(function(event) {
     event.preventDefault();
@@ -24,4 +26,12 @@ $(function() {
     $(".toggle-tags-edit").toggle();
     event.preventDefault();
   });
+
+  $(".sparkline").sparkline("html", {
+    width: "100%",
+    height: "25px",
+    spotColor: "",
+    spotRadius: 0,
+    disableInteraction: true
+  }).addClass("loaded");
 });

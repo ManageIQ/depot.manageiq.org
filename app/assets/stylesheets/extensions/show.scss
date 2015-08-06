@@ -252,6 +252,25 @@
     float: right;
     margin-right: -2px;
   }
+
+  .description {
+    width: 540px;
+  }
+
+  .row {
+    width: auto !important;
+    max-width: 100000px !important;
+    margin: 0 -16px;
+    margin-bottom: 16px;
+  }
+
+  .sparkline {
+    visibility: hidden;
+    min-height: 25px;
+    &.loaded {
+      visibility: visible;
+    }
+  }
 }
 
 .toggle-details-edit, .toggle-platforms-edit, .toggle-tags-edit {

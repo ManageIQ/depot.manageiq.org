@@ -33,4 +33,9 @@ ManageIQ::Application.configure do
   config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
 
   Rails.application.default_url_options[:host] = "miqed.localtunnel.me"
+
+  ENV["STATSD_HOST"] ||= "127.0.0.1"
+  ENV["STATSD_PORT"] ||= "8125"
+  ENV["GRAPHITE_HOST"] ||= "127.0.0.1"
+  ENV["GRAPHITE_PORT"] ||= "8080"
 end

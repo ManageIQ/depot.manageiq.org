@@ -124,6 +124,8 @@ class ExtensionsController < ApplicationController
     @extension_versions = @extension.sorted_extension_versions
     @collaborators = @extension.collaborators
     @supported_platforms = @extension.supported_platforms
+    @downloads = DailyMetric.counts_since(@latest_version.download_daily_metric_key)
+    @commits = []
 
     respond_to do |format|
       format.atom
@@ -139,6 +141,8 @@ class ExtensionsController < ApplicationController
   def download
     extension = Extension.with_name(params[:id]).first!
     latest_version = extension.latest_extension_version
+    ManageIQ::Metrics.increment('extension.downloads.web')
+    DailyMetric.increment(latest_version.download_daily_metric_key)
     redirect_to extension_version_download_url(extension, latest_version)
   end
 

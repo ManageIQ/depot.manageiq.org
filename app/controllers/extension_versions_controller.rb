@@ -11,6 +11,7 @@ class ExtensionVersionsController < ApplicationController
     ExtensionVersion.increment_counter(:web_download_count, @version.id)
     Extension.increment_counter(:web_download_count, @extension.id)
     ManageIQ::Metrics.increment('extension.downloads.web')
+    DailyMetric.increment(@version.download_daily_metric_key)
 
     redirect_to @version.download_url
   end
@@ -26,6 +27,8 @@ class ExtensionVersionsController < ApplicationController
     @collaborators = @extension.collaborators
     @supported_platforms = @version.supported_platforms
     @owner_collaborator = Collaborator.new resourceable: @extension, user: @owner
+    @downloads = DailyMetric.counts_since(@version.download_daily_metric_key)
+    @commits = []
   end
 
   #
