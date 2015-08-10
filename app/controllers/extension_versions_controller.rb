@@ -28,7 +28,7 @@ class ExtensionVersionsController < ApplicationController
     @supported_platforms = @version.supported_platforms
     @owner_collaborator = Collaborator.new resourceable: @extension, user: @owner
     @downloads = DailyMetric.counts_since(@version.download_daily_metric_key)
-    @commits = []
+    @commits = DailyMetric.counts_since(@extension.commit_daily_metric_key)
   end
 
   #

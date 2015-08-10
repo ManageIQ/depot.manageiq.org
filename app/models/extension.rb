@@ -428,6 +428,10 @@ class Extension < ActiveRecord::Base
     )
   end
 
+  def commit_daily_metric_key
+    @commit_daily_metric_key ||= "commits.extension-#{id}"
+  end
+
   private
 
   #

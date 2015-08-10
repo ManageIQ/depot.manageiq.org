@@ -105,6 +105,11 @@ group :test do
 end
 
 group :development, :test do
+  gem "capistrano-rbenv"
+  gem "capistrano-rails"
+  gem "capistrano3-unicorn"
+  gem "capistrano-sidekiq"
+
   gem 'rubocop', '>= 0.23.0'
   gem 'mail_view'
   gem 'quiet_assets'

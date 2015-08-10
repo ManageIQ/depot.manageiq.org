@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806202613) do
+ActiveRecord::Schema.define(version: 20150810201407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(version: 20150806202613) do
   end
 
   add_index "collaborators", ["user_id", "resourceable_type", "resourceable_id"], name: "index_cookbook_collaborators_on_user_id_and_resourceable", unique: true, using: :btree
+
+  create_table "commit_shas", force: true do |t|
+    t.string   "sha",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commit_shas", ["sha"], name: "index_commit_shas_on_sha", unique: true, using: :btree
 
   create_table "contributor_request_responses", force: true do |t|
     t.integer  "contributor_request_id", null: false

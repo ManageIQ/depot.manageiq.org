@@ -30,6 +30,8 @@ class SyncExtensionContentsAtVersionsWorker
     scan_files(version)
     version.save
 
+    tally_commits if @tag == "master"
+
     perform_next
   ensure
     @extension.update_attribute(:syncing, false) if @extension
@@ -100,6 +102,7 @@ class SyncExtensionContentsAtVersionsWorker
     unless version.extension_version_platforms.any?
       version.extension_version_platform_ids = @compatible_platforms
     end
+  rescue PG::UniqueViolation
   end
 
   def set_last_commit(version)
@@ -169,6 +172,21 @@ class SyncExtensionContentsAtVersionsWorker
         item_type: "Class",
         github_url: version.extension.github_url + "/blob/#{version.version}/#{path}"
       ).inspect
+    end
+  end
+
+  def tally_commits
+    commits = @run.cmd("git --no-pager log --format='%H|%ad'")
+
+    commits.split("\n").each do |c|
+      sha, date = c.split("|")
+
+      CommitSha.transaction do
+        if !CommitSha.where(sha: sha).first
+          CommitSha.create(sha: sha)
+          DailyMetric.increment(@extension.commit_daily_metric_key)
+        end
+      end
     end
   end
 end

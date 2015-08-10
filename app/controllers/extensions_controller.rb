@@ -124,8 +124,8 @@ class ExtensionsController < ApplicationController
     @extension_versions = @extension.sorted_extension_versions
     @collaborators = @extension.collaborators
     @supported_platforms = @extension.supported_platforms
-    @downloads = DailyMetric.counts_since(@latest_version.download_daily_metric_key)
-    @commits = []
+    @downloads = DailyMetric.counts_since(@latest_version.download_daily_metric_key) if @latest_version
+    @commits = DailyMetric.counts_since(@extension.commit_daily_metric_key)
 
     respond_to do |format|
       format.atom
