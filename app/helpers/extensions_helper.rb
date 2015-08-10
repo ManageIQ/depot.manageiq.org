@@ -64,15 +64,15 @@ module ExtensionsHelper
   # @return [String] a link based on the following state for the current extension.
   #
   def follow_button_for(extension, params = {}, &block)
-    fa_icon = content_tag(:i, '', class: 'fa fa-users')
+    fa_icon = content_tag(:i, '', class: 'fa fa-star')
     followers_count = extension.extension_followers_count.to_s
     followers_count_span = content_tag(
       :span,
       number_with_delimiter(followers_count),
       class: 'extension_follow_count'
     )
-    follow_html = fa_icon + 'Follow' + followers_count_span
-    unfollow_html = fa_icon + 'Unfollow' + followers_count_span
+    follow_html = fa_icon + 'Star' + followers_count_span
+    unfollow_html = fa_icon + 'Unstar' + followers_count_span
 
     unless current_user
       return link_to(
@@ -80,7 +80,7 @@ module ExtensionsHelper
         method: 'put',
         rel: 'sign-in-to-follow',
         class: 'button radius tiny follow',
-        title: 'You must be signed in to follow an extension.',
+        title: 'You must be signed in to star an extension.',
         'data-tooltip' => true
       ) do
         if block
