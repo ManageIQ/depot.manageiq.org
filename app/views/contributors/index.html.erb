@@ -27,7 +27,9 @@
                   <% end %>
                 </td>
                 <td>
-                <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
+                  <% if github_account %>
+                    <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
