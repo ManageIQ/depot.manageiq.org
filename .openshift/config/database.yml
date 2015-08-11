@@ -33,4 +33,4 @@ test: &test
   <<: *defaults
 
 production:
-  <<: *defaults
+  <<: *postgresql
