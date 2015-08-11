@@ -37,7 +37,7 @@ gem 'sprockets', '~> 2.11.3'
 # compatibility problems with Sidekiq 3.0.
 gem 'sidetiq', :github => 'tobiassvn/sidetiq', :ref => '4f7d7da'
 
-gem 'premailer-rails', group: [:development, :production]
+gem 'premailer-rails', :group => [:development, :production]
 gem 'nokogiri'
 gem 'jbuilder'
 gem 'pg_search'
