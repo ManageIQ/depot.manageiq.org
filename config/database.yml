@@ -10,8 +10,11 @@ test:
   host: localhost
 
 production:
-  username: <%= ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME'] %>
-  password: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] %>
-  host: <%= ENV['OPENSHIFT_POSTGRESQL_DB_HOST'] %>
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
+  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
+  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
+  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
+  port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
   adapter: postgresql
-  database: manageiq
+  min_messages: ERROR
+  reconnect: false
