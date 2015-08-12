@@ -39,6 +39,7 @@
       <%= render partial: 'search' %>
 
       <div class="container">
+        <%= ENV["SMTP_ADDRESS"] %>
         <%= yield %>
       </div>
       <footer class="footer">
