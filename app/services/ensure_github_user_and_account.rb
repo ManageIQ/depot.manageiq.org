@@ -25,7 +25,7 @@ class EnsureGithubUserAndAccount
       last_name = nil
     end
 
-    if !account.user or !User.unscoped.where(id: account.user_id).first
+    if !account.user_id or !User.unscoped.where(id: account.user_id).first
       account.user ||= User.new(
         first_name: first_name,
         last_name: last_name,
