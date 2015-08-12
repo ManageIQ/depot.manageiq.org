@@ -197,7 +197,7 @@ class Extension < ActiveRecord::Base
   # @return [String] the name of the +Extension+ parameterized
   #
   def to_param
-    name.parameterize
+    lowercase_name.parameterize
   end
 
   #
