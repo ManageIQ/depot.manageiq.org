@@ -16,7 +16,7 @@
       <a class="close-reveal-modal close-reveal-modal-x">&#215;</a>
 
       <%= form_for extension, url: transfer_ownership_path(extension), method: :put do |f| %>
-        <% if !extension.transferrable_to_users.any? %>
+        <% if extension.transferrable_to_users.any? %>
           <p>You can transfer ownership of an extension to any other user who is a Collaborator on that extension in Github.   Please select a new owner below.</p>
 
           <div class="row collapse">
