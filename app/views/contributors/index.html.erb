@@ -17,9 +17,6 @@
             <% @contributor_list.each do |user, github_account| %>
               <tr class="contributor">
                 <td>
-                  <pre>
-                    <%= user.inspect %>
-                  </pre>
                   <% if user.enabled? %>
                     <%= link_to user.name, user_path(id: user.username) %>
                   <% else %>
