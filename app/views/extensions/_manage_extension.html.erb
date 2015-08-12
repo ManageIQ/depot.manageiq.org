@@ -13,19 +13,26 @@
 
     <div id="transfer" class="reveal-modal small" data-reveal>
       <h1>Transfer Ownership</h1>
-      <a class="close-reveal-modal">&#215;</a>
+      <a class="close-reveal-modal close-reveal-modal-x">&#215;</a>
 
       <%= form_for extension, url: transfer_ownership_path(extension), method: :put do |f| %>
-        <p>You can transfer ownership of an extension to any other user who is a Collaborator on that extension in Github.   Please select a new owner below.</p>
+        <% if !extension.transferrable_to_users.any? %>
+          <p>You can transfer ownership of an extension to any other user who is a Collaborator on that extension in Github.   Please select a new owner below.</p>
 
-        <div class="row collapse">
-          <div class="small-9 columns">
-            <%= f.select :user_id, extension.transferrable_to_users.map { |u| [u.github_account.username, u.id] } %>
+          <div class="row collapse">
+            <div class="small-9 columns">
+              <%= f.select :user_id, extension.transferrable_to_users.map { |u| [u.github_account.username, u.id] } %>
+            </div>
+            <div class="small-3 columns">
+              <%= f.submit 'Transfer', class: 'button radius postfix' %>
+            </div>
           </div>
-          <div class="small-3 columns">
-            <%= f.submit 'Transfer', class: 'button radius postfix' %>
-          </div>
-        </div>
+        <% else %>
+          <p>You can transfer ownership of an extension to any other user who is a Collaborator on that extension in Github.  This repository has no other commit authors to whom you can transfer ownership.</p>
+          <p class="text-right">
+            <%= link_to "Okay", "#", class: "button primary close-reveal-modal" %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   <% end %>

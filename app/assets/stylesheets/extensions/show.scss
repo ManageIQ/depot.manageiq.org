@@ -294,9 +294,15 @@
 }
 
 .reveal-modal {
-  .close-reveal-modal {
+  .close-reveal-modal.button {
+    position: static !important;
+    color: white;
+    font-size: 16px;
+  }
+
+  .close-reveal-modal-x {
     font-size: 1rem;
-    position: absolute;
+    position: absolute !important;
     top: 10px;
     right: 15px;
   }
