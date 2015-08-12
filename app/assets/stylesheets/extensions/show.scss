@@ -296,8 +296,9 @@
 .reveal-modal {
   .close-reveal-modal {
     font-size: 1rem;
-    position: static !important;
-    margin-right: 20px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
   }
 }
 
