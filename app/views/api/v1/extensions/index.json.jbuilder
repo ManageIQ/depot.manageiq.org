@@ -1,3 +1,6 @@
 json.start @start
 json.total @total
-json.partial! @extensions
+
+@extensions.each do |e|
+  json.partial! e
+end
