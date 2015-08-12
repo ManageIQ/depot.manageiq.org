@@ -20,6 +20,6 @@ set -e
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 echo "Starting sidekiq..."
 source ${OPENSHIFT_RUBY_DIR}lib/ruby_context
-bundle exec "sidekiq -d -P '${OPENSHIFT_DATA_DIR}sidekiq.pid' -L '${OPENSHIFT_DATA_DIR}sidekiq.log'"
+ruby_context bundle exec "sidekiq -d -P '${OPENSHIFT_DATA_DIR}sidekiq.pid' -L '${OPENSHIFT_DATA_DIR}sidekiq.log'"
 
 exit 0
