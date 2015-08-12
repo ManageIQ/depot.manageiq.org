@@ -10,7 +10,7 @@ require "capistrano3/unicorn"
 require "capistrano/sidekiq"
 
 set :rbenv_type, :user
-set :rbenv_ruby, "2.0.0"
+set :rbenv_ruby, "2.0.0-p645"
 
 # Include tasks from other gems included in your Gemfile
 #
