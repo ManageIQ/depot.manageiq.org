@@ -25,13 +25,15 @@ class EnsureGithubUserAndAccount
       last_name = nil
     end
 
-    account.user ||= User.new(
-      first_name: first_name,
-      last_name: last_name,
-      email: @github_user[:email]
-    )
+    if !account.user or !User.unscoped.where(id: account.user_id).first
+      account.user ||= User.new(
+        first_name: first_name,
+        last_name: last_name,
+        email: @github_user[:email]
+      )
+      account.user.save(validate: false)
+    end
 
-    account.user.save(validate: false)
     account.save(validate: false)
 
     return account.user, account
