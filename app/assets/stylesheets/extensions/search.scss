@@ -123,8 +123,8 @@ input[type="search"].extension_search_textfield {
   border: none;
   @include border-left-radius(rem-calc(3));
   @include box-shadow(none);
-  color: $clouds;
-  font: rem-calc(30) $accent_font;
+  color: #797979;
+  font: rem-calc(24) $accent_font;
   height: rem-calc(64);
   line-height: rem-calc(44);
   margin: 0;
@@ -132,23 +132,23 @@ input[type="search"].extension_search_textfield {
 
   &:focus {
     background-color: darken($primary_blue, 7%);
-    color: $clouds;
+    color: #797979;
   }
 
   &::-webkit-input-placeholder {
-     color: #cccccc;
+    color: #cccccc;
   }
 
   &:-moz-placeholder { /* Firefox 18- */
-     color: $clouds;
+    color: #cccccc;
   }
 
   &::-moz-placeholder {  /* Firefox 19+ */
-     color: $clouds;
+    color: #cccccc;
   }
 
   &:-ms-input-placeholder {
-     color: $clouds;
+    color: #cccccc;
   }
 }
 
