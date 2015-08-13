@@ -178,13 +178,16 @@ class SyncExtensionContentsAtVersionsWorker
   def tally_commits
     commits = @run.cmd("git --no-pager log --format='%H|%ad'")
 
+    logger.info commits.inspect
+
     commits.split("\n").each do |c|
+      logger.info c
       sha, date = c.split("|")
 
       CommitSha.transaction do
         if !CommitSha.where(sha: sha).first
           CommitSha.create(sha: sha)
-          DailyMetric.increment(@extension.commit_daily_metric_key)
+          DailyMetric.increment(@extension.commit_daily_metric_key, 1, date.to_date)
         end
       end
     end
