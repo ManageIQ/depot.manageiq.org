@@ -39,13 +39,21 @@
 .search_toggle {
   @include grid-column($columns: 2, $collapse: true);
 
+  .divider {
+    float: left;
+    height: rem-calc(32);
+    border-left: 2px solid white;
+    margin-top: rem-calc(16);
+  }
+
   .button {
     @include border-left-radius(rem-calc(3));
-    font-size: rem-calc(12);
+    font-size: rem-calc(18);
     height: rem-calc(64);
     line-height: rem-calc(64);
     overflow: hidden;
     padding: 0;
+    background-color: #7090bf;
 
     i {
       padding-left: rem-calc(5);

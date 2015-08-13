@@ -40,8 +40,8 @@ class ExtensionsController < ApplicationController
       @extensions = @extensions.order(:name)
     end
 
-    if params[:supported_platforms].present?
-      @extensions = @extensions.supported_platforms(params[:supported_platforms])
+    if params[:supported_platform_id].present?
+      @extensions = @extensions.supported_platforms([params[:supported_platform_id]])
     end
 
     @number_of_extensions = @extensions.count(:all)

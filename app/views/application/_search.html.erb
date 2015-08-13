@@ -1,40 +1,30 @@
 <div class="search_bar">
   <%= form_tag @search[:path], class: 'search_form', method: :get do %>
-    <div class="search_toggle">
-      <a class="button expand large" data-dropdown="search-types" rel="toggle-search-types"><span><%= @search[:name] %></span> <i class="fa fa-chevron-down"></i></a>
-
-      <ul id="search-types" data-dropdown-content class="f-dropdown">
-        <li><a href="#" data-url=<%= extensions_path %> rel="toggle-extension-search">Extensions</a></li>
-      </ul>
-    </div>
-
     <div class="search_field">
       <i class="fa fa-search"></i>
       <%= search_field_tag :q, params[:q], placeholder: 'Search', class: 'extension_search_textfield' %>
     </div>
 
+    <div class="search_toggle">
+      <a class="button expand large" data-dropdown="search-types" rel="toggle-search-types">
+        <div class="divider"></div>
+        <span><%= params[:supported_platform_id].present? ? SupportedPlatform.find(params[:supported_platform_id]).name : "All releases" %></span> <i class="fa fa-chevron-down"></i>
+      </a>
+
+      <ul id="search-types" data-dropdown-content class="f-dropdown">
+        <li><a href="#" data-supported-platform-id="" rel="toggle-extension-search">All releases</a></li>
+        <% SupportedPlatform.all.each do |sp| %>
+          <li><a href="#" data-supported-platform-id="<%= sp.id %>" rel="toggle-extension-search"><%= sp.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
     <%= hidden_field_tag :order, params[:order] if params[:order].present? %>
+    <%= hidden_field_tag :supported_platform_id, params[:supported_platform_id] %>
 
     <div class="search_button">
       <%= button_tag(type: 'submit', class: 'extension_search_button', name: nil) do %>
         GO
-      <% end %>
-    </div>
-
-    <p class="text-right">
-      <a href="#" id="advanced-search-toggle">Advanced Options</a>
-    </p>
-
-    <div id="advanced-search" class="hide">
-      <h4 class="text-center">Supported Platforms</h4>
-
-      <% SupportedPlatform.all.each do |sp| %>
-        <div class="supported-platform">
-          <label>
-            <%= check_box_tag "supported_platforms[]", sp.id.to_s, false, { multiple: true } %>
-            <%= sp.name %>
-          </label>
-        </div>
       <% end %>
     </div>
   <% end %>
