@@ -2,7 +2,7 @@
   <%= form_tag @search[:path], class: 'search_form', method: :get do %>
     <div class="search_field">
       <i class="fa fa-search"></i>
-      <%= search_field_tag :q, params[:q], placeholder: 'Search', class: 'extension_search_textfield' %>
+      <%= search_field_tag :q, params[:q], placeholder: 'Add-ons, tags, authors...', class: 'extension_search_textfield' %>
     </div>
 
     <div class="search_toggle">
@@ -24,7 +24,7 @@
 
     <div class="search_button">
       <%= button_tag(type: 'submit', class: 'extension_search_button', name: nil) do %>
-        GO
+        Search
       <% end %>
     </div>
   <% end %>

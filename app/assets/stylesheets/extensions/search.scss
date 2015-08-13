@@ -7,7 +7,7 @@
 // Styles for the Extensions search interface
 
 .search_bar {
-  background-color: $primary_blue;
+  background-color: #c8d4e4;
   border: none;
   padding: rem-calc(50 55);
 }
@@ -41,19 +41,19 @@
 
   .divider {
     float: left;
-    height: rem-calc(32);
-    border-left: 2px solid white;
-    margin-top: rem-calc(16);
+    height: rem-calc(56);
+    border-left: 2px solid #e7e7e7;
+    margin-top: rem-calc(4);
   }
 
   .button {
-    @include border-left-radius(rem-calc(3));
+    color: #797979;
     font-size: rem-calc(18);
     height: rem-calc(64);
     line-height: rem-calc(64);
     overflow: hidden;
     padding: 0;
-    background-color: #7090bf;
+    background-color: white;
 
     i {
       padding-left: rem-calc(5);
@@ -74,7 +74,7 @@
 }
 
 .search_field {
-  @include grid-column($columns: 9, $collapse: true);
+  @include grid-column($columns: 8, $collapse: true);
   position: relative;
 
   .fa {
@@ -92,18 +92,18 @@
 
 @media #{$small-only} {
   .search_field {
-    @include grid-column($columns: 8, $collapse: true);
+    @include grid-column($columns: 7, $collapse: true);
   }
 }
 
 @media #{$mobile-only} {
   .search_field {
-    @include grid-column($columns: 9, $collapse: true);
+    @include grid-column($columns: 8, $collapse: true);
   }
 }
 
 .search_button {
-  @include grid-column($columns: 1, $collapse: true);
+  @include grid-column($columns: 2, $collapse: true);
 }
 
 @media #{$small-only} {
@@ -119,7 +119,7 @@
 }
 
 input[type="search"].extension_search_textfield {
-  background-color: darken($primary_blue, 7%);
+  background-color: white;
   border: none;
   @include border-left-radius(rem-calc(3));
   @include box-shadow(none);
@@ -136,7 +136,7 @@ input[type="search"].extension_search_textfield {
   }
 
   &::-webkit-input-placeholder {
-     color: $clouds;
+     color: #cccccc;
   }
 
   &:-moz-placeholder { /* Firefox 18- */
@@ -179,7 +179,7 @@ input[type="search"].extension_search_textfield {
 }
 
 .extension_search_button {
-  background-color: lighten($primary_blue, 10%);
+  background-color: #789fcd;
   @include border-right-radius(rem-calc(3));
   color: white;
   font-size: rem-calc(24);
