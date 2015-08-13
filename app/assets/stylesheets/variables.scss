@@ -16,7 +16,7 @@ $primary-color: #89A3CA;
 $header-font-color: $body-font-color;
 
 // Layout Defaults
-$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Noto Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 $row-width: 100%;
 $column-gutter: rem-calc(30);
 $total-columns: 12;
@@ -104,6 +104,6 @@ O Generic
 }
 
 $default_font: "helvetica neue", helvetica, arial, sans-serif;
-$accent_font: "Montserrat", $default_font;
+$accent_font: "Noto Sans", $default_font;
 $bold: 700;
 $normal: 400;

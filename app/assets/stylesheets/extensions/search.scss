@@ -189,9 +189,10 @@ input[type="search"].extension_search_textfield {
   @include single-transition($speed: 100ms);
   text-align: center;
   width: 100%;
+  font-weight: 400;
 
   &:hover, &:active, &:focus {
-    background-color: lighten($primary_blue, 20%);
+    background-color: lighten(#789fcd, 5%);
     color: white;
   }
 }
