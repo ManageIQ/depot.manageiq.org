@@ -1,126 +1,25 @@
 <%= provide(:title, "Extensions Directory") %>
 <%= provide(:description, "Browse and search ManageIQ extensions. Learn how to use and create extensions for configuring your infrastructure.") %>
+<%= provide(:cta) do %>
+  <p>Extend ManageIQ using add-ons and <%= link_to "share your own", new_extension_path %> with the community</p>
+<% end %>
 
 <div class="page nobg">
-  <section class="extensions_stats">
-    <%= render 'resources/community_stats', extension_count: @extension_count, user_count: @user_count %>
-  </section>
-
-  <ul class="extensions_columns <%= 'four_up' if @featured_extensions.any? %>">
-    <% if @featured_extensions.any? %>
-      <li class="extensions_column last most-followed">
-        <div class="extensions_column_content">
-          <h2 class="title">Featured</h2>
-          <ul class="simple_listing">
-            <% @featured_extensions.each do |extension| %>
-              <%= render "simple_extension", extension: extension %>
-            <% end %>
-          </ul>
-          <%= link_to 'View All', extensions_path(featured: true), class: 'button radius expand' %>
-        </div>
-      </li>
-    <% end %>
-
-    <li class="extensions_column first recently-updated">
-      <div class="extensions_column_content">
-        <h2 class="title">Recently Updated</h2>
-        <ul class="simple_listing">
-          <% @recently_updated_extensions.each do |extension| %>
-            <%= render "simple_extension", extension: extension %>
-          <% end %>
-        </ul>
-        <%= link_to 'View All', extensions_path(order: 'recently_updated'), class: 'button radius expand' %>
-      </div>
-    </li>
-
-    <li class="extensions_column most-downloaded">
-      <div class="extensions_column_content">
-        <h2 class="title">Most Downloaded</h2>
-        <ul class="simple_listing">
-          <% @most_downloaded_extensions.each do |extension| %>
-            <%= render "simple_extension", extension: extension %>
-          <% end %>
-        </ul>
-        <%= link_to 'View All', extensions_path(order: 'most_downloaded'), class: 'button radius expand' %>
-      </div>
-    </li>
-
-    <li class="extensions_column last most-followed">
-      <div class="extensions_column_content">
-        <h2 class="title">Most Followed</h2>
-        <ul class="simple_listing">
-          <% @most_followed_extensions.each do |extension| %>
-            <%= render "simple_extension", extension: extension %>
-          <% end %>
-        </ul>
-        <%= link_to 'View All', extensions_path(order: 'most_followed'), class: 'button radius expand' %>
-      </div>
-    </li>
-  </ul>
-
-  <h2 class="text-center">Learn About Extensions</h2>
-
-  <div class="learn_about_extensions">
-    <div class="learn_about_extensions_content">
-      <h3>What is an extension?</h3>
-      <p>An extension is the fundamental unit of configuration and policy
-      distribution in Chef. Each extension defines a scenario, such as everything
-      needed to install and configure MySQL, and then it contains all of the
-      components that are required to support that scenario. Chef maintains a
-      collection of extensions that are important to Chef and are widely used by
-      the Chef community.</p>
-
-      <h3>How do I use an extension?</h3>
-      <p>Interact with extensions by using the <code>knife extension</code> commands.
-      With <code>knife extension</code>, you can create, delete, show, list,
-      download and upload extensions. Read the <%= link_to 'knife extension commands documentation', chef_docs_url('knife_extension.html') %> for more information.</p>
-
-      <h3>How do I share an extension?</h3>
-      <p>In order to share and interact with extensions on Supermarket, use the
-      <code>knife extension site</code> commands. <%= link_to 'The documentation', chef_docs_url('knife_extension_site.html') %> for <code>knife extension site</code> explains how to
-      download, share, unshare, search, install and list extensions on Supermarket.
-      You can also interact with the <%= link_to 'Supermarket API', chef_docs_url('api_extensions_site.html') %> directly.</p>
+  <div class="row extensions-features">
+    <div class="small-5 columns">
+      <header>New &amp; updated</header>
+      <%= render "featured", extensions: @recently_updated_extensions %>
     </div>
-
-    <div class="learn_about_extensions_sidebar">
-      <h3>Extension Resources</h3>
-
+    <div class="small-5 columns">
+      <header>Noteworthy</header>
+      <%= render "featured", extensions: @most_downloaded_extensions %>
+    </div>
+    <div class="small-2 columns">
+      <header>Categories</header>
       <ul>
-        <li>
-          <%= link_to 'About extensions', chef_docs_url('essentials_extensions.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'About recipes', chef_docs_url('essentials_extension_recipes.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'Supermarket extensions API documentation', chef_docs_url('api_extensions_site.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'Berkshelf documentation', 'http://berkshelf.com' %>
-        </li>
-
-        <li>
-          <%= link_to 'knife documentation', chef_docs_url('chef/knife.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'test-kitchen documentation', chef_docs_url('kitchen.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'Foodcritic documentation', chef_docs_url('foodcritic.html') %>
-        </li>
-
-        <li>
-          <%= link_to 'Chef Development Kit (Chef DK)', chef_downloads_url('chef-dk') %>
-        </li>
-
-        <li>
-          <a href="https://github.com/chef-extensions">Extensions maintained and supported by Chef Software, Inc.</a>
-        </li>
+        <% Tag.order("name").each do |t| %>
+          <li><%= link_to t.name, extensions_path(q: t.name) %></li>
+        <% end %>
       </ul>
     </div>
   </div>

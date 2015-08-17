@@ -37,6 +37,12 @@
       <%= render partial: 'flash' %>
       <%= render partial: 'search' %>
 
+      <% if content_for(:cta) %>
+        <div class="cta-banner">
+          <%= content_for(:cta) %>
+        </div>
+      <% end %>
+
       <div class="container">
         <%= yield %>
       </div>
@@ -83,7 +89,7 @@
           <div class="row text-center">
             <div class="copyright">
               © 2014 ManageIQ. Sponsored by Red Hat, Inc. &nbsp; <a href="/logo/" class="logo-link">Logo</a>
-              <a class="legal" href="/legal/">Legal &amp; Privacy</a>
+              <a class="legal" href="http://manageiq.org/legal/">Legal &amp; Privacy</a>
             </div>
           </div>
         </section>
