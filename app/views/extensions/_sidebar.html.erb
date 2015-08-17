@@ -37,11 +37,11 @@
   <div class="extension-details">
     <div class="extension-urls">
       <% if extension.github_url.present? %>
-        <%= link_to 'View Source', extension.github_url, class: 'button radius tiny source-url', itemprop: 'codeRepository', target: "_blank" %>
+        <div class="small-bottom-space"><%= link_to 'View Source', extension.github_url, itemprop: 'codeRepository', target: "_blank" %></div>
       <% end %>
 
       <% if extension.issues_url.present? %>
-        <%= link_to 'View Issues', extension.issues_url, class: 'button secondary radius tiny issues-url', itemprop: 'discussionUrl, target: "_blank"' %>
+        <div class="small-bottom-space"><%= link_to 'View Issues', extension.issues_url, itemprop: 'discussionUrl, target: "_blank"' %></div>
       <% end %>
     </div>
 
