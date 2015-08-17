@@ -545,35 +545,40 @@ footer#footer {
 }
 
 .extensions-features {
-  header {
-    font-size: 28px;
-    color: #696969;
-    margin-bottom: 32px;
-  }
-
   .featured-extension {
     margin-bottom: 32px;
 
     header {
       font-size: 24px;
       margin-bottom: 4px;
-      a {
-        color: #4171b5;
-      }
       span {
         font-size: 18px;
         color: #8b8d88;
         margin-left: 8px;
       }
     }
-    p {
-      color: #8b8d88;
-      margin-bottom: 4px;
-      &.tags {
-        a {
-          margin-right: 4px;
-        }
-      }
+    p.tags a {
+      margin-right: 4px;
     }
   }
+}
+
+.standard-typography {
+  a {
+    color: #4171b5;
+  }
+
+  header {
+    font-size: 28px;
+    color: #696969;
+    margin-bottom: 32px;
+  }
+  p {
+    color: #8b8d88;
+    margin-bottom: 4px;
+  }
+}
+
+.bottom-space {
+  margin-bottom: 32px !important;
 }
