@@ -100,10 +100,11 @@ class ExtensionMailer < ActionMailer::Base
   # @param extension_id (Fixnum)
   # @param user_id (Fixnum)
   #
-  def notify_moderator_of_reported(extension_id, user_id, report_description)
+  def notify_moderator_of_reported(extension_id, user_id, report_description, reported_by_id)
     @extension = Extension.find(extension_id)
     @moderator = User.find(user_id)
     @description = report_description
+    @reported_by = User.where(id: reported_by_id).first
 
     @subject = %(Extension "#{@extension.name}" reported)
 

@@ -1,5 +1,6 @@
 <h1><%= @subject %></h1>
 
+<p>Reported by: <%= @reported_by.try(:github_account).try(:username) || "An anonymous user" %></p>
 <p>Reason given: <%= @description %></p>
 <p>You may disable or edit this extension if necessary.</p>
 <div>
