@@ -1,7 +1,9 @@
 <nav class="appnav">
   <ul class="mainnav">
-    <li><%= link_to 'Extensions', root_path, 'data-hover' => 'Extensions', :rel => 'extensions' %></li>
-    <li><%= link_to 'Users List', contributors_path, 'data-hover' => 'Users', :rel => 'users' %></li>
+    <% if (current_user.try(:roles_mask) || 0) > 0 %>
+      <li><%= link_to 'Extensions', root_path, 'data-hover' => 'Extensions', :rel => 'extensions' %></li>
+      <li><%= link_to 'Users List', contributors_path, 'data-hover' => 'Users', :rel => 'users' %></li>
+    <% end %>
     <% if !signed_in? %>
       <li class="sign_in_create_account"><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
       <li class="sign_in_create_account"><%= link_to 'Create Account', chef_sign_up_url %></li>

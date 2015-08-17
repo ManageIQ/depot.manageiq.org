@@ -361,13 +361,6 @@ pre {
   .fa-rss { color: $primary_orange; }
 }
 
-.footer {
-  color: #999;
-  font-size: rem-calc(11);
-  padding: rem-calc(40);
-  text-align: center;
-}
-
 input.error, textarea.error {
   margin-bottom: rem-calc(20);
 }
@@ -475,4 +468,69 @@ button, .button {
 
 ul.off-canvas-list li a {
   border-bottom: 1px solid #132631;
+}
+
+footer#subfooter {
+  background: #555555;
+
+  .subfooter-communication {
+    margin-top: 1em;
+    color: #bbbbbb;
+    background-color: #555555;
+    border: 0;
+    font-size: 16px;
+
+    .fa {
+      font-size: 24px;
+    }
+
+    a {
+      padding: 1ex;
+      color: #eeeeee;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: 400ms all;
+      &:hover {
+        color: white;
+      }
+    }
+
+    .row {
+      padding: 2em 3em;
+
+      .left-side {
+        float: left;
+        width: 50%;
+        a .label {
+          display: none;
+        }
+      }
+
+      .right-side {
+        text-align: right;
+        .text-label {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+footer#footer {
+  background: #000;
+  color: white;
+
+  .copyright {
+    color: #ddd;
+  }
+
+  a {
+    display: inline-block;
+    color: #eee;
+    transition: 400ms all;
+    margin: 16px;
+    &:hover {
+      color: white;
+    }
+  }
 }

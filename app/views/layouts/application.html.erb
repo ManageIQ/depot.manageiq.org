@@ -14,7 +14,7 @@
     <link rel="icon" href="<%= image_url('favicon.ico') %>" type="image/x-icon">
     <link rel="apple-touch-icon" href="<%= image_url('apple-touch-icon.png') %>"/>
     <%= stylesheet_link_tag "application", media: "all" %>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= render 'google_analytics' %>
@@ -40,8 +40,53 @@
       <div class="container">
         <%= yield %>
       </div>
-      <footer class="footer">
-        &copy; 2014&thinsp;&ndash;&thinsp;<%= Time.new.year %> ManageIQ. Sponsored by Red Hat, Inc. All Rights Reserved.
+
+      <footer id="subfooter">
+        <section class="subfooter-communication">
+          <div class="row">
+            <section class="left-side">
+              <div class="follow" id="follow">
+                <a class="ext-gh" data-toggle="tooltip" href="https://github.com/ManageIQ/" title="GitHub">
+                  <i class="fa fa-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+                <a class="ext-yt" data-toggle="tooltip" href="https://www.youtube.com/user/ManageIQVideo" title="YouTube">
+                  <i class="fa fa-youtube"></i>
+                  <span class="label">YouTube</span>
+                </a>
+                <%= link_to "ManageIQ.org", "http://manageiq.org/" %>
+                <%= link_to "Extensions", extensions_path %>
+                <%= link_to "User List", contributors_path %>
+              </div>
+            </section>
+            <section class="right-side">
+              <div class="contact-us">
+                <a href="mailto:contact@manageiq.org">
+                  <i class="fa fa-envelope"></i>
+                  <span class="text-label">email</span>
+                </a>
+                <a href="/community/irc/">
+                  <i class="fa fa-slack"></i>
+                  <span class="text-label">IRC</span>
+                </a>
+                <a href="http://talk.manageiq.org/">
+                  <i class="fa fa-comments fa-flip-horizontal"></i>
+                  <span class="text-label">forum</span>
+                </a>
+              </div>
+            </section>
+          </div>
+        </section>
+      </footer>
+      <footer id="footer">
+        <section class="footer-area">
+          <div class="row text-center">
+            <div class="copyright">
+              © 2014 ManageIQ. Sponsored by Red Hat, Inc. &nbsp; <a href="/logo/" class="logo-link">Logo</a>
+              <a class="legal" href="/legal/">Legal &amp; Privacy</a>
+            </div>
+          </div>
+        </section>
       </footer>
     </div>
 
