@@ -14,6 +14,11 @@ class Collaborator < ActiveRecord::Base # Associations
   # --------------------
   attr_accessor :user_ids
 
+  def resourceable_with_unscoped
+    resourceable_type.constantize.unscoped { resourceable_without_unscoped }
+  end
+  alias_method_chain :resourceable, :unscoped
+
   #
   # Transfers ownership of this extension to this user. The existing owner is
   # automatically demoted to a collaborator.
