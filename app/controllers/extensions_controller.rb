@@ -100,15 +100,6 @@ class ExtensionsController < ApplicationController
       includes(:extension_versions).
       ordered_by('most_downloaded').
       limit(5)
-    @most_followed_extensions = Extension.
-      includes(:extension_versions).
-      ordered_by('most_followed').
-      limit(5)
-    @featured_extensions = Extension.
-      includes(:extension_versions).
-      featured.
-      order(:name).
-      limit(5)
 
     @extension_count = Extension.count
     @user_count = User.count
