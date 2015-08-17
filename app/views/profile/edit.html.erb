@@ -15,7 +15,7 @@
         <%= form_for(prep_email_preferences(current_user), url: profile_path, html: { 'data-abide' => true }) do |f| %>
           <%= render 'application/form_errors', record: current_user %>
 
-          <p>Your email, password and name are maintained and managed by your GitHub account. <%= link_to "Edit them here.", "https://github.com/settings/profile", target: "_blank" %> They will be updated the next time you sign in to Extensions Depot. Avatars are powered by <%= link_to 'Gravatar', 'https://www.gravatar.com' %>.</p>
+          <p>Your email, password and name are maintained and managed by your GitHub account. <%= link_to "Edit them here.", "https://github.com/settings/profile", target: "_blank" %> They will be updated the next time you sign in to Extensions Depot. Avatars are powered by <%= link_to 'Github', 'https://www.github.com' %>.</p>
 
           <fieldset>
             <div class="company-field">
