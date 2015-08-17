@@ -90,8 +90,9 @@
 </div>
 
 <div class="reveal-modal" id="report-extension" data-reveal>
-  <h2>Are you sure you want to report this extension?</h2>
-  <p class="lead">Please describe the reason for reporting this extension. Our moderators will be notified and will disable the extension if it is found to be inappropriate.</p>
+  <h1>Are you sure you want to report this extension?</h1>
+  <p>Please describe the reason for reporting this extension. Our moderators will be notified and will disable the extension if it is found to be inappropriate.</p>
+  <a class="close-reveal-modal close-reveal-modal-x">&#215;</a>
   <%= form_for :report, url: report_extension_path(extension), method: :put do |f| %>
     <div>
       <%= f.label :description, "Describe the issue:" %>
@@ -99,7 +100,6 @@
     </div>
 
     <div class="text-right">
-      <%= link_to "Cancel", "#", class: "close-reveal-modal" %>
       <%= f.submit "Report", class: "button primary button_to" %>
     </div>
   <% end %>
