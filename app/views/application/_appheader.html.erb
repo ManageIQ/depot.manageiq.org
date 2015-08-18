@@ -5,8 +5,7 @@
       <li><%= link_to 'Users List', contributors_path, 'data-hover' => 'Users', :rel => 'users' %></li>
     <% end %>
     <% if !signed_in? %>
-      <li class="sign_in_create_account"><%= link_to 'Sign In', sign_in_path, rel: 'sign_in' %></li>
-      <li class="sign_in_create_account"><%= link_to 'Create Account', chef_sign_up_url %></li>
+      <li class="sign_in_create_account"><%= link_to 'Sign In with Github', sign_in_path, rel: 'sign_in' %></li>
     <% end %>
   </ul>
   <% if signed_in? %>
