@@ -304,7 +304,7 @@ GEM
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.5.3)
+    rack (1.5.2)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -517,6 +517,7 @@ DEPENDENCIES
   premailer-rails
   pundit
   quiet_assets
+  rack (= 1.5.2)
   rails (~> 4.1.4)
   rake
   redcarpet
@@ -550,4 +551,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.10.4
+   1.10.6
