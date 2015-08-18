@@ -23,6 +23,7 @@ class SyncExtensionContentsAtVersionsWorker
 
     checkout_correct_tag
     readme_body, readme_ext = fetch_readme
+    logger.info "GOT README: #{readme_body}"
     version = ensure_updated_version(readme_body, readme_ext)
     set_compatible_platforms(version)
     set_last_commit(version)
@@ -59,6 +60,7 @@ class SyncExtensionContentsAtVersionsWorker
 
   def checkout_correct_tag
     @run.cmd("git checkout #{@tag}")
+    @run.cmd("git pull origin #{@tag}")
   end
 
   def fetch_readme
@@ -178,10 +180,7 @@ class SyncExtensionContentsAtVersionsWorker
   def tally_commits
     commits = @run.cmd("git --no-pager log --format='%H|%ad'")
 
-    logger.info commits.inspect
-
     commits.split("\n").each do |c|
-      logger.info c
       sha, date = c.split("|")
 
       CommitSha.transaction do

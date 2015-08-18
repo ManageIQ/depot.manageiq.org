@@ -4,7 +4,7 @@ class SyncExtensionRepoWorker
   def perform(extension_id, compatible_platforms = [])
     @extension = Extension.find(extension_id)
 
-    clone_and_pull_repo
+    clone_repo
     @tags = extract_tags_from_releases
     destroy_unreleased_versions
 
@@ -13,9 +13,8 @@ class SyncExtensionRepoWorker
 
   private
 
-  def clone_and_pull_repo
+  def clone_repo
     `git clone #{@extension.github_url} #{@extension.repo_path}`
-    `cd #{@extension.repo_path} && git pull`
   end
 
   def extract_tags_from_releases
