@@ -3,6 +3,6 @@ class Tagging < ActiveRecord::Base
   belongs_to :tag
 
   def self.add(name)
-    create(tag: Tag.where(name: name).first_or_create)
+    create(tag: Tag.where(name: name.strip).first_or_create)
   end
 end
