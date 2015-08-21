@@ -30,7 +30,11 @@ ManageIQ::Application.configure do
   # Don't cache anything
   config.cache_store = :null_store
 
-  config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
+  if ENV['OPENSHIFT_REDIS_DB_PASSWORD'].blank?
+    config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
+  else
+    config.redis = Redis.new(:host => ENV['OPENSHIFT_REDIS_DB_HOST'], :port => ENV['OPENSHIFT_REDIS_DB_PORT'], :password => ENV['OPENSHIFT_REDIS_DB_PASSWORD'])
+  end
 
   Rails.application.default_url_options[:host] = "miqed.localtunnel.me"
 

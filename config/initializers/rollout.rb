@@ -4,12 +4,12 @@ def Object.const_missing(const)
 
     redis_connect = {
       # url: ENV['REDIS_URL'] || 'redis://localhost:6379/0/supermarket',
-      host: ENV['OPENSHIFT_REDIS_HOST'] || 'localhost',
-      port: ENV['OPENSHIFT_REDIS_PORT'] || 6379,
+      host: ENV['OPENSHIFT_REDIS_DB_HOST'] || 'localhost',
+      port: ENV['OPENSHIFT_REDIS_DB_PORT'] || 6379,
       db: 0
     }
-    unless ENV['REDIS_PASSWORD'].blank?
-      redis_connect[:password] = ENV['REDIS_PASSWORD']
+    unless ENV['OPENSHIFT_REDIS_DB_PASSWORD'].blank?
+      redis_connect[:password] = ENV['OPENSHIFT_REDIS_DB_PASSWORD']
     end
 
     redis = Redis.new(redis_connect)
