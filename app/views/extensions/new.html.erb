@@ -1,7 +1,7 @@
 <%= provide(:title, "Add an Extension") %>
 
-<div class="page resource extension_show">
-  <div class="main">
+<div class="page resource extension_show" data-equalizer>
+  <div class="main" data-equalizer-watch>
     <h1 class="heading">Add an Extension</h1>
 
     <%= form_for @extension, html: { "data-abide" => true } do |f| %>
@@ -40,5 +40,13 @@
 
       <%= f.submit "Add Extension", class: "button primary radius" %>
     <% end %>
+  </div>
+
+  <div class="sidebar" data-equalizer-watch>
+    <h3>Adding an Extension</h3>
+    <p>To add an extension, the extensions source files must be hosted in a public <a target="_blank" href="http://www.github.com">GitHub</a> repository on which you have access rights. The Extensions Depot will access that repository, and pull relevant information about your extension.</p>
+    <p>The Extensions Depot will use the README file in the root of your GitHub repository as the description of your extension. For best results, please make sure this file is formatted using <a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GitHub Flavored Markdown</a>, and that it contains a description of the contents of the repository, and any installation instructions.</p>
+    <p>Github Releases tagged on your repository will be added as new versions of the extension in the Extensions Depot. We will use the Github release number for the version number of the extension.</p>
+    <p>The Extensions depot will do it's best to stay in sync with your Github repository. When new commits are pushed to your master branch, the Extensions depot will be updated with those new commits. When new releases are added through Github, a new version of the extension will be created.</p>
   </div>
 </div>
