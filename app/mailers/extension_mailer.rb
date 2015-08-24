@@ -88,7 +88,7 @@ class ExtensionMailer < ActionMailer::Base
     @extension = Extension.find(extension_id)
     @moderator = User.find(user_id)
 
-    @subject = %(New extension "#{@extension.name}" awaiting moderation)
+    @subject = %(New extension "#{@extension.name}" has been added to the Depot)
 
     mail(to: @moderator.email, subject: @subject)
   end
