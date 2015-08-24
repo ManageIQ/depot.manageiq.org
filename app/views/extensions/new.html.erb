@@ -14,9 +14,11 @@
           <% else %>
             <p id="loading-extensions"><%= image_tag "spinner.gif" %> Loading your extensions...</p>
           <% end %>
-          <small class="error">Name is required.</small>
           <%= f.hidden_field :github_url, id: "extension-url-field" %>
-          <%= f.hidden_field :name, id: "extension-name-field" %>
+        </div>
+        <div class="description-field">
+          <%= f.text_field :name, placeholder: "Name", title: "Name", required: true, id: "extension-name-field" %>
+          <small class="error">Name is required.</small>
         </div>
         <div class="description-field">
           <%= f.text_field :description, placeholder: "Description", title: "Description", required: true, id: "extension-desc-field" %>
