@@ -64,6 +64,14 @@ ManageIQ::Application.configure do
 
   config.redis = Redis.new(url: "redis://:#{ENV['OPENSHIFT_REDIS_DB_PASSWORD']}@#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/1", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"])
 
+  Sidekiq.configure_server do |config|
+    config.redis = { url: "redis://#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/2", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"] }
+  end
+
+  Sidekiq.configure_client do |config|
+    config.redis = { url: "redis://#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/2", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"] }
+  end
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
 
