@@ -54,9 +54,9 @@ ManageIQ::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, ENV['REDIS_URL'] || 'redis://localhost:6379/0/supermarket'
+  config.cache_store = :redis_store, "redis://:#{ENV['OPENSHIFT_REDIS_DB_PASSWORD']}@#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/0"
 
-  config.redis = Redis.new(url: ENV['REDIS_STORE_URL'] || 'redis://localhost:6379/1/supermarket')
+  config.redis = Redis.new(url: "redis://:#{ENV['OPENSHIFT_REDIS_DB_PASSWORD']}@#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/1")
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
