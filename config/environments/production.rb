@@ -98,4 +98,6 @@ ManageIQ::Application.configure do
       config.action_mailer.delivery_method = :sendmail
     end
   end
+
+  Rails.application.default_url_options[:host] = "extensionsdepot-miq.rhcloud.com"
 end
