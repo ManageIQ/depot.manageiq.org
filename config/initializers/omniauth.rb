@@ -46,4 +46,3 @@ end
 # Use the Rails logger
 OmniAuth.config.logger = Rails.logger
 
-
