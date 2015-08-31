@@ -101,8 +101,8 @@ class SyncExtensionContentsAtVersionsWorker
   end
 
   def set_compatible_platforms(version)
-    unless version.extension_version_platforms.any?
-      version.extension_version_platform_ids = @compatible_platforms
+    unless version.supported_platforms.any?
+      version.supported_platform_ids = @compatible_platforms
     end
   rescue PG::UniqueViolation
   end
