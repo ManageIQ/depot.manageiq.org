@@ -74,3 +74,4 @@ class ExtensionVersion < ActiveRecord::Base
     end
   end
 end
+
