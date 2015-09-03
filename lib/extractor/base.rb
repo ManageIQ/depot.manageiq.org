@@ -121,7 +121,7 @@ module Extractor
     private
 
     def split_name
-      name = auth['info']['name']
+      name = auth['info']['name'] || ""
 
       if name.include?(' ')
         last_name  = name.split(' ').last
