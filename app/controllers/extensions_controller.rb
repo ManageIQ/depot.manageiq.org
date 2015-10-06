@@ -94,7 +94,7 @@ class ExtensionsController < ApplicationController
   def directory
     @recently_updated_extensions = Extension.
       includes(:extension_versions).
-      ordered_by('recently_updated').
+      order("extension_versions.created_at DESC").
       limit(5)
     @most_downloaded_extensions = Extension.
       includes(:extension_versions).

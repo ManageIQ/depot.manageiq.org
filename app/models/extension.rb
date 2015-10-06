@@ -70,6 +70,7 @@ class Extension < ActiveRecord::Base
   # Associations
   # --------------------
   has_many :extension_versions, dependent: :destroy
+  has_one :newest_extension_version, { class_name: "ExtensionVersion" }, -> { order("created_at DESC") }
   has_many :extension_followers
   has_many :followers, through: :extension_followers, source: :user
   belongs_to :category
