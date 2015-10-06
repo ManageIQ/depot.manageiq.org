@@ -50,7 +50,7 @@ class ExtensionVersionsController < ApplicationController
   private
 
   def set_extension_and_version
-    @extension = Extension.with_name(params[:extension_id]).first!
+    @extension = Extension.with_username_and_name(params[:username], params[:extension_id])
     @version = @extension.get_version!(params[:version])
   end
 end

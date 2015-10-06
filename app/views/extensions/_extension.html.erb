@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-content">
       <h2 class="title">
-        <%= link_to extension, rel: 'extension', itemprop: 'name' do %><%= extension.name %><% end %>
+        <%= link_to extension_path(extension, username: extension.owner.username), rel: 'extension', itemprop: 'name' do %><%= extension.name %><% end %>
         <% if !extension.enabled? %>
           <i class="fa fa-times"></i>
           <small>Disabled</small>

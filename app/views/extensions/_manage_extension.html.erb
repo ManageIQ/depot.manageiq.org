@@ -1,8 +1,6 @@
 <a href="#" data-dropdown="manage" class="button radius secondary small dropdown">Manage Extension</a>
 
 <ul class="manage_extension f-dropdown" id="manage" data-dropdown-content>
-  <%= link_to_adoption(extension) %>
-
   <% if policy(extension).transfer_ownership? %>
     <li>
       <%= link_to '#', rel: 'transfer_ownership', 'data-reveal-id' => 'transfer' do %>
@@ -15,7 +13,7 @@
       <h1>Transfer Ownership</h1>
       <a class="close-reveal-modal close-reveal-modal-x">&#215;</a>
 
-      <%= form_for extension, url: transfer_ownership_path(extension), method: :put do |f| %>
+      <%= form_for extension, url: transfer_ownership_path(extension, username: extension.owner.username), method: :put do |f| %>
         <% if extension.transferrable_to_users.any? %>
           <p>You can transfer ownership of an extension to any other user who is a Collaborator on that extension in Github.   Please select a new owner below.</p>
 
@@ -52,10 +50,10 @@
 
       <a class="close-reveal-modal">&#215;</a>
 
-      <%= form_for extension, url: deprecate_extension_path(extension), method: :put do |f| %>
+      <%= form_for extension, url: deprecate_extension_path(extension, username: extension.owner.username), method: :put do |f| %>
         <div class="row collapse">
           <div class="small-9 columns">
-            <%= f.hidden_field :replacement, class: 'extension-deprecate', 'data-url' => deprecate_search_extension_path(extension) %>
+            <%= f.hidden_field :replacement, class: 'extension-deprecate', 'data-url' => deprecate_search_extension_path(extension, username: extension.owner.username) %>
           </div>
           <div class="small-3 columns">
             <%= f.submit 'Deprecate', class: 'button radius postfix submit-deprecation', disabled: true %>
@@ -67,7 +65,7 @@
 
   <% if policy(extension).undeprecate? %>
     <li>
-      <%= link_to deprecate_extension_path(extension), method: 'delete', rel: 'undeprecate' do %>
+      <%= link_to deprecate_extension_path(extension, username: extension.owner.username), method: 'delete', rel: 'undeprecate' do %>
           <i class="fa fa-archive"></i>
           Undo Deprecation
       <% end %>
@@ -76,7 +74,7 @@
 
   <% if policy(extension).toggle_featured? %>
     <li>
-      <%= link_to toggle_featured_extension_path(extension), method: 'put', rel: 'toggle_featured' do %>
+      <%= link_to toggle_featured_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'toggle_featured' do %>
         <i class="fa fa-star"></i>
         <%= extension.featured? ? 'Unfeature' : 'Feature' %>
       <% end %>
@@ -86,13 +84,13 @@
   <% if policy(extension).disable? %>
     <% if extension.enabled? %>
       <li>
-        <%= link_to disable_extension_path(extension), method: 'put', rel: 'disable' do %>
+        <%= link_to disable_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'disable' do %>
           <i class="fa fa-times"></i> Disable
         <% end %>
       </li>
     <% else %>
       <li>
-        <%= link_to enable_extension_path(extension), method: 'put', rel: 'enable' do %>
+        <%= link_to enable_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'enable' do %>
           <i class="fa fa-circle"></i> Enable
         <% end %>
       </li>

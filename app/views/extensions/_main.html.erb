@@ -12,7 +12,7 @@
   <% end %>
 
   <small class="rss">
-    <%= link_to extension_path(extension, format: 'atom'), class: 'rss_feed_link' do %>
+    <%= link_to extension_path(extension, username: extension.owner.username, format: 'atom'), class: 'rss_feed_link' do %>
       <i class="fa fa-rss"></i> RSS
     <% end %>
   </small>
@@ -31,7 +31,7 @@
             <ul>
               <% extension_versions.each do |extension_version| %>
                 <li>
-                  <%= link_to extension_version_path(extension, extension_version), rel: 'extension_version' do %>
+                  <%= link_to extension_version_path(extension, extension_version, username: extension.owner.username), rel: 'extension_version' do %>
                     <%= extension_version.version %>
                     <% if extension_version == version %><i class="fa fa-check right"></i><% end %>
                   <% end %>
@@ -93,7 +93,7 @@
   <h1>Are you sure you want to report this extension?</h1>
   <p>Please describe the reason for reporting this extension. Our moderators will be notified and will disable the extension if it is found to be inappropriate.</p>
   <a class="close-reveal-modal close-reveal-modal-x">&#215;</a>
-  <%= form_for :report, url: report_extension_path(extension), method: :put do |f| %>
+  <%= form_for :report, url: report_extension_path(extension, username: extension.owner.username), method: :put do |f| %>
     <div>
       <%= f.label :description, "Describe the issue:" %>
       <%= f.text_area :description %>

@@ -79,7 +79,7 @@ class ExtensionsController < ApplicationController
     @extension = create_extension.process!
 
     if @extension.errors.none?
-      redirect_to extension_path(@extension), notice: t("extension.created")
+      redirect_to extension_path(@extension, username: @extension.owner.username), notice: t("extension.created")
     else
       @repo_names = current_user.octokit.repos.map { |r| r.to_h.slice(:full_name, :name, :description) } rescue []
       render :new
@@ -130,11 +130,11 @@ class ExtensionsController < ApplicationController
   # Redirects to the download location for the latest version of this extension.
   #
   def download
-    extension = Extension.with_name(params[:id]).first!
+    extension = Extension.with_username_and_name(params[:username], params[:id])
     latest_version = extension.latest_extension_version
     ManageIQ::Metrics.increment('extension.downloads.web')
     DailyMetric.increment(latest_version.download_daily_metric_key)
-    redirect_to extension_version_download_url(extension, latest_version)
+    redirect_to extension_version_download_url(extension, latest_version, username: extension.owner.username)
   end
 
   #
@@ -160,7 +160,7 @@ class ExtensionsController < ApplicationController
             'extension.updated'
           end
 
-    redirect_to @extension, notice: t(key, name: @extension.name)
+    redirect_to extension_path(@extension, username: @extension.owner.username), notice: t(key, name: @extension.name)
   end
 
   #
@@ -200,9 +200,7 @@ class ExtensionsController < ApplicationController
   def deprecate
     authorize! @extension
 
-    replacement_extension = Extension.with_name(
-      extension_deprecation_params[:replacement]
-    ).first!
+    replacement_extension = Extension.with_username_and_name(params[:username], extension_deprecation_params[:replacement])
 
     if @extension.deprecate(replacement_extension)
       ExtensionDeprecatedNotifier.perform_async(@extension.id)
@@ -216,7 +214,7 @@ class ExtensionsController < ApplicationController
         )
       )
     else
-      redirect_to @extension, notice: @extension.errors.full_messages.join(', ')
+      redirect_to extension_path(@extension, username: @extension.owner.username), notice: @extension.errors.full_messages.join(', ')
     end
   end
 
@@ -297,7 +295,7 @@ class ExtensionsController < ApplicationController
   def enable
     authorize! @extension, :disable?
     @extension.update_attribute(:enabled, true)
-    redirect_to extension_url(@extension), notice: t("extension.enabled", extension: @extension.name)
+    redirect_to extension_url(@extension, username: @extension.owner.username), notice: t("extension.enabled", extension: @extension.name)
   end
 
   #
@@ -307,7 +305,7 @@ class ExtensionsController < ApplicationController
   #
   def report
     NotifyModeratorsOfReportedExtensionWorker.perform_async(@extension.id, params[:report][:description], current_user.try(:id))
-    redirect_to @extension, notice: t("extension.reported", extension: @extension.name)
+    redirect_to extension_path(@extension, username: @extension.owner.username), notice: t("extension.reported", extension: @extension.name)
   end
 
   #
@@ -343,7 +341,7 @@ class ExtensionsController < ApplicationController
 
   def assign_extension
     @extension ||= begin
-      Extension.with_name(params[:id]).first!
+      Extension.with_username_and_name(params[:username], params[:id])
     rescue ActiveRecord::RecordNotFound
       if extension = Extension.unscoped.with_name(params[:id]).first
         if current_user == extension.owner or (current_user and current_user.roles_mask > 0)
@@ -356,7 +354,7 @@ class ExtensionsController < ApplicationController
   end
 
   def store_location_then_authenticate_user!
-    store_location!(extension_path(@extension))
+    store_location!(extension_path(@extension, username: @extension.owner.username))
     authenticate_user!
   end
 

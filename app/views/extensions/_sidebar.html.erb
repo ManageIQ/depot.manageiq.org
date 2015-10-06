@@ -8,7 +8,7 @@
 
   <% if extension.up_for_adoption? %>
     <div>
-      <%= link_to 'Adopt me!', adoption_extension_path(extension), method: :post, class: 'button radius tiny' %>
+      <%= link_to 'Adopt me!', adoption_extension_path(extension, username: extension.owner.username), method: :post, class: 'button radius tiny' %>
     </div>
   <% end %>
 
@@ -21,7 +21,7 @@
   </h4>
 
   <div class="toggle-details-edit toggle-details-hidden">
-    <%= form_for @extension do |f| %>
+    <%= form_for @extension, url: extension_path(@extension, username: @extension.owner.username) do |f| %>
       <div class="edit-field">
         <%= f.text_field :name, placeholder: "Name" %>
       </div>
@@ -121,7 +121,7 @@
   </p>
 
   <div class="toggle-tags-edit toggle-tags-hidden">
-    <%= form_for @extension do |f| %>
+    <%= form_for @extension, url: extension_path(@extension, username: @extension.owner.username) do |f| %>
       <div class="tag_tokens-field">
         <%= f.text_field :tag_tokens, placeholder: "Tags", title: "Tags", class: "tokenfield", data: { autofill: Tag::DEFAULT_TAGS } %>
       </div>

@@ -11,10 +11,10 @@ ManageIQ::Application.routes.draw do
       get 'health' => 'health#show'
       get 'extensions' => 'extensions#index'
       get 'search' => 'extensions#search'
-      get 'extensions/:extension' => 'extensions#show', as: :extension
-      get 'extensions/:extension/versions/:version' => 'extension_versions#show', as: :extension_version, constraints: { version: VERSION_PATTERN }
-      get 'extensions/:extension/versions/:version/download' => 'extension_versions#download', as: :extension_version_download, constraints: { version: VERSION_PATTERN }
-      delete 'extensions/:extension/versions/:version' => 'extension_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
+      get 'extensions/:username/:extension' => 'extensions#show', as: :extension
+      get 'extensions/:username/:extension/versions/:version' => 'extension_versions#show', as: :extension_version, constraints: { version: VERSION_PATTERN }
+      get 'extensions/:username/:extension/versions/:version/download' => 'extension_versions#download', as: :extension_version_download, constraints: { version: VERSION_PATTERN }
+      delete 'extensions/:username/:extension/versions/:version' => 'extension_uploads#destroy_version', constraints: { version: VERSION_PATTERN }
       get 'users/:user' => 'users#show', as: :user
 
       resources :tags, only: [:index]
@@ -26,30 +26,39 @@ ManageIQ::Application.routes.draw do
   get 'status' => 'api/v1/health#show', defaults: { format: :json }
   get 'unsubscribe/:token' => 'email_preferences#unsubscribe', as: :unsubscribe
 
-  put 'extensions/:id/transfer_ownership' => 'transfer_ownership#transfer', as: :transfer_ownership
+  put 'extensions/:username/:id/transfer_ownership' => 'transfer_ownership#transfer', as: :transfer_ownership
   get 'ownership_transfer/:token/accept' => 'transfer_ownership#accept', as: :accept_transfer
   get 'ownership_transfer/:token/decline' => 'transfer_ownership#decline', as: :decline_transfer
 
-  resources :extensions, only: [:index, :new, :create, :show, :update] do
-    member do
-      get :download
-      put :follow
-      delete :unfollow
-      put :deprecate
-      delete :deprecate, action: 'undeprecate'
-      put :toggle_featured
-      get :deprecate_search
-      post :adoption
-      post :webhook
-      put :disable
-      put :enable
-      put :report
+  resources :extensions, only: [:index]
+
+  resources :extensions, path: "", only: [:new, :create] do
+    scope "/extensions/:username" do
+      member do
+        get :show
+        patch :update
+        get :download
+        put :follow
+        delete :unfollow
+        put :deprecate
+        delete :deprecate, action: 'undeprecate'
+        put :toggle_featured
+        get :deprecate_search
+        post :webhook
+        put :disable
+        put :enable
+        put :report
+      end
     end
 
-    get 'versions/:version/download' => 'extension_versions#download', as: :version_download, constraints: { version: VERSION_PATTERN }
-    get 'versions/:version' => 'extension_versions#show', as: :version, constraints: { version: VERSION_PATTERN }
-    put "versions/:version/update_platforms" => "extension_versions#update_platforms", as: :update_platforms, constraints: { version: VERSION_PATTERN }
+    member do
+      post :adoption
+    end
   end
+
+  get '/extensions/:username/:extension_id/versions/:version/download' => 'extension_versions#download', as: :extension_version_download, constraints: { version: VERSION_PATTERN }
+  get '/extensions/:username/:extension_id/versions/:version' => 'extension_versions#show', as: :extension_version, constraints: { version: VERSION_PATTERN }
+  put "/extensions/:username/:extension_id/versions/:version/update_platforms" => "extension_versions#update_platforms", as: :extension_update_platforms, constraints: { version: VERSION_PATTERN }
 
   resources :collaborators, only: [:index, :new, :create, :destroy] do
     member do

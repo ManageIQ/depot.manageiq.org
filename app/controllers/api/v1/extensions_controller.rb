@@ -67,7 +67,6 @@ class Api::V1::ExtensionsController < Api::V1Controller
   private
 
   def assign_extension
-    @extension = Extension.with_name(params[:extension]).
-      includes(:extension_versions).first!
+    @extension = Extension.with_username_and_name(params[:username], params[:extension])
   end
 end
