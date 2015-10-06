@@ -36,6 +36,16 @@
 
   <div class="extension-details">
     <div class="extension-urls">
+      <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %>
+      <ul>
+        <% item_types.each do |item_type| %>
+          <% count = version.extension_version_content_items.where(item_type: item_type).count %>
+          <% if count > 0 %>
+            <li><%= pluralize(count, item_type) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+
       <% if extension.github_url.present? %>
         <div class="small-bottom-space"><%= link_to 'View Source', extension.github_url, itemprop: 'codeRepository', target: "_blank" %></div>
       <% end %>
