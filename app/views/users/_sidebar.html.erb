@@ -1,7 +1,6 @@
 <div class="profile_sidebar sidebar" data-equalizer-watch>
   <%= gravatar_for @user, size: 180 %>
   <h3><%= @user.name %></h3>
-  <h4><i class="fa fa-github"></i> <%= @user.username %></h4>
 
   <% if ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) %>
     <% if @user.authorized_to_contribute? %>
