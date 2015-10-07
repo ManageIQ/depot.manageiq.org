@@ -101,6 +101,14 @@ class ExtensionsController < ApplicationController
       ordered_by('most_downloaded').
       limit(5)
 
+    @top_tags = Tag.find(
+      Tagging.select("tag_id, count(*) as count").
+        group("tag_id").
+        order("count DESC").
+        limit(15).
+        map(&:tag_id)
+    ).sort_by(&:name)
+
     @extension_count = Extension.count
     @user_count = User.count
   end

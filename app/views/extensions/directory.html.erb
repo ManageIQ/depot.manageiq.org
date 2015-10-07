@@ -17,7 +17,7 @@
     <div class="small-2 columns">
       <header>Categories</header>
       <ul>
-        <% Tag.order("name").each do |t| %>
+        <% @top_tags.each do |t| %>
           <li><%= link_to t.name, extensions_path(q: t.name) %></li>
         <% end %>
       </ul>
