@@ -32,6 +32,7 @@ module ManageIQ
     #
     def authenticate_user!
       if !signed_in? or current_user.auth_scope != AUTH_SCOPE
+        store_location!
         redirect_to sign_in_url, notice: t('user.must_be_signed_in')
       end
     end
