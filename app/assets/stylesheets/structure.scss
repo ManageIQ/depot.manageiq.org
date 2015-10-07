@@ -205,6 +205,9 @@ pre {
   p {
     font-size: rem-calc(14);
     margin: rem-calc(20 0 20 0);
+    &.no-left-margin {
+      margin-left: 0;
+    }
   }
 
   p a, p a:visited, .pretty a, .pretty a:visited {
