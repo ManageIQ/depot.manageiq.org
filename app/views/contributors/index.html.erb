@@ -6,14 +6,19 @@
     <table>
       <thead>
         <tr>
+          <th>GitHub</th>
           <th>Name</th>
           <th>Company</th>
-          <th>GitHub</th>
         </tr>
       </thead>
       <tbody>
         <% @contributor_list.each do |user, github_account| %>
           <tr class="contributor">
+            <td>
+              <% if github_account %>
+                <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
+              <% end %>
+            </td>
             <td>
               <% if user.enabled? %>
                 <%= link_to user.name, user_path(id: user.username) %>
@@ -26,11 +31,6 @@
             </td>
             <td>
               <%= user.company %>
-            </td>
-            <td>
-              <% if github_account %>
-                <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
-              <% end %>
             </td>
           </tr>
         <% end %>
