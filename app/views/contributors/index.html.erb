@@ -2,43 +2,42 @@
 
 <div class="page contribute" data-equalizer>
   <div class="main" data-equalizer-watch>
-    <%= render 'contributors_list_heading' %>
+    <h1 class="title">Contributors</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company</th>
+          <th>GitHub</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contributor_list.each do |user, github_account| %>
+          <tr class="contributor">
+            <td>
+              <% if user.enabled? %>
+                <%= link_to user.name, user_path(id: user.username) %>
+              <% else %>
+                <%= user.name %> (disabled)
+                <% if policy(user).enable? %>
+                  <%= link_to "Enable", enable_user_path(user.username), method: :put %>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <%= user.company %>
+            </td>
+            <td>
+              <% if github_account %>
+                <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-    <div class="tabs-content">
-      <div class="content active">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>GitHub</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @contributor_list.each do |user, github_account| %>
-              <tr class="contributor">
-                <td>
-                  <% if user.enabled? %>
-                    <%= link_to user.name, user_path(id: user.username) %>
-                  <% else %>
-                    <%= user.name %> (disabled)
-                    <% if policy(user).enable? %>
-                      <%= link_to "Enable", enable_user_path(user.username), method: :put %>
-                    <% end %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if github_account %>
-                    <a href="https://github.com/<%= github_account.username %>" target="_blank"><%= github_account.username %></a>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-        <%= paginate @contributors %>
-      </div>
-    </div>
+    <%= paginate @contributors %>
   </div>
 
   <%= render "contributors/sidebar" %>
