@@ -26,8 +26,10 @@
 
       <div class="owner">
         <%= link_to extension.owner do %>
-          <%= gravatar_for extension.owner, size: 128 %>
-          <h5 itemprop="author"><%= extension.maintainer %></h5>
+          <span class="meta">
+            <%= gravatar_for extension.owner, size: 128 %>
+            <%= extension.maintainer %>
+          </span>
         <% end %>
       </div>
     </div>
