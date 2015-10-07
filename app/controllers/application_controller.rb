@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  force_ssl if: :ssl_configured?
   protect_from_forgery with: :exception
   before_filter :define_search
 
@@ -56,5 +57,9 @@ class ApplicationController < ActionController::Base
 
   def github_client
     @github_client ||= Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
+  end
+
+  def ssl_configured?
+    !(Rails.env.development? or Rails.env.test?)
   end
 end
