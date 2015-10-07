@@ -1,5 +1,7 @@
 <div class="profile_sidebar sidebar" data-equalizer-watch>
-  <%= gravatar_for @user, size: 180 %>
+  <div class="avatar-size-limiter">
+    <%= gravatar_for @user, size: 180 %>
+  </div>
   <h3><%= @user.name %></h3>
 
   <% if ROLLOUT.active?(:cla) && ROLLOUT.active?(:github) %>

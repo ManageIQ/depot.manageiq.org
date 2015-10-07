@@ -81,5 +81,15 @@
         }
       }
     }
+
+    .avatar-size-limiter {
+      width: 180px;
+      height: 180px;
+      margin: auto;
+      margin-bottom: 15px;
+      img {
+        width: 100%;
+      }
+    }
   }
 }
