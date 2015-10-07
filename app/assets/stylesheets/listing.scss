@@ -45,8 +45,8 @@
 
       .title {
         @include dark-links;
-        font-size: rem-calc(17);
-        line-height: rem-calc(17);
+        font-size: rem-calc(20);
+        line-height: rem-calc(20);
         color: $primary_blue;
         float: left;
         margin: rem-calc(10 0 0);
@@ -54,7 +54,7 @@
         .fa {
           @include inline-block;
           color: $silver;
-          font-size: rem-calc(16);
+          font-size: rem-calc(18);
           margin: rem-calc(-2 0 0 16);
         }
 
@@ -62,7 +62,7 @@
           @include inline-block;
           color: $secondary_gray;
           font: {
-            size: rem-calc(12);
+            size: rem-calc(16);
             weight: $normal;
           }
         }
@@ -70,7 +70,7 @@
 
       .meta {
         color: $concrete;
-        font: $normal rem-calc(12) $accent_font;
+        font: $normal rem-calc(16) $accent_font;
         line-height: rem-calc(16);
         float: left;
         margin: rem-calc(10 0 0);
@@ -79,14 +79,14 @@
         .fa {
           @include inline-block;
           color: $silver;
-          font-size: rem-calc(16);
+          font-size: rem-calc(18);
           margin: rem-calc(-2 0 0 16);
         }
 
         small {
           color: lighten($silver, 5%);
           font: {
-            size: rem-calc(10);
+            size: rem-calc(16);
             weight: $normal;
           }
         }
@@ -127,7 +127,7 @@
 
       p {
         color: $concrete;
-        font-size: rem-calc(16);
+        font-size: rem-calc(18);
         margin: 0;
       }
 
@@ -156,7 +156,7 @@
       h5 {
         color: $concrete;
         font: {
-          size: rem-calc(10);
+          size: rem-calc(16);
           weight: $normal;
         }
         text-transform: uppercase;
