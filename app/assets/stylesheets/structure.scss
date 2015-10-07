@@ -208,7 +208,7 @@ pre {
   }
 
   p a, p a:visited, .pretty a, .pretty a:visited {
-    color: $secondary_gray;
+    color: darken($secondary_gray, 30%);
     text-decoration: underline;
   }
 
