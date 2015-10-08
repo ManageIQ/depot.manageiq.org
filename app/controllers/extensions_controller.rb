@@ -101,8 +101,8 @@ class ExtensionsController < ApplicationController
       ordered_by('most_downloaded').
       limit(5)
 
-    @top_tags = Tag.find(
-      Tagging.select("tag_id, count(*) as count").
+    @top_tags = Tag.where(
+      id: Tagging.select("tag_id, count(*) as count").
         group("tag_id").
         order("count DESC").
         limit(15).
