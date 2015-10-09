@@ -86,6 +86,7 @@
   }
 }
 
+
 .search_field {
   @include grid-column($columns: 8, $collapse: true);
   position: relative;
