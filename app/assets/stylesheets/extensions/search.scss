@@ -99,6 +99,19 @@
 @media #{$mobile-only} {
   .search_field {
     @include grid-column($columns: 7, $collapse: true);
+
+    .tt-input::-webkit-input-placeholder {
+      color: white !important;
+    }
+    .tt-input:-moz-placeholder {
+      color: white !important;
+    }
+    .tt-input::-moz-placeholder {
+      color: white !important;
+    }
+    .tt-input:-ms-input-placeholder {
+      color: white !important;
+    }
   }
 }
 
