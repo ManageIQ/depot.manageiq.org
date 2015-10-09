@@ -165,6 +165,12 @@ input[type="search"].extension_search_textfield {
   }
 }
 
+@media #{$mobile-only} {
+  input[type="search"].extension_search_textfield {
+    padding-left: 8px;
+  }
+}
+
 .no-results {
   @include grid-column($columns: 12, $collapse: true);
   background-color: white;
