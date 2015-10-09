@@ -49,7 +49,7 @@
 
 @media #{$mobile-only} {
   .logo_and_nav_toggle {
-    @include grid-column(4, $collapse: true);
+    @include grid-column(6, $collapse: true);
   }
 }
 
@@ -139,7 +139,7 @@
 
 @media #{$mobile-only} {
   .appnav {
-    @include grid-column(8, $collapse: true);
+    @include grid-column(6, $collapse: true);
   }
 }
 
