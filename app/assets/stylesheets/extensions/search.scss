@@ -70,6 +70,9 @@
 @media #{$mobile-only} {
   .search_toggle {
     @include grid-column($columns: 2, $collapse: true);
+    span {
+      display: none;
+    }
   }
 }
 
