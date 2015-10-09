@@ -69,7 +69,7 @@
 
 @media #{$mobile-only} {
   .search_toggle {
-    @include grid-column($columns: 3, $collapse: true);
+    @include grid-column($columns: 2, $collapse: true);
   }
 }
 
@@ -98,7 +98,7 @@
 
 @media #{$mobile-only} {
   .search_field {
-    @include grid-column($columns: 8, $collapse: true);
+    @include grid-column($columns: 7, $collapse: true);
   }
 }
 
@@ -114,7 +114,7 @@
 
 @media #{$mobile-only} {
   .search_button {
-    display: none;
+    @include grid-column($columns: 3, $collapse: true);
   }
 }
 
