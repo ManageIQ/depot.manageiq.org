@@ -6,15 +6,15 @@
 
 <div class="page nobg">
   <div class="row extensions-features bottom-space standard-typography">
-    <div class="small-5 columns">
+    <div class="medium-5 columns">
       <header>New &amp; updated</header>
       <%= render "featured", extensions: @recently_updated_extensions %>
     </div>
-    <div class="small-5 columns">
+    <div class="medium-5 columns">
       <header>Noteworthy</header>
       <%= render "featured", extensions: @most_downloaded_extensions %>
     </div>
-    <div class="small-2 columns">
+    <div class="medium-2 columns">
       <header>Categories</header>
       <ul>
         <% @top_tags.each do |t| %>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="row share-cta standard-typography">
-    <div class="small-8 small-offset-2 columns">
+    <div class="medium-8 medium-offset-2 columns">
       <header>Share your creations!</header>
       <p class="bottom-space">Have a modification you've made to your own instance of ManageIQ? Package it up and share it with everyone!</p>
       <p><%= link_to "Read the documentation", "http://manageiq.org/documentation/" %></p>
