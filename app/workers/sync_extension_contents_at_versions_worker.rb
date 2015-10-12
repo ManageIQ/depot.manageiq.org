@@ -65,6 +65,7 @@ class SyncExtensionContentsAtVersionsWorker
 
   def fetch_readme
     filename = @run.cmd("ls README*").split("\n")
+    logger.info filename.inspect
 
     if filename = filename.first
       ext = extract_readme_file_extension(filename)
