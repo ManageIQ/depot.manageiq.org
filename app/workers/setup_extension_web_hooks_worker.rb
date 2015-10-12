@@ -9,7 +9,7 @@ class SetupExtensionWebHooksWorker
       @octokit.create_hook(
         @extension.github_repo, "web",
         {
-          url: Rails.application.routes.url_helpers.webhook_extension_url(@extension, username: @extension.owner.username),
+          url: Rails.application.routes.url_helpers.webhook_extension_url(@extension, username: @extension.owner_name),
           content_type: "json"
         },
         {

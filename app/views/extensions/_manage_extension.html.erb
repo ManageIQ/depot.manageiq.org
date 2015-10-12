@@ -50,10 +50,10 @@
 
       <a class="close-reveal-modal">&#215;</a>
 
-      <%= form_for extension, url: deprecate_extension_path(extension, username: extension.owner.username), method: :put do |f| %>
+      <%= form_for extension, url: deprecate_extension_path(extension, username: extension.owner_name), method: :put do |f| %>
         <div class="row collapse">
           <div class="small-9 columns">
-            <%= f.hidden_field :replacement, class: 'extension-deprecate', 'data-url' => deprecate_search_extension_path(extension, username: extension.owner.username) %>
+            <%= f.hidden_field :replacement, class: 'extension-deprecate', 'data-url' => deprecate_search_extension_path(extension, username: extension.owner_name) %>
           </div>
           <div class="small-3 columns">
             <%= f.submit 'Deprecate', class: 'button radius postfix submit-deprecation', disabled: true %>
@@ -65,7 +65,7 @@
 
   <% if policy(extension).undeprecate? %>
     <li>
-      <%= link_to deprecate_extension_path(extension, username: extension.owner.username), method: 'delete', rel: 'undeprecate' do %>
+      <%= link_to deprecate_extension_path(extension, username: extension.owner_name), method: 'delete', rel: 'undeprecate' do %>
           <i class="fa fa-archive"></i>
           Undo Deprecation
       <% end %>
@@ -74,7 +74,7 @@
 
   <% if policy(extension).toggle_featured? %>
     <li>
-      <%= link_to toggle_featured_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'toggle_featured' do %>
+      <%= link_to toggle_featured_extension_path(extension, username: extension.owner_name), method: 'put', rel: 'toggle_featured' do %>
         <i class="fa fa-star"></i>
         <%= extension.featured? ? 'Unfeature' : 'Feature' %>
       <% end %>
@@ -84,13 +84,13 @@
   <% if policy(extension).disable? %>
     <% if extension.enabled? %>
       <li>
-        <%= link_to disable_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'disable' do %>
+        <%= link_to disable_extension_path(extension, username: extension.owner_name), method: 'put', rel: 'disable' do %>
           <i class="fa fa-times"></i> Disable
         <% end %>
       </li>
     <% else %>
       <li>
-        <%= link_to enable_extension_path(extension, username: extension.owner.username), method: 'put', rel: 'enable' do %>
+        <%= link_to enable_extension_path(extension, username: extension.owner_name), method: 'put', rel: 'enable' do %>
           <i class="fa fa-circle"></i> Enable
         <% end %>
       </li>

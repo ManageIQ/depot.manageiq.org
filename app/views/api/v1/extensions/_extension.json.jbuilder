@@ -7,4 +7,4 @@ json.download_count extension.download_count
 json.license_name extension.license_name
 json.issues_url extension.issues_url
 json.github_url extension.github_url
-json.download_url download_extension_url(extension)
+json.download_url download_extension_url(extension, username: extension.owner_name)

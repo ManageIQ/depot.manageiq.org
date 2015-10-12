@@ -79,7 +79,7 @@ class ExtensionsController < ApplicationController
     @extension = create_extension.process!
 
     if @extension.errors.none?
-      redirect_to extension_path(@extension, username: @extension.owner.username), notice: t("extension.created")
+      redirect_to owner_scoped_extension_url(@extension), notice: t("extension.created")
     else
       @repo_names = current_user.octokit.repos.map { |r| r.to_h.slice(:full_name, :name, :description) } rescue []
       render :new
@@ -168,7 +168,7 @@ class ExtensionsController < ApplicationController
             'extension.updated'
           end
 
-    redirect_to extension_path(@extension, username: @extension.owner.username), notice: t(key, name: @extension.name)
+    redirect_to owner_scoped_extension_url(@extension), notice: t(key, name: @extension.name)
   end
 
   #
@@ -222,7 +222,7 @@ class ExtensionsController < ApplicationController
         )
       )
     else
-      redirect_to extension_path(@extension, username: @extension.owner.username), notice: @extension.errors.full_messages.join(', ')
+      redirect_to owner_scoped_extension_url(@extension), notice: @extension.errors.full_messages.join(', ')
     end
   end
 
@@ -303,7 +303,7 @@ class ExtensionsController < ApplicationController
   def enable
     authorize! @extension, :disable?
     @extension.update_attribute(:enabled, true)
-    redirect_to extension_url(@extension, username: @extension.owner.username), notice: t("extension.enabled", extension: @extension.name)
+    redirect_to owner_scoped_extension_url(@extension), notice: t("extension.enabled", extension: @extension.name)
   end
 
   #
@@ -313,7 +313,7 @@ class ExtensionsController < ApplicationController
   #
   def report
     NotifyModeratorsOfReportedExtensionWorker.perform_async(@extension.id, params[:report][:description], current_user.try(:id))
-    redirect_to extension_path(@extension, username: @extension.owner.username), notice: t("extension.reported", extension: @extension.name)
+    redirect_to owner_scoped_extension_url(@extension), notice: t("extension.reported", extension: @extension.name)
   end
 
   #
@@ -362,7 +362,7 @@ class ExtensionsController < ApplicationController
   end
 
   def store_location_then_authenticate_user!
-    store_location!(extension_path(@extension, username: @extension.owner.username))
+    store_location!(owner_scoped_extension_url(@extension))
     authenticate_user!
   end
 

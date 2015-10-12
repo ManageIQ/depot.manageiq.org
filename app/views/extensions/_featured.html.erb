@@ -5,7 +5,7 @@
     </div>
     <div class="small-10 columns">
       <header>
-        <%= link_to e.name, extension_path(e, username: e.owner.username) %>
+        <%= link_to e.name, owner_scoped_extension_url(e) %>
         <span><%= e.latest_extension_version.try(:version) %></span>
       </header>
       <p><%= e.description %></p>

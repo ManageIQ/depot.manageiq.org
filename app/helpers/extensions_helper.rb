@@ -23,7 +23,7 @@ module ExtensionsHelper
     version = dependency.extension_version
     extension = version.extension
     txt = "#{extension.name} #{version.version}"
-    link_to(txt, extension_path(extension, username: extension.owner.username))
+    link_to(txt, owner_scoped_extension_url(extension))
   end
 
   #
@@ -39,7 +39,7 @@ module ExtensionsHelper
 
     content_tag(:td) do
       if dep.extension
-        link_to name_and_version, extension_url(dep.extension), rel: 'extension_dependency'
+        link_to name_and_version, owner_scoped_extension_url(dep.extension), rel: 'extension_dependency'
       else
         name_and_version
       end
@@ -76,7 +76,7 @@ module ExtensionsHelper
 
     unless current_user
       return link_to(
-        follow_extension_path(extension, params.merge(username: extension.owner.username)),
+        follow_extension_path(extension, params.merge(username: extension.owner.owner_name)),
         method: 'put',
         rel: 'sign-in-to-follow',
         class: 'button radius tiny follow',
@@ -93,7 +93,7 @@ module ExtensionsHelper
 
     if extension.followed_by?(current_user)
       link_to(
-        unfollow_extension_path(extension, params.merge(username: extension.owner.username)),
+        unfollow_extension_path(extension, params.merge(username: extension.owner_name)),
         method: 'delete',
         rel: 'unfollow',
         class: 'button radius tiny follow',
@@ -109,7 +109,7 @@ module ExtensionsHelper
       end
     else
       link_to(
-        follow_extension_path(extension, params.merge(username: extension.owner.username)),
+        follow_extension_path(extension, params.merge(username: extension.owner_name)),
         method: 'put',
         rel: 'follow',
         class: 'button radius tiny follow',

@@ -3,7 +3,7 @@ atom_feed language: 'en-US' do |feed|
   feed.updated safe_updated_at(@extensions)
 
   @extensions.each do |extension|
-    feed.entry extension, url: extension_url(extension) do |entry|
+    feed.entry extension, url: owner_scoped_extension_url(extension) do |entry|
       entry.title extension.name
       entry.content extension_atom_content(extension.latest_extension_version), type: 'html'
 
