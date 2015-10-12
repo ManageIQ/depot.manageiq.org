@@ -18,4 +18,14 @@ namespace :data do
       end
     end
   end
+
+  task :owner_names do
+    Extension.includes(:owner).all.each do |e|
+      if e.github_organization
+        e.update_attribute(:owner_name, e.github_organization.name)
+      else
+        e.update_attribute(:owner_name, e.owner.username)
+      end
+    end
+  end
 end
