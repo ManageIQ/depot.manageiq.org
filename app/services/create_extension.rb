@@ -19,6 +19,9 @@ class CreateExtension
             name: org[:login],
             avatar_url: org[:avatar_url]
           )
+          extension.owner_name = org[:login]
+        else
+          extension.owner_name = extension.owner.username
         end
 
         extension.save
