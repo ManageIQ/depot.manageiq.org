@@ -21,7 +21,7 @@ module UsersHelper
     }.merge(options)
 
     size = options[:size]
-    gravatar_id = Digest::MD5.hexdigest(user.email.try(:downcase) || "")
+    gravatar_id = Digest::MD5.hexdigest(user.try(:email).try(:downcase) || "")
 
     gravatar_url = "#{user.avatar_url}&size=#{size}"
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}" if user.avatar_url.nil?
