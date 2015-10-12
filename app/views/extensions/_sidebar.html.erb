@@ -12,6 +12,10 @@
     </div>
   <% end %>
 
+  <% if extension.github_url.present? %>
+    <div class="small-bottom-space"><%= link_to 'View Source', extension.github_url, itemprop: 'codeRepository', target: "_blank" %></div>
+  <% end %>
+
   <h4 rel="edit-extension-urls">
     <i class="fa fa-book"></i>
     Extension Contents
@@ -46,10 +50,6 @@
           <% end %>
         <% end %>
       </ul>
-
-      <% if extension.github_url.present? %>
-        <div class="small-bottom-space"><%= link_to 'View Source', extension.github_url, itemprop: 'codeRepository', target: "_blank" %></div>
-      <% end %>
 
       <% if extension.issues_url.present? %>
         <div class="small-bottom-space"><%= link_to 'View Issues', extension.issues_url, itemprop: 'discussionUrl, target: "_blank"' %></div>
