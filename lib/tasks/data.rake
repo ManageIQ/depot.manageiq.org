@@ -10,7 +10,7 @@ namespace :data do
       info = gh.repo(e.github_repo)
 
       if org = info[:organization]
-        e.github_organization = Organization.where(github_id: org[:id]).first_or_create!(
+        e.github_organization = GithubOrganization.where(github_id: org[:id]).first_or_create!(
           name: org[:login],
           avatar_url: org[:avatar_url]
         )

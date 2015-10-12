@@ -15,7 +15,7 @@ class CreateExtension
         repo_info = @github.repo(extension.github_repo)
 
         if org = repo_info[:organization]
-          extension.github_organization = Organization.where(github_id: org[:id]).first_or_create!(
+          extension.github_organization = GithubOrganization.where(github_id: org[:id]).first_or_create!(
             name: org[:login],
             avatar_url: org[:avatar_url]
           )
