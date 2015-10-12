@@ -1,7 +1,7 @@
 class CreateGithubOrganizations < ActiveRecord::Migration
   def change
     create_table :github_organizations do |t|
-      t.integer :github_id, null: false, index: true
+      t.integer :github_id, null: false, unique: true
       t.string :name, null: false
       t.string :avatar_url, null: false
 
