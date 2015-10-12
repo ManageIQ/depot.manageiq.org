@@ -107,7 +107,7 @@ class Extension < ActiveRecord::Base
   validates :replacement, presence: true, if: :deprecated?
 
   def self.with_username_and_name(username, name)
-    Account.where(username: username).first!.user.owned_extensions.with_name(name).first!
+    Extension.where(owner_name: username, lowercase_name: name).first!
   end
 
   #
