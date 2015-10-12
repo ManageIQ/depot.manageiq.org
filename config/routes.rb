@@ -32,7 +32,7 @@ ManageIQ::Application.routes.draw do
 
   resources :extensions, only: [:index]
 
-  resources :extensions, path: "", only: [:new, :create] do
+  resources :extensions, path: "", only: [:new] do
     scope "/extensions/:username" do
       member do
         get :show
@@ -48,6 +48,12 @@ ManageIQ::Application.routes.draw do
         put :disable
         put :enable
         put :report
+      end
+    end
+
+    scope "/extensions" do
+      collection do
+        post :create
       end
     end
 
