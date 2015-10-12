@@ -9,6 +9,6 @@
 <% else %>
   <div class="owner_avatar">
     <%= gravatar_for resource.github_organization, size: 144 %>
-    <small><%= resource.github_organization.name %></small>
+    <span itemprop="author"><%= resource.github_organization.name %></span>
   </div>
 <% end %>
