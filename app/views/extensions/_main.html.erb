@@ -61,7 +61,7 @@
     </div>
   </div>
 
-  <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "") %>
+  <%= render_document(version.try(:readme) || "", version.try(:readme_extension) || "", version.try(:extension).github_repo, version.try(:version)) %>
 
   <%# <% item_types = version.extension_version_content_items.select("distinct item_type").map(&:item_type).sort %1> %>
 

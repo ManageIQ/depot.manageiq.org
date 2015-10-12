@@ -59,11 +59,13 @@ module ExtensionVersionsHelper
   #
   # @return [String] the Document content ready to be rendered
   #
-  def render_document(content, extension)
-    if %w(md mdown markdown).include?(extension.downcase)
-      render_markdown(content)
-    else
-      content
-    end
+  def render_document(content, extension, repo_loc = "", version = "")
+    doc = begin
+      if %w(md mdown markdown).include?(extension.downcase)
+        render_markdown(content)
+      else
+        content
+      end
+    end.gsub(/src="(?!http)(.+)"/, %(src="https://github.com/#{repo_loc}/raw/#{version}/\\1")).html_safe
   end
 end
