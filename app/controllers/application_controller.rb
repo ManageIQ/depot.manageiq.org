@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :define_search
 
+  helper_method :owner_scoped_extension_url
+
   include ManageIQ::Authorization
   include ManageIQ::Authentication
   include ManageIQ::LocationStorage
@@ -22,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def owner_scoped_extension_url(extension)
+    extension_url(extension, username: extension.owner_name)
+  end
 
   def not_found!(error = nil)
     raise error if error && Rails.env.development?
