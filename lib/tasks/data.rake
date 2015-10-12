@@ -4,7 +4,7 @@ namespace :data do
     tags.each { |t| Tag.where(name: t).first_or_create }
   end
 
-  task :github_organizations do
+  task :github_organizations => :environment do
     Extension.includes(:owner).all.each do |e|
       gh = e.owner.octokit
       info = gh.repo(e.github_repo)
@@ -19,7 +19,7 @@ namespace :data do
     end
   end
 
-  task :owner_names do
+  task :owner_names => :environment do
     Extension.includes(:owner).all.each do |e|
       if e.github_organization
         e.update_attribute(:owner_name, e.github_organization.name)
