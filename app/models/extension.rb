@@ -75,6 +75,7 @@ class Extension < ActiveRecord::Base
   has_many :followers, through: :extension_followers, source: :user
   belongs_to :category
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  belongs_to :github_organization
   has_one :github_account, through: :owner
   belongs_to :replacement, class_name: 'Extension', foreign_key: :replacement_id
   has_many :collaborators, as: :resourceable, dependent: :destroy

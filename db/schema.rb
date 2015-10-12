@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810201407) do
+ActiveRecord::Schema.define(version: 20151012163208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -314,12 +314,22 @@ ActiveRecord::Schema.define(version: 20150810201407) do
     t.text     "license_text",              default: ""
     t.boolean  "enabled",                   default: true,  null: false
     t.boolean  "syncing",                   default: false
+    t.integer  "github_organization_id"
   end
 
   add_index "extensions", ["enabled"], name: "index_extensions_on_enabled", using: :btree
+  add_index "extensions", ["github_organization_id"], name: "index_extensions_on_github_organization_id", using: :btree
   add_index "extensions", ["lowercase_name"], name: "index_extensions_on_lowercase_name", unique: true, using: :btree
   add_index "extensions", ["name"], name: "index_extensions_on_name", using: :btree
   add_index "extensions", ["user_id"], name: "index_extensions_on_user_id", using: :btree
+
+  create_table "github_organizations", force: true do |t|
+    t.integer  "github_id",  null: false
+    t.string   "name",       null: false
+    t.string   "avatar_url", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "hits", force: true do |t|
     t.string  "label",             null: false

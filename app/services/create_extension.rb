@@ -12,6 +12,15 @@ class CreateExtension
       extension.owner = @user
 
       if extension.valid? and repo_valid?(extension)
+        repo_info = @github.repo(extension.github_repo)
+
+        if org = repo_info[:organization]
+          extension.organization = Organization.where(github_id: org[:id]).first_or_create!(
+            name: org[:login],
+            avatar_url: org[:avatar_url]
+          )
+        end
+
         extension.save
 
         CollectExtensionMetadataWorker.perform_async(extension.id, @compatible_platforms.select { |p| !p.strip.blank? })
