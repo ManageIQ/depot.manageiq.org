@@ -1,5 +1,5 @@
 <h1><%= @subject %></h1>
 <p>You may disable or edit this extension if necessary.</p>
 <div>
-  <%= link_to "View Extension", extension_url(@extension), class: "button accept" %>
+  <%= link_to "View Extension", extension_url(@extension, username: @extension.owner), class: "button accept" %>
 </div>

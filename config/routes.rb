@@ -44,6 +44,7 @@ ManageIQ::Application.routes.draw do
         delete :deprecate, action: 'undeprecate'
         put :toggle_featured
         get :deprecate_search
+        post :webhook
         put :disable
         put :enable
         put :report
@@ -53,7 +54,6 @@ ManageIQ::Application.routes.draw do
     scope "/extensions" do
       collection do
         post :create
-        post :webhook
       end
     end
 
