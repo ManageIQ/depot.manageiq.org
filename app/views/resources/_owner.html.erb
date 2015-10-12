@@ -1,7 +1,14 @@
-<div class="owner_avatar">
-  <%= link_to resource.owner do %>
-    <%= gravatar_for resource.owner, size: 144 %>
-    <span itemprop="author"><%= resource.maintainer %></span>
-    <small><%= resource.owner.name %></small>
-  <% end %>
-</div>
+<% if !resource.github_organization %>
+  <div class="owner_avatar">
+    <%= link_to resource.owner do %>
+      <%= gravatar_for resource.owner, size: 144 %>
+      <span itemprop="author"><%= resource.maintainer %></span>
+      <small><%= resource.owner.name %></small>
+    <% end %>
+  </div>
+<% else %>
+  <div class="owner_avatar">
+    <%= gravatar_for resource.github_organization, size: 144 %>
+    <small><%= resource.github_organization.name %></small>
+  </div>
+<% end %>
