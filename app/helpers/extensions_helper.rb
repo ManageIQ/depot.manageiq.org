@@ -76,7 +76,7 @@ module ExtensionsHelper
 
     unless current_user
       return link_to(
-        follow_extension_path(extension, params.merge(username: extension.owner.owner_name)),
+        follow_extension_path(extension, params.merge(username: extension.owner_name)),
         method: 'put',
         rel: 'sign-in-to-follow',
         class: 'button radius tiny follow',
