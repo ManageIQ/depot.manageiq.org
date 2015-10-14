@@ -17,6 +17,8 @@ class ExtractExtensionVersionFileWorker
       "Dialog"
     elsif body["MiqWidget"]
       "Widget"
+    elsif body["CustomButtonSet"]
+      "Button Set"
     end
 
     return if type.nil?
