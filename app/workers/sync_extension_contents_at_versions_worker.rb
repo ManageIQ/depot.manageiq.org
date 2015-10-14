@@ -155,6 +155,8 @@ class SyncExtensionContentsAtVersionsWorker
         "Dialog"
       elsif body["MiqWidget"]
         "Widget"
+      elsif body["CustomButtonSet"]
+        "Button Set"
       end
 
       next if type.nil?
