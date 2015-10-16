@@ -230,6 +230,12 @@ input[type="search"].extension_search_textfield {
   }
 }
 
+@media #{$mobile-only} {
+  .extension_search_button {
+    font-size: rem-calc(16);
+  }
+}
+
 #advanced-search {
   .supported-platform {
     float: left;
