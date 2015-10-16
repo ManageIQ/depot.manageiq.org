@@ -548,6 +548,16 @@ footer#footer {
   }
 }
 
+@media #{$mobile-only} {
+  .cta-banner {
+    padding-left: 10px;
+    padding-right: 10px;
+    p {
+      font-size: rem-calc(16);
+    }
+  }
+}
+
 .extensions-features {
   .featured-extension {
     margin-bottom: 16px;
