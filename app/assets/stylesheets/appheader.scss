@@ -50,8 +50,6 @@
 @media #{$mobile-only} {
   .logo_and_nav_toggle {
     @include grid-column(6, $collapse: true);
-    margin-left: -40px;
-    width: 190px;
   }
 }
 
@@ -84,6 +82,13 @@
     width: 100%;
 
     span { display: none; }
+  }
+}
+
+@media #{$mobile-only} {
+  .logomanageiq {
+    margin-left: -40px;
+    width: 170px;
   }
 }
 
