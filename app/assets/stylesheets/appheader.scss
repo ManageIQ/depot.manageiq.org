@@ -50,6 +50,8 @@
 @media #{$mobile-only} {
   .logo_and_nav_toggle {
     @include grid-column(6, $collapse: true);
+    margin-left: -40px;
+    width: 190px;
   }
 }
 
