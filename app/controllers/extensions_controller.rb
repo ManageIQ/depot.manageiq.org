@@ -143,7 +143,7 @@ class ExtensionsController < ApplicationController
     latest_version = extension.latest_extension_version
     ManageIQ::Metrics.increment('extension.downloads.web')
     DailyMetric.increment(latest_version.download_daily_metric_key)
-    redirect_to extension_version_download_url(extension, latest_version, username: extension.owner.username)
+    redirect_to extension_version_download_url(extension, latest_version, username: params[:username])
   end
 
   #
