@@ -195,3 +195,4 @@ class SyncExtensionContentsAtVersionsWorker
     end
   end
 end
+
