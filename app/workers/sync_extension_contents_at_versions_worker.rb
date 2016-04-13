@@ -51,7 +51,7 @@ class SyncExtensionContentsAtVersionsWorker
     return true if @tag == "master"
 
     begin
-      Semverse::Version.new(@tag)
+      Semverse::Version.new(@tag.gsub(/\Av/, ""))
       return true
     rescue Semverse::InvalidVersionFormat
       return false
