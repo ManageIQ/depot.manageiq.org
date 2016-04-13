@@ -68,7 +68,7 @@ class ExtensionVersion < ActiveRecord::Base
     return true if version == "master"
 
     begin
-      Semverse::Version.new(version)
+      Semverse::Version.new(version.gsub(/\Av/, ""))
     rescue Semverse::InvalidVersionFormat
       errors.add(:version, 'is formatted incorrectly')
     end
