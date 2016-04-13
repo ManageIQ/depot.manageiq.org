@@ -127,7 +127,7 @@ class Extension < ActiveRecord::Base
   def sorted_extension_versions
     @sorted_extension_versions ||= extension_versions.
       reject { |v| v.version == "master" }.
-      sort_by { |v| Semverse::Version.new(v.version) }.
+      sort_by { |v| Semverse::Version.new(v.version.gsub(/\Av/, "")) }.
       reverse.
       concat(extension_versions.select { |v| v.version == "master" })
   end
@@ -345,7 +345,7 @@ class Extension < ActiveRecord::Base
       .sort_by do |cd|
         [
           cd.extension_version.extension.name,
-          Semverse::Version.new(cd.extension_version.version)
+          Semverse::Version.new(cd.extension_version.version.gsub(/\Av/, ""))
         ]
       end
   end
