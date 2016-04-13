@@ -1,5 +1,5 @@
 ManageIQ::Application.routes.draw do
-  VERSION_PATTERN = /master|latest|([0-9_\-\.]+)/ unless defined?(VERSION_PATTERN)
+  VERSION_PATTERN = /master|latest|v?([0-9_\-\.]+)/ unless defined?(VERSION_PATTERN)
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
