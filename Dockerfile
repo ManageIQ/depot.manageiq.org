@@ -12,6 +12,7 @@ RUN yum -y install centos-release-scl-rh &&         \
                    nodejs                           \
                    rh-postgresql95-postgresql-devel \
                    rh-postgresql95-postgresql-libs  \
+                   sysvinit-tools.x86_64            \
                    which                            \
                    &&                               \
     yum clean all
