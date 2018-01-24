@@ -1,20 +1,10 @@
 development:
   adapter: postgresql
   database: supermarket_development
-  host: localhost
+  username: root
   pool: 30
 
 test:
   adapter: postgresql
+  username: root
   database: supermarket_test
-  host: localhost
-
-production:
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
-  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
-  adapter: postgresql
-  min_messages: ERROR
-  reconnect: false

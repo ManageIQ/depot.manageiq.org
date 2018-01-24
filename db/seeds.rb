@@ -214,31 +214,31 @@ if Rails.env.development?
   #
   # Default extensions for use in development.
   #
-  %w(redis postgres node ruby haskell clojure java mysql apache2 nginx yum apt).each do |name|
-    extension = Extension.where(
-      name: name
-    ).first_or_initialize(
-      source_url: 'http://example.com',
-      issues_url: 'http://example.com',
-      category: category,
-      owner: user
-    )
+  # %w(redis postgres node ruby haskell clojure java mysql apache2 nginx yum apt).each do |name|
+  #   extension = Extension.where(
+  #     name: name
+  #   ).first_or_initialize(
+  #     source_url: 'http://example.com',
+  #     issues_url: 'http://example.com',
+  #     category: category,
+  #     owner: user
+  #   )
 
-    # TODO: figure out a nice way to use ExtensionUpload here, which will ensure
-    # that our seed data is realistically seeded.
-    extension_version = extension.extension_versions.where(
-      version: '0.1.0'
-    ).first_or_create(
-      description: Faker::Lorem.sentences(1).first,
-      license: 'MIT',
-      tarball: File.open('spec/support/extension_fixtures/redis-test-v1.tgz'),
-      readme: File.read('README.md'),
-      readme_extension: 'md'
-    )
+  #   # TODO: figure out a nice way to use ExtensionUpload here, which will ensure
+  #   # that our seed data is realistically seeded.
+  #   extension_version = extension.extension_versions.where(
+  #     version: '0.1.0'
+  #   ).first_or_create(
+  #     description: Faker::Lorem.sentences(1).first,
+  #     license: 'MIT',
+  #     tarball: File.open('spec/support/extension_fixtures/redis-test-v1.tgz'),
+  #     readme: File.read('README.md'),
+  #     readme_extension: 'md'
+  #   )
 
-    extension.extension_versions << extension_version
-    extension.save!
-  end
+  #   extension.extension_versions << extension_version
+  #   extension.save!
+  # end
 
   #
   # Default knife plugins (tools) for use in development.
@@ -273,9 +273,9 @@ if Rails.env.development?
   #
   # Default extension folower for use in development.
   #
-  ExtensionFollower.where(
-    user: user,
-    extension: Extension.find_by(name: 'redis')
-  ).first_or_create!
+  # ExtensionFollower.where(
+  #   user: user,
+  #   extension: Extension.find_by(name: 'redis')
+  # ).first_or_create!
 
 end

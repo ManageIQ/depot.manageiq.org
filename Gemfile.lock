@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/octokit/octokit.rb.git
-  revision: 703d8587665e8ed6279847a69095f79996b027ec
+  remote: https://github.com/octokit/octokit.rb
+  revision: 40e16e6b951901d4b864777c9dbbc9f321eac4a3
   specs:
-    octokit (4.0.0)
-      sawyer (~> 0.6.0, >= 0.5.3)
+    octokit (4.8.0)
+      sawyer (~> 0.8.0, >= 0.5.3)
 
 GIT
-  remote: git://github.com/thoughtbot/shoulda-matchers.git
+  remote: https://github.com/thoughtbot/shoulda-matchers
   revision: 380d18f0621c66a79445ebc6dcc0048fcc969911
   ref: 380d18f0621c66a79445ebc6dcc0048fcc969911
   specs:
@@ -14,7 +14,7 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
-  remote: git://github.com/tobiassvn/sidetiq.git
+  remote: https://github.com/tobiassvn/sidetiq
   revision: 4f7d7daea3873443b17bf2f3da61619532bbeba2
   ref: 4f7d7da
   specs:
@@ -383,9 +383,9 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
-    sawyer (0.6.0)
-      addressable (~> 2.3.5)
-      faraday (~> 0.8, < 0.10)
+    sawyer (0.8.1)
+      addressable (>= 2.3.5, < 2.6)
+      faraday (~> 0.8, < 1.0)
     semverse (1.2.1)
     sentry-raven (0.8.0)
       faraday (>= 0.7.6)
@@ -551,4 +551,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.10.6
+   1.16.0

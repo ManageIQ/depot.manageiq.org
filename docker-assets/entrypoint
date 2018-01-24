@@ -1,0 +1,43 @@
+#!/bin/sh
+
+if ! whoami &> /dev/null; then
+  if [ -w /etc/passwd ]; then
+    echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
+  fi
+fi
+
+# Check service status, requires two arguments: SVC name and SVC port (injected via template)
+function check_svc_status() {
+  NCAT="$(which ncat)"
+  local SVC_NAME=$1 SVC_PORT=$2
+
+  [[ $# -lt 2 ]] && echo "Error something seems wrong, we need at least two parameters to check service status" && exit 1
+
+  echo "== Checking ${SVC_NAME}:$SVC_PORT status =="
+
+  [[ ! -x ${NCAT} ]] && echo "ERROR: Could not find ncat executable, aborting.." && exit 1
+
+  while true; do
+    ${NCAT} ${SVC_NAME} ${SVC_PORT} < /dev/null && break
+    sleep 5
+  done
+  echo "${SVC_NAME}:${SVC_PORT} - accepting connections"
+}
+
+source /opt/rh/rh-postgresql95/enable
+
+if [ $UI ]; then
+  check_svc_status redis 6379
+  check_svc_status postgresql 5432
+
+  bin/rake db:create
+  bin/rake db:migrate
+  bin/rake db:seed
+  bin/rake assets:precompile
+
+  bin/rails server --port=3000
+else
+  check_svc_status manageiq-depot 3000
+
+  bin/bundle exec sidekiq
+fi

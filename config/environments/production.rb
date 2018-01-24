@@ -55,21 +55,20 @@ ManageIQ::Application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_store, {
-    :host => ENV['OPENSHIFT_REDIS_DB_HOST'],
-    :port => ENV['OPENSHIFT_REDIS_DB_PORT'],
+    :host => ENV['REDIS_HOST'],
+    :port => 6379,
     :db => 0,
-    :password => ENV['OPENSHIFT_REDIS_DB_PASSWORD'],
     :namespace => "cache"
   }
 
-  config.redis = Redis.new(url: "redis://:#{ENV['OPENSHIFT_REDIS_DB_PASSWORD']}@#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/1", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"])
+  config.redis = Redis.new(:url => "redis://#{ENV['REDIS_HOST']}:6379/1")
 
   Sidekiq.configure_server do |config|
-    config.redis = { url: "redis://#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/2", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"] }
+    config.redis = {:url => "redis://#{ENV['REDIS_HOST']}:6379/2"}
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: "redis://#{ENV['OPENSHIFT_REDIS_DB_HOST']}:#{ENV['OPENSHIFT_REDIS_DB_PORT']}/2", password: ENV["OPENSHIFT_REDIS_DB_PASSWORD"] }
+    config.redis = {:url => "redis://#{ENV['REDIS_HOST']}:6379/2"}
   end
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
