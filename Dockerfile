@@ -39,4 +39,4 @@ RUN chmod -R u+x ${APP_ROOT}/bin && \
 EXPOSE 3000
 USER 10001
 
-ENTRYPOINT ["/entrypoint"]
+CMD ["/entrypoint"]
