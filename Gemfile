@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
 
 # Override the Bundler :github shortcut to use HTTPS instead of the git protocol
 # Note: Version 2.x of Bundler should do this by default
@@ -25,7 +24,7 @@ gem 'foreman'
 gem 'pundit'
 gem 'dotenv'
 gem 'coveralls', :require => false
-gem 'octokit', :github => 'octokit/octokit.rb'
+gem 'octokit', :git => "https://github.com/octokit/octokit.rb"
 gem 'sidekiq'
 gem "safe_yaml", :require => false
 
@@ -36,7 +35,7 @@ gem 'sprockets', '~> 2.11.3'
 
 # Use the version on GitHub because the version published on RubyGems has
 # compatibility problems with Sidekiq 3.0.
-gem 'sidetiq', :github => 'tobiassvn/sidetiq', :ref => '4f7d7da'
+gem 'sidetiq', :git => "https://github.com/tobiassvn/sidetiq", :ref => '4f7d7da'
 
 gem 'premailer-rails', :group => [:development, :production]
 gem 'nokogiri'
@@ -96,9 +95,7 @@ group :test do
   # To prevent the validates_uniqueness matcher from raising a chef version
   # constraint error this pins shoulda-matchers at a commit where setting
   # default values for scopes was reverted
-  gem 'shoulda-matchers',
-      :github => 'thoughtbot/shoulda-matchers',
-      :ref => '380d18f0621c66a79445ebc6dcc0048fcc969911'
+  gem 'shoulda-matchers', :git => "https://github.com/thoughtbot/shoulda-matchers", :ref => '380d18f0621c66a79445ebc6dcc0048fcc969911'
 
   gem 'database_cleaner'
   gem 'vcr', :require => false

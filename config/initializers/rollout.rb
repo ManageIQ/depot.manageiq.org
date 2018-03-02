@@ -2,16 +2,7 @@ def Object.const_missing(const)
   if const == :ROLLOUT
     require 'redis'
 
-    redis_connect = {
-      # url: ENV['REDIS_URL'] || 'redis://localhost:6379/0/supermarket',
-      host: ENV['OPENSHIFT_REDIS_DB_HOST'] || 'localhost',
-      port: ENV['OPENSHIFT_REDIS_DB_PORT'] || 6379,
-      db: 0
-    }
-    unless ENV['OPENSHIFT_REDIS_DB_PASSWORD'].blank?
-      redis_connect[:password] = ENV['OPENSHIFT_REDIS_DB_PASSWORD']
-    end
-
+    redis_connect = {}.tap { |h| h[:host] = ENV["REDIS_HOST"] if ENV["REDIS_HOST"] }
     redis = Redis.new(redis_connect)
 
     Object.const_set('ROLLOUT', Rollout.new(redis))
